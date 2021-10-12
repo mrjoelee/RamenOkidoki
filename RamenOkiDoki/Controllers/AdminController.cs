@@ -4,27 +4,28 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
 using RamenOkiDoki.Models;
 using RamenOkiDoki.Services;
 using RamenOkiDoki.ViewModels;
 
 namespace RamenOkiDoki.Controllers
 {
-    public class AdminOnlyController : Microsoft.AspNetCore.Mvc.Controller
+    public class AdminController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ILogger<HomeController> _logger;
         private MenuEndpointService _menuEndpointService;
 
-        public AdminOnlyController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
+        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
         {
             _logger = logger;
             _menuEndpointService = menuEndpointService;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> FoodMenuEdit()
         {
@@ -55,12 +56,30 @@ namespace RamenOkiDoki.Controllers
             }
 
             FoodItems.OrderBy(categoryName => categoryName);
-            
+
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
             foodItemsViewModel.FoodItems = FoodItems;
 
             return View(foodItemsViewModel);
+        }
+
+        public IActionResult AdminSignin()
+        {
+            Globals.UserSignedIn = true;
+
+            Globals.UserRole = Globals.UserRoles.Admin;
+
+            return Redirect("Index");
+        }
+        public IActionResult AdminSignOut()
+        {
+            Globals.UserSignedIn = false;
+
+            Globals.UserRole = Globals.UserRoles.Patron;//Globals.UserRoles.Admin;
+          
+            return Redirect("Index");   
+          
         }
     }
 }
