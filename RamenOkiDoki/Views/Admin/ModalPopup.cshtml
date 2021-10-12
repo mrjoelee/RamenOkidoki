@@ -1,13 +1,9 @@
-﻿@model RamenOkiDoki.ViewModels.FoodItemsViewModel
+﻿
 @{
-    ViewData["Title"] = "Edit Menu";
+    ViewData["Title"] = "ModalPopup";
 }
-<div class="text-center">
-    <h1 class="display-4">Edit Menu</h1>
-</div>
 
 <div class="container">
-
     <div class="modal" id="login">
         <div class="modal-dialog">
             <div class="modal-content add-menu-item-control">
@@ -38,48 +34,7 @@
                         </div>
                     </form>
                 </div>
-
-
             </div>
         </div>
     </div>
 </div>
-
-
-
-@if (Model.FoodItems == null)
-{
-    return;
-}
-
-<div class="menu-table-div">
-
-
-    <table class="menu-edit-table">
-        <thead>
-        <tr>
-            <th>Dish</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Category</th>
-        </tr>
-        </thead>
-        <tbody>
-        <button id="btnClick" class="add-item-button" type="button" data-target="#login" data-toggle="modal"> <i class="fas fa-plus-circle"></i> AddFoodItems</button>
-        @foreach (var menuItem in Model.FoodItems)
-        {
-            <tr>
-                <td>@menuItem.dishName </td>
-                <td>$ @menuItem.price</td>
-                <td>@menuItem.description</td>
-                <td>@menuItem.categoryName</td>
-                <td><a asp-action="ModalPopup" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>
-                <td><a asp-action="Delete" asp-controller="Admin" asp-route-id="@menuItem.id">Delete</a></td>
-            </tr>
-        }
-            </tbody>
-    </table>
-</div>
-
-
-
