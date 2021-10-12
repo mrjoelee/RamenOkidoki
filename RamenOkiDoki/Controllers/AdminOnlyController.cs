@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RamenOkiDoki.Models;
 using RamenOkiDoki.Services;
+using RamenOkiDoki.ViewModels;
 
 namespace RamenOkiDoki.Controllers
 {
@@ -36,10 +37,11 @@ namespace RamenOkiDoki.Controllers
 
             FoodItems.OrderBy(categoryName => categoryName);
 
+            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            IndexViewModel indexViewModel = new IndexViewModel();
-            indexViewModel.FoodItems = FoodItems;
-            return View(indexViewModel);
+            foodItemsViewModel.FoodItems = FoodItems;
+
+            return View(foodItemsViewModel);
         }
 
 
@@ -53,11 +55,12 @@ namespace RamenOkiDoki.Controllers
             }
 
             FoodItems.OrderBy(categoryName => categoryName);
+            
+            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
+            foodItemsViewModel.FoodItems = FoodItems;
 
-            IndexViewModel indexViewModel = new IndexViewModel();
-            indexViewModel.FoodItems = FoodItems;
-            return View(indexViewModel);
+            return View(foodItemsViewModel);
         }
     }
 }
