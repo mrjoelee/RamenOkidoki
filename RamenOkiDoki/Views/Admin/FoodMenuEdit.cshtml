@@ -56,7 +56,16 @@
 
 
     <table class="menu-edit-table">
-        <button id="btnClick" type="button" data-target="#login" data-toggle="modal">    <i class="fas fa-plus-circle"></i> AddFoodItems</button>
+        <thead>
+        <tr>
+            <th>Dish</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <button id="btnClick" class="add-item-button" type="button" data-target="#login" data-toggle="modal"> <i class="fas fa-plus-circle"></i> AddFoodItems</button>
         @foreach (var menuItem in Model.FoodItems)
         {
             <tr>
@@ -64,9 +73,11 @@
                 <td>$ @menuItem.price</td>
                 <td>@menuItem.description</td>
                 <td>@menuItem.categoryName</td>
+                <td><a asp-action="Edit" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>
+                <td><a asp-action="Delete" asp-controller="Admin" asp-route-id="@menuItem.id">Delete</a></td>
             </tr>
         }
-
+            </tbody>
     </table>
 </div>
 

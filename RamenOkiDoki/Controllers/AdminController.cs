@@ -64,6 +64,17 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
+        public IActionResult EditMenuItem(int? id)
+        {
+            return Redirect("FoodMenuEdit");
+        }
+
+        public IActionResult DeleteMenuItem(int? id)
+        {
+            return Redirect("FoodMenuEdit");
+        }
+
+
         public IActionResult AdminSignin()
         {
             Globals.UserSignedIn = true;

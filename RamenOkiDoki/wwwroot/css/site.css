@@ -9,13 +9,14 @@ a.nav-link {
     color: white !important;
     font-size: 1.3em !important;
     margin: 0px 10px;
-    float:right !important;
+    float: right !important;
 }
 
-a.nav-link:hover {
-    color: red !important;
-    font-size: 1.4em !important;
-}
+    a.nav-link:hover {
+        color: red !important;
+        font-size: 1.4em !important;
+    }
+
 .navbar-brand {
     text-align: left;
     word-break: keep-all;
@@ -114,9 +115,9 @@ body {
     border: 1px solid black;
 }
 
-#btnClick:hover {
-    background-color: red;
-}
+    #btnClick:hover {
+        background-color: red;
+    }
 
 .menuItem {
     font-size: 12px;
@@ -140,6 +141,11 @@ body {
     border: 4px solid black !important;
 }
 
+.add-item-button {
+    background-color: transparent;
+    border: transparent;
+}
+
 .menu-table-div {
     margin-top: 200px;
     margin-left: auto;
@@ -147,12 +153,15 @@ body {
     padding: 0px;
 }
 
+.menu-edit-table th {
+    text-align: center;
+}
+
+
 .menu-edit-table {
     padding: 5px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #EFEFEF;
-    border: 1px solid black;
     border-collapse: collapse;
 }
 
@@ -162,6 +171,5 @@ body {
     }
 
 .fab {
-   
     font-size: 60px;
 }
