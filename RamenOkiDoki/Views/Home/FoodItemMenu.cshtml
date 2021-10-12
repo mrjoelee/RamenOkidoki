@@ -1,0 +1,34 @@
+﻿@model RamenOkiDoki.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Menu Items";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Menu Items</h1>
+</div>
+
+@{
+    if (Model.FoodItems == null)
+    {
+        return;
+    }
+
+    string categoryName = "";
+
+    foreach (var menuItem in Model.FoodItems)
+    {
+        if (categoryName != menuItem.categoryName)
+        {
+            <h2 class="categoryName">@menuItem.categoryName</h2>
+
+            categoryName = menuItem.categoryName;
+        }
+        <p>
+            <span class="menuItem">@menuItem.dishName </span><span class="menuPrice">$  @menuItem.price</span>
+        </p>
+        <p class="menuDescription">@menuItem.description</p>
+    }
+
+
+}
+

@@ -1,0 +1,74 @@
+﻿@model RamenOkiDoki.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Edit Menu";
+}
+<div class="text-center">
+    <h1 class="display-4">Edit Menu</h1>
+</div>
+
+<div class="container">
+
+    <div class="modal" id="login">
+        <div class="modal-dialog">
+            <div class="modal-content add-menu-item-control">
+                <div class="modal-header">
+                    <label>AddFoodItem</label>
+                </div>
+                <div class="modal-body">
+                    <form method="Post">
+                        <div class="form-group">
+                            <label>Food Category</label>
+                            <input type="text" placeholder="FoodCategory" id="FoodCategory" />
+                        </div>
+                        <div class="form-group">
+                            <label>Dish Name</label>
+                            <input type="text" placeholder="DishName" id="DishName" />
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" placeholder="Price" id="Price" />
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" placeholder="Description" id="Description" />
+                        </div>
+                        <div class="modal-footer">
+                            <button value="AddFoodItem" type="submit" onclick="OnAddMenuItemButtonClicked" id="addfooditem">Add</button>
+                            <button value="Close" data-dismiss="modal" id="close">Close</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@if (Model.FoodItems == null)
+{
+    return;
+}
+
+<div class="menu-table-div">
+
+
+    <table class="menu-edit-table">
+        <button id="btnClick" type="button" data-target="#login" data-toggle="modal">    <i class="fas fa-plus-circle"></i> AddFoodItems</button>
+        @foreach (var menuItem in Model.FoodItems)
+        {
+            <tr>
+                <td>@menuItem.dishName </td>
+                <td>$ @menuItem.price</td>
+                <td>@menuItem.description</td>
+                <td>@menuItem.categoryName</td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+

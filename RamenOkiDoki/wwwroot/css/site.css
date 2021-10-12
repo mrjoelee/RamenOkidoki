@@ -1,0 +1,167 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.header {
+    background-color: black !important;
+}
+
+a.nav-link {
+    color: white !important;
+    font-size: 1.3em !important;
+    margin: 0px 10px;
+    float:right !important;
+}
+
+a.nav-link:hover {
+    color: red !important;
+    font-size: 1.4em !important;
+}
+.navbar-brand {
+    text-align: left;
+    word-break: keep-all;
+    padding: 0px;
+    font-family: fantasy;
+    font-size: 2.5em;
+    margin: 0px;
+    color: red !important;
+    vertical-align: middle;
+}
+
+.navbar-nav {
+}
+
+
+/* Provide sufficient contrast against white background */
+a {
+    color: red;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    background-color: black;
+    color: white !important;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.categoryName {
+    color: darkred;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+
+/*     Food Menu     */
+
+#btnClick {
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+#btnClick:hover {
+    background-color: red;
+}
+
+.menuItem {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.menuPrice {
+    font-size: 12px;
+    margin-left: 30px;
+}
+
+.menuDescription {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: -20px;
+}
+
+.add-menu-item-control {
+    padding: 10px !important;
+    border: 4px solid black !important;
+}
+
+.menu-table-div {
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+}
+
+.menu-edit-table {
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #EFEFEF;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+    .menu-edit-table td {
+        padding: 5px 10px;
+        border-bottom: 1px solid black;
+    }
+
+.fab {
+   
+    font-size: 60px;
+}
