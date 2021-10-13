@@ -23,25 +23,25 @@
     <div class="menuAddForm">
         <div class="form-group">
             <label>Food Category</label>
-            <input type="text" id="FoodCategory" value="@(categoryName)">
+            <input type="text" id="CategoryName" name="CategoryName" value="@(categoryName)">
         </div>
         <div class="form-group">
             <label>Dish Name</label>
-            <input type="text" id="DishName" value="@(dishName)">
+            <input type="text" id="DishName" name="DishName" value="@(dishName)">
         </div>
         <div class="form-group">
             <label>Korean Name</label>
-            <input type="text" id="KoreanName" value="@(koreanName)">
+            <input type="text" id="KoreanName" name="KoreanName" value="@(koreanName)">
         </div>
         <div class="form-group">
             <label>Price</label>
-            <input type="text" id="Price" value="@(price)">
+            <input type="text" id="Price" name="Price" value="@(price)">
         </div>
         <div class="form-group">
             <label>Description</label>
-            <input type="text" id="Description" maxlength="100" value="@(description)">
+            <input type="text" id="Description" name="Description" maxlength="100" value="@(description)">
         </div>
-        <input type="hidden" value="@(id)"/>
+        <input type="hidden" id="id" name="id" value="@(id)" />
         <div>
             <button value="AddFoodItem" type="submit" id="addfooditem">Add Item</button>
             <button value="Close" asp-action="FoodMenuEdit" asp-controller="Admin">Cancel</button>
