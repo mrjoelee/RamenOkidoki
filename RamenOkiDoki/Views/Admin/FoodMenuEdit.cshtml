@@ -6,45 +6,7 @@
     <h1 class="display-4">Edit Menu</h1>
 </div>
 
-<div class="container">
-
-    <div class="modal" id="login">
-        <div class="modal-dialog">
-            <div class="modal-content add-menu-item-control">
-                <div class="modal-header">
-                    <label>AddFoodItem</label>
-                </div>
-                <div class="modal-body">
-                    <form method="Post">
-                        <div class="form-group">
-                            <label>Food Category</label>
-                            <input type="text" placeholder="FoodCategory" id="FoodCategory" />
-                        </div>
-                        <div class="form-group">
-                            <label>Dish Name</label>
-                            <input type="text" placeholder="DishName" id="DishName" />
-                        </div>
-                        <div class="form-group">
-                            <label>Price</label>
-                            <input type="text" placeholder="Price" id="Price" />
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input type="text" placeholder="Description" id="Description" />
-                        </div>
-                        <div class="modal-footer">
-                            <button value="AddFoodItem" type="submit" onclick="OnAddMenuItemButtonClicked" id="addfooditem">Add</button>
-                            <button value="Close" data-dismiss="modal" id="close">Close</button>
-                        </div>
-                    </form>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
+ 
 
 
 @if (Model.FoodItems == null)
@@ -65,7 +27,10 @@
         </tr>
         </thead>
         <tbody>
-        <button id="btnClick" class="add-item-button" type="button" data-target="#login" data-toggle="modal"> <i class="fas fa-plus-circle"></i> AddFoodItems</button>
+        <form>
+        <button id="btnClick" class="add-item-button" type="submit" asp-action="FoodMenuAddEdit" asp-controller="Admin"> <i class="fas fa-plus-circle"></i> AddFoodItems</button>
+        </form> 
+        
         @foreach (var menuItem in Model.FoodItems)
         {
             <tr>
@@ -77,7 +42,7 @@
                 <td><a asp-action="Delete" asp-controller="Admin" asp-route-id="@menuItem.id">Delete</a></td>
             </tr>
         }
-            </tbody>
+        </tbody>
     </table>
 </div>
 
