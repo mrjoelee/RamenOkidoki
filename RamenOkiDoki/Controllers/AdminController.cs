@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using RamenOkiDoki.Models;
 using RamenOkiDoki.Services;
 using RamenOkiDoki.ViewModels;
