@@ -64,9 +64,10 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
-        public IActionResult EditMenuItem(int? id)
+        public IActionResult FoodMenuAddEdit(int? id)
         {
-            return Redirect("ModalPopup");
+            return View();
+
         }
 
         public IActionResult DeleteMenuItem(int? id)
@@ -92,9 +93,9 @@ namespace RamenOkiDoki.Controllers
             Globals.UserSignedIn = false;
 
             Globals.UserRole = Globals.UserRoles.Patron;//Globals.UserRoles.Admin;
-          
-            return Redirect("Index");   
-          
+
+            return Redirect("Index");
+
         }
     }
 }

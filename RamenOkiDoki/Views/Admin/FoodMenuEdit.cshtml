@@ -73,7 +73,7 @@
                 <td>$ @menuItem.price</td>
                 <td>@menuItem.description</td>
                 <td>@menuItem.categoryName</td>
-                <td><a asp-action="ModalPopup" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>
+                <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>
                 <td><a asp-action="Delete" asp-controller="Admin" asp-route-id="@menuItem.id">Delete</a></td>
             </tr>
         }
