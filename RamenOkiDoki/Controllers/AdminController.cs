@@ -16,6 +16,8 @@ namespace RamenOkiDoki.Controllers
         private readonly ILogger<HomeController> _logger;
         private MenuEndpointService _menuEndpointService;
 
+      //  public List<FoodItem> FoodItems;
+
         public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
         {
             _logger = logger;
@@ -29,18 +31,18 @@ namespace RamenOkiDoki.Controllers
 
         public async Task<IActionResult> FoodMenuEdit()
         {
-            List<FoodItem> FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (FoodItems == null)
+            if (Globals.FoodItems == null)
             {
                 return null;
             }
 
-            FoodItems.OrderBy(categoryName => categoryName);
+            Globals.FoodItems.OrderBy(categoryName => categoryName);
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            foodItemsViewModel.FoodItems = FoodItems;
+            foodItemsViewModel.FoodItems = Globals.FoodItems;
 
             return View(foodItemsViewModel);
         }
@@ -48,26 +50,41 @@ namespace RamenOkiDoki.Controllers
 
         public async Task<IActionResult> FoodMenuAdmin()
         {
-            List<FoodItem> FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (FoodItems == null)
+            if (Globals.FoodItems == null)
             {
                 return null;
             }
 
-            FoodItems.OrderBy(categoryName => categoryName);
+            Globals.FoodItems.OrderBy(categoryName => categoryName);
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            foodItemsViewModel.FoodItems = FoodItems;
+            foodItemsViewModel.FoodItems = Globals.FoodItems;
 
             return View(foodItemsViewModel);
         }
 
         public IActionResult FoodMenuAddEdit(int? id)
         {
-            return View();
+            if (id != null)
+            {
+                int index = (int)id;
+                int itemId;
 
+                foreach (var item in Globals.FoodItems)
+                {
+                    int.TryParse(item.id, out itemId);
+
+                    if (itemId == index)
+                    {
+                        return View(item);
+                    }
+                }
+            }
+
+            return View();
         }
 
         public IActionResult DeleteMenuItem(int? id)

@@ -12,5 +12,7 @@ namespace RamenOkiDoki.Models
         public static UserRoles UserRole { get; set; }
 
         public enum UserRoles { Admin, Employee , Patron}
+
+        public static List<FoodItem> FoodItems;
     }
 }

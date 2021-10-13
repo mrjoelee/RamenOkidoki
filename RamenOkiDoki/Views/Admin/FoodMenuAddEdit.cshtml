@@ -1,40 +1,40 @@
-﻿
+﻿@model RamenOkiDoki.Models.FoodItem
 @{
     ViewData["Title"] = "ModalPopup";
+
+    string dishName = "", description = "", price = "", categoryName = "";
+
+    if (Model != null)
+    {
+        dishName = Model.dishName;
+        description = Model.description;
+        price = Model.price;
+        categoryName = Model.categoryName;
+    }
 }
 
-<div class="container">
-    @*<div class="modal" id="login">
-        <div class="modal-dialog">
-            <div class="modal-content add-menu-item-control">
-                <div class="modal-header">
-                    <label>AddFoodItem</label>
-                </div>
-                <div class="modal-body">*@
-                    <form method="Post">
-                        <div class="form-group">
-                            <label>Food Category</label>
-                            <input type="text" placeholder="FoodCategory" id="FoodCategory" />
-                        </div>
-                        <div class="form-group">
-                            <label>Dish Name</label>
-                            <input type="text" placeholder="DishName" id="DishName" />
-                        </div>
-                        <div class="form-group">
-                            <label>Price</label>
-                            <input type="text" placeholder="Price" id="Price" />
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input type="text" placeholder="Description" id="Description" />
-                        </div>
-                        <div class="modal-footer">
-                            <button value="AddFoodItem" type="submit" onclick="OnAddMenuItemButtonClicked" id="addfooditem">Add</button>
-                            <button value="Close" data-dismiss="modal" id="close">Close</button>
-                        </div>
-                    </form>
-                @*</div>
-            </div>
+
+
+    <form method="Post">
+        <div class="form-group">
+            <label>Food Category</label>
+            <input type="text"  id="FoodCategory" value=@(categoryName) />
         </div>
-    </div>
-</div>*@
+        <div class="form-group">
+            <label>Dish Name</label>
+            <input type="text" id="DishName" value=@(dishName) />
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="text"  id="Price" value=@(price)  />
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text"  id="Description"  value=@(description) />
+        </div>
+        <div class="modal-footer">
+            <button value="AddFoodItem" type="submit" onclick="OnAddMenuItemButtonClicked" id="addfooditem">Add</button>
+            <button value="Close" data-dismiss="modal" id="close">Close</button>
+        </div>
+    </form>
+  
