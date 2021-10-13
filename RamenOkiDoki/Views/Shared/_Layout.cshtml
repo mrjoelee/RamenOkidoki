@@ -31,8 +31,9 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="FoodItemMenu">Menu</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
 
                         @if (Globals.UserSignedIn && Globals.UserRole == Globals.UserRoles.Admin)//User.IsInRole("Admin"))
@@ -51,7 +52,7 @@
                     </ul>
                 </div>
             </div>
-            <a class="nav-link" href="tel: 555-555-5555"><i class="fas fa-phone"></i> Call (281)575-8077</a>
+            <a class="nav-link" href="tel: 2815758077"><i class="fas fa-phone"></i> Call (281)575-8077</a>
         </nav>
     </header>
     <div class="container">
@@ -62,7 +63,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container" style="text-align: center">
-            &copy; 2021 - Ramen OkiDoki  10603 Bellaire Blvd, Houston, TX 77072 <a style="margin-left:100px" href="tel: 555-555-5555"><i class="fas fa-phone"></i> Call (281)575-8077</a>
+            &copy; 2021 - Ramen OkiDoki  10603 Bellaire Blvd, Houston, TX 77072 <a style="margin-left:100px" href="tel: 2815758077"><i class="fas fa-phone"></i> Call (281)575-8077</a>  <a style="margin-left: 100px;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
         </div>
     </footer>
 
