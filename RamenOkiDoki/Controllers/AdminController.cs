@@ -92,10 +92,7 @@ namespace RamenOkiDoki.Controllers
             return Redirect("FoodMenuEdit");
         }
 
-        public IActionResult ModalPopUp(int? id)
-        {
-            return View();
-        }
+    
 
         public IActionResult AdminSignin()
         {

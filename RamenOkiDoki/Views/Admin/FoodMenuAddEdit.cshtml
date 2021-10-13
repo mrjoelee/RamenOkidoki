@@ -2,11 +2,12 @@
 @{
     ViewData["Title"] = "ModalPopup";
 
-    string dishName = "", description = "", price = "", categoryName = "";
+    string dishName = "", koreanName = "", description = "", price = "", categoryName = "";
 
     if (Model != null)
     {
         dishName = Model.dishName;
+        koreanName = Model.koreanName;
         description = Model.description;
         price = Model.price;
         categoryName = Model.categoryName;
@@ -15,26 +16,30 @@
 
 
 
-    <form method="Post">
-        <div class="form-group">
-            <label>Food Category</label>
-            <input type="text"  id="FoodCategory"  value=@(categoryName)> 
-        </div>
-        <div class="form-group">
-            <label>Dish Name</label>
-            <input type="text" id="DishName" value=@(dishName)> 
-        </div>
-        <div class="form-group">
-            <label>Price</label>
-            <input type="text"  id="Price" value=@(price)>
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <input type="text"  id="Description"  value=@(description)>
-        </div>
-        <div class="modal-footer">
-            <button value="AddFoodItem" type="submit" onclick="OnAddMenuItemButtonClicked" id="addfooditem">Add</button>
-            <button value="Close" data-dismiss="modal" id="close">Close</button>
-        </div>
-    </form>
+<form method="Post" class="menuAddForm">
+    <div class="form-group">
+        <label>Food Category</label>
+        <input type="text" id="FoodCategory" value="@(categoryName)" >
+    </div>
+    <div class="form-group">
+        <label>Dish Name</label>
+        <input type="text" id="DishName" value="@(dishName)" >
+    </div>
+    <div class="form-group">
+        <label>Korean Name</label>
+        <input type="text" id="KoreanName" value="@(koreanName)" >
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="text" id="Price" value="@(price)">
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" id="Description" maxlength="100" value="@(description)" >
+    </div>
+    <div class="modal-footer">
+        <button value="AddFoodItem" type="submit" onclick="OnAddMenuItemButtonClicked" id="addfooditem"  >Add Item</button>
+        <button value="Close" asp-action="FoodMenuEdit" asp-controller="Admin">Cancel</button>
+    </div>
+</form>
   
