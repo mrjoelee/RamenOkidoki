@@ -19,12 +19,13 @@
 
     <table class="menu-edit-table">
         <thead>
-        <tr>
-            <th>Dish</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Category</th>
-        </tr>
+            <tr>
+                <th>Dish</th>
+                <th>Korean</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Category</th>
+            </tr>
         </thead>
         <tbody>
         <form>
@@ -33,14 +34,15 @@
         
         @foreach (var menuItem in Model.FoodItems)
         {
-            <tr>
-                <td>@menuItem.dishName </td>
-                <td>$ @menuItem.price</td>
-                <td>@menuItem.description</td>
-                <td>@menuItem.categoryName</td>
-                <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>
-                <td><a asp-action="Delete" asp-controller="Admin" asp-route-id="@menuItem.id">Delete</a></td>
-            </tr>
+        <tr>
+            <td>@menuItem.dishName</td>
+            <td>@menuItem.koreanName</td>
+            <td>$ @menuItem.price</td>
+            <td>@menuItem.description</td>
+            <td>@menuItem.categoryName</td>
+            <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>
+            <td><a asp-action="Delete" asp-controller="Admin" asp-route-id="@menuItem.id">Delete</a></td>
+        </tr>
         }
         </tbody>
     </table>
