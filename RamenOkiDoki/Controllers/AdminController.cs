@@ -93,9 +93,25 @@ namespace RamenOkiDoki.Controllers
             return Redirect("FoodMenuEdit");
         }
 
-        public IActionResult DeleteMenuItem(int? id)
+        public async Task<IActionResult> DeleteMenuItem(int? id)
         {
-            return Redirect("FoodMenuEdit");
+            if (id != null)
+            {
+                int index = (int)id;
+                int itemId;
+
+                foreach (var item in Globals.FoodItems)
+                {
+                    int.TryParse(item.id, out itemId);
+
+                    if (itemId == index)
+                    {
+                        await _menuEndpointService.DeleteMenuItemFromCloud(index);
+                    }
+                }
+            }
+
+            return RedirectToAction("FoodMenuEdit");
         }
 
 

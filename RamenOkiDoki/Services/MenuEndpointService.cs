@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+
 using RamenOkiDoki.Models; //using Microsoft.Net.Http.Headers;
+
 using Task = System.Threading.Tasks.Task;
 
 namespace RamenOkiDoki.Services
@@ -84,6 +87,46 @@ namespace RamenOkiDoki.Services
             }
         }
 
-      
+        public async Task DeleteMenuItemFromCloud(int foodItemIdToDelete)
+        {
+            try
+            {
+
+                string url = Constants.MenuDeleteUrl + "/" + foodItemIdToDelete; //Get url from the contants file 
+
+                HttpResponseMessage response = await httpClient.DeleteAsync(url);
+
+
+
+                //var json = JsonSerializer.Serialize(foodItemToDelete); //Convert the FoodItem instance to json
+
+                //HttpContent content = new StringContent(json); // Add the json to the outgoing content
+
+                ////   content.Headers.ContentType = new MediaTypeHeaderValue("application/json"); //Outgoing content will be of type Json
+
+                //content.Headers.ContentType = new MediaTypeHeaderValue("int"); //Outgoing content will be of type Json
+
+                //HttpResponseMessage response = await httpClient.DeleteAsync(url, content); //Put the content to the specified url
+
+                //var json = JsonSerializer.Serialize(foodItemToDelete); //Convert the FoodItem instance to json
+
+                //HttpRequestMessage request = new HttpRequestMessage
+                //{
+                //    Content = new StringContent(json, Encoding.UTF8, "application/json"),
+                //    Method = HttpMethod.Delete,
+                //    RequestUri = new Uri(url)
+                //};
+
+                //var response = await httpClient.SendAsync(request);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                //await Application.Current.MainPage.DisplayAlert("Unable To Connect", "We are unable to connect to the Farkle Website at this time. Please check your network connection.", "Okay");
+            }
+        }
+
     }
 }
