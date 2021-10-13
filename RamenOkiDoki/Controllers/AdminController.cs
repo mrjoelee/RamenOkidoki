@@ -16,7 +16,7 @@ namespace RamenOkiDoki.Controllers
         private readonly ILogger<HomeController> _logger;
         private MenuEndpointService _menuEndpointService;
 
-      //  public List<FoodItem> FoodItems;
+        //  public List<FoodItem> FoodItems;
 
         public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
         {
@@ -87,12 +87,17 @@ namespace RamenOkiDoki.Controllers
             return View();
         }
 
+        public IActionResult PutMenuItem(FoodItem item)
+        {
+            return Redirect("FoodMenuEdit");
+        }
+
         public IActionResult DeleteMenuItem(int? id)
         {
             return Redirect("FoodMenuEdit");
         }
 
-    
+
 
         public IActionResult AdminSignin()
         {
