@@ -89,7 +89,7 @@ namespace RamenOkiDoki.Controllers
         
         public async Task<IActionResult> PutMenuItem(FoodItem item)
         {
-            await AddMenuItemToCloud(item);
+            await _menuEndpointService.AddMenuItemToCloud(item);
             return Redirect("FoodMenuEdit");
         }
 
