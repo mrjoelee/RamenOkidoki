@@ -86,9 +86,10 @@ namespace RamenOkiDoki.Controllers
 
             return View();
         }
-
-        public IActionResult PutMenuItem(FoodItem item)
+        
+        public async Task<IActionResult> PutMenuItem(FoodItem item)
         {
+            await AddMenuItemToCloud(item);
             return Redirect("FoodMenuEdit");
         }
 
