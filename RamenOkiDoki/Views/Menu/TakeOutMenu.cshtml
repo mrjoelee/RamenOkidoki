@@ -7,28 +7,56 @@
     <h1 class="display-4">Menu</h1>
 </div>
 
-@{
-    if (Model.FoodItems == null)
-    {
-        return;
-    }
+<div class="combo-page">
+    <div class="left-menu-sidebar">
 
-    string categoryName = "";
+        @{
 
-    foreach (var menuItem in Model.FoodItems)
-    {
-        if (categoryName != menuItem.categoryName)
-        {
-            <h2 class="categoryName">@menuItem.categoryName</h2>
+            if (Model.FoodItems == null)
+            {
+                return;
+            }
 
-            categoryName = menuItem.categoryName;
+            string sidebarCategoryName = "";
+
+            foreach (var menuItem in Model.FoodItems)
+            {
+                if (sidebarCategoryName != menuItem.categoryName)
+                {
+                    <h2 class="categoryName">menuItem.categoryName</h2>
+
+                    sidebarCategoryName = menuItem.categoryName;
+                }
+            }
         }
-<p>
-    <span class="menuItem">@menuItem.dishName </span>  <span class="menuItem">@menuItem.koreanName </span><span class="menuPrice">$  @menuItem.price</span>
-</p>
-        <p class="menuDescription">@menuItem.description</p>
-    }
+
+    </div>
 
 
-}
+<div class="right-side-content">
 
+        @{
+
+        string categoryName = "";
+
+            foreach (var menuItem in Model.FoodItems)
+            {
+                if (categoryName != menuItem.categoryName)
+                {
+
+
+                    <h2 class="categoryName"> @menuItem.categoryName </h2>
+
+                    categoryName = menuItem.categoryName;
+
+                    <p>
+                        <span class="menuItem">@menuItem.dishName </span> <span class="menuItem">@menuItem.koreanName </span><span class="menuPrice">$ @menuItem.price</span>
+                    </p>
+                    <p class="menuDescription">@menuItem.description</p>
+                }
+
+            }
+        }
+    </div>
+
+</div>
