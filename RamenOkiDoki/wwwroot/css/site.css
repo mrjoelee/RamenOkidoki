@@ -185,7 +185,7 @@ body {
     background-color: black;
     float: left;
     width: auto;
-    height: 600px;
+    height: 100vh !important;
     padding: 20px;
     margin-right: 0;
 }
@@ -204,7 +204,7 @@ body {
     background-color: black;
     float: left;
     width: auto;
-    height: 600px;
+    height: 100vh !important;
     padding: 20px;
     margin: 0;
 }
