@@ -11,10 +11,10 @@
 
         @{
 
-            //if (Model.FoodItems == null)
-            //{
-            //    return;
-            //}
+            if (Model.FoodItems == null)
+            {
+                return;
+            }
 
             string sidebarCategoryName = "";
 
@@ -48,17 +48,19 @@
             {
                 if (categoryName != menuItem.categoryName)
                 {
-                    <h2 class="categoryName"> @menuItem.categoryName </h2>
+                    <h2 class="categoryName">@menuItem.categoryName</h2>
 
                     categoryName = menuItem.categoryName;
-
-                    <p>
-                        <span class="menuItem">@menuItem.dishName </span> <span class="menuItem">@menuItem.koreanName </span><span class="menuPrice">$ @menuItem.price</span>
-                    </p>
-                    <p class="menuDescription">@menuItem.description</p>
                 }
-
+                <p>
+                    <span class="menuItem">@menuItem.dishName </span>
+                    <span class="menuItem">@menuItem.koreanName </span>
+                    <span class="menuPrice">$  @menuItem.price</span>
+                </p>
+                <p class="menuDescription">@menuItem.description</p>
             }
+
+
         }
     </div>
 
