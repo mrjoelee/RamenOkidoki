@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 
 .header {
     background-color: black !important;
+    margin-bottom: 0;
 }
 
 a.nav-link {
@@ -15,6 +16,11 @@ a.nav-link {
     a.nav-link:hover {
         color: red !important;
         font-size: 1.4em !important;
+    }
+
+    .navbar {
+        margin-bottom: 0 !important;
+        border: none !important;
     }
 
 .navbar-brand {
