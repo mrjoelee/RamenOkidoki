@@ -86,13 +86,15 @@ namespace RamenOkiDoki.Controllers
 
             return View();
         }
-        
+        #region saving new item
         public async Task<IActionResult> PutMenuItem(FoodItem item)
         {
             await _menuEndpointService.AddMenuItemToCloud(item);
             return Redirect("FoodMenuEdit");
         }
+        #endregion
 
+        #region deleting  item
         public async Task<IActionResult> DeleteMenuItem(int? id)
         {
             if (id != null)
@@ -113,7 +115,7 @@ namespace RamenOkiDoki.Controllers
 
             return RedirectToAction("FoodMenuEdit");
         }
-
+        #endregion
 
 
         public IActionResult AdminSignin()
