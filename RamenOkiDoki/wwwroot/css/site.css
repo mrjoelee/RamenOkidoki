@@ -142,12 +142,15 @@ body {
 }
 
 .add-item-button {
-    background-color: transparent;
-    border: transparent;
+    border: 0px transparent;
+    margin: 0px 0px 10px 0px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
 }
 
 .menu-table-div {
-    margin-top: 200px;
+    margin-top: 70px;
     margin-left: auto;
     margin-right: auto;
     padding: 0px;
@@ -166,8 +169,10 @@ body {
 }
 
     .menu-edit-table td {
+        word-wrap: unset;
+        margin: 3px 15px;
         padding: 5px 10px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid lightgray;
     }
 
 .fab {

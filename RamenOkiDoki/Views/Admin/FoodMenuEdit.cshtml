@@ -37,7 +37,7 @@
         <tr>
             <td>@menuItem.dishName</td>
             <td>@menuItem.koreanName</td>
-            <td>$ @menuItem.price</td>
+            <td style="white-space: nowrap;">$ @menuItem.price</td>
             <td>@menuItem.description</td>
             <td>@menuItem.categoryName</td>
             <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>

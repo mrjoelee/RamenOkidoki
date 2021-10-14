@@ -38,7 +38,7 @@ namespace RamenOkiDoki.Controllers
                 return null;
             }
 
-            Globals.FoodItems.OrderBy(categoryName => categoryName);
+            Globals.FoodItems.OrderBy(dishName => dishName);
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
