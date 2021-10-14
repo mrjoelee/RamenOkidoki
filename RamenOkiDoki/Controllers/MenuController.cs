@@ -105,15 +105,15 @@ namespace RamenOkiDoki.Controllers
 
             if (!string.IsNullOrWhiteSpace(itemIdToAdd))
             {
-                int itemId, index;
+                int foodItemId, requestedItemId;
 
-                int.TryParse(itemIdToAdd, out index);
+                int.TryParse(itemIdToAdd, out requestedItemId);
 
                 foreach (var item in Globals.FoodItems)
                 {
-                    int.TryParse(item.id, out itemId);
+                    int.TryParse(item.id, out foodItemId);
 
-                    if (itemId == index)
+                    if (foodItemId == requestedItemId)
                     {
                         requestedItem = item;
                     }
