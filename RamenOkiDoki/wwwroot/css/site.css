@@ -173,9 +173,9 @@ body {
 .left-menu-sidebar {
     background-color: black;
     float: left;
-    width: 200px;
+    width: auto;
     height: 600px;
-    padding: 10px;
+    padding: 20px;
     margin-right:100px;
 }
 
@@ -190,10 +190,28 @@ body {
 }
 
 .admin-nav-sidebar {
+    background-color: black;
     float: left;
-    width: 200px;
+    width: auto;
     height: 600px;
-    padding: 10px background-color: black;
+    padding: 20px;
+    margin-right: 100px;
+}
+
+
+a.admin-nav-link {
+    margin: 10px 0px;
+    display: block;
+    color: white !important;
+    font-size: 1.3em !important;
+    margin: 0px 10px;
+    text-decoration-line: none;
+    font-weight: bold;
+}
+
+a.admin-nav-link:hover {
+    color: red !important;
+    font-weight: bolder;
 }
 
 .menu-edit-table th {
