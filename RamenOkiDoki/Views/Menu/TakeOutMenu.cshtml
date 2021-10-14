@@ -8,6 +8,7 @@
 </div>
 
 <div class="combo-page">
+
     <div class="left-menu-sidebar">
 
         @{
@@ -23,7 +24,7 @@
             {
                 if (sidebarCategoryName != menuItem.categoryName)
                 {
-                    <h2 class="categoryName">menuItem.categoryName</h2>
+                    <h2 class="categoryName">@menuItem.categoryName</h2>
 
                     sidebarCategoryName = menuItem.categoryName;
                 }
@@ -33,11 +34,11 @@
     </div>
 
 
-<div class="right-side-content">
+    <div class="right-side-content">
 
         @{
 
-        string categoryName = "";
+            string categoryName = "";
 
             foreach (var menuItem in Model.FoodItems)
             {
