@@ -1,16 +1,15 @@
-﻿    //Show login form
-
-
+﻿
 @if (Globals.UserSignedIn && Globals.UserRole == Globals.UserRoles.Admin) //User.IsInRole("Admin"))
     {
-        <div class="admin-nav-sidebar">
-            
-                <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuEdit">Edit Menu</a>
-        
-                <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuAdmin">Menu Admin</a>
-         
-                <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="AdminSignOut">Sign Out</a>
-            
-        </div>
+<div class="admin-nav-sidebar">
+
+    <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="index">Dashboard</a>
+
+    <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuEdit">Edit Menu</a>
+
+
+    <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="AdminSignOut">Sign Out</a>
+
+</div>
 
     }

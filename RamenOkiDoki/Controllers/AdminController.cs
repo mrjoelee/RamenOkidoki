@@ -24,6 +24,7 @@ namespace RamenOkiDoki.Controllers
             _menuEndpointService = menuEndpointService;
         }
 
+
         public IActionResult Index()
         {
             return View();
@@ -126,6 +127,9 @@ namespace RamenOkiDoki.Controllers
 
             return Redirect("Index");
         }
+
+
+    
         public IActionResult AdminSignOut()
         {
             Globals.UserSignedIn = false;

@@ -93,11 +93,16 @@ body {
 
 .container {
     width: 100% !important;
+    max-width: 100% !important;
+    margin: 0;
+    padding: 0;
 }
 
 .combo-page {
     display: inline !important;
     width: 100% !important;
+    padding: 0;
+    margin: 0;
 }
 
 .footer {
@@ -168,6 +173,12 @@ body {
 
 .combo-page {
     display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.right-side-content {
+    margin: 0 0 0 200px;
 }
 
 .left-menu-sidebar {
@@ -176,7 +187,7 @@ body {
     width: auto;
     height: 600px;
     padding: 20px;
-    margin-right:100px;
+    margin-right: 0;
 }
 
     .left-menu-sidebar a {
@@ -195,7 +206,7 @@ body {
     width: auto;
     height: 600px;
     padding: 20px;
-    margin-right: 100px;
+    margin: 0;
 }
 
 
@@ -204,15 +215,15 @@ a.admin-nav-link {
     display: block;
     color: white !important;
     font-size: 1.3em !important;
-    margin: 0px 10px;
+    margin: 10px;
     text-decoration-line: none;
     font-weight: bold;
 }
 
-a.admin-nav-link:hover {
-    color: red !important;
-    font-weight: bolder;
-}
+    a.admin-nav-link:hover {
+        color: red !important;
+        font-weight: bolder;
+    }
 
 .menu-edit-table th {
     text-align: center;

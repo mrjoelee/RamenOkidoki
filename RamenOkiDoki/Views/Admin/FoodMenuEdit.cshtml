@@ -2,11 +2,6 @@
 @{
     ViewData["Title"] = "Edit Menu";
 }
-<div class="text-center">
-    <h1 class="display-4">Edit Menu</h1>
-</div>
-
- 
 
 
 @if (Model.FoodItems == null)
@@ -14,39 +9,53 @@
     return;
 }
 
-<div class="menu-table-div">
+<div class="combo-page">
+
+    @if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin) //!User.IsInRole("Admin"))
+    {
+        <h1>Admin Only</h1>
+
+    }
+    else
+    {
+
+        @await Html.PartialAsync("AdminPartialViewdelete")
+
+        <div class="right-side-content">
+        <div class="menu-table-div">
 
 
-    <table class="menu-edit-table">
-        <thead>
-            <tr>
-                <th>Dish</th>
-                <th>Korean</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Category</th>
-            </tr>
-        </thead>
-        <tbody>
-        <form>
-        <button id="btnClick" class="add-item-button" type="submit" asp-action="FoodMenuAddEdit" asp-controller="Admin"> <i class="fas fa-plus-circle"></i> AddFoodItems</button>
-        </form> 
-        
-        @foreach (var menuItem in Model.FoodItems)
-        {
-        <tr>
-            <td>@menuItem.dishName</td>
-            <td>@menuItem.koreanName</td>
-            <td style="white-space: nowrap;">$ @menuItem.price</td>
-            <td>@menuItem.description</td>
-            <td>@menuItem.categoryName</td>
-            <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>
-            <td><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="@menuItem.id">Delete</a></td>
-        </tr>
-        }
-        </tbody>
-    </table>
-</div>
+            <table class="menu-edit-table">
+                <thead>
+                    <tr>
+                        <th>Dish</th>
+                        <th>Korean</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <form>
+                        <button id="btnClick" class="add-item-button" type="submit" asp-action="FoodMenuAddEdit" asp-controller="Admin"> <i class="fas fa-plus-circle"></i> AddFoodItems</button>
+                    </form>
 
+                    @foreach (var menuItem in Model.FoodItems)
+                    {
+                        <tr>
+                            <td>@menuItem.dishName</td>
+                            <td>@menuItem.koreanName</td>
+                            <td style="white-space: nowrap;">$ @menuItem.price</td>
+                            <td>@menuItem.description</td>
+                            <td>@menuItem.categoryName</td>
+                            <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.id">Edit</a></td>
+                            <td><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="@menuItem.id">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+            </div>
+    }
 
-
+    </div>
