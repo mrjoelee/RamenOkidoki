@@ -49,23 +49,7 @@ namespace RamenOkiDoki.Controllers
         }
 
 
-        public async Task<IActionResult> FoodMenuAdmin()
-        {
-            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
-
-            if (Globals.FoodItems == null)
-            {
-                return null;
-            }
-
-            Globals.FoodItems.OrderBy(categoryName => categoryName);
-
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
-
-            foodItemsViewModel.FoodItems = Globals.FoodItems;
-
-            return View(foodItemsViewModel);
-        }
+     
 
         public IActionResult FoodMenuAddEdit(int? id)
         {

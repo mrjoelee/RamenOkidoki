@@ -11,10 +11,10 @@
 
         @{
 
-            if (Model.FoodItems == null)
-            {
-                return;
-            }
+            //if (Model.FoodItems == null)
+            //{
+            //    return;
+            //}
 
             string sidebarCategoryName = "";
 
@@ -37,6 +37,10 @@
         </div>
 
         @{
+            if (Model.FoodItems == null)
+            {
+                return;
+            }
 
             string categoryName = "";
 
@@ -44,8 +48,6 @@
             {
                 if (categoryName != menuItem.categoryName)
                 {
-
-
                     <h2 class="categoryName"> @menuItem.categoryName </h2>
 
                     categoryName = menuItem.categoryName;

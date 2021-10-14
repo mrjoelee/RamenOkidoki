@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
+
 using RamenOkiDoki.Models;
 using RamenOkiDoki.Services;
 using RamenOkiDoki.ViewModels;
@@ -39,21 +41,31 @@ namespace RamenOkiDoki.Controllers
             return View(indexViewModel);
         }
 
+      
         [Route("take-out")]
         public async Task<IActionResult> TakeOutMenu()
         {
-            List<FoodItem> FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (FoodItems == null)
+            if (Globals.FoodItems == null)
             {
                 return null;
             }
 
-            FoodItems.OrderBy(categoryName => categoryName);
 
-            FoodItemsViewModel indexViewModel = new FoodItemsViewModel();
-            indexViewModel.FoodItems = FoodItems;
-            return View(indexViewModel);
+            Globals.FoodItems.OrderBy(categoryName => categoryName);
+
+            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+
+            foodItemsViewModel.FoodItems = Globals.FoodItems;
+
+            return View(foodItemsViewModel);
+        }
+
+        public IActionResult FilterByCategory(string Category)
+        {
+
+            return View();
         }
     }
 }
