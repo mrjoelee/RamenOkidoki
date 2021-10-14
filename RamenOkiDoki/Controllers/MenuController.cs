@@ -44,42 +44,47 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
-      
+
         [Route("take-out")]
         public async Task<IActionResult> TakeOutMenu(string category)
         {
-            List<FoodItem> listToReturn = new List<FoodItem>();
+            List<FoodItem> tempListOfMenuItemsToReturn = new List<FoodItem>();
 
+            // Get from MySql Database
             Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
-
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
             if (Globals.FoodItems == null)
             {
                 return null;
             }
 
-            category = "Beverages";
+            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+
+            List<string> tempListOfCategoryItems = new List<string>();
+
+            foreach (var items in Globals.FoodItems)
+            {
+                tempListOfCategoryItems.Add(items.categoryName);
+            }
+
+            foodItemsViewModel.FoodCategories = tempListOfCategoryItems.Distinct().ToList();
+
 
             if (string.IsNullOrWhiteSpace(category))
             {
-                  Globals.FoodItems.OrderBy(categoryName => categoryName);     
-                  
-                  foodItemsViewModel.FoodItems = Globals.FoodItems;
+                category = foodItemsViewModel.FoodCategories[0];
             }
-            else
+
+            foreach (var item in Globals.FoodItems)
             {
-                foreach (var item in Globals.FoodItems)
+                if (item.categoryName == (category))
                 {
-                    if (item.categoryName == (category))
-                    {
-                        listToReturn.Add(item);
-                    }
+                    tempListOfMenuItemsToReturn.Add(item);
                 }
-                
-                foodItemsViewModel.FoodItems = listToReturn;
             }
-          
+
+            foodItemsViewModel.FoodItems = tempListOfMenuItemsToReturn;
+
             return View(foodItemsViewModel);
         }
 

@@ -7,5 +7,6 @@ namespace RamenOkiDoki.ViewModels
     {
         public List<Food> Foods { get; set; }
         public List<FoodItem> FoodItems { get; set; }
+        public List<string> FoodCategories { get; set; }
     }
 }

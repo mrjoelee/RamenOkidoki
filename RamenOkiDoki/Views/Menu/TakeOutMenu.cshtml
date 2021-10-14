@@ -16,16 +16,13 @@
                 return;
             }
 
-            string sidebarCategoryName = "";
-
-            foreach (var menuItem in Model.FoodItems)
+         
+            foreach (var category in Model.FoodCategories)
             {
-                if (sidebarCategoryName != menuItem.categoryName)
-                {
-                    <h2 class="categoryName">@menuItem.categoryName</h2>
-
-                    sidebarCategoryName = menuItem.categoryName;
-                }
+              
+                 <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category">@category</a>
+                 
+             
             }
         }
 
