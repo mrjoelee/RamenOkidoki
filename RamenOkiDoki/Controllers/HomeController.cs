@@ -18,12 +18,11 @@ namespace RamenOkiDoki.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private MenuEndpointService _menuEndpointService { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
+
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _menuEndpointService = menuEndpointService;
         }
 
         public IActionResult Index()
@@ -31,27 +30,13 @@ namespace RamenOkiDoki.Controllers
             return View();
         }
 
+        [Route("about")]
         public IActionResult About()
         {
             return View();
         }
 
-        public async Task<IActionResult> FoodItemMenu()
-        {
-            List<FoodItem> FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
-
-            if (FoodItems == null)
-            {
-                return null;
-            }
-
-            FoodItems.OrderBy(categoryName => categoryName);
-
-            FoodItemsViewModel indexViewModel = new FoodItemsViewModel();
-            indexViewModel.FoodItems = FoodItems;
-            return View(indexViewModel);
-        }
-
+        [Route("privacy")]
         public IActionResult Privacy()
         {
             return View();
