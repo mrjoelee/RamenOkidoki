@@ -118,10 +118,12 @@ namespace RamenOkiDoki.Controllers
                         requestedItem = item;
                     }
                 }
-            }
+          
 
             Globals.CurrentCategory = requestedItem.categoryName;
 
+           }  
+            
             return RedirectToAction("TakeOutMenu");
 
         }
