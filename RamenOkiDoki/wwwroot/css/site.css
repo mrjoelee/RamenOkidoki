@@ -88,6 +88,16 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    width: 100% !important;
+}
+
+.container {
+    width: 100% !important;
+}
+
+.combo-page {
+    display: inline !important;
+    width: 100% !important;
 }
 
 .footer {
@@ -162,19 +172,28 @@ body {
 
 .left-menu-sidebar {
     background-color: black;
-    width: 120px;
-    padding:10px
+    float: left;
+    width: 200px;
+    height: 600px;
+    padding: 10px;
+    margin-right:100px;
 }
 
+    .left-menu-sidebar a {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+
 .admin-div {
-   display: inline-block;
+    display: inline-block;
 }
 
 .admin-nav-sidebar {
     float: left;
     width: 200px;
     height: 600px;
-    background-color: black;
+    padding: 10px background-color: black;
 }
 
 .menu-edit-table th {
