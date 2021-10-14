@@ -27,18 +27,21 @@ namespace RamenOkiDoki.Controllers
         [Route("menu")]
         public async Task<IActionResult> DineInMenu()
         {
-            List<FoodItem> FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (FoodItems == null)
+            if (Globals.FoodItems == null)
             {
                 return null;
             }
 
-            FoodItems.OrderBy(categoryName => categoryName);
 
-            FoodItemsViewModel indexViewModel = new FoodItemsViewModel();
-            indexViewModel.FoodItems = FoodItems;
-            return View(indexViewModel);
+            Globals.FoodItems.OrderBy(categoryName => categoryName);
+
+            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+
+            foodItemsViewModel.FoodItems = Globals.FoodItems;
+
+            return View(foodItemsViewModel);
         }
 
       
