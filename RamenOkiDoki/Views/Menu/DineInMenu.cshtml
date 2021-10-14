@@ -6,29 +6,30 @@
 <div class="text-center">
     <h1 class="display-4">Menu</h1>
 </div>
-
-@{
-    if (Model.FoodItems == null)
-    {
-        return;
-    }
-
-    string categoryName = "";
-
-    foreach (var menuItem in Model.FoodItems)
-    {
-        if (categoryName != menuItem.categoryName)
+<div style="margin-left: 200px;">
+    @{
+        if (Model.FoodItems == null)
         {
-            <h2 class="categoryName">@menuItem.categoryName</h2>
-
-            categoryName = menuItem.categoryName;
+            return;
         }
-<p>
-    <span class="menuItem">@menuItem.dishName </span>  <span class="menuItem">@menuItem.koreanName </span><span class="menuPrice">$  @menuItem.price</span>
-</p>
-        <p class="menuDescription">@menuItem.description</p>
+
+        string categoryName = "";
+
+        foreach (var menuItem in Model.FoodItems)
+        {
+            if (categoryName != menuItem.categoryName)
+            {
+                <h2 class="categoryName">@menuItem.categoryName</h2>
+
+                categoryName = menuItem.categoryName;
+            }
+            <p>
+                <span class="menuItem">@menuItem.dishName </span>  <span class="menuItem">@menuItem.koreanName </span><span class="menuPrice">$  @menuItem.price</span>
+            </p>
+            <p class="menuDescription">@menuItem.description</p>
+        }
+
+
     }
 
-
-}
-
+</div>
