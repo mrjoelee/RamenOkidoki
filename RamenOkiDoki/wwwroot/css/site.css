@@ -166,6 +166,17 @@ body {
     padding:10px
 }
 
+.admin-div {
+   display: inline-block;
+}
+
+.admin-nav-sidebar {
+    float: left;
+    width: 200px;
+    height: 600px;
+    background-color: black;
+}
+
 .menu-edit-table th {
     text-align: center;
 }

@@ -1,32 +1,19 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿    //Show login form
 
 
-@if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin)//!User.IsInRole("Admin"))
-{
-    //Show login form
-    <p style="margin: 50px 0px 50px; font-weight: bold">User is not Signed In as Admin</p>
-    <form method="Post">
-        <div class="form-group">
-            <label>User Name</label>
-            <input type="text" id="UserName" />
+@if (Globals.UserSignedIn && Globals.UserRole == Globals.UserRoles.Admin) //User.IsInRole("Admin"))
+    {
+        <div class="admin-nav-sidebar">
+
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuEdit">Edit Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuAdmin">Menu Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AdminSignOut">Sign Out</a>
+            </li>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="Password" />
-        </div>
 
-        <button value="AddFoodItem" type="submit" onclick="location.href='@Url.Action("AdminSignin", "Admin")'" id="addfooditem">Sign In</button>
-
-    </form>
-
-}
-else
-{
-    //show Admin information
-    <p style="margin: 50px 0px 50px; font-weight: bold">User is Signed In as Admin</p>
-    <form>
-        <button type="submit" onclick="location.href='@Url.Action("AdminSignOut", "Admin")'">Sign Out</button>
-    </form>
-}
+    }

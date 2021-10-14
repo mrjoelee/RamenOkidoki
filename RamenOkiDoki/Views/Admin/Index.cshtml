@@ -1,14 +1,15 @@
 ﻿
 @{
-    ViewData["Title"] = "Admin Only";
+    ViewData["Title"] = "Admin";
 }
 
-<h1>Admin Only</h1>
 
-@await Html.PartialAsync("AdminPartialViewdelete") 
+<div class="admin-div">
 
-@*@if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin)//!User.IsInRole("Admin"))
+@if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin)//!User.IsInRole("Admin"))
 {
+    <h1>Admin Only</h1>
+    <br/>
     //Show login form
     <p style="margin: 50px 0px 50px; font-weight: bold">User is not Signed In as Admin</p>
     <form method="Post">
@@ -28,11 +29,7 @@
 }
 else
 {
-    //show Admin information
-    <p style="margin: 50px 0px 50px; font-weight: bold">User is Signed In as Admin</p>
-    <form>
-        <button type="submit" onclick="location.href='@Url.Action("AdminSignOut", "Admin")'">Sign Out</button>
-    </form>
-}*@
+    @await Html.PartialAsync("AdminPartialViewdelete") 
+}
 
-
+    </div>
