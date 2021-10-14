@@ -198,6 +198,7 @@ body {
 
 .admin-div {
     display: inline-block;
+    margin-left: 200px;
 }
 
 .admin-nav-sidebar {

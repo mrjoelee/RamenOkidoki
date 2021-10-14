@@ -4,10 +4,11 @@
 }
 <div class="combo-page">
 
-    <div class="admin-div">
 
-        @if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin)//!User.IsInRole("Admin"))
-        {
+
+    @if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin)//!User.IsInRole("Admin"))
+    {
+        <div class="admin-div">
             <h1>Admin Only</h1>
             <br />
             //Show login form
@@ -25,12 +26,12 @@
                 <button value="AddFoodItem" type="submit" onclick="location.href='@Url.Action("AdminSignin", "Admin")'" id="addfooditem">Sign In</button>
 
             </form>
+        </div>
 
-        }
-        else
-        {
-            @await Html.PartialAsync("AdminPartialViewdelete")
-        }
+    }
+    else
+    {
+        @await Html.PartialAsync("AdminPartialViewdelete")
+    }
 
-    </div>
-    </div>
+</div>
