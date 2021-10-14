@@ -97,11 +97,30 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
-        public IActionResult AddToCart(string itemToAdd)
+        public IActionResult AddToCart(string itemIdToAdd)
         {
             // Add itemToAdd to the cart
 
-        //    Globals.CurrentCategory = itemToAdd.categoryName;
+            FoodItem requestedItem = null;
+
+            if (!string.IsNullOrWhiteSpace(itemIdToAdd))
+            {
+                int itemId, index;
+
+                int.TryParse(itemIdToAdd, out index);
+
+                foreach (var item in Globals.FoodItems)
+                {
+                    int.TryParse(item.id, out itemId);
+
+                    if (itemId == index)
+                    {
+                        requestedItem = item;
+                    }
+                }
+            }
+
+            Globals.CurrentCategory = requestedItem.categoryName;
 
             return RedirectToAction("TakeOutMenu");
 
