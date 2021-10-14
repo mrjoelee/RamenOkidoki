@@ -18,10 +18,10 @@ a.nav-link {
         font-size: 1.4em !important;
     }
 
-    .navbar {
-        margin-bottom: 0 !important;
-        border: none !important;
-    }
+.navbar {
+    margin-bottom: 0 !important;
+    border: none !important;
+}
 
 .navbar-brand {
     text-align: left;
@@ -164,14 +164,14 @@ body {
 
 .add-item-button {
     border: 0px transparent;
-    margin: 0px 0px 10px 0px;
+    margin: 20px 0px 10px 0px;
     background-color: black;
     color: white;
     border-radius: 5px;
 }
 
 .menu-table-div {
-    margin-top: 70px;
+    margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
     padding: 0px;
@@ -232,17 +232,19 @@ a.admin-nav-link {
         font-weight: bolder;
     }
 
-.menu-edit-table th {
-    text-align: center;
-}
 
 
 .menu-edit-table {
     padding: 5px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
 }
+
+    .menu-edit-table th {
+        text-align: center;
+    }
 
     .menu-edit-table td {
         word-wrap: unset;
