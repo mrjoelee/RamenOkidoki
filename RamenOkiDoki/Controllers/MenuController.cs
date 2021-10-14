@@ -46,22 +46,40 @@ namespace RamenOkiDoki.Controllers
 
       
         [Route("take-out")]
-        public async Task<IActionResult> TakeOutMenu()
+        public async Task<IActionResult> TakeOutMenu(string category)
         {
+            List<FoodItem> listToReturn = new List<FoodItem>();
+
             Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+
+            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
             if (Globals.FoodItems == null)
             {
                 return null;
             }
 
+            category = "Beverages";
 
-            Globals.FoodItems.OrderBy(categoryName => categoryName);
-
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
-
-            foodItemsViewModel.FoodItems = Globals.FoodItems;
-
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                  Globals.FoodItems.OrderBy(categoryName => categoryName);     
+                  
+                  foodItemsViewModel.FoodItems = Globals.FoodItems;
+            }
+            else
+            {
+                foreach (var item in Globals.FoodItems)
+                {
+                    if (item.categoryName == (category))
+                    {
+                        listToReturn.Add(item);
+                    }
+                }
+                
+                foodItemsViewModel.FoodItems = listToReturn;
+            }
+          
             return View(foodItemsViewModel);
         }
 
