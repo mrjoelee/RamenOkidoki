@@ -16,5 +16,7 @@ namespace RamenOkiDoki.Models
         public static List<FoodItem> FoodItems;
 
         public static List<FoodItem> Items;
+
+        public static string CurrentCategory;
     }
 }

@@ -16,13 +16,13 @@
                 return;
             }
 
-         
+
             foreach (var category in Model.FoodCategories)
             {
-              
-                 <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category">@category</a>
-                 
-             
+
+                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category">@category</a>
+
+
             }
         }
 
@@ -53,6 +53,8 @@
                     <span class="menuItem">@menuItem.dishName </span>
                     <span class="menuItem">@menuItem.koreanName </span>
                     <span class="menuPrice">$  @menuItem.price</span>
+
+                    <a asp-area="" asp-controller="Menu" asp-action="AddToCart" style="font-weight: bold;margin-left:10px">ADD</a>
                 </p>
                 <p class="menuDescription">@menuItem.description</p>
             }

@@ -72,8 +72,17 @@ namespace RamenOkiDoki.Controllers
 
             if (string.IsNullOrWhiteSpace(category))
             {
-                category = foodItemsViewModel.FoodCategories[0];
+                if (string.IsNullOrWhiteSpace(Globals.CurrentCategory))
+                {
+                    category = foodItemsViewModel.FoodCategories[0];
+                }
+                else
+                {
+                    category = Globals.CurrentCategory;
+                }
             }
+
+            Globals.CurrentCategory = category;
 
             foreach (var item in Globals.FoodItems)
             {
@@ -88,10 +97,14 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
-        public IActionResult FilterByCategory(string Category)
+        public IActionResult AddToCart(FoodItem itemToAdd)
         {
+            // Add itemToAdd to the cart
 
-            return View();
+            string currentCategory = itemToAdd.categoryName;
+
+            return RedirectToAction("TakeOutMenu");
+
         }
     }
 }
