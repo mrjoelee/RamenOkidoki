@@ -24,12 +24,13 @@ namespace RamenOkiDoki.Controllers
             _menuEndpointService = menuEndpointService;
         }
 
-
+        //returns the users to the index(home of the index view page)
         public IActionResult Index()
         {
             return View();
         }
 
+        //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
         public async Task<IActionResult> FoodMenuEdit()
         {
             Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
@@ -48,6 +49,8 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
+
+        //Creates new item and returns to the menu.
         public IActionResult FoodMenuAddEdit(int? id)
         {
             if (id != null)
