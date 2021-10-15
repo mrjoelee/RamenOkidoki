@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RamenOkiDoki.Models;
 using RamenOkiDoki.Services;
 
 namespace RamenOkiDoki
@@ -17,7 +18,9 @@ namespace RamenOkiDoki
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration; 
+            Globals.CartItems = new List<OrderItem>();
+            Globals.OrderTotalCost = 0.00;
         }
 
         public IConfiguration Configuration { get; }

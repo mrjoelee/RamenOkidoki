@@ -23,8 +23,7 @@ namespace RamenOkiDoki.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            Globals.CartItems = new List<OrderItem>();
-            Globals.OrderTotalCost = 0.00;
+          
         }
 
         public IActionResult Index()
