@@ -1,0 +1,32 @@
+﻿@model RamenOkiDoki.ViewModels.FoodItemsViewModel
+
+<div style="margin-left:200px">
+
+    @{
+        if (Model.OrderedItems == null)
+        {
+            return;
+        }
+
+        string categoryName = "";
+
+        foreach (var menuItem in Model.OrderedItems)
+        {
+            if (categoryName != menuItem.categoryName)
+            {
+                <h2 class="categoryName">@menuItem.categoryName</h2>
+
+                categoryName = menuItem.categoryName;
+            }
+            <p>
+                <span class="menuItem">@menuItem.dishName </span>
+                <span class="menuItem">@menuItem.koreanName </span>
+                <span class="menuPrice">$  @menuItem.price</span>
+            </p>
+            <p class="menuDescription">@menuItem.description</p>
+        }
+
+
+    }
+
+</div>
