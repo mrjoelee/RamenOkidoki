@@ -1,26 +1,76 @@
 ﻿@model RamenOkiDoki.ViewModels.FoodItemsViewModel
+@{
+    ViewData["Title"] = "Take Out";
+}
 
-<div style="margin-left:200px">
 
-    @{
-        if (Model.OrderedItems == null)
-        {
-            return;
+
+<div class="combo-page">
+
+    <div class="left-menu-sidebar">
+
+        @{
+
+            if (Model.FoodItems == null)
+            {
+                return;
+            }
+
+
+            foreach (var category in Model.FoodCategories)
+            {
+
+                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category">@category</a>
+
+
+            }
         }
 
-        <table class="order-item-table">
-            <tr><th>Quantity</th><th></th><th>Item</th><th>Price</th></tr>
-            @foreach (var menuItem in Model.OrderedItems)
-            {
-        <tr>
-            <td class="order-item" style="text-align: center">@menuItem.quantity </td>
-            <td class="order-item">@menuItem.koreanName </td>
-            <td class="order-item">@menuItem.dishName </td>
-            <td class="order-item">$ @menuItem.price</td>
-        </tr>
-            }
-        </table>
+    </div>
 
-    }
+    <div class="right-side-content">
+        <div class="text-center">
+            <h1 class="display-4">Take-Out Menu</h1>
+        </div>
+        <div>
+            @{
+                if (Model.FoodItems == null)
+                {
+                    return;
+                }
+
+                string categoryName = "";
+
+                foreach (var menuItem in Model.FoodItems)
+                {
+                    if (categoryName != menuItem.categoryName)
+                    {
+                        <h2 class="categoryName">@menuItem.categoryName</h2>
+
+                        categoryName = menuItem.categoryName;
+                    }
+                    <p>
+                        <span class="menuItem">@menuItem.dishName </span>
+                        <span class="menuItem">@menuItem.koreanName </span>
+                        <span class="menuPrice">$  @menuItem.price</span>
+
+                        <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-itemIdToAdd="@menuItem.id" style="font-weight: bold; margin-left: 10px">
+                            <i class="fas fa-plus-square"></i> ADD
+                        </a>
+                    </p>
+                    <p class="menuDescription">@menuItem.description</p>
+                }
+
+
+            }
+
+        </div>
+        <div style="float: right;">
+
+            @await Component.InvokeAsync("FoodOrderCart")
+
+
+        </div>
+    </div>
 
 </div>
