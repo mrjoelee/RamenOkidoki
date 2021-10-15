@@ -32,7 +32,6 @@
         <div class="text-center">
             <h1 class="display-4">Take-Out Menu</h1>
         </div>
-        <div style="display:inline-block">
             <div>
                 @{
                     if (Model.FoodItems == null)
@@ -70,7 +69,7 @@
 
                 @await Component.InvokeAsync("FoodOrderCart")
 
-            </div>
+         
         </div>
     </div>
 
