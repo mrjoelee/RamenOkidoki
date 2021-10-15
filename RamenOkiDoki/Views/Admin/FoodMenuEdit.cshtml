@@ -21,13 +21,13 @@
 
         @await Html.PartialAsync("_AdminMenuPartial")
 
-        <div class="right-side-content">
+        <div class="right-side-content" style="overflow-y: auto; ">
         <div class="menu-table-div">
 
 
             <table class="menu-edit-table">
                 <form>
-                    <button id="btnClick" class="add-item-button" type="submit" asp-action="FoodMenuAddEdit" asp-controller="Admin"> <i class="fas fa-plus-circle"></i> AddFoodItems</button>
+                    <button id="btnClick" class="add-item-button" type="submit" asp-action="FoodMenuAddEdit" asp-controller="Admin"> <i class="fas fa-plus-circle"></i> Add Menu Items</button>
                 </form>
                 <thead>
                     <tr>
