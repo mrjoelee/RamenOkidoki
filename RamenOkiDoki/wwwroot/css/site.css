@@ -289,8 +289,7 @@ a.admin-nav-link {
 
 .food-order-cart {
     display: inline-block;
-    float: right;
-    margin:0 20px 0 0;
+    margin:0 20px 0 100px;
     padding: 20px;
 }
 
