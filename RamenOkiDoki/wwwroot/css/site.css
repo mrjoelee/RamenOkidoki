@@ -181,16 +181,17 @@ body {
 }
 
 .combo-page {
-    display: inline-block;
     margin: 0;
     padding: 0;
 }
 
 .right-side-content {
+    display: inline-block;
     margin: 0 0 0 200px;
 }
 
 .left-menu-sidebar {
+    display: inline-block;
     background-color: black;
     float: left;
     width: auto;
@@ -287,6 +288,7 @@ a.admin-nav-link {
     }
 
 .food-order-cart {
+    display: inline-block;
     float: right;
     margin-right: 100px;
     background-color: lightgray;
