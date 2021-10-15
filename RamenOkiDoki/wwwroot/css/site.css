@@ -20,7 +20,7 @@ a.nav-link {
 
 .navbar {
     margin-bottom: 0 !important;
-    border:none !important;
+    border: none !important;
     border-bottom: 1px solid red !important;
 }
 
@@ -286,11 +286,18 @@ a.admin-nav-link {
         resize: none;
     }
 
-.order-item-table {
-    margin-top: 200px;
-    }
+.food-order-cart {
+    float: right;
+    margin-right: 100px;
+    background-color: lightgray;
+    padding: 20px;
+}
 
-.order-item-table th {
+.order-item-table {
+    margin-top: 50px;
+}
+
+    .order-item-table th {
         text-align: center;
     }
 

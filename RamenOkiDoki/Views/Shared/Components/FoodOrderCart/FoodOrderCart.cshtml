@@ -1,6 +1,6 @@
 ﻿@model RamenOkiDoki.ViewModels.FoodItemsViewModel
 
-<div style="margin-left: 200px; background-color: darkmagenta; padding:20px">
+<div>
 
     @{
         if (Model.OrderedItems == null)
@@ -8,7 +8,7 @@
             return;
         }
 
-        <h2>Your Order</h2>
+        <h2 style="text-align: center">Your Order</h2>
         <table class="order-item-table">
             <tr><th>Quantity</th><th></th><th>Item</th><th>Price</th></tr>
             @foreach (var menuItem in Model.OrderedItems)
