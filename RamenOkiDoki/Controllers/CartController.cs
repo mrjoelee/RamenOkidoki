@@ -79,7 +79,7 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
-        public async Task<IActionResult> AddToCart(string itemIdToAdd)
+        public IActionResult AddToCart(string itemIdToAdd)
         {
             // Add itemToAdd to the cart
 
@@ -121,6 +121,42 @@ namespace RamenOkiDoki.Controllers
             }
 
             //  return ViewComponent("TakeOutMenu", "Menu");
+
+            return RedirectToAction("TakeOutMenu", "Menu");
+
+        }
+
+        public IActionResult DeleteFromCart(string itemIdToDelete)
+        {
+            // Add itemToAdd to the cart
+
+            FoodItem requestedItem = null;
+
+            if (!string.IsNullOrWhiteSpace(itemIdToDelete))
+            {
+                int foodItemId, deletedItemId;
+
+                int.TryParse(itemIdToDelete, out deletedItemId);
+
+                foreach (var item in Globals.CartItems)
+                {
+                    int.TryParse(item.id, out foodItemId);
+
+                    if (foodItemId == deletedItemId)
+                    {
+                        Globals.CartItems.Remove(item);
+
+                        double tempPrice = 0;
+
+                        double.TryParse(item.price, out tempPrice);
+
+                        Globals.OrderTotalCost -= tempPrice;
+
+                        break;
+                    }
+                }
+                
+            }
 
             return RedirectToAction("TakeOutMenu", "Menu");
 
