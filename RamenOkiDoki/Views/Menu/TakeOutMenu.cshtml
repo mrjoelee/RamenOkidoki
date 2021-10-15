@@ -32,35 +32,46 @@
         <div class="text-center">
             <h1 class="display-4">Take-Out Menu</h1>
         </div>
+        <div style="display:inline-block">
+            <div>
+                @{
+                    if (Model.FoodItems == null)
+                    {
+                        return;
+                    }
 
-        @{
-            if (Model.FoodItems == null)
-            {
-                return;
-            }
+                    string categoryName = "";
 
-            string categoryName = "";
+                    foreach (var menuItem in Model.FoodItems)
+                    {
+                        if (categoryName != menuItem.categoryName)
+                        {
+                            <h2 class="categoryName">@menuItem.categoryName</h2>
 
-            foreach (var menuItem in Model.FoodItems)
-            {
-                if (categoryName != menuItem.categoryName)
-                {
-                    <h2 class="categoryName">@menuItem.categoryName</h2>
+                            categoryName = menuItem.categoryName;
+                        }
+                        <p>
+                            <span class="menuItem">@menuItem.dishName </span>
+                            <span class="menuItem">@menuItem.koreanName </span>
+                            <span class="menuPrice">$  @menuItem.price</span>
 
-                    categoryName = menuItem.categoryName;
+                            <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-itemIdToAdd="@menuItem.id" style="font-weight: bold; margin-left: 10px">
+                                <i class="fas fa-plus-square"></i> ADD
+                            </a>
+                        </p>
+                        <p class="menuDescription">@menuItem.description</p>
+                    }
+
+
                 }
-                <p>
-                    <span class="menuItem">@menuItem.dishName </span>
-                    <span class="menuItem">@menuItem.koreanName </span>
-                    <span class="menuPrice">$  @menuItem.price</span>
 
-                    <a asp-area="" asp-controller="Menu" asp-action="AddToCart" asp-route-itemIdToAdd="@menuItem.id" style="font-weight: bold;margin-left:10px"><i class="fas fa-plus-square"></i> ADD</a>
-                </p>
-                <p class="menuDescription">@menuItem.description</p>
-            }
+            </div>
+            <div style="float: right;">
 
+                @await Component.InvokeAsync("FoodOrderCart")
 
-        }
+            </div>
+        </div>
     </div>
 
 </div>
