@@ -17,6 +17,7 @@ namespace RamenOkiDoki.Controllers
         public CartController(MenuEndpointService menuEndpointService)
         {
             _menuEndpointService = menuEndpointService;
+            // Globals.CartItems = new List<OrderItem>();
         }
 
         public async Task<IActionResult> Index()
@@ -46,8 +47,8 @@ namespace RamenOkiDoki.Controllers
             }
 
             return View(foodItemsViewModel);
-        } 
-        
+        }
+
 
         public async Task<IActionResult> _FoodOrderPartial()
         {
@@ -104,29 +105,24 @@ namespace RamenOkiDoki.Controllers
                 Globals.CurrentCategory = requestedItem.categoryName;
 
 
-                Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
-
-                if (Globals.FoodItems == null)
-                {
-                    return null;
-                }
-
-
                 FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
-                List<OrderItem> tempOrderList = new List<OrderItem>();
-
-                foreach (var item in Globals.FoodItems)
-                {
-                    tempOrderList.Add(
-                        new OrderItem() { id = item.id, dishName = item.dishName, koreanName = item.koreanName, price = item.price, quantity = 1 });
-                }
-
-                foodItemsViewModel.OrderedItems = tempOrderList;
 
 
+
+                Globals.CartItems.Add(new OrderItem() { id = requestedItem.id, dishName = requestedItem.dishName, koreanName = requestedItem.koreanName, price = requestedItem.price, quantity = 1 });
+
+                double tempPrice = 0;
+
+                double.TryParse(requestedItem.price, out tempPrice);
+
+                Globals.OrderTotalCost += tempPrice;
+
+                //foodItemsViewModel.OrderTotalCost = Globals.OrderTotalCost; 
             }
 
-            return RedirectToAction("TakeOutMenu","Menu");
+            //  return ViewComponent("TakeOutMenu", "Menu");
+
+            return RedirectToAction("TakeOutMenu", "Menu");
 
         }
     }

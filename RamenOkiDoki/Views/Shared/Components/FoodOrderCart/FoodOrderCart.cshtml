@@ -1,9 +1,10 @@
-﻿@model RamenOkiDoki.ViewModels.FoodItemsViewModel
+﻿@using System.ComponentModel.Design
+@model RamenOkiDoki.ViewModels.FoodItemsViewModel
 
 <div>
 
     @{
-        if (Model.OrderedItems == null)
+        if (Model.OrderedItems == null || Model.OrderedItems.Count < 1)
         {
             <h2 style="text-align: center; color:darkred">No items in your order</h2>
             return;
@@ -24,7 +25,7 @@
 
             }
             <tr><td /><td /><td /><td><hr style="height: 1px;background-color:black"/></td></tr>
-            <tr><td /><td /><td /><td style="font-weight: bolder">$124.99</td></tr>
+            <tr><td /><td /><td /><td style="font-weight: bolder">@Model.OrderTotalCost</td></tr>
         </table>
 
     }
