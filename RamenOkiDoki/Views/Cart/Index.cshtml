@@ -8,24 +8,18 @@
             return;
         }
 
-        string categoryName = "";
-
-        foreach (var menuItem in Model.OrderedItems)
-        {
-            if (categoryName != menuItem.categoryName)
+        <table class="order-item-table">
+            <tr><th>Quantity</th><th></th><th>Item</th><th>Price</th></tr>
+            @foreach (var menuItem in Model.OrderedItems)
             {
-                <h2 class="categoryName">@menuItem.categoryName</h2>
-
-                categoryName = menuItem.categoryName;
+        <tr>
+            <td class="order-item" style="text-align: center">@menuItem.quantity </td>
+            <td class="order-item">@menuItem.koreanName </td>
+            <td class="order-item">@menuItem.dishName </td>
+            <td class="order-item">$ @menuItem.price</td>
+        </tr>
             }
-            <p>
-                <span class="menuItem">@menuItem.dishName </span>
-                <span class="menuItem">@menuItem.koreanName </span>
-                <span class="menuPrice">$  @menuItem.price</span>
-            </p>
-            <p class="menuDescription">@menuItem.description</p>
-        }
-
+        </table>
 
     }
 
