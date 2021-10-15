@@ -290,12 +290,12 @@ a.admin-nav-link {
 .food-order-cart {
     display: inline-block;
     float: right;
-    margin: 20px 100px 0px 20px;
+    margin:0 20px 0 0;
     padding: 20px;
 }
 
 .order-item-table {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
     .order-item-table th {
