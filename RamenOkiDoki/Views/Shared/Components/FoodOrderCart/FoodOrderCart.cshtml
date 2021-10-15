@@ -14,14 +14,17 @@
             <tr><th>Quantity</th><th></th><th>Item</th><th>Price</th></tr>
             @foreach (var menuItem in Model.OrderedItems)
             {
-        <tr>
-            <td class="order-item" style="text-align: center">@menuItem.quantity </td>
-            <td class="order-item">@menuItem.koreanName </td>
-            <td class="order-item">@menuItem.dishName </td>
-            <td class="order-item" style="text-align:right">$ @menuItem.price</td>
-            <td><a asp-action="" asp-controller="Cart" asp-route-id="@menuItem.id"><i class="fas fa-trash" style="font-size:12px"></i></a></td>
-        </tr>
+                <tr>
+                    <td class="order-item" style="text-align: center">@menuItem.quantity </td>
+                    <td class="order-item">@menuItem.koreanName </td>
+                    <td class="order-item">@menuItem.dishName </td>
+                    <td class="order-item" style="text-align:right">$ @menuItem.price</td>
+                    <td><a asp-action="" asp-controller="Cart" asp-route-id="@menuItem.id"><i class="fas fa-trash" style="font-size:12px"></i></a></td>
+                </tr>
+
             }
+            <tr><td /><td /><td /><td><hr style="height: 1px;background-color:black"/></td></tr>
+            <tr><td /><td /><td /><td style="font-weight: bolder">$124.99</td></tr>
         </table>
 
     }
