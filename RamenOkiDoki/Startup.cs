@@ -33,12 +33,12 @@ namespace RamenOkiDoki
         {
             services.AddTransient<MenuEndpointService>();
 
-#if DEBUG
+
             if (Env.IsDevelopment())
             {
                 services.AddControllersWithViews().AddRazorRuntimeCompilation();
             }
-#endif
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +47,7 @@ namespace RamenOkiDoki
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+               // app.UseBrowserLink();
             }
             else
             {
