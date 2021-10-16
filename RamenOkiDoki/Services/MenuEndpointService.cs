@@ -5,9 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-
-using RamenOkiDoki.Models; //using Microsoft.Net.Http.Headers;
-
+using Data.Models;
 using Task = System.Threading.Tasks.Task;
 
 namespace RamenOkiDoki.Services
@@ -21,7 +19,7 @@ namespace RamenOkiDoki.Services
         {
             try
             {
-                var json = await httpClient.GetStringAsync(Models.Constants.MenuJsonUrl);
+                var json = await httpClient.GetStringAsync(Constants.MenuJsonUrl);
 
                 if (string.IsNullOrWhiteSpace(json))
                 {
@@ -46,7 +44,7 @@ namespace RamenOkiDoki.Services
             try
             {
 
-                var json = await httpClient.GetStringAsync(Models.Constants.MenuGetUrl);
+                var json = await httpClient.GetStringAsync(Constants.MenuGetUrl);
 
                 if (string.IsNullOrWhiteSpace(json))
                 {

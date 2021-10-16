@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using RamenOkiDoki.Models;
-
+using Data.Models;
 namespace RamenOkiDoki.ViewModels
 {
     public class FoodItemsViewModel

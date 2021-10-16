@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RamenOkiDoki.Models
+namespace Data.Models
 {
     public class Food
     {

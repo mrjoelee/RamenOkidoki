@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text.Json;
+using Data.Models;
 using Microsoft.AspNetCore.Hosting;
-using RamenOkiDoki.Models;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace RamenOkiDoki.Services

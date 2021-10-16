@@ -1,6 +1,4 @@
-using System;
-
-namespace RamenOkiDoki.Models
+namespace Data.Models
 {
     public class ErrorViewModel
     {

@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RamenOkiDoki.Models;
+using Data.Models;
 using RamenOkiDoki.Services;
 using RamenOkiDoki.ViewModels;
 

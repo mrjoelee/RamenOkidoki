@@ -1,4 +1,4 @@
-﻿namespace RamenOkiDoki.Models
+﻿namespace Data.Models
 {
     public class Constants
     {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace RamenOkiDoki.Models
+namespace Data.Models
 {
     public class FoodCategory
     {
