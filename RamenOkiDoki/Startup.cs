@@ -16,11 +16,14 @@ namespace RamenOkiDoki
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IWebHostEnvironment Env { get; set; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
-            Configuration = configuration; 
+            Configuration = configuration;
             Globals.CartItems = new List<OrderItem>();
             Globals.OrderTotalCost = 0.00;
+            Env = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -28,8 +31,14 @@ namespace RamenOkiDoki
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddTransient<MenuEndpointService>();
+
+#if DEBUG
+            if (Env.IsDevelopment())
+            {
+                services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            }
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +47,7 @@ namespace RamenOkiDoki
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
             else
             {
@@ -47,13 +57,13 @@ namespace RamenOkiDoki
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            
+
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
