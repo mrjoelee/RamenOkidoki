@@ -8,15 +8,16 @@ namespace Data.Models
 
         public static UserRoles UserRole { get; set; }
 
-        public enum UserRoles { Admin, Employee , Patron}
+        public enum UserRoles { Admin, Employee, Patron }
 
-        public static List<FoodMenu.FoodItem> FoodItems{ get; set; }
+        public static List<FoodMenu.FoodItem> FoodItemsList { get; set; }
 
-        public static List<OrderItem> CartItems { get; set; }
+        public static List<OrderItem> CartItemsList { get; set; }
 
-        public static List<FoodMenu.Root> FoodCategories { get; set; }
+        public static List<FoodMenu.Root> FullFoodMenuList { get; set; }
+        public static string CurrentCategory { get; set; }
 
-        public static FoodCategory CurrentCategory { get; set; }
+        //public static FoodMenu.Root.Category CurrentCategory { get; set; }
 
         public static double OrderTotalCost { get; set; }
     }

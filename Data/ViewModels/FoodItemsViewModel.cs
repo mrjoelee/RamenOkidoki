@@ -9,7 +9,7 @@ namespace Data.ViewModels
         public List<Food> Foods { get; set; }
         public List<FoodMenu.FoodItem> FoodItems { get; set; }
         public List<OrderItem> OrderedItems { get; set; }
-        public List<FoodCategory> FoodCategories { get; set; }
+        public List<string> FoodCategories { get; set; }
         public string OrderTotalCost { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace RamenOkiDoki.ViewComponents
             
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            foodItemsViewModel.OrderedItems = Globals.CartItems;
+            foodItemsViewModel.OrderedItems = Globals.CartItemsList;
 
             foodItemsViewModel.OrderTotalCost = string.Format("{0:C}",Globals.OrderTotalCost);
             

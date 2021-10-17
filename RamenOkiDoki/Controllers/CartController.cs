@@ -16,33 +16,35 @@ namespace RamenOkiDoki.Controllers
         public CartController(MenuEndpointService menuEndpointService)
         {
             _menuEndpointService = menuEndpointService;
-            // Globals.CartItems = new List<OrderItem>();
+            // Globals.CartItemsList = new List<OrderItem>();
         }
 
         public async Task<IActionResult> Index()
         {
-            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
+            //Bring in the complete menu from cloud in a list of categories and their items
 
-            if (Globals.FoodCategories == null)
-            {
-                return null;
-            }
+            //Globals.FullFoodMenuList = await _menuEndpointService.GetFoodItemsFromCloud();
 
+            //if (Globals.FullFoodMenuList == null)
+            //{
+            //    return null;
+            //}
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
-            List<OrderItem> tempOrderList = new List<OrderItem>();
 
-            foreach (var item in Globals.FoodItems)
-            {
-                tempOrderList.Add(new OrderItem(item.id, item.dishName, item.koreanName, item.description, item.price, item.foodCategory, 1));
-            }
+            //List<OrderItem> tempOrderList = new List<OrderItem>();
 
-            foodItemsViewModel.OrderedItems = tempOrderList;
+            //foreach (var item in Globals.FullFoodMenuList)
+            //{
+            //    tempOrderList.Add(new OrderItem(item.id, item.dishName, item.koreanName, item.description, item.price, item.foodCategory, 1));
+            //}
 
-            if (foodItemsViewModel.OrderedItems == null)
-            {
+            //foodItemsViewModel.OrderedItems = tempOrderList;
 
-            }
+            //if (foodItemsViewModel.OrderedItems == null)
+            //{
+
+            //}
 
             return View(foodItemsViewModel);
         }
@@ -50,28 +52,27 @@ namespace RamenOkiDoki.Controllers
 
         public async Task<IActionResult> _FoodOrderPartial()
         {
-            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
+            //Globals.FullFoodMenuList = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (Globals.FoodItems == null)
-            {
-                return null;
-            }
+            //if (Globals.FoodItemsList == null)
+            //{
+            //    return null;
+            //}
 
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
-            List<OrderItem> tempOrderList = new List<OrderItem>();
+            //List<OrderItem> tempOrderList = new List<OrderItem>();
 
-            foreach (var item in Globals.FoodItems)
+            //foreach (var item in Globals.FoodItemsList)
+            //{
+            //    tempOrderList.Add(new OrderItem(item.id,  item.dishName,  item.koreanName, item.description, item.price, item.foodCategory,  1 ));
+            //}
+
+            if (Globals.CartItemsList != null)
             {
-                tempOrderList.Add(new OrderItem(item.id,  item.dishName,  item.koreanName, item.description, item.price, item.foodCategory,  1 ));
+                foodItemsViewModel.OrderedItems = Globals.CartItemsList;
             }
 
-            foodItemsViewModel.OrderedItems = tempOrderList;
-
-            if (foodItemsViewModel.OrderedItems == null)
-            {
-
-            }
 
             return View(foodItemsViewModel);
         }
@@ -80,7 +81,7 @@ namespace RamenOkiDoki.Controllers
         {
             // Add itemToAdd to the cart
 
-            FoodMenu.FoodItem requestedItem = null;
+            OrderItem requestedItem = null;
 
             if (!string.IsNullOrWhiteSpace(itemIdToAdd))
             {
@@ -88,25 +89,39 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemIdToAdd, out requestedItemId);
 
-                foreach (var item in Globals.FoodItems)
+                foreach (var foodCategory in Globals.FullFoodMenuList)
                 {
-                    int.TryParse(item.id, out foodItemId);
-
-                    if (foodItemId == requestedItemId)
+                    foreach (var foodItem in foodCategory.FoodItems)
                     {
-                        requestedItem = item;
+                        int.TryParse(foodItem.id, out foodItemId);
+
+                        if (foodItemId == requestedItemId)
+                        {
+                            requestedItem = new OrderItem(
+                                foodItem.id,
+                                foodItem.dishName,
+                                foodItem.koreanName,
+                                foodItem.description,
+                                foodItem.price,
+                                foodCategory.Category,
+                                    1
+                                );
+                        }
                     }
+
                 }
 
 
-                Globals.CurrentCategory = requestedItem.foodCategory;
+                Globals.CurrentCategory = requestedItem.categoryName;
 
 
                 FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
 
 
-                Globals.CartItems.Add(new OrderItem(requestedItem.id, requestedItem.dishName, requestedItem.koreanName, requestedItem.description, requestedItem.price, requestedItem.foodCategory, 1 ));
+                Globals.CartItemsList.Add(requestedItem);
+
+                //Globals.CartItemsList.Add(new OrderItem(requestedItem.id, requestedItem.dishName, requestedItem.koreanName, requestedItem.description, requestedItem.price, requestedItem.categoryName, 1));
 
                 double tempPrice = 0;
 
@@ -135,13 +150,13 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemIdToDelete, out deletedItemId);
 
-                foreach (var item in Globals.CartItems)
+                foreach (var item in Globals.CartItemsList)
                 {
                     int.TryParse(item.id, out foodItemId);
 
                     if (foodItemId == deletedItemId)
                     {
-                        Globals.CartItems.Remove(item);
+                        Globals.CartItemsList.Remove(item);
 
                         double tempPrice = 0;
 

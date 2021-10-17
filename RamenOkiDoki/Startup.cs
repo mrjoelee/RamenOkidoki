@@ -20,7 +20,7 @@ namespace RamenOkiDoki
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
-            Globals.CartItems = new List<OrderItem>();
+            Globals.CartItemsList = new List<OrderItem>();
             Globals.OrderTotalCost = 0.00;
             Env = env;
         }

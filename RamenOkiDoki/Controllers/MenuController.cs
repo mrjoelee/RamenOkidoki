@@ -30,19 +30,19 @@ namespace RamenOkiDoki.Controllers
         [Route("menu")]
         public async Task<IActionResult> DineInMenu()
         {
-            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FullFoodMenuList = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (Globals.FoodItems == null)
+            if (Globals.FoodItemsList == null)
             {
                 return null;
             }
 
 
-            Globals.FoodItems.OrderBy(categoryName => categoryName);
+            Globals.FoodItemsList.OrderBy(categoryName => categoryName);
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            foodItemsViewModel.FoodItems = Globals.FoodItems;
+            foodItemsViewModel.FoodItems = Globals.FoodItemsList;
 
             return View(foodItemsViewModel);
         }
@@ -54,52 +54,45 @@ namespace RamenOkiDoki.Controllers
         [Route("take-out")]
         public async Task<IActionResult> TakeOutMenu(string categoryString)
         {
-            FoodCategory category = null;
-
-            if (string.IsNullOrWhiteSpace(categoryString))
-            {
-                category = new FoodCategory(categoryString);
-            }
-
             List<FoodMenu.FoodItem> tempListOfMenuItemsToReturn = new List<FoodMenu.FoodItem>();
 
             // Get from MySql Database
-            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FullFoodMenuList = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (Globals.FoodCategories == null)
+            if (Globals.FullFoodMenuList == null)
             {
                 return null;
             }
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            List<FoodCategory> tempListOfCategoryItems = new List<FoodCategory>();
+            List<string> tempListOfCategoryItems = new List<string>();
 
-            foreach (var items in Globals.FoodItems)
+            foreach (var foodCategory in Globals.FullFoodMenuList)
             {
-                tempListOfCategoryItems.Add(items.foodCategory);
+                tempListOfCategoryItems.Add(foodCategory.FoodItems.ToString());
             }
 
             foodItemsViewModel.FoodCategories = tempListOfCategoryItems.Distinct().ToList();
 
 
-            if (category == null)
+            if (string.IsNullOrWhiteSpace(categoryString))
             {
                 if (Globals.CurrentCategory == null)
                 {
-                    category = foodItemsViewModel.FoodCategories[0];
+                    categoryString = Globals.FullFoodMenuList[0].Category;
                 }
                 else
                 {
-                    category = Globals.CurrentCategory;
+                    categoryString = Globals.CurrentCategory;
                 }
             }
 
-            foreach (var item in Globals.FoodItems)
+            foreach (var categoryItem in Globals.FullFoodMenuList)
             {
-                if (item.foodCategory == (category))
+                if (categoryItem.Category == (categoryString))
                 {
-                    tempListOfMenuItemsToReturn.Add(item);
+                    tempListOfMenuItemsToReturn = categoryItem.FoodItems;
                 }
             }
 

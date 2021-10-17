@@ -14,7 +14,7 @@ namespace RamenOkiDoki.Controllers
         private readonly ILogger<HomeController> _logger;
         private MenuEndpointService _menuEndpointService;
 
-        //  public List<FoodItem> FoodItems;
+        //  public List<FoodItem> FoodItemsList;
 
         public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
         {
@@ -31,18 +31,18 @@ namespace RamenOkiDoki.Controllers
         //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
         public async Task<IActionResult> FoodMenuEdit()
         {
-            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FullFoodMenuList = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (Globals.FoodCategories == null)
+            if (Globals.FullFoodMenuList == null)
             {
                 return null;
             }
 
-            Globals.FoodItems.OrderBy(dishName => dishName);
+            Globals.FoodItemsList.OrderBy(dishName => dishName);
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            foodItemsViewModel.FoodItems = Globals.FoodItems;
+            foodItemsViewModel.FoodItems = Globals.FoodItemsList;
 
             return View(foodItemsViewModel);
         }
@@ -56,7 +56,7 @@ namespace RamenOkiDoki.Controllers
                 int index = (int)id;
                 int itemId;
 
-                foreach (var item in Globals.FoodItems)
+                foreach (var item in Globals.FoodItemsList)
                 {
                     int.TryParse(item.id, out itemId);
 
@@ -85,7 +85,7 @@ namespace RamenOkiDoki.Controllers
                 int index = (int)id;
                 int itemId;
 
-                foreach (var item in Globals.FoodItems)
+                foreach (var item in Globals.FoodItemsList)
                 {
                     int.TryParse(item.id, out itemId);
 
