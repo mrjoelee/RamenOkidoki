@@ -54,9 +54,11 @@ namespace RamenOkiDoki.Services
                     return null;
                 }
 
-                var taskModels =  JsonSerializer.Deserialize<List<FoodMenu.FoodCategory>>(json);
+                FoodMenu.Root response = JsonSerializer.Deserialize<FoodMenu.Root>(json);
 
-     
+                List<FoodMenu.FoodCategory> tempCategoryList = new List<FoodMenu.FoodCategory>(response.FoodCategories);
+
+
                 //foreach (var item in tempModel)
                 //{
                 //    var tempFoodItem = new FoodItem(item.id, item.dishName, item.koreanName, item.description, item.price, item.foodCategory as FoodCategory);
@@ -69,7 +71,7 @@ namespace RamenOkiDoki.Services
 
 
 
-                return taskModels;
+                return tempCategoryList;
             }
             catch (Exception exception)
             {

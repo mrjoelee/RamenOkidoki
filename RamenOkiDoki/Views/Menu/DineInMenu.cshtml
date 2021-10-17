@@ -19,25 +19,34 @@
 
             foreach (var foodCategory in Model.FoodCategoriesList)
             {
-                if (foodCategory.FoodItems != null)
-                { 
-                    
-                    <h2 class="categoryName">@foodCategory.category</h2>
+                string tempFoodCategory = "";
 
+                if (foodCategory.FoodItems != null && foodCategory.FoodItems.Count > 0)
+                {
 
-                    @foreach (var menuItem in foodCategory.FoodItems)
+                    if (foodCategory.FoodItems != null)
                     {
-                        <p>
-                            <span class="menuItem">@menuItem.dishName </span>
-                            <span class="menuItem">@menuItem.koreanName </span>
-                            <span class="menuPrice">$ @menuItem.price</span>
-                        </p>
-                        <p class="menuDescription">@menuItem.description</p>
-                    }
 
+
+                        @foreach (var menuItem in foodCategory.FoodItems)
+                        {
+                            if (menuItem.foodCategory != tempFoodCategory)
+                            {
+                                <h2 class="categoryName">@menuItem.foodCategory</h2>
+
+                                tempFoodCategory = menuItem.foodCategory;
+                            }
+                            <p>
+                                <span class="menuItem">@menuItem.dishName </span>
+                                <span class="menuItem">@menuItem.koreanName </span>
+                                <span class="menuPrice">$ @menuItem.price</span>
+                            </p>
+                            <p class="menuDescription">@menuItem.description</p>
+                        }
+
+                    }
                 }
             }
-
 
         }
 

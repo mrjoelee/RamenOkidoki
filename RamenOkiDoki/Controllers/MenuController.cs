@@ -24,13 +24,14 @@ namespace RamenOkiDoki.Controllers
         {
             return View();
         }
+
         private async Task<FoodItemsViewModel> MakeMenu()
         {
             Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            if (Globals.FoodCategory != null)
+            if (Globals.FoodCategoriesList != null)
             {
                 foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;
             }
@@ -66,9 +67,9 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var foodCategory in Globals.FoodCategoriesList)
                 {
-                    if (foodCategory != null && foodCategory.category != null && foodCategory.FoodItems != null)
+                    if (foodCategory != null && foodCategory.Category != null && foodCategory.FoodItems != null)
                     {
-                        foodItemsViewModel.FoodCategories.Add(foodCategory.category);
+                        foodItemsViewModel.FoodCategories.Add(foodCategory.Category);
                     }
                 }
 
@@ -98,7 +99,7 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var categoryItem in Globals.FoodCategoriesList)
                 {
-                    if (categoryItem.category == (categoryString))
+                    if (categoryItem.Category == (categoryString))
                     {
                         if (categoryItem.FoodItems != null)
                         {

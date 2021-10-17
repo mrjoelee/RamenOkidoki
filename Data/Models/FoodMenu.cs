@@ -23,7 +23,8 @@ namespace Data.Models
         public class FoodCategory
         {
             public string id { get; set; }
-            public string category { get; set; }
+
+            public string Category { get; set; }
             public List<FoodItem> FoodItems { get; set; }
         }
 
