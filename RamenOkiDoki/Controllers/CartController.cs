@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
+using Data.ViewModels;
 using RamenOkiDoki.Services;
-using RamenOkiDoki.ViewModels;
 
 namespace RamenOkiDoki.Controllers
 {
@@ -21,9 +21,9 @@ namespace RamenOkiDoki.Controllers
 
         public async Task<IActionResult> Index()
         {
-            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (Globals.FoodItems == null)
+            if (Globals.FoodCategories == null)
             {
                 return null;
             }
@@ -34,8 +34,7 @@ namespace RamenOkiDoki.Controllers
 
             foreach (var item in Globals.FoodItems)
             {
-                tempOrderList.Add(
-                    new OrderItem() { id = item.id, dishName = item.dishName, koreanName = item.koreanName, price = item.price, quantity = 1 });
+                tempOrderList.Add(new OrderItem(item.id, item.dishName, item.koreanName, item.description, item.price, item.foodCategory, 1));
             }
 
             foodItemsViewModel.OrderedItems = tempOrderList;
@@ -51,7 +50,7 @@ namespace RamenOkiDoki.Controllers
 
         public async Task<IActionResult> _FoodOrderPartial()
         {
-            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
 
             if (Globals.FoodItems == null)
             {
@@ -64,8 +63,7 @@ namespace RamenOkiDoki.Controllers
 
             foreach (var item in Globals.FoodItems)
             {
-                tempOrderList.Add(
-                    new OrderItem() { id = item.id, dishName = item.dishName, koreanName = item.koreanName, price = item.price, quantity = 1 });
+                tempOrderList.Add(new OrderItem(item.id,  item.dishName,  item.koreanName, item.description, item.price, item.foodCategory,  1 ));
             }
 
             foodItemsViewModel.OrderedItems = tempOrderList;
@@ -82,7 +80,7 @@ namespace RamenOkiDoki.Controllers
         {
             // Add itemToAdd to the cart
 
-            FoodItem requestedItem = null;
+            FoodMenu.FoodItem requestedItem = null;
 
             if (!string.IsNullOrWhiteSpace(itemIdToAdd))
             {
@@ -101,14 +99,14 @@ namespace RamenOkiDoki.Controllers
                 }
 
 
-                Globals.CurrentCategory = requestedItem.categoryName;
+                Globals.CurrentCategory = requestedItem.foodCategory;
 
 
                 FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
 
 
-                Globals.CartItems.Add(new OrderItem() { id = requestedItem.id, dishName = requestedItem.dishName, koreanName = requestedItem.koreanName, price = requestedItem.price, quantity = 1 });
+                Globals.CartItems.Add(new OrderItem(requestedItem.id, requestedItem.dishName, requestedItem.koreanName, requestedItem.description, requestedItem.price, requestedItem.foodCategory, 1 ));
 
                 double tempPrice = 0;
 
@@ -129,7 +127,7 @@ namespace RamenOkiDoki.Controllers
         {
             // Add itemToAdd to the cart
 
-            FoodItem requestedItem = null;
+            FoodMenu.FoodItem requestedItem = null;
 
             if (!string.IsNullOrWhiteSpace(itemIdToDelete))
             {
@@ -154,7 +152,7 @@ namespace RamenOkiDoki.Controllers
                         break;
                     }
                 }
-                
+
             }
 
             return RedirectToAction("TakeOutMenu", "Menu");

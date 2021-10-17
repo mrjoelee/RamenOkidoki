@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
+using Data.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RamenOkiDoki.Services;
-using RamenOkiDoki.ViewModels;
 
 namespace RamenOkiDoki.Controllers
 {
@@ -31,9 +31,9 @@ namespace RamenOkiDoki.Controllers
         //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
         public async Task<IActionResult> FoodMenuEdit()
         {
-            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (Globals.FoodItems == null)
+            if (Globals.FoodCategories == null)
             {
                 return null;
             }
@@ -70,7 +70,7 @@ namespace RamenOkiDoki.Controllers
             return View();
         }
         #region saving new item
-        public async Task<IActionResult> PutMenuItem(FoodItem item)
+        public async Task<IActionResult> PutMenuItem(FoodMenu.FoodItem item)
         {
             await _menuEndpointService.AddMenuItemToCloud(item);
             return Redirect("FoodMenuEdit");

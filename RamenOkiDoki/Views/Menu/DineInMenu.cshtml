@@ -1,4 +1,4 @@
-﻿@model RamenOkiDoki.ViewModels.FoodItemsViewModel
+﻿@model Data.ViewModels.FoodItemsViewModel
 @{
     ViewData["Title"] = "Menu";
 }
@@ -15,15 +15,15 @@
                 return;
             }
 
-            string categoryName = "";
+            FoodCategory categoryName = new FoodCategory("");
 
             foreach (var menuItem in Model.FoodItems)
             {
-                if (categoryName != menuItem.categoryName)
+                if (categoryName != menuItem.foodCategory)
                 {
-                    <h2 class="categoryName">@menuItem.categoryName</h2>
+                    <h2 class="categoryName">@menuItem.foodCategory</h2>
 
-                    categoryName = menuItem.categoryName;
+                    categoryName = menuItem.foodCategory;
                 }
                 <p>
                     <span class="menuItem">@menuItem.dishName </span>

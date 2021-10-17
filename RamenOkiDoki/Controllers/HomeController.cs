@@ -9,7 +9,6 @@ using Data.Models;
 using Microsoft.CodeAnalysis.CSharp;
 using RamenOkiDoki.Helpers;
 using RamenOkiDoki.Services;
-using RamenOkiDoki.ViewModels;
 
 namespace RamenOkiDoki.Controllers
 {

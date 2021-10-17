@@ -4,8 +4,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
 using Data.Models;
+
 using Task = System.Threading.Tasks.Task;
 
 namespace RamenOkiDoki.Services
@@ -39,7 +42,7 @@ namespace RamenOkiDoki.Services
 
         }
 
-        public async Task<List<FoodItem>> GetFoodItemsFromCloud()
+        public async Task<List<FoodMenu.Root>> GetFoodItemsFromCloud()
         {
             try
             {
@@ -51,7 +54,20 @@ namespace RamenOkiDoki.Services
                     return null;
                 }
 
-                var taskModels = JsonSerializer.Deserialize<List<FoodItem>>(json);
+                var taskModels =  JsonSerializer.Deserialize<List<FoodMenu.Root>>(json);
+
+     
+                //foreach (var item in tempModel)
+                //{
+                //    var tempFoodItem = new FoodItem(item.id, item.dishName, item.koreanName, item.description, item.price, item.foodCategory as FoodCategory);
+                ////    tempFoodItem.categoryName = item.categoryName as FoodCategory;
+
+                //    taskModels.Add(tempFoodItem);  
+
+
+                // }
+
+
 
                 return taskModels;
             }
@@ -63,7 +79,7 @@ namespace RamenOkiDoki.Services
 
         }
 
-        public async Task AddMenuItemToCloud(FoodItem foodItemToAdd)
+        public async Task AddMenuItemToCloud(FoodMenu.FoodItem foodItemToAdd)
         {
             try
             {
@@ -92,22 +108,30 @@ namespace RamenOkiDoki.Services
                 string url = Constants.MenuDeleteUrl; //Get url from the contants file 
 
                 string idAsJson = "{ \"id\":" + foodItemIdToDelete + "}";
-                    
+
                 HttpContent content = new StringContent(idAsJson); // Add the json to the outgoing content
 
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json"); //Outgoing content will be of type Json
 
                 HttpResponseMessage response = await httpClient.PostAsync(url, content);
 
-                
+
 
 
             }
             catch (Exception ex)
             {
-               Console.WriteLine($"Error: {ex}");
+                Console.WriteLine($"Error: {ex}");
             }
         }
 
+    }
+
+
+    public class Root
+    {
+        public string id { get; set; }
+        public string category { get; set; }
+        public List<FoodMenu.FoodItem> FoodItems { get; set; }
     }
 }

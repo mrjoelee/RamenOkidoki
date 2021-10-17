@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
+using Data.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using RamenOkiDoki.Services;
-using RamenOkiDoki.ViewModels;
 
 namespace RamenOkiDoki.ViewComponents
 {

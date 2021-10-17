@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Data.Models;
+using Data.ViewModels;
+
 using Microsoft.AspNetCore.Mvc;
+
 using RamenOkiDoki.Services;
-using RamenOkiDoki.ViewModels;
 
 namespace RamenOkiDoki.Controllers
 {
@@ -22,10 +25,12 @@ namespace RamenOkiDoki.Controllers
             return View();
         }
 
+        #region =  Dine In Menu
+
         [Route("menu")]
         public async Task<IActionResult> DineInMenu()
         {
-            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
 
             if (Globals.FoodItems == null)
             {
@@ -42,35 +47,45 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
+        #endregion
+
+        #region = Take Out Menu
 
         [Route("take-out")]
-        public async Task<IActionResult> TakeOutMenu(string category)
+        public async Task<IActionResult> TakeOutMenu(string categoryString)
         {
-            List<FoodItem> tempListOfMenuItemsToReturn = new List<FoodItem>();
+            FoodCategory category = null;
+
+            if (string.IsNullOrWhiteSpace(categoryString))
+            {
+                category = new FoodCategory(categoryString);
+            }
+
+            List<FoodMenu.FoodItem> tempListOfMenuItemsToReturn = new List<FoodMenu.FoodItem>();
 
             // Get from MySql Database
-            Globals.FoodItems = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodCategories = await _menuEndpointService.GetFoodItemsFromCloud();
 
-            if (Globals.FoodItems == null)
+            if (Globals.FoodCategories == null)
             {
                 return null;
             }
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            List<string> tempListOfCategoryItems = new List<string>();
+            List<FoodCategory> tempListOfCategoryItems = new List<FoodCategory>();
 
             foreach (var items in Globals.FoodItems)
             {
-                tempListOfCategoryItems.Add(items.categoryName);
+                tempListOfCategoryItems.Add(items.foodCategory);
             }
 
             foodItemsViewModel.FoodCategories = tempListOfCategoryItems.Distinct().ToList();
 
 
-            if (string.IsNullOrWhiteSpace(category))
+            if (category == null)
             {
-                if (string.IsNullOrWhiteSpace(Globals.CurrentCategory))
+                if (Globals.CurrentCategory == null)
                 {
                     category = foodItemsViewModel.FoodCategories[0];
                 }
@@ -80,11 +95,9 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-
-
             foreach (var item in Globals.FoodItems)
             {
-                if (item.categoryName == (category))
+                if (item.foodCategory == (category))
                 {
                     tempListOfMenuItemsToReturn.Add(item);
                 }
@@ -95,6 +108,6 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
-      
+        #endregion
     }
 }
