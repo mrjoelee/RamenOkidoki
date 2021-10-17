@@ -80,9 +80,9 @@ namespace RamenOkiDoki.Controllers
                 {
                     if (foodItemsViewModel.FoodCategories.Count > 0)
                     {
-                           categoryString = foodItemsViewModel.FoodCategories[0];
+                        categoryString = foodItemsViewModel.FoodCategories[0];
                     }
-                 
+
                     if (Globals.CurrentCategory != null)
                     {
                         foreach (var category in foodItemsViewModel.FoodCategories)
