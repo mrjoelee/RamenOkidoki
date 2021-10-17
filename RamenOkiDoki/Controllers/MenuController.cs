@@ -26,13 +26,13 @@ namespace RamenOkiDoki.Controllers
         }
         private async Task<FoodItemsViewModel> MakeMenu()
         {
-            Globals.FullFoodMenuList = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            if (Globals.FullFoodMenuList != null)
+            if (Globals.FoodCategory != null)
             {
-                foodItemsViewModel.FullFoodMenuList = Globals.FullFoodMenuList;
+                foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;
             }
 
 
@@ -60,15 +60,15 @@ namespace RamenOkiDoki.Controllers
         {
             var foodItemsViewModel = await MakeMenu();
 
-            if (Globals.FullFoodMenuList != null)
+            if (Globals.FoodCategoriesList != null)
             {
                 foodItemsViewModel.FoodCategories = new List<string>();
 
-                foreach (var foodCategory in Globals.FullFoodMenuList)
+                foreach (var foodCategory in Globals.FoodCategoriesList)
                 {
-                    if (foodCategory != null && foodCategory.Category != null && foodCategory.FoodItems != null)
+                    if (foodCategory != null && foodCategory.category != null && foodCategory.FoodItems != null)
                     {
-                        foodItemsViewModel.FoodCategories.Add(foodCategory.Category.ToString());
+                        foodItemsViewModel.FoodCategories.Add(foodCategory.category);
                     }
                 }
 
@@ -96,9 +96,9 @@ namespace RamenOkiDoki.Controllers
 
                 foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
 
-                foreach (var categoryItem in Globals.FullFoodMenuList)
+                foreach (var categoryItem in Globals.FoodCategoriesList)
                 {
-                    if (categoryItem.Category == (categoryString))
+                    if (categoryItem.category == (categoryString))
                     {
                         if (categoryItem.FoodItems != null)
                         {

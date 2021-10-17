@@ -89,7 +89,7 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemIdToAdd, out requestedItemId);
 
-                foreach (var foodCategory in Globals.FullFoodMenuList)
+                foreach (var foodCategory in Globals.FoodCategoriesList)
                 {
                     foreach (var foodItem in foodCategory.FoodItems)
                     {
@@ -103,7 +103,7 @@ namespace RamenOkiDoki.Controllers
                                 foodItem.koreanName,
                                 foodItem.description,
                                 foodItem.price,
-                                foodCategory.Category,
+                                foodItem.foodCategory,
                                     1
                                 );
                         }

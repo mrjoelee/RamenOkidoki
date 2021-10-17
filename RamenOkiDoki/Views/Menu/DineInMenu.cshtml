@@ -10,19 +10,19 @@
     <div style="margin-left:200px">
 
         @{
-            if (Model.FullFoodMenuList == null)
+            if (Model.FoodCategoriesList == null)
             {
                 return;
             }
 
             FoodCategory categoryName = new FoodCategory("");
 
-            foreach (var foodCategory in Model.FullFoodMenuList)
+            foreach (var foodCategory in Model.FoodCategoriesList)
             {
                 if (foodCategory.FoodItems != null)
                 { 
                     
-                    <h2 class="categoryName">@foodCategory.Category</h2>
+                    <h2 class="categoryName">@foodCategory.category</h2>
 
 
                     @foreach (var menuItem in foodCategory.FoodItems)

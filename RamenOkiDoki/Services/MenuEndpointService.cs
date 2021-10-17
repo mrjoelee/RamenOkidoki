@@ -42,7 +42,7 @@ namespace RamenOkiDoki.Services
 
         }
 
-        public async Task<List<FoodMenu.Root>> GetFoodItemsFromCloud()
+        public async Task<List<FoodMenu.FoodCategory>> GetFoodItemsFromCloud()
         {
             try
             {
@@ -54,7 +54,7 @@ namespace RamenOkiDoki.Services
                     return null;
                 }
 
-                var taskModels =  JsonSerializer.Deserialize<List<FoodMenu.Root>>(json);
+                var taskModels =  JsonSerializer.Deserialize<List<FoodMenu.FoodCategory>>(json);
 
      
                 //foreach (var item in tempModel)
