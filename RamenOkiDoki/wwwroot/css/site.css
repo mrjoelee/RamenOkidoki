@@ -310,3 +310,17 @@ a.admin-nav-link {
     .order-item-table td {
         padding-right: 40px;
     }
+
+/*google map api*/
+#map{
+    height: 400px;
+    width: 400px;
+    position: fixed;
+}
+
+.row{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
