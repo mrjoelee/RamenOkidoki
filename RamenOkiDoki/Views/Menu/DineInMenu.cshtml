@@ -10,31 +10,36 @@
     <div style="margin-left:200px">
 
         @{
-            if (Model.FoodItems == null)
+            if (Model.FullFoodMenuList == null)
             {
                 return;
             }
 
             FoodCategory categoryName = new FoodCategory("");
 
-            foreach (var menuItem in Model.FoodItems)
+            foreach (var foodCategory in Model.FullFoodMenuList)
             {
-                if (categoryName != menuItem.foodCategory)
-                {
-                    <h2 class="categoryName">@menuItem.foodCategory</h2>
+                if (foodCategory.FoodItems != null)
+                { 
+                    
+                    <h2 class="categoryName">@foodCategory.Category</h2>
 
-                    categoryName = menuItem.foodCategory;
+
+                    @foreach (var menuItem in foodCategory.FoodItems)
+                    {
+                        <p>
+                            <span class="menuItem">@menuItem.dishName </span>
+                            <span class="menuItem">@menuItem.koreanName </span>
+                            <span class="menuPrice">$ @menuItem.price</span>
+                        </p>
+                        <p class="menuDescription">@menuItem.description</p>
+                    }
+
                 }
-                <p>
-                    <span class="menuItem">@menuItem.dishName </span>
-                    <span class="menuItem">@menuItem.koreanName </span>
-                    <span class="menuPrice">$  @menuItem.price</span>
-                </p>
-                <p class="menuDescription">@menuItem.description</p>
             }
 
 
         }
 
     </div>
-    </div>
+</div>

@@ -11,7 +11,7 @@
 
         @{
 
-            if (Model.FoodItems == null)
+            if (Model.FoodCategories == null)
             {
                 return;
             }
@@ -33,7 +33,7 @@
 
             <div>
                 @{
-                    if (Model.FoodItems == null)
+                    if (Model.FullFoodMenuList == null)
                     {
                         return;
                     }
@@ -42,12 +42,12 @@
 
                     foreach (var menuItem in Model.FoodItems)
                     {
-                        if (categoryName != menuItem.categoryName)
+                        @*if (categoryName != menuItem.categoryName)
                         {
                             <h2 class="categoryName">@menuItem.categoryName</h2>
 
                             categoryName = menuItem.categoryName;
-                        }
+                        }*@
                         <p>
                             <span class="menuItem">@menuItem.dishName </span>
                             <span class="menuItem">@menuItem.koreanName </span>
