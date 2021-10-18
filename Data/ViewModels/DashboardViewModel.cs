@@ -9,6 +9,6 @@ namespace Data.ViewModels
 {
     public class DashboardViewModel
     {
-
+        public BusinessAddress BusinessAddress { get; set; }
     }
 }
