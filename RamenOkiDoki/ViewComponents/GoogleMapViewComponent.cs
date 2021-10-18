@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
-
 using Data.ViewModels;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace RamenOkiDoki.ViewComponents
