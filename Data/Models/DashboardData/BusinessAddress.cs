@@ -4,16 +4,14 @@ namespace Data.Models.DashboardData
 {
     public class BusinessAddress
     {
-        [Required]
-        [Display(Name ="First Name")]
-        public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name ="Last Name")]
-        public string LastName { get; set; }
+        [Display(Name = "Business Name")]
+        public string BusinessName { get; set; }
+
         public string Address { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
+        public string Website { get; set; }
 
     }
 }
