@@ -40,24 +40,24 @@
         <h2 style="text-align: center; margin-top: 20px">Admin Dashboard</h2>
         <form method="post">
             <div class="form-group">
-                <label asp-for="FirstName"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <label asp-for="BusinessAddress.Phone"></label>
+                
             </div>
             <div class="form-group">
-                <label asp-for="LastName"></label>
-                <input asp-for="LastName" class="form-control" />
+                <label asp-for="BusinessAddress.BusinessName"></label>
+
             </div>
             <div class="form-group">
-                <label asp-for="Address"></label>
-                <input asp-for="Address" class="form-control" />
+                <label asp-for="BusinessAddress.Email"></label>
+
             </div>
             <div class="form-group">
-                <label asp-for="Phone"></label>
-                <input asp-for="Phone" class="form-control" />
+                <label asp-for="BusinessAddress.Address"></label>
+
             </div>
             <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
+                <label asp-for="BusinessAddress.Website"></label>
+
             </div>
             <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("DashBoard")'" id="addfooditem">Save</button>
             </form>
