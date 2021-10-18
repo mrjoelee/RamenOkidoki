@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Data.Models
+namespace Data.Models.DashboardData
 {
-    public class DashBoard
+    public class BusinessAddress
     {
         [Required]
         [Display(Name ="First Name")]
