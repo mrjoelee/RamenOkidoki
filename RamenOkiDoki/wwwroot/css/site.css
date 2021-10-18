@@ -136,8 +136,25 @@ body {
 }
 
 
-/*     Food Menu     */
+.google-map-div {
+   margin:100px 0 200px 0;
+    width: 100vw;
+}
 
+#map {
+    height: 100%;
+    width: 100vw;
+    margin: 0px auto;
+    display: inline-block
+
+}
+
+.googlemap {
+
+}
+
+
+/*     Food Menu     */
 #btnClick {
     font-size: 18px;
     padding: 5px;

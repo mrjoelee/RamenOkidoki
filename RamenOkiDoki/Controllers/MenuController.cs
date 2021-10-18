@@ -31,6 +31,9 @@ namespace RamenOkiDoki.Controllers
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
+            foodItemsViewModel.FoodCategoriesList = new List<FoodMenu.FoodCategory>();
+
+
             if (Globals.FoodCategoriesList != null)
             {
                 foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;
@@ -61,54 +64,74 @@ namespace RamenOkiDoki.Controllers
         {
             var foodItemsViewModel = await MakeMenu();
 
-            if (Globals.FoodCategoriesList != null)
+            foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
+
+                   foreach (var cat in Globals.FoodCategoriesList)
+                   {
+                       if (cat.FoodItems.Count >3)
+                       {
+                           foodItemsViewModel.FoodItems = cat.FoodItems;
+                       }
+                   }
+
+         
+
+
+            return View(foodItemsViewModel);
+
+            foodItemsViewModel.FoodCategories = new List<string>();
+
+            foreach (var category in foodItemsViewModel.FoodCategoriesList)
             {
-                foodItemsViewModel.FoodCategories = new List<string>();
-
-                foreach (var foodCategory in Globals.FoodCategoriesList)
+                if (category.FoodItems != null && category.FoodItems.Count > 0)
                 {
-                    if (foodCategory != null && foodCategory.Category != null && foodCategory.FoodItems != null)
-                    {
-                        foodItemsViewModel.FoodCategories.Add(foodCategory.Category);
-                    }
+                      foodItemsViewModel.FoodCategories.Add(category.FoodItems[0].foodCategory);
+                }
+              
+            }
+
+            foodItemsViewModel.FoodCategories.Distinct().ToString();
+
+
+
+
+
+            if (string.IsNullOrWhiteSpace(categoryString))
+            {
+                if (foodItemsViewModel.FoodCategories.Count > 0)
+                {
+                    categoryString = foodItemsViewModel.FoodCategories[0];
                 }
 
-                foodItemsViewModel.FoodCategories.Distinct().ToString();
-
-
-                if (string.IsNullOrWhiteSpace(categoryString))
+                if (Globals.CurrentCategory != null)
                 {
-                    if (foodItemsViewModel.FoodCategories.Count > 0)
+                    foreach (var category in foodItemsViewModel.FoodCategories)
                     {
-                        categoryString = foodItemsViewModel.FoodCategories[0];
-                    }
-
-                    if (Globals.CurrentCategory != null)
-                    {
-                        foreach (var category in foodItemsViewModel.FoodCategories)
+                        if (category == Globals.CurrentCategory)
                         {
-                            if (category == Globals.CurrentCategory)
-                            {
-                                categoryString = category;
-                            }
+                            categoryString = category;
                         }
                     }
                 }
 
-                foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
+                Globals.CurrentCategory = categoryString;
 
-                foreach (var categoryItem in Globals.FoodCategoriesList)
+            }
+
+            foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
+
+            foreach (var categoryItem in foodItemsViewModel.FoodCategoriesList)
+            {
+                if (true)//categoryItem.Category == (categoryString))
                 {
-                    if (categoryItem.Category == (categoryString))
-                    {
-                        if (categoryItem.FoodItems != null)
-                        {
-                            foodItemsViewModel.FoodItems = categoryItem.FoodItems;
-                        }
+                    //if (categoryItem.FoodItems != null)
+                    //{
+                    foodItemsViewModel.FoodItems = categoryItem.FoodItems;
+                    //  }
 
-                    }
                 }
             }
+
 
             return View(foodItemsViewModel);
         }
@@ -116,3 +139,4 @@ namespace RamenOkiDoki.Controllers
         #endregion
     }
 }
+

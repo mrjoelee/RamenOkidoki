@@ -11,16 +11,16 @@
 
         @{
 
-            if (Model.FoodCategoriesList == null)
+            if (Model.FoodCategories == null)
             {
                 return;
             }
 
 
-            foreach (var category in Model.FoodCategoriesList)
+            foreach (var category in Model.FoodCategories)
             {
 
-                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category.Category">@category.Category</a>
+                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-categoryString="@category" >@category</a>
 
 
             }

@@ -4,40 +4,28 @@
 
 <div class="non-sidebar-page">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Our Table</h1>
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Our Table</h1>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <div style="display:inline">
+        <Image src="/Images/background.JPG" height="400" width="500" />
+
+        <a href="https://www.facebook.com/okidokiramen/"><i class="fab fa-facebook-square" style="margin:0 10px 0 100px;color: blue;"></i></a>
+        <a href="https://www.instagram.com/ramenokidoki/"><i class="fab fa-instagram" style="margin:0 10px 0 10px;"></i></a>
+        <a href="https://www.yelp.com/biz/ramen-okidoki-houston/"><i class="fab fa-yelp" style="margin:0 10px 0 10px;"></i></a>
+    </div>
+
+
+    <div style="display: inline; float: right; margin-right: 100px">
+        <h3>Our Hours</h3>
+    </div>
 </div>
-<br />
-<br />
-<br />
+<div class="google-map-div" >
 
-<div style="display:inline">
-    <Image src="/Images/background.JPG" height="400" width="500" />
-
-    <a href="https://www.facebook.com/okidokiramen/"><i class="fab fa-facebook-square" style="margin:0 10px 0 100px;color: blue;"></i></a>
-    <a href="https://www.instagram.com/ramenokidoki/"><i class="fab fa-instagram" style="margin:0 10px 0 10px;"></i></a>
-    <a href="https://www.yelp.com/biz/ramen-okidoki-houston/"><i class="fab fa-yelp" style="margin:0 10px 0 10px;"></i></a>
-</div>
-
-@*</div>
-<div style="display: inline; float: right; margin-right: 100px">
-    <h3>Our Hours</h3>
-</div>*@
-
-@*creating api for google location*@
-<div class="row">
-    <div id="map"></div>
-    <script>
-        var map;
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 29.703260, lng: -95.568077 },
-                zoom: 18
-            });
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhoq1dhym0B31wzDexaqOafvso2853iVI&callback=initMap" 
-            async defer>
-    </script>
+    @await Component.InvokeAsync("GoogleMap")
 
 </div>
