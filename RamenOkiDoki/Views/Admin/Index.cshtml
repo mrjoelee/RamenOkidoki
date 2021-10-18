@@ -1,4 +1,4 @@
-﻿
+﻿@model Data.Models.DashBoard
 
 @{
     ViewData["Title"] = "Admin";
@@ -38,6 +38,26 @@
     </div>
     <div class="right-side-content">
         <h2 style="text-align: center; margin-top: 20px">Admin Dashboard</h2>
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+        </div>
     </div>
 </div>
     }

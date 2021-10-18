@@ -122,6 +122,11 @@ namespace RamenOkiDoki.Controllers
             return Redirect("Index");
 
         }
+
+        public IActionResult DashBoard()
+        {
+            return View("Index");
+        }
     }
 }
 
