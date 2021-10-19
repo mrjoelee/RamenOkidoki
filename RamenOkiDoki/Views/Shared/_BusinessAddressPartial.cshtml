@@ -1,8 +1,9 @@
-﻿@model Data.ViewModels.DashboardViewModel
+﻿@using Data.Models.DashboardData
+@model Data.ViewModels.DashboardViewModel
 
-<h5>BusinessAddress.Phone</h5>
+<h5>@Model.BusinessAddress.Phone</h5>
 
-    <h5 content="BusinessAddress.BusinessName"></h5>
+<h5>@BusinessAddress.BusinessName</h5>
 
     <h5 content="BusinessAddress.Email"></h5>
 
