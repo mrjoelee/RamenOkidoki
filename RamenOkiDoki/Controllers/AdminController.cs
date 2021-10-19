@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 
 using Data.Models;
 using Data.Models.FoodMenus;
 using Data.ViewModels;
+
 using DataServices.Services;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -50,6 +53,27 @@ namespace RamenOkiDoki.Controllers
         public async Task<IActionResult> FoodMenuEdit()
         {
             var foodItemsViewModel = await MakeMenu();
+
+            foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
+
+            Globals.FoodCategoriesList = new List<FoodMenu.FoodCategory>();
+
+            foreach (var categories in Globals.FoodCategoriesList)
+            {
+                if (categories != null && categories.FoodItems.Count > 0)
+                {
+
+                    foreach (var fooditems in categories.FoodItems)
+                    {
+                        if (fooditems != null)
+                        {
+                            foodItemsViewModel.FoodItems.Add(fooditems);
+                        }
+
+                    }
+                }
+
+            }
 
             return View(foodItemsViewModel);
 

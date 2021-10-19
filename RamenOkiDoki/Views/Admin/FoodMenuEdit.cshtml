@@ -49,17 +49,21 @@
 
                         @foreach (var category in Model.FoodCategoriesList)
                         {
-                            foreach (var menuItem in category.FoodItems)
+                            if (category.FoodItems != null && category.FoodItems.Count > 0)
                             {
-                                <tr>
-                                    <td>menuItem.dishName</td>
-                                    <td>menuItem.koreanName</td>
-                                    <td style="white-space: nowrap;">$ menuItem.price</td>
-                                    <td>menuItem.description</td>
-                                    <td>menuItem.foodCategory</td>
-                                    <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="menuItem.id"><i class="fas fa-edit"></i></a></td>
-                                    <td><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="menuItem.id"><i class="fas fa-trash"></i></a></td>
-                                </tr>
+
+                                foreach (var menuItem in category.FoodItems)
+                                {
+                                    <tr>
+                                        <td>@menuItem.dishName</td>
+                                        <td>@menuItem.koreanName</td>
+                                        <td style="white-space: nowrap;">$ @menuItem.price</td>
+                                        <td>@menuItem.description</td>
+                                        <td>@menuItem.foodCategory</td>
+                                        <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="menuItem.id"><i class="fas fa-edit"></i></a></td>
+                                        <td><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="menuItem.id"><i class="fas fa-trash"></i></a></td>
+                                    </tr>
+                                }
                             }
                         }
                     </tbody>
