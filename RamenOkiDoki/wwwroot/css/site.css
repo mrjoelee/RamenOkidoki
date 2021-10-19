@@ -1,6 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
 .header {
     background-color: black !important;
     margin-bottom: 0;
@@ -341,3 +342,15 @@ a.admin-nav-link {
     padding: 0;
     float: right;
 }
+
+/*gallery*/
+.grid-gallery {
+    line-height: 0;
+    column-gap: 0px;
+/*    width: 100%;
+    height: auto;*/
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+}
+
