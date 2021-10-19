@@ -1,0 +1,25 @@
+﻿@model Data.ViewModels.DashboardViewModel
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="BusinessAddress.Phone"></label>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="BusinessAddress.BusinessName"></label>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="BusinessAddress.Email"></label>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="BusinessAddress.Address"></label>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="BusinessAddress.Website"></label>
+
+    </div>
+    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
+</form>
