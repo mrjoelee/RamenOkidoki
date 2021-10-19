@@ -72,7 +72,11 @@ namespace RamenOkiDoki.Controllers
 
             foreach (var items in Globals.FoodCategoriesList)
             {
-                tempListOfCategoryItems.Add(items.Category);
+                if (items.FoodItems != null && items.FoodItems.Count > 0)
+                {
+                        tempListOfCategoryItems.Add(items.Category);
+                }
+            
             }
 
             foodItemsViewModel.FoodCategories = tempListOfCategoryItems.Distinct().ToList();

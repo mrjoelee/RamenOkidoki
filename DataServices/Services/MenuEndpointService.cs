@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Data.Models;
 using Data.Models.FoodMenus;
-using Task = System.Threading.Tasks.Task;
-
+using Newtonsoft.Json;
 namespace DataServices.Services
 {
     public class MenuEndpointService
@@ -15,7 +13,7 @@ namespace DataServices.Services
 
         HttpClient httpClient = new HttpClient();
 
-        public async Task<Food.Root> GetFoodMenuFromCloud()
+        public async Task<Food.FoodCategory> GetFoodMenuFromCloud()
         {
             try
             {
@@ -26,7 +24,7 @@ namespace DataServices.Services
                     return null;
                 }
 
-                var taskModels = JsonSerializer.Deserialize<Food.Root>(json);
+                var taskModels = JsonConvert.DeserializeObject<Food.FoodCategory>(json);
 
 
                 return taskModels;
@@ -51,24 +49,14 @@ namespace DataServices.Services
                     return null;
                 }
 
-                FoodMenu.Root response = JsonSerializer.Deserialize<FoodMenu.Root>(json);
-
-                List<FoodMenu.FoodCategory> tempCategoryList = new List<FoodMenu.FoodCategory>(response.FoodCategories);
+                List<FoodMenu.FoodCategory> response = new List<FoodMenu.FoodCategory>();
 
 
-                //foreach (var item in tempModel)
-                //{
-                //    var tempFoodItem = new FoodItem(item.id, item.dishName, item.koreanName, item.description, item.price, item.foodCategory as FoodCategory);
-                ////    tempFoodItem.categoryName = item.categoryName as FoodCategory;
+                response = JsonConvert.DeserializeObject<List<FoodMenu.FoodCategory>>(json);
 
-                //    taskModels.Add(tempFoodItem);  
+            //    response = JsonSerializer.Deserialize<List<FoodMenu.FoodCategory>>(json);
 
-
-                // }
-
-
-
-                return tempCategoryList;
+                return response;
             }
             catch (Exception exception)
             {
@@ -85,7 +73,7 @@ namespace DataServices.Services
 
                 string url = Constants.MenuPostUrl; //Get url from the contants file 
 
-                var json = JsonSerializer.Serialize(foodItemToAdd); //Convert the FoodItem instance to json
+                var json = JsonConvert.SerializeObject(foodItemToAdd); //Convert the FoodItem instance to json
 
                 HttpContent content = new StringContent(json); // Add the json to the outgoing content
 

@@ -30,19 +30,39 @@ namespace RamenOkiDoki.Controllers
             return View();
         }
 
+
+        private async Task<FoodItemsViewModel> MakeMenu()
+        {
+            Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+
+            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+
+            if (Globals.FoodCategoriesList != null)
+            {
+                foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;
+            }
+
+            return foodItemsViewModel;
+        }
+
+
         //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
         public async Task<IActionResult> FoodMenuEdit()
         {
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+            var foodItemsViewModel = await MakeMenu();
 
-            Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+            return View(foodItemsViewModel);
 
-            if (Globals.FoodCategory != null)
-            {
-                Globals.FoodItemsList.OrderBy(dishName => dishName);
-                foodItemsViewModel.FoodItems = Globals.FoodItemsList;
+            //FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            }
+            //Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+
+            //if (Globals.FoodCategory != null)
+            //{
+            //    Globals.FoodItemsList.OrderBy(dishName => dishName);
+            //    foodItemsViewModel.FoodItems = Globals.FoodItemsList;
+
+            //}
 
             return View(foodItemsViewModel);
         }
