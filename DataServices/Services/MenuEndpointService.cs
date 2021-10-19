@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+
 using Data.Models;
 using Data.Models.FoodMenus;
+
 using Newtonsoft.Json;
 namespace DataServices.Services
 {
@@ -13,7 +15,7 @@ namespace DataServices.Services
 
         HttpClient httpClient = new HttpClient();
 
-        public async Task<Food.FoodCategory> GetFoodMenuFromCloud()
+        public async Task<FoodMenu.FoodCategory> GetFoodMenuFromCloud()
         {
             try
             {
@@ -24,7 +26,9 @@ namespace DataServices.Services
                     return null;
                 }
 
-                var taskModels = JsonConvert.DeserializeObject<Food.FoodCategory>(json);
+                //  var root = JsonConvert.DeserializeObject<FoodMenu.Root>(json);
+
+                var taskModels = JsonConvert.DeserializeObject<FoodMenu.FoodCategory>(json);
 
 
                 return taskModels;
@@ -52,9 +56,11 @@ namespace DataServices.Services
                 List<FoodMenu.FoodCategory> response = new List<FoodMenu.FoodCategory>();
 
 
-                response = JsonConvert.DeserializeObject<List<FoodMenu.FoodCategory>>(json);
+                var result = JsonConvert.DeserializeObject<FoodMenu.Root>(json);
 
-            //    response = JsonSerializer.Deserialize<List<FoodMenu.FoodCategory>>(json);
+                response = new List<FoodMenu.FoodCategory>(result.FoodCategories);
+
+                //  response = JsonSerializer.Deserialize<List<FoodMenu.FoodCategory>>(json);
 
                 return response;
             }

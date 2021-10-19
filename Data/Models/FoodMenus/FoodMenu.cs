@@ -4,6 +4,7 @@ namespace Data.Models.FoodMenus
 {
     public class FoodMenu
     {
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class FoodItem
         {
             public string id { get; set; }
