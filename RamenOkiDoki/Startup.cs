@@ -9,7 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
-using RamenOkiDoki.Services;
+using Data.Models.FoodMenus;
+using DataServices.Services;
 
 namespace RamenOkiDoki
 {
@@ -20,6 +21,7 @@ namespace RamenOkiDoki
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            
             Globals.CartItemsList = new List<OrderItem>();
             Globals.FoodCategoriesList = new List<FoodMenu.FoodCategory>();
             Globals.FoodItemsList = new List<FoodMenu.FoodItem>();

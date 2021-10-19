@@ -1,4 +1,4 @@
-﻿namespace Data.Models
+﻿namespace Data.Models.FoodMenus
 {
     public class OrderItem : FoodMenu.FoodItem
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using Data.Models;
+using Data.Models.FoodMenus;
 
 namespace Data.ViewModels
 {
@@ -13,5 +14,15 @@ namespace Data.ViewModels
         public string OrderTotalCost { get; set; }
 
         public List<FoodMenu.FoodCategory> FoodCategoriesList { get; set; }
+
+        public FoodItemsViewModel()
+        {
+            Foods = new List<Food>();
+            FoodItems = new List<FoodMenu.FoodItem>();
+            OrderedItems = new List<OrderItem>();
+            FoodCategories = new List<string>();
+            FoodCategoriesList = new List<FoodMenu.FoodCategory>();
+
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Data.Models
+namespace Data.Models.FoodMenus
 {
     public class Food
     {

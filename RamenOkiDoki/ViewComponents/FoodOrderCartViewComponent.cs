@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
 using Data.ViewModels;
+using DataServices.Services;
 using Microsoft.AspNetCore.Mvc;
-using RamenOkiDoki.Services;
 
 namespace RamenOkiDoki.ViewComponents
 {

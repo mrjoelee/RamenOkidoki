@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Data.Models
+﻿namespace Data.Models.FoodMenus
 {
     public class FoodItemOld
     {

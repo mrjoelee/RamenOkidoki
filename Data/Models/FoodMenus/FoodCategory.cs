@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
-namespace Data.Models
+namespace Data.Models.FoodMenus
 {
     public class FoodCategory
     {

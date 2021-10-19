@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-
 using Data.Models;
-
+using Data.Models.FoodMenus;
 using Task = System.Threading.Tasks.Task;
 
-namespace RamenOkiDoki.Services
+namespace DataServices.Services
 {
     public class MenuEndpointService
     {
@@ -22,7 +19,7 @@ namespace RamenOkiDoki.Services
         {
             try
             {
-                var json = await httpClient.GetStringAsync(Constants.MenuJsonUrl);
+                var json = await httpClient.GetStringAsync((string?)Constants.MenuJsonUrl);
 
                 if (string.IsNullOrWhiteSpace(json))
                 {
@@ -47,7 +44,7 @@ namespace RamenOkiDoki.Services
             try
             {
 
-                var json = await httpClient.GetStringAsync(Constants.MenuGetUrl);
+                var json = await httpClient.GetStringAsync((string?)Constants.MenuGetUrl);
 
                 if (string.IsNullOrWhiteSpace(json))
                 {
