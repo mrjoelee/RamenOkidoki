@@ -69,44 +69,46 @@ namespace RamenOkiDoki.Controllers
                         {
                             foodItemsViewModel.FoodItems.Add(fooditems);
                         }
-
                     }
                 }
-
             }
-
-            return View(foodItemsViewModel);
-
-            //FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
-
-            //Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
-
-            //if (Globals.FoodCategory != null)
-            //{
-            //    Globals.FoodItemsList.OrderBy(dishName => dishName);
-            //    foodItemsViewModel.FoodItems = Globals.FoodItemsList;
-
-            //}
 
             return View(foodItemsViewModel);
         }
 
 
         //Creates new item and returns to the menu.
-        public IActionResult FoodMenuAddEdit(int? id)
+        public async Task<IActionResult> FoodMenuAddEdit(int? id)
         {
             if (id != null)
             {
                 int index = (int)id;
                 int itemId;
 
-                foreach (var item in Globals.FoodItemsList)
+                if (Globals.FoodCategoriesList == null || Globals.FoodCategoriesList.Count < 1)
                 {
-                    int.TryParse(item.id, out itemId);
+                    Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+                }
 
-                    if (itemId == index)
+                foreach (var category in Globals.FoodCategoriesList)
+                {
+                    if (category.FoodItems != null && category.FoodItems.Count > 0)
                     {
-                        return View(item);
+
+
+                        foreach (var item in category.FoodItems)
+                        {
+                            if (item != null)
+                            {
+                                int.TryParse(item.id, out itemId);
+
+                                if (itemId == index)
+                                {
+                                    return View(item);
+                                }
+                            }
+
+                        }
                     }
                 }
             }

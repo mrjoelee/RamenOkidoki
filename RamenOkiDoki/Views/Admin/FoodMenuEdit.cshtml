@@ -15,8 +15,7 @@
     @if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin) //!User.IsInRole("Admin"))
     {
         <h1>Admin Only</h1>
-
-    }
+        }
     else
     {
 
@@ -60,8 +59,8 @@
                                         <td style="white-space: nowrap;">$ @menuItem.price</td>
                                         <td>@menuItem.description</td>
                                         <td>@menuItem.foodCategory</td>
-                                        <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="menuItem.id"><i class="fas fa-edit"></i></a></td>
-                                        <td><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="menuItem.id"><i class="fas fa-trash"></i></a></td>
+                                        <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.id"><i class="fas fa-edit"></i></a></td>
+                                        <td><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="@menuItem.id"><i class="fas fa-trash"></i></a></td>
                                     </tr>
                                 }
                             }
