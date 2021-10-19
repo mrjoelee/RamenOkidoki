@@ -38,12 +38,15 @@
     </div>
     <div class="right-side-content">
         <h2 style="text-align: center; margin-top: 20px">Admin Dashboard</h2>
-      
-</div>
+
+    </div>
     <div style="float:right;display:inline-block;margin:100px 50px 0 0">
 
         @await Html.PartialAsync("_BusinessAddressPartial")
-        @await Html.PartialAsync("_HoursOfOperationPartial")
+    </div>  
+    
+    <div style="float:right;display:inline-block;margin:100px 50px 0 0">
+        @*@await Html.PartialAsync("_HoursOfOperationPartial")*@
     </div>
 </div>
     }
