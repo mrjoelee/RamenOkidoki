@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "ModalPopup";
 
-    string id = "", dishName = "", koreanName = "", description = "", price = "", categoryName = "";
+    string id = "", dishName = "", koreanName = "", description = "", price = "", categoryName = "", AddSaveButton = "Add Item";
 
     if (Model != null)
     {
@@ -12,6 +12,7 @@
         description = Model.description;
         price = Model.price;
         categoryName = Model.foodCategory;
+        AddSaveButton = "Save Item";
     }
 }
 
@@ -44,12 +45,10 @@
             </div>
             <input type="hidden" id="id" name="id" value="@(id)" />
             <div>
-                <button value="AddFoodItem" type="submit" id="addfooditem">Add Item</button>
+                <button value="AddFoodItem" type="submit" id="addfooditem">@AddSaveButton</button>
                 <button value="Close" asp-action="FoodMenuEdit" asp-controller="Admin">Cancel</button>
             </div>
             @*</form>*@
         </div>
-
     }
-
 </div>
