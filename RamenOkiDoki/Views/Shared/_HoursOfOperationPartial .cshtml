@@ -1,13 +1,33 @@
-﻿@model Data.ViewModels.DashboardViewModel
+﻿<div>
 
-    @*<label content="HoursOfOperation.SundayOpen"></label>
+    <h5>@Model.HoursOfOperation.SundayOpen</h5>
 
-    <label content="BusinessAddress.BusinessName"></label>
+    <h5>@Model.HoursOfOperation.SundayOpen</h5>
 
-    <label content="BusinessAddress.Email"></label>
+    <h5>@Model.HoursOfOperation.MondayOpen</h5>
 
-    <label content="BusinessAddress.Address"></label>
+    <h5>@Model.HoursOfOperation.MondayClose</h5>
 
-    <label content="BusinessAddress.Website"></label>
+    <h5>@Model.HoursOfOperation.TuesdayClose</h5>
 
-    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>*@
+    <h5>@Model.HoursOfOperation.TuesdayOpen</h5>
+
+    <h5>@Model.HoursOfOperation.WednesdayOpen</h5>
+
+    <h5>@Model.HoursOfOperation.WednesdayClose</h5>
+
+    <h5>@Model.HoursOfOperation.ThursdayOpen</h5>
+
+    <h5>@Model.HoursOfOperation.ThursdayClose</h5>
+
+    <h5>@Model.HoursOfOperation.FridayOpen</h5>
+
+    <h5>@Model.HoursOfOperation.FridayClose</h5>
+
+    <h5>@Model.HoursOfOperation.SaturdayOpen</h5>
+
+    <h5>@Model.HoursOfOperation.SaturdayClose</h5>
+
+
+    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
+</div>

@@ -32,23 +32,39 @@
     }
     else
     {
-<div class="combo-page">
-    <div>
-        @await Html.PartialAsync("_AdminMenuPartial")
-    </div>
-    <div class="right-side-content">
-        <h2 style="text-align: center; margin-top: 20px">Admin Dashboard</h2>
+        <div class="combo-page">
+            <div>
+                @await Html.PartialAsync("_AdminMenuPartial")
+            </div>
+            <div class="right-side-content">
+                <h2 style="text-align: center; margin-top: 20px">Admin Dashboard</h2>
 
-    </div>
-    <div style="float:right;display:inline-block;margin:100px 50px 0 0">
+            </div>
+            <div style="float:right;display:inline-block;margin:100px 50px 0 0">
+                @if (@Globals.DisplayAddressForm)
+                {
+                    @await Html.PartialAsync("_BusinessAddressFormPartial")
+                }
+                else
+                {
+                    @await Html.PartialAsync("_BusinessAddressPartial")
+                }
 
-        @await Html.PartialAsync("_BusinessAddressPartial")
-    </div>  
-    
-    <div style="float:right;display:inline-block;margin:100px 50px 0 0">
-        @*@await Html.PartialAsync("_HoursOfOperationPartial")*@
-    </div>
-</div>
+            </div>
+            <div style="float: right; display: inline-block; margin: 100px 50px 0 0">
+
+                @if (@Globals.DisplayHoursForm)
+                {
+                    @await Html.PartialAsync("_HoursOfOperationFormPartial")
+                }
+                else
+                {
+                    @await Html.PartialAsync("_HoursOfOperationPartial")
+                }
+
+            </div>
+
+        </div>
     }
 
 </div>
