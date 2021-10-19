@@ -59,14 +59,24 @@ namespace RamenOkiDoki.Controllers
             List<FoodMenu.FoodItem> tempListOfMenuItemsToReturn = new List<FoodMenu.FoodItem>();
 
             // Get from MySql Database
-            Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+         //   Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
 
+            var foodItemsViewModel = await MakeMenu();
+
+            Globals.FoodCategoriesList.OrderBy(Category => Category);
+            
             if (Globals.FoodCategoriesList == null)
             {
                 return null;
             }
 
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+            foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>(Globals.FoodCategoriesList[1].FoodItems);
+
+            return View(foodItemsViewModel);
+
+
+
+      //      FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
             List<string> tempListOfCategoryItems = new List<string>();
 
@@ -86,7 +96,7 @@ namespace RamenOkiDoki.Controllers
             {
                 if (string.IsNullOrWhiteSpace(Globals.CurrentCategory))
                 {
-                    category = foodItemsViewModel.FoodCategories[0];
+                    category = tempListOfCategoryItems[0];
                 }
                 else
                 {
