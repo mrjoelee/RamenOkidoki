@@ -25,12 +25,14 @@ namespace RamenOkiDoki.Controllers
         {
             _logger = logger;
             _menuEndpointService = menuEndpointService;
+
         }
 
         //returns the users to the index(home of the index view page)
         public IActionResult Index()
         {
-            return View();
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            return View(dashboardViewModel);
         }
 
 
