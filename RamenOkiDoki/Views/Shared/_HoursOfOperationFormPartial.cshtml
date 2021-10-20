@@ -2,15 +2,33 @@
 
 
 <form method="post" style="margin:100px 50px 0 0">
-    <div class="form-group">
-        <label asp-for="HoursOfOperation.SundayOpen"></label>
-        <input type="text" />
-    </div>  
-    <div style="display:inline-block"><p> To </p></div>
-    <div class="form-group" style="display:inline-block">
-        <label asp-for="HoursOfOperation.SundayClose"></label>
-        <input type="text" />
+    <div class="form-hours-group">
+        <span><b>Sunday  </b><input type="text" name="@Model.HoursOfOperation.SundayOpen" value="@Model.HoursOfOperation.SundayOpen" /><b> To </b></span><span><input type="text" name="@Model.HoursOfOperation.SundayClose" value="@Model.HoursOfOperation.SundayClose" /></span>
     </div>
 
-    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
+    <div class="form-hours-group">
+        <span><b>Sunday  </b><input type="text" name="@Model.HoursOfOperation.SundayOpen" value="@Model.HoursOfOperation.SundayOpen" /><b> To </b></span><span><input type="text" name="@Model.HoursOfOperation.SundayClose" value="@Model.HoursOfOperation.SundayClose" /></span>
+    </div>
+
+    <div class="form-hours-group">
+        <span><b>Sunday  </b><input type="text" name="@Model.HoursOfOperation.SundayOpen" value="@Model.HoursOfOperation.SundayOpen" /><b> To </b></span><span><input type="text" name="@Model.HoursOfOperation.SundayClose" value="@Model.HoursOfOperation.SundayClose" /></span>
+    </div>
+    <div class="form-hours-group">
+        <span><b>Sunday  </b><input type="text" name="@Model.HoursOfOperation.SundayOpen" value="@Model.HoursOfOperation.SundayOpen" /><b> To </b></span><span><input type="text" name="@Model.HoursOfOperation.SundayClose" value="@Model.HoursOfOperation.SundayClose" /></span>
+    </div>
+
+    <div class="form-hours-group">
+        <span><b>Sunday  </b><input type="text" name="@Model.HoursOfOperation.SundayOpen" value="@Model.HoursOfOperation.SundayOpen" /><b> To </b></span><span><input type="text" name="@Model.HoursOfOperation.SundayClose" value="@Model.HoursOfOperation.SundayClose" /></span>
+    </div>
+
+    <div class="form-hours-group">
+        <span><b>Sunday  </b><input type="text" name="@Model.HoursOfOperation.SundayOpen" value="@Model.HoursOfOperation.SundayOpen" /><b> To </b></span><span><input type="text" name="@Model.HoursOfOperation.SundayClose" value="@Model.HoursOfOperation.SundayClose" /></span>
+    </div>
+
+    <div class="form-hours-group">
+        <span><b>Sunday  </b><input type="text" name="@Model.HoursOfOperation.SundayOpen" value="@Model.HoursOfOperation.SundayOpen" /><b> To </b></span><span><input type="text" name="@Model.HoursOfOperation.SundayClose" value="@Model.HoursOfOperation.SundayClose" /></span>
+    </div>
+
+
+    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("CloseHourOfOperationForm")'" id="addfooditem"><i class="fas fa-edit"></i>Save</button>
 </form>

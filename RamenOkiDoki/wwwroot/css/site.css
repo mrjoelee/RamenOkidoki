@@ -272,6 +272,14 @@ a.admin-nav-link {
         font-weight: bolder;
     }
 
+.form-hours-group {
+    margin-bottom: 15px;
+}
+
+.form-hours-group input {
+    width: 30px;
+    height: 25px;
+}
 
 
 .menu-edit-table {
