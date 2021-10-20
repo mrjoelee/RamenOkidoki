@@ -20,7 +20,7 @@
             foreach (var category in Model.FoodCategories)
             {
 
-                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-categoryString="@category" >@category</a>
+                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category" >@category</a>
 
 
             }
