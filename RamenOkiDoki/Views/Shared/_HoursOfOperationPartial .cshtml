@@ -1,35 +1,27 @@
 ﻿@model Data.ViewModels.DashboardViewModel
 
-<div>
-    <h5>@Model.HoursOfOperation.SundayOpen</h5>
+<h4><u>Hours:</u></h4>
 
-    <h5>@Model.HoursOfOperation.SundayOpen</h5>
+<h5>Sunday: @Model.HoursOfOperation.SundayOpen to @Model.HoursOfOperation.SundayOpen</h5>
 
-    <h5>@Model.HoursOfOperation.MondayOpen</h5>
+<h5>Monday: @Model.HoursOfOperation.MondayOpen to @Model.HoursOfOperation.MondayClose</h5>
 
-    <h5>@Model.HoursOfOperation.MondayClose</h5>
+<h5>Tuesday: @Model.HoursOfOperation.TuesdayClose to @Model.HoursOfOperation.TuesdayOpen</h5>
 
-    <h5>@Model.HoursOfOperation.TuesdayClose</h5>
+<h5>Wednesday: @Model.HoursOfOperation.WednesdayOpen to @Model.HoursOfOperation.WednesdayClose</h5>
 
-    <h5>@Model.HoursOfOperation.TuesdayOpen</h5>
+<h5>@Model.HoursOfOperation.ThursdayOpen</h5>
 
-    <h5>@Model.HoursOfOperation.WednesdayOpen</h5>
-
-    <h5>@Model.HoursOfOperation.WednesdayClose</h5>
-
-    <h5>@Model.HoursOfOperation.ThursdayOpen</h5>
-
-    <h5>@Model.HoursOfOperation.ThursdayClose</h5>
+<h5>@Model.HoursOfOperation.ThursdayClose</h5>
 
 
-    <h5>@Model.HoursOfOperation.FridayOpen</h5>
+<h5>@Model.HoursOfOperation.FridayOpen</h5>
 
-    <h5>@Model.HoursOfOperation.FridayClose</h5>
+<h5>@Model.HoursOfOperation.FridayClose</h5>
 
-    <h5>@Model.HoursOfOperation.SaturdayOpen</h5>
+<h5>@Model.HoursOfOperation.SaturdayOpen</h5>
 
-    <h5>@Model.HoursOfOperation.SaturdayClose</h5>
+<h5>@Model.HoursOfOperation.SaturdayClose</h5>
 
 
-    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
-</div>
+<button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
