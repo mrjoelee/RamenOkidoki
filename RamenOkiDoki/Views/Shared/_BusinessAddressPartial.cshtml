@@ -1,16 +1,20 @@
 ﻿@model Data.ViewModels.DashboardViewModel
 <div>
-    @*<h5>@Model.BusinessAddress.Phone</h5>
 
-    <h5>@Model.BusinessAddress.BusinessName</h5>
+    <h5>@Model.BusinessLocation.BusinessName</h5>
 
-    <h5>@Model.BusinessAddress.Email></h5>
+    <h5>@Model.BusinessLocation.PhoneNumber</h5>
 
-    <h5>@Model.BusinessAddress.Address></h5>
+    <h5>@( $"{@Model.BusinessLocation.PhoneNumber: (000) 000-0000}" )</h5>
 
-    <h5>@Model.BusinessAddress.Website></h5>
 
-    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>*@
-    <<p>Test</p>
+    <h5>@Model.BusinessLocation.StreetAddress</h5>
+
+    <h5>@Model.BusinessLocation.City, @Model.BusinessLocation.State @Model.BusinessLocation.Zipcode</h5>
+
+
+    <h5>@Model.BusinessLocation.Email</h5>
+
+    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
 
 </div>
