@@ -166,6 +166,14 @@ body {
         background-color: red;
     }
 
+.dine-in-menuitems-list {
+    flex: 50%;
+    background-color:linen;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
 .menuItem {
     font-size: 16px;
     font-weight: bold;
