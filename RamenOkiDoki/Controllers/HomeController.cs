@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
+using Data.ViewModels;
 using Microsoft.CodeAnalysis.CSharp;
 using RamenOkiDoki.Helpers;
 
@@ -24,7 +25,8 @@ namespace RamenOkiDoki.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            return View(dashboardViewModel);
         }
 
         [Route("about")]

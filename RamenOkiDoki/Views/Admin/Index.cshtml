@@ -47,7 +47,9 @@
                 }
                 else
                 {
+                    <h4><u>Location Info:</u></h4>
                     @await Html.PartialAsync("_BusinessAddressPartial")
+                    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
                 }
 
                 <div style="margin-top:50px">
@@ -58,7 +60,9 @@
                     }
                     else
                     {
+                        <h4><u>Hours:</u></h4>
                         @await Html.PartialAsync("_HoursOfOperationPartial ")
+                        <button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
                     }
 
                 </div>

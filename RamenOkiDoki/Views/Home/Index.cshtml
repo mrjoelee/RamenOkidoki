@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Data.ViewModels.DashboardViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -22,9 +23,10 @@
 
     <div style="display: inline; float: right; margin-right: 100px">
         <h3>Our Hours</h3>
+        @await Html.PartialAsync("_HoursOfOperationPartial ")
     </div>
 </div>
-<div class="google-map-div" >
+<div class="google-map-div">
 
     @await Component.InvokeAsync("GoogleMap")
 
