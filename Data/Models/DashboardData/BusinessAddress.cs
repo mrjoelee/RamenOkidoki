@@ -16,20 +16,7 @@ namespace Data.Models.DashboardData
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public SocialPlatforms Social { get; set; }
-
-
-        private string phoneFormattedNumber;
-
-        public string PhoneFormattedNumber
-        {
-            get
-            {
-                return $"{PhoneNumber:(000) 000-0000}";
-
-                //  set { phoneFormattedNumber = value; }
-
-            }
-        }
+        
         
     }
 

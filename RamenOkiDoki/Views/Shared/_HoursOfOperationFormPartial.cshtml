@@ -5,22 +5,12 @@
     <div class="form-group">
         <label asp-for="HoursOfOperation.SundayOpen"></label>
         <input type="text" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessAddress.BusinessName"></label>
+    </div>  
+    <div style="display:inline-block"><p> To </p></div>
+    <div class="form-group" style="display:inline-block">
+        <label asp-for="HoursOfOperation.SundayClose"></label>
         <input type="text" />
     </div>
-    <div class="form-group">
-        <label asp-for="BusinessAddress.Email"></label>
-        <input type="text" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessAddress.Address"></label>
-        <input type="text" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessAddress.Website"></label>
 
-    </div>
     <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
 </form>
