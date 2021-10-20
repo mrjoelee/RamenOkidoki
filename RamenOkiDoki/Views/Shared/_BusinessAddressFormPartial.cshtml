@@ -2,23 +2,31 @@
 
 <form method="post">
     <div class="form-group">
-        <label asp-for="BusinessAddress.Phone"></label>
+        <label asp-for="BusinessLocation.PhoneNumber"></label>
         <input type="text" />
     </div>
     <div class="form-group">
-        <label asp-for="BusinessAddress.BusinessName"></label>
+        <label asp-for="BusinessLocation.BusinessName"></label>
         <input type="text" />
     </div>
     <div class="form-group">
-        <label asp-for="BusinessAddress.Email"></label>
+        <label asp-for="BusinessLocation.Email"></label>
         <input type="text" />
     </div>
     <div class="form-group">
-        <label asp-for="BusinessAddress.Address"></label>
+        <label asp-for="BusinessLocation.StreetAddress"></label>
         <input type="text" />
-    </div>
+    </div> 
     <div class="form-group">
-        <label asp-for="BusinessAddress.Website"></label>
+        <label asp-for="BusinessLocation.City"></label>
+        <input type="text" />
+    </div>  
+    <div class="form-group">
+        <label asp-for="BusinessLocation.State"></label>
+        <input type="text" />
+    </div> 
+    <div class="form-group">
+        <label asp-for="BusinessLocation.Zipcode"></label>
         <input type="text" />
     </div>
     <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>

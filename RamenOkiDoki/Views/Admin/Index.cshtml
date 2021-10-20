@@ -49,20 +49,19 @@
                 {
                     <h4><u>Location Info:</u></h4>
                     @await Html.PartialAsync("_BusinessAddressPartial")
-                    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
+                    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("OpenAddressForm")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
                 }
 
                 <div style="margin-top:50px">
 
                     @if (@Globals.DisplayHoursForm)
                     {
-                        @await Html.PartialAsync("_HoursOfOperationFormPartial")
                     }
                     else
                     {
                         <h4><u>Hours:</u></h4>
                         @await Html.PartialAsync("_HoursOfOperationPartial ")
-                        <button value="DashBoard" type="submit" onclick="location.href='@Url.Action(" DashBoard")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
+                        <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("OpenHourOfOperationForm")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
                     }
 
                 </div>

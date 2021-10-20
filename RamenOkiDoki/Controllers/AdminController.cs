@@ -174,6 +174,43 @@ namespace RamenOkiDoki.Controllers
         {
             return View("Index");
         }
+
+        public IActionResult OpenAddressForm()
+        {
+            Globals.DisplayAddressForm = true;
+            
+            return Redirect("Index");
+        }
+
+        public IActionResult CloseAddressForm()
+        {
+            Globals.DisplayAddressForm = false;
+
+            // TODO: Save data
+
+
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            return RedirectToAction("Index", dashboardViewModel);
+        }
+
+        public IActionResult OpenHourOfOperationForm()
+        {
+            Globals.DisplayHoursForm = true;
+            
+            return Redirect("Index");
+        }
+
+        public IActionResult CloseHourOfOperationForm()
+        {
+            Globals.DisplayHoursForm = false;
+
+            // TODO: Save data
+
+
+
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            return RedirectToAction("Index", dashboardViewModel);
+        }
     }
 }
 
