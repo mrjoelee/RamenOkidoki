@@ -132,8 +132,9 @@ body {
 
 .categoryName {
     color: darkred;
-    font-size: 18px;
-    margin-top: 30px;
+    font-size: 24px;
+    margin-top: 50px;
+    text-align: center;
 }
 
 
@@ -167,11 +168,15 @@ body {
     }
 
 .dine-in-menuitems-list {
-    flex: 50%;
-    background-color:linen;
-    padding: 20px;
+    -webkit-columns: 40px 2;
+    /* Chrome, Safari, Opera */
+    -moz-columns: 60px 2;
+    /* Firefox */
+    columns: 60px 2;
+    background-color: linen;
+    padding: 5px;
     margin: 10px;
-    border-radius: 10px;
+ /*   border-radius: 10px;*/
 }
 
 .menuItem {

@@ -8,7 +8,7 @@
     <div class="text-center">
         <h1 class="display-4">Menu</h1>
     </div>
-    <div style="margin-left:200px">
+    <div style="margin: 0 auto; width:75% !important">
 
         @{
             if (Model.FoodCategoriesList == null)
@@ -27,31 +27,32 @@
 
                     if (foodCategory.FoodItems != null)
                     {
-                        <div class="dine-in-menuitems-list">
+                        <h2 class="categoryName">@foodCategory.Category</h2>
+                    <div class="dine-in-menuitems-list">
 
-                            @foreach (var menuItem in foodCategory.FoodItems)
+                        @foreach (var menuItem in foodCategory.FoodItems)
+                        {
+
+                            @*if (menuItem.foodCategory != tempFoodCategory)
                             {
+                                <h2 class="categoryName">@menuItem.foodCategory</h2>
 
-                                if (menuItem.foodCategory != tempFoodCategory)
-                                {
-                                    <h2 class="categoryName">@menuItem.foodCategory</h2>
-
-                                    tempFoodCategory = menuItem.foodCategory;
-                                }
-
+                                tempFoodCategory = menuItem.foodCategory;
+                            }*@
+                            <div style="display:block">
                                 <p>
                                     <span class="menuItem">@menuItem.dishName </span>
                                     <span class="menuItem">@menuItem.koreanName </span>
                                     <span class="menuPrice">$ @menuItem.price</span>
                                 </p>
                                 <p class="menuDescription">@menuItem.description</p>
+                            </div>
+                        }
 
-                            }
-
-                        </div>
-                    }
+                    </div>
                 }
             }
+        }
 
         }
 

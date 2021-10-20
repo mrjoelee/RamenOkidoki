@@ -23,10 +23,10 @@ namespace Data.Models.FoodMenus
             public List<FoodItem> FoodItems { get; set; }
         }
 
-        public class Root
-        {
-            public List<FoodCategory> FoodCategories { get; set; }
-        }
+        //public class Root
+        //{
+        //    public List<FoodCategory> FoodCategories { get; set; }
+        //}
 
     }
 }
