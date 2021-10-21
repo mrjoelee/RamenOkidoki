@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+
+using Data.Models;
 using Data.ViewModels;
 
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +13,7 @@ namespace RamenOkiDoki.ViewComponents
 {
     public class PhotoCarouselViewComponent : ViewComponent
     {
+        public System.Threading.Timer Timer;
         public PhotosViewModel photosViewModel;
 
         public PhotoCarouselViewComponent()
@@ -20,27 +23,21 @@ namespace RamenOkiDoki.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-          //  photosViewModel.CurrentCarouselImage = new string("/images/GalleryImages/Spicy_Miso.jpg");
+            //  photosViewModel.CurrentCarouselImage = new string("/images/GalleryImages/Spicy_Miso.jpg");
 
-            StartCarouselShow();
 
-            return View("PhotoCarousel", photosViewModel);
-        }
-
-        private void StartCarouselShow()
-        {
-            System.Timers.Timer(3000) =>
+            foreach (var carouselImage in photosViewModel.CarouselImages)
             {
-                Task.Factory.StartNew(() =>
-                {
-                    foreach (var carouselImage in photosViewModel.CarouselImages)
-                    {
-                        photosViewModel = new PhotosViewModel(carouselImage.ImageName, carouselImage.ImagePath);
-                    }
-                });
+                photosViewModel.CurrentCarouselImage = new CarouselImage(carouselImage.ImageName, carouselImage.ImagePath);
+
+                await Task.Delay(TimeSpan.FromSeconds(3));
 
                 return View("PhotoCarousel", photosViewModel);
-            });
+            }
+
+                return View("PhotoCarousel", photosViewModel);
         }
+
+
     }
 }
