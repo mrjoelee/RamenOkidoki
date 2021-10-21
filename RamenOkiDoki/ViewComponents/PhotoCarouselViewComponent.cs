@@ -17,6 +17,7 @@ namespace RamenOkiDoki.ViewComponents
         { 
             PhotosViewModel photosViewModel = new PhotosViewModel();
 
+            photosViewModel.Image = new string("/images/GalleryImages/Spicy_Miso.jpg");
 
             return View("PhotoCarousel", photosViewModel);
         }
