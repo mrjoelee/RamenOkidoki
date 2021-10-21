@@ -12,9 +12,13 @@ namespace Data.ViewModels
     {
         public List<CarouselImage> CarouselImages { get; set; }
 
+        public CarouselImage CurrentCarouselImage;
+
         public PhotosViewModel()
         {
-          //  Image = new string("/images/GalleryImages/Ru_okidoki.jpg");
+            //  Image = new string("/images/GalleryImages/Ru_okidoki.jpg");
+
+          CurrentCarouselImage = new CarouselImage();
 
           CarouselImages = new List<CarouselImage>()
           {
