@@ -1,4 +1,7 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using System.ComponentModel.Design
+@using System.Net.Mime
+@model Data.ViewModels.PhotosViewModel
+
+
+
+<Image src="@Url.Content(@Model.Image)" height="400" width="500" />

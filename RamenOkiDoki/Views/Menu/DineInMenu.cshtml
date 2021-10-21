@@ -6,61 +6,63 @@
 <div class="non-sidebar-page">
 
     <div class="text-center">
-        <h1 class="display-4">Menu</h1>
+        <h1 class="page-titles">Menu</h1>
     </div>
-    <div style="margin: 0 auto; width:75% !important">
+    <div>
+        <div style="display: inline-block;float:left">
 
-        @{
-            if (Model.FoodCategoriesList == null)
-            {
-                return;
-            }
-
-            FoodCategory categoryName = new FoodCategory("");
-
-            foreach (var foodCategory in Model.FoodCategoriesList)
-            {
-                string tempFoodCategory = "";
-
-                if (foodCategory.FoodItems != null && foodCategory.FoodItems.Count > 0)
+            @{
+                if (Model.FoodCategoriesList == null)
                 {
+                    return;
+                }
 
-                    if (foodCategory.FoodItems != null)
+                FoodCategory categoryName = new FoodCategory("");
+
+                foreach (var foodCategory in Model.FoodCategoriesList)
+                {
+                    string tempFoodCategory = "";
+
+                    if (foodCategory.FoodItems != null && foodCategory.FoodItems.Count > 0)
                     {
-                        <h2 class="categoryName">@foodCategory.Category</h2>
-                    <div class="dine-in-menuitems-list">
 
-                        @foreach (var menuItem in foodCategory.FoodItems)
+                        if (foodCategory.FoodItems != null)
                         {
+                            <h2 class="categoryName">@foodCategory.Category</h2>
+                            <div class="dine-in-menuitems-list">
 
-                            @*if (menuItem.foodCategory != tempFoodCategory)
-                            {
-                                <h2 class="categoryName">@menuItem.foodCategory</h2>
+                                @foreach (var menuItem in foodCategory.FoodItems)
+                                {
 
-                                tempFoodCategory = menuItem.foodCategory;
-                            }*@
-                            <div style="display:block">
-                                <p>
-                                    <span class="menuItem">@menuItem.dishName </span>
-                                    <span class="menuItem">@menuItem.koreanName </span>
-                                    <span class="menuPrice">$ @menuItem.price</span>
-                                </p>
-                                <p class="menuDescription">@menuItem.description</p>
+                                    @*if (menuItem.foodCategory != tempFoodCategory)
+                                        {
+                                            <h2 class="categoryName">@menuItem.foodCategory</h2>
+
+                                            tempFoodCategory = menuItem.foodCategory;
+                                        }*@
+                                    <div style="display:block">
+                                        <p>
+                                            <span class="menuItem">@menuItem.dishName </span>
+                                            <span class="menuItem">@menuItem.koreanName </span>
+                                            <span class="menuPrice">$ @menuItem.price</span>
+                                        </p>
+                                        <p class="menuDescription">@menuItem.description</p>
+                                    </div>
+                                }
+
                             </div>
                         }
-
-                    </div>
+                    }
                 }
+
             }
-        }
 
-        }
+        </div>
 
-    </div>  
-    
-    <div class="food-order-cart" style="float: right;display:inline-block">
+        <div style="float: right; display: inline-block;margin-top: 100px">
 
-        @await Component.InvokeAsync("PhotoCarousel")
+            @await Component.InvokeAsync("PhotoCarousel")
 
+        </div>
     </div>
 </div>
