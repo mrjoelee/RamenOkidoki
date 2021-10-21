@@ -26,14 +26,14 @@ namespace RamenOkiDoki.ViewComponents
             //  photosViewModel.CurrentCarouselImage = new string("/images/GalleryImages/Spicy_Miso.jpg");
 
 
-            foreach (var carouselImage in photosViewModel.CarouselImages)
-            {
-                photosViewModel.CurrentCarouselImage = new CarouselImage(carouselImage.ImageName, carouselImage.ImagePath);
+            //foreach (var carouselImage in photosViewModel.CarouselImages)
+            //{
+            //    photosViewModel.CurrentCarouselImage = new CarouselImage(carouselImage.ImageName, carouselImage.ImagePath);
 
-                await Task.Delay(TimeSpan.FromSeconds(3));
+            //    await Task.Delay(TimeSpan.FromSeconds(3));
 
-                return View("PhotoCarousel", photosViewModel);
-            }
+            //    return View("PhotoCarousel", photosViewModel);
+            //}
 
                 return View("PhotoCarousel", photosViewModel);
         }
