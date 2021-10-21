@@ -20,9 +20,7 @@ namespace RamenOkiDoki.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-
-
-            photosViewModel.Image = new string("/images/GalleryImages/Spicy_Miso.jpg");
+          //  photosViewModel.CurrentCarouselImage = new string("/images/GalleryImages/Spicy_Miso.jpg");
 
             StartCarouselShow();
 
@@ -31,12 +29,11 @@ namespace RamenOkiDoki.ViewComponents
 
         private void StartCarouselShow()
         {
-
             Device.StartTimer(TimeSpan.FromSeconds(3), () =>
             {
                 Device.InvokeOnMainThreadAsync(() =>
                 {
-                    foreach (var carouselImage in CarouselImages)
+                    foreach (var carouselImage in photosViewModel.CarouselImages)
                     {
                         photosViewModel = new PhotosViewModel(carouselImage.ImageName, carouselImage.ImagePath);
                     }
