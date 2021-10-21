@@ -13,7 +13,7 @@ namespace Data.ViewModels
 
         public PhotosViewModel()
         {
-            Image = new string("/Images/background.JPG");
+            Image = new string("/images/GalleryImages/Ru_okidoki.jpg");
         }
     }
 }
