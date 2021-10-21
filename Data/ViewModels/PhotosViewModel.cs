@@ -18,8 +18,17 @@ namespace Data.ViewModels
 
           CarouselImages = new List<CarouselImage>()
           {
-              new CarouselImage(),
-
+              new CarouselImage("Ru Okidoki Ramen", "/images/GalleryImages/Ru_okidoki.jpg"),
+              new CarouselImage("Mentaiko Udon", "/images/GalleryImages/MentaikoUdon.jpg"),
+              new CarouselImage("Okidoki X Lim's Chicken", "/images/GalleryImages/okidoki_x_lims chicken.jpg"),
+              new CarouselImage("Onigiri", "/images/GalleryImages/Onigiri.jpg"),
+              new CarouselImage("Pork Bun", "/images/GalleryImages/Pork_Bun.jpg"),
+              new CarouselImage("Shoyu Ramen", "/images/GalleryImages/Shoyu_Ramen.jpg"),
+              new CarouselImage("Spicy Hiyashi", "/images/GalleryImages/spicy_hiyashi.jpg"),
+              new CarouselImage("Spicy Miso", "/images/GalleryImages/Spicy_Miso.jpg"),
+              new CarouselImage("Spicy Tonkotsu", "/images/GalleryImages/Spicy_Tonkotsu.jpg"),
+              new CarouselImage("Takoyaki", "/images/GalleryImages/Takoyaki.jpg"),
+              new CarouselImage("Tonkotsu Ramen", "/images/GalleryImages/Tonkotsu_Ramen.jpg")
           };
         }
     }
