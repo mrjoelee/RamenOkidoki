@@ -36,46 +36,51 @@ namespace RamenOkiDoki.Controllers
         }
 
 
-        private async Task<FoodItemsViewModel> MakeMenu()
+
+
+        //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
+        public async Task<IActionResult> FoodMenuEdit()
         {
             Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+
+            foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
 
             if (Globals.FoodCategoriesList != null)
             {
                 foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;
             }
 
-            return foodItemsViewModel;
-        }
-
-
-        //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
-        public async Task<IActionResult> FoodMenuEdit()
-        {
-            var foodItemsViewModel = await MakeMenu();
-
-            foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
-
-            Globals.FoodCategoriesList = new List<FoodMenu.FoodCategory>();
-
-            foreach (var categories in Globals.FoodCategoriesList)
+            if (Globals.FoodCategoriesList != null && Globals.FoodCategoriesList.Count > 0)
             {
-                if (categories != null && categories.FoodItems.Count > 0)
-                {
 
-                    foreach (var fooditems in categories.FoodItems)
+                foreach (var categories in Globals.FoodCategoriesList)
+                {
+                    if (categories != null && categories.FoodItems.Count > 0)
                     {
-                        if (fooditems != null)
+
+                        foreach (var fooditems in categories.FoodItems)
                         {
-                            foodItemsViewModel.FoodItems.Add(fooditems);
+                            if (fooditems != null)
+                            {
+                              //  fooditems.foodCategory = categories.Category;
+                                foodItemsViewModel.FoodItems.Add(fooditems);
+
+                            }
                         }
                     }
                 }
+
             }
 
-            return View(foodItemsViewModel);
+            if (foodItemsViewModel != null)
+            {
+                return View(foodItemsViewModel);
+            }
+
+
+            return View();
         }
 
 
@@ -96,8 +101,6 @@ namespace RamenOkiDoki.Controllers
                 {
                     if (category.FoodItems != null && category.FoodItems.Count > 0)
                     {
-
-
                         foreach (var item in category.FoodItems)
                         {
                             if (item != null)
@@ -106,6 +109,8 @@ namespace RamenOkiDoki.Controllers
 
                                 if (itemId == index)
                                 {
+                                    item.foodCategory = category.Category;
+                                    item.foodCategoryId = category.id;
                                     return View(item);
                                 }
                             }
@@ -120,7 +125,16 @@ namespace RamenOkiDoki.Controllers
         #region saving new item
         public async Task<IActionResult> PutMenuItem(FoodMenu.FoodItem item)
         {
+            foreach (var category in Globals.FoodCategoriesList)
+            {
+                if (category.Category == item.foodCategory)
+                {
+                    item.foodCategoryId = category.id;
+                }
+            }
+
             await _menuEndpointService.AddMenuItemToCloud(item);
+
             return Redirect("FoodMenuEdit");
         }
         #endregion
@@ -178,7 +192,7 @@ namespace RamenOkiDoki.Controllers
         public IActionResult OpenAddressForm()
         {
             Globals.DisplayAddressForm = true;
-            
+
             return Redirect("Index");
         }
 
@@ -196,7 +210,7 @@ namespace RamenOkiDoki.Controllers
         public IActionResult OpenHourOfOperationForm()
         {
             Globals.DisplayHoursForm = true;
-            
+
             return Redirect("Index");
         }
 

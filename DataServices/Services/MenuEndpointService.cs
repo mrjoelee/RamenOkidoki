@@ -60,6 +60,24 @@ namespace DataServices.Services
 
                  response = JsonConvert.DeserializeObject<List<FoodMenu.FoodCategory>>(json);
 
+                 if (response == null)
+                 {
+                     return null;
+                 }
+
+                 foreach (var category in response)
+                 {
+                     foreach (var foodItem in category.FoodItems)
+                     {
+                         if (foodItem.foodCategoryId == category.id)
+                         {
+                             foodItem.foodCategory = category.Category;
+                         }
+                     }
+                 }
+
+
+
               //   = new List<FoodMenu.FoodCategory>(result.FoodCategories);
 
                 //  response = JsonSerializer.Deserialize<List<FoodMenu.FoodCategory>>(json);
