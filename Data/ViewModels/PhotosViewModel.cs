@@ -18,7 +18,7 @@ namespace Data.ViewModels
         {
             //  Image = new string("/images/GalleryImages/Ru_okidoki.jpg");
 
-          CurrentCarouselImage = new CarouselImage();
+          CurrentCarouselImage = new CarouselImage(string.Empty, string.Empty);
 
           CarouselImages = new List<CarouselImage>()
           {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Timers;
 using Data.ViewModels;
 
 using Microsoft.AspNetCore.Mvc;
@@ -29,9 +29,9 @@ namespace RamenOkiDoki.ViewComponents
 
         private void StartCarouselShow()
         {
-            Device.StartTimer(TimeSpan.FromSeconds(3), () =>
+            System.Timers.Timer(3000) =>
             {
-                Device.InvokeOnMainThreadAsync(() =>
+                Task.Factory.StartNew(() =>
                 {
                     foreach (var carouselImage in photosViewModel.CarouselImages)
                     {
