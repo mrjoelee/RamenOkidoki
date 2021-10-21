@@ -10,5 +10,11 @@ namespace Data.Models
     {
         public string ImageName { get; set; }
         public string ImagePath { get; set; }
+
+        public CarouselImage(string imageName, string imagePath)
+        {
+            ImageName = imageName;
+            ImagePath = imagePath;
+        }
     }
 }
