@@ -144,7 +144,7 @@ namespace RamenOkiDoki.Controllers
            // return RedirectToAction("TakeOutMenu", "Menu", new { category = itemCategoryId });
          
             return RedirectToAction("TakeOutMenu", new RouteValueDictionary(
-                new { controller = "Menu", action = "TakeOutMenu", category = requestedItem.foodCategoryId }));
+                new { controller = "Menu", action = "TakeOutMenu", category = requestedItem.foodCategory }));
 
         }
 
