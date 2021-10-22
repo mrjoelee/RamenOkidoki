@@ -90,30 +90,32 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemIdToAdd, out requestedItemId);
 
-                //foreach (var foodCategory in Globals.FoodCategoriesList)
-                //{
-                //    foreach (var foodItem in foodCategory.FoodItems)
-                //    {
-                //        int.TryParse(foodItem.id, out foodItemId);
+                foreach (var foodCategory in Globals.FoodCategoriesList)
+                {
+                    foreach (var foodItem in foodCategory.FoodItems)
+                    {
+                        int.TryParse(foodItem.id, out foodItemId);
 
-                //        if (foodItemId == requestedItemId)
-                //        {
-                //            requestedItem = new OrderItem(
-                //                foodItem.id,
-                //                foodItem.dishName,
-                //                foodItem.koreanName,
-                //                foodItem.description,
-                //                foodItem.price,
-                //                foodItem.categoryname,
-                //                    1
-                //                );
-                //        }
-                //    }
+                        if (foodItemId == requestedItemId)
+                        {
+                            requestedItem = new OrderItem(
+                                foodItem.id,
+                                foodItem.dishName,
+                                foodItem.koreanName,
+                                foodItem.description,
+                                foodItem.price,
+                                foodItem.foodCategory,
+                                    1
+                                );
 
-                //}
+                            break;
+                        }
+                    }
+
+                }
 
 
-                Globals.CurrentCategory = requestedItem.categoryName;
+     //           Globals.CurrentCategory = requestedItem.categoryName;
 
 
                 FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
