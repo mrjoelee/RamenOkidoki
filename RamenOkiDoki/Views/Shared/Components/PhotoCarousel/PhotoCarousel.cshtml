@@ -1,16 +1,9 @@
 ﻿@using System.ComponentModel.Design
 @using System.Net.Mime
 @model Data.ViewModels.PhotosViewModel
-
-@foreach (var carouselImage in @Model.CarouselImages)
-{
-
-    await Task.Delay(TimeSpan.FromSeconds(3));
+@*@model Data.Models.CarouselImage*@
 
 
-    <Image src="@Url.Content(@carouselImage.ImagePath)" height="400" width="500" />
-    <p>@carouselImage.ImageName</p>
-
-}
-
+<Image src="@Url.Content(@Model.CurrentCarouselImage.ImagePath)" height="400" width="500" />
+<p>@Model.CurrentCarouselImage.ImageName</p>
 
