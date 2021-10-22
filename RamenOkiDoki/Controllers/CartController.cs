@@ -7,6 +7,7 @@ using Data.Models;
 using Data.Models.FoodMenus;
 using Data.ViewModels;
 using DataServices.Services;
+using Microsoft.AspNetCore.Routing;
 
 namespace RamenOkiDoki.Controllers
 {
@@ -87,7 +88,7 @@ namespace RamenOkiDoki.Controllers
             if (!string.IsNullOrWhiteSpace(itemIdToAdd))
             {
                 int foodItemId, requestedItemId;
-
+                
                 int.TryParse(itemIdToAdd, out requestedItemId);
 
                 foreach (var foodCategory in Globals.FoodCategoriesList)
@@ -98,6 +99,8 @@ namespace RamenOkiDoki.Controllers
 
                         if (foodItemId == requestedItemId)
                         {
+                          
+
                             requestedItem = new OrderItem(
                                 foodItem.id,
                                 foodItem.dishName,
@@ -105,6 +108,7 @@ namespace RamenOkiDoki.Controllers
                                 foodItem.description,
                                 foodItem.price,
                                 foodItem.foodCategory,
+                                foodItem.foodCategoryId, 
                                     1
                                 );
 
@@ -115,7 +119,7 @@ namespace RamenOkiDoki.Controllers
                 }
 
 
-     //           Globals.CurrentCategory = requestedItem.categoryName;
+                //           Globals.CurrentCategory = requestedItem.categoryName;
 
 
                 FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
@@ -137,7 +141,10 @@ namespace RamenOkiDoki.Controllers
 
             //  return ViewComponent("TakeOutMenu", "Menu");
 
-            return RedirectToAction("TakeOutMenu", "Menu");
+           // return RedirectToAction("TakeOutMenu", "Menu", new { category = itemCategoryId });
+         
+            return RedirectToAction("TakeOutMenu", new RouteValueDictionary(
+                new { controller = "Menu", action = "TakeOutMenu", category = requestedItem.foodCategoryId }));
 
         }
 
