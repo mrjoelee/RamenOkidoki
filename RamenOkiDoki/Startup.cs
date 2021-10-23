@@ -26,7 +26,7 @@ namespace RamenOkiDoki
             Globals.FoodCategoriesList = new List<FoodMenu.FoodCategory>();
             Globals.FoodItemsList = new List<FoodMenu.FoodItem>();
             Globals.FoodCategory = new FoodMenu.FoodCategory();
-            Globals.OrderTotalCost = 0.00;
+            Globals.OrderSubTotalCost = 0.00;
             Env = env;
         }
 

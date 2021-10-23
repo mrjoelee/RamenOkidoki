@@ -134,9 +134,9 @@ namespace RamenOkiDoki.Controllers
 
                 double.TryParse(requestedItem.price, out tempPrice);
 
-                Globals.OrderTotalCost += tempPrice;
+                Globals.OrderSubTotalCost += tempPrice;
 
-                //foodItemsViewModel.OrderTotalCost = Globals.OrderTotalCost; 
+                //foodItemsViewModel.OrderSubTotalCost = Globals.OrderSubTotalCost; 
             }
 
             //  return ViewComponent("TakeOutMenu", "Menu");
@@ -172,7 +172,7 @@ namespace RamenOkiDoki.Controllers
 
                         double.TryParse(item.price, out tempPrice);
 
-                        Globals.OrderTotalCost -= tempPrice;
+                        Globals.OrderSubTotalCost -= tempPrice;
 
                         break;
                     }
@@ -188,7 +188,17 @@ namespace RamenOkiDoki.Controllers
         {
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            foodItemsViewModel.OrderedItems  = new List<OrderItem>(Globals.CartItemsList);
+   
+            foodItemsViewModel.OrderedItems = Globals.CartItemsList;
+
+            foodItemsViewModel.OrderSubTotalCost = string.Format("{0:C}", Globals.OrderSubTotalCost);
+
+            foodItemsViewModel.OrderTotalSalesTax = string.Format("{0:C}", Globals.TotalSalesTax);
+
+            foodItemsViewModel.OrderTotalCost = string.Format("{0:C}", Globals.OrderTotalCost);
+
+
+
             return View(foodItemsViewModel);
         }
 

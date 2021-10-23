@@ -11,7 +11,9 @@ namespace Data.ViewModels
         public List<FoodMenu.FoodItem> FoodItems { get; set; }
         public List<OrderItem> OrderedItems { get; set; }
         public List<string> FoodCategories { get; set; }
+        public string OrderSubTotalCost { get; set; }
         public string OrderTotalCost { get; set; }
+        public string OrderTotalSalesTax { get; set; }
 
         public List<FoodMenu.FoodCategory> FoodCategoriesList { get; set; }
 

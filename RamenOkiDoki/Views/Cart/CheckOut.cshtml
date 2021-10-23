@@ -5,8 +5,8 @@
 
 <h1 class="page-titles">CheckOut</h1>
 
-<div style="text-align: center;">
-    <h3 style="text-align: center;color:darkred;">Your Order</h3>
+<div class ="col d-flex justify-content-center" >
+
     <table class="order-item-table">
         <tr><th>Quantity</th><th></th><th>Item</th><th>Price</th></tr>
         @foreach (var menuItem in Model.OrderedItems)
@@ -20,6 +20,8 @@
             </tr>
         }
 
-        <tr><td /><td /><td>Sub Total</td><td style="font-weight: bolder">@Model.OrderTotalCost</td></tr>
+        <tr><td /><td /><td>Sub Total</td><td style="font-weight: bolder">@Model.OrderSubTotalCost</td></tr>
+        <tr><td /><td /><td>Sales Tax</td><td style="font-weight: bolder">@Model.OrderTotalSalesTax</td></tr>
+        <tr><td /><td /><td style="font-weight: bolder;font-size:2em">Order Total</tdstyle="font-weight:><td style="font-weight: bolder;font-size:2em">@Model.OrderTotalCost</td></tr>
     </table>
 </div>

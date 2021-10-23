@@ -24,7 +24,7 @@ namespace RamenOkiDoki.ViewComponents
 
             foodItemsViewModel.OrderedItems = Globals.CartItemsList;
 
-            foodItemsViewModel.OrderTotalCost = string.Format("{0:C}",Globals.OrderTotalCost);
+            foodItemsViewModel.OrderSubTotalCost = string.Format("{0:C}",Globals.OrderSubTotalCost);
             
             return View("FoodOrderCart", foodItemsViewModel);
         }

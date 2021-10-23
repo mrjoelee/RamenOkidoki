@@ -6,5 +6,8 @@
         public const string MenuGetUrl = "https://api.sitesculptors.com/RamenOkidoki/getfoodmenudb";
         public const string MenuPostUrl = "https://api.sitesculptors.com/RamenOkidoki/postfoodmenudb";
         public const string MenuDeleteUrl = "https://api.sitesculptors.com/RamenOkidoki/deletefoodmenuitemdb";
+
+        public const double SalesTax = 0.0625;
+
     }
 }

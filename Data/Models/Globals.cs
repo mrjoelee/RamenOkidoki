@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using Data.Models.FoodMenus;
 
 namespace Data.Models
@@ -15,15 +16,31 @@ namespace Data.Models
 
         public static string CurrentCategory { get; set; }
 
-        public static double OrderTotalCost { get; set; }
-        
+        public static double OrderSubTotalCost { get; set; }
+        public static double OrderTotalCost
+        {
+            get
+            {
+                return OrderSubTotalCost + TotalSalesTax;
+            }
+        }
+
+        public static double TotalSalesTax
+        {
+            get
+            {
+                return OrderSubTotalCost * SalesTax;
+            }
+        }
+
+        public static double SalesTax = 0.0625;
         public static List<FoodMenu.FoodCategory> FoodCategoriesList { get; set; }
 
         public static List<FoodMenu.FoodItem> FoodItemsList { get; set; }
 
         public static FoodMenu.FoodCategory FoodCategory { get; set; }
         public static List<OrderItem> CartItemsList { get; set; }
-        
+
 
 
         public Globals()
