@@ -33,6 +33,8 @@ namespace RamenOkiDoki
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+        //this is the usage of Dependency Injection
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<MenuEndpointService>();
@@ -46,6 +48,7 @@ namespace RamenOkiDoki
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -59,15 +62,16 @@ namespace RamenOkiDoki
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            //MiddleWare - influence how the whole response for the request from browser will be.
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-
+            //process through which the applicaiton matches the requested URL path and executes the related Controller and Aciton.
             app.UseRouting();
 
             app.UseAuthorization();
 
-
+            //endpoints can be MVC, Razor Pages and SignalR
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
