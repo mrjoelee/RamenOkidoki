@@ -1,4 +1,5 @@
 ﻿@using System.ComponentModel.Design
+@using Microsoft.AspNetCore.Routing
 @model Data.ViewModels.FoodItemsViewModel
 
 <div>
@@ -6,29 +7,40 @@
     @{
         if (Model.OrderedItems == null || Model.OrderedItems.Count < 1)
         {
-            <h2 style="text-align: center; color:darkred">No items in your order</h2>
+            <h3 style="text-align: center; color:darkred">No items in your order</h3>
             return;
         }
-
-        <h5 style="text-align: center;color:darkred;">Your Order</h5>
         <div>
-            <table class="order-item-table" >
-                <tr><th>Quantity</th><th></th><th>Item</th><th>Price</th></tr>
-                @foreach (var menuItem in Model.OrderedItems)
+
+            <div style="display: inline-block; float: left">
+                <h3 style="text-align: center;color:darkred;">Your Order</h3>
+                <table class="order-item-table">
+                    <tr><th>Quantity</th><th></th><th>Item</th><th>Price</th></tr>
+                    @foreach (var menuItem in Model.OrderedItems)
+                    {
+                        <tr style="border-bottom: 1px solid lightgray;padding:2px">
+                            <td class="order-item" style="text-align: center">@menuItem.quantity </td>
+                            <td class="order-item">@menuItem.koreanName </td>
+                            <td class="order-item">@menuItem.dishName </td>
+                            <td class="order-item" style="text-align:right">$ @menuItem.price</td>
+                            <td><a asp-area="" asp-controller="Cart" asp-action="DeleteFromCart" asp-route-itemIdToDelete="@menuItem.id"><i class="fas fa-trash" style="font-size:12px"></i></a></td>
+                        </tr>
+                    }
+
+                    <tr><td /><td /><td>Sub Total</td><td style="font-weight: bolder">@Model.OrderTotalCost</td></tr>
+                </table>
+            </div>
+            <div style="display: inline-block; float: right; margin-left: 30px;">
+                @if (Model.OrderedItems != null && Model.OrderedItems.Count > 0)
                 {
-                    <tr style="border-bottom: 1px solid lightgray;padding:2px">
-                        <td class="order-item" style="text-align: center">@menuItem.quantity </td>
-                        <td class="order-item">@menuItem.koreanName </td>
-                        <td class="order-item">@menuItem.dishName </td>
-                        <td class="order-item" style="text-align:right">$ @menuItem.price</td>
-                        <td><a asp-area="" asp-controller="Cart" asp-action="DeleteFromCart" asp-route-itemIdToDelete="@menuItem.id"><i class="fas fa-trash" style="font-size:12px"></i></a></td>
-                    </tr>
-                 }
-             
-                <tr><td /><td /><td>Sub Total</td><td style="font-weight: bolder">@Model.OrderTotalCost</td></tr>
-            </table>
+                   <a href='@Url.Action("CheckOut", "Cart")' >
+                       <button style="text-align: center; background-color:red; color: white; font-weight: bold; border-radius: 8px; padding: 5px;">Submit Order</button>
+                    </a>
+                }
+
+            </div>
         </div>
     }
 
 </div>
-  
+

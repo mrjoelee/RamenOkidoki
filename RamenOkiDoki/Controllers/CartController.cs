@@ -183,5 +183,14 @@ namespace RamenOkiDoki.Controllers
             return RedirectToAction("TakeOutMenu", "Menu");
 
         }
+
+        public IActionResult CheckOut()
+        {
+            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+
+            foodItemsViewModel.OrderedItems  = new List<OrderItem>(Globals.CartItemsList);
+            return View(foodItemsViewModel);
+        }
+
     }
 }
