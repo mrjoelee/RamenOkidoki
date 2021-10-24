@@ -194,7 +194,8 @@ namespace RamenOkiDoki.Controllers
         {
             Globals.DisplayAddressForm = true;
 
-            return Redirect("Index");
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            return RedirectToAction("Index", dashboardViewModel);
         }
 
         public IActionResult CloseAddressForm()
@@ -211,8 +212,8 @@ namespace RamenOkiDoki.Controllers
         public IActionResult OpenHourOfOperationForm()
         {
             Globals.DisplayHoursForm = true;
-
-            return Redirect("Index");
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            return RedirectToAction("Index", dashboardViewModel);
         }
 
         public IActionResult CloseHourOfOperationForm()

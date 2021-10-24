@@ -29,20 +29,20 @@ namespace Data.ViewModels
 
             HoursOfOperation = new HoursOfOperation()
             {
-                SundayOpen = "10",
-                SundayClose = "10",
-                MondayOpen = "10",
-                MondayClose = "10",
-                TuesdayOpen = "10",
-                TuesdayClose = "10",
-                WednesdayOpen = "10",
-                WednesdayClose = "10",
-                ThursdayOpen = "10",
-                ThursdayClose = "10",
-                FridayOpen = "10",
-                FridayClose = "10",
-                SaturdayOpen = "10",
-                SaturdayClose = "10"
+                SundayOpen = "11am",
+                SundayClose = "9:30pm",
+                MondayOpen = "11am",
+                MondayClose = "9:30pm",
+                TuesdayOpen = "11am",
+                TuesdayClose = "9:30pm",
+                WednesdayOpen = "11am",
+                WednesdayClose = "9:30pm",
+                ThursdayOpen = "11am",
+                ThursdayClose = "9:30pm",
+                FridayOpen = "11am",
+                FridayClose = "9:30pm",
+                SaturdayOpen = "11am",
+                SaturdayClose = "9:30pm"
             };
 
             SalesTax = Globals.SalesTax.ToString();
