@@ -13,7 +13,6 @@
         {
             <tr style="border-bottom: 1px solid lightgray;padding:2px">
                 <td class="order-item" style="text-align: center">@menuItem.quantity </td>
-                <td class="order-item">@menuItem.koreanName </td>
                 <td class="order-item">@menuItem.dishName </td>
                 <td class="order-item" style="text-align:right">$ @menuItem.price</td>
                 <td><a asp-area="" asp-controller="Cart" asp-action="DeleteFromCart" asp-route-itemIdToDelete="@menuItem.id"><i class="fas fa-trash" style="font-size:12px"></i></a></td>

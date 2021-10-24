@@ -24,7 +24,8 @@
                         <input type="password" id="Password" />
                     </div>
 
-                    <button value="AddFoodItem" type="submit" onclick="location.href='@Url.Action("AdminSignin", "Admin")'" id="addfooditem">Sign In</button>
+                    <a asp-controller="Admin" asp-action="AdminSignin" type="submit" class="btn btn-primary submit-order-button">Sign In</a>
+
 
                 </form>
             </div>
@@ -49,7 +50,7 @@
                 {
                     <h4><u>Location Info:</u></h4>
                     @await Html.PartialAsync("_BusinessAddressPartial")
-                    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("OpenAddressForm")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
+                    <a asp-controller="Admin" asp-action="OpenAddressForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
                 }
 
                 <div style="margin-top:50px">
@@ -61,13 +62,24 @@
                     else
                     {
                         <h4><u>Hours:</u></h4>
-                        @await Html.PartialAsync("_HoursOfOperationPartial ")
-                        <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("OpenHourOfOperationForm")'" id="addfooditem"><i class="fas fa-edit"></i>Edit</button>
+                        @await Html.PartialAsync("_HoursOfOperationPartial")
+                        <a asp-controller="Admin" asp-action="OpenHourOfOperationForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
+
                     }
 
                 </div>
-                <div>
+                <div style="margin-top: 30px;">
+                    @if (@Globals.DisplayAddOnsForm)
+                    {
+                        <p>test</p>
+                    }
+                    else
+                    {
+                        <h4><u>Sales Tax:</u></h4>
+                        @await Html.PartialAsync("_AddOnsPartial")
+                        <a asp-controller="Admin" asp-action="OpenAddOnsForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
 
+                    }
                 </div>
             </div>
 

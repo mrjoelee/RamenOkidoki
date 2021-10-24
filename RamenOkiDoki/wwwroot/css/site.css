@@ -357,6 +357,16 @@ a.admin-nav-link {
         padding-right: 40px;
     }
 
+.submit-order-button {
+    background-color: darkred;
+    padding: 8px 10px;
+    color: white;
+}
+
+.submit-order-button:hover {
+    background-color: green;
+}
+
 /*google map api*/
 #map{
     height: 400px;

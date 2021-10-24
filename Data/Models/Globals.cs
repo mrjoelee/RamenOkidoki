@@ -8,6 +8,7 @@ namespace Data.Models
     {
         public static bool DisplayAddressForm { get; set; }
         public static bool DisplayHoursForm { get; set; }
+        public static bool DisplayAddOnsForm { get; set; }
         public static bool UserSignedIn { get; set; }
 
         public static UserRoles UserRole { get; set; }
@@ -34,6 +35,15 @@ namespace Data.Models
         }
 
         public static double SalesTax = 0.0625;
+
+        public static string SalesTaxString
+        {
+            get
+            {
+                return $"{ SalesTax * 100}%";
+            }
+        }
+            
         public static List<FoodMenu.FoodCategory> FoodCategoriesList { get; set; }
 
         public static List<FoodMenu.FoodItem> FoodItemsList { get; set; }

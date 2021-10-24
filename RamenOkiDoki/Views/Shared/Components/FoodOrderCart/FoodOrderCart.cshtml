@@ -20,7 +20,6 @@
                     {
                         <tr style="border-bottom: 1px solid lightgray;padding:2px">
                             <td class="order-item" style="text-align: center">@menuItem.quantity </td>
-                            <td class="order-item">@menuItem.koreanName </td>
                             <td class="order-item">@menuItem.dishName </td>
                             <td class="order-item" style="text-align:right">$ @menuItem.price</td>
                             <td><a asp-area="" asp-controller="Cart" asp-action="DeleteFromCart" asp-route-itemIdToDelete="@menuItem.id"><i class="fas fa-trash" style="font-size:12px"></i></a></td>
@@ -30,12 +29,10 @@
                     <tr><td /><td /><td>Sub Total</td><td style="font-weight: bolder">@Model.OrderSubTotalCost</td></tr>
                 </table>
             </div>
-            <div style="display: inline-block; float: right; margin-left: 30px;">
+            <div style="display: inline-block; float: right; margin: 50px;">
                 @if (Model.OrderedItems != null && Model.OrderedItems.Count > 0)
                 {
-                   <a href='@Url.Action("CheckOut", "Cart")' >
-                       <button style="text-align: center; background-color:red; color: white; font-weight: bold; border-radius: 8px; padding: 5px;">Submit Order</button>
-                    </a>
+                   <a asp-controller="Cart" asp-action="CheckOut" class="btn btn-primary submit-order-button">Submit Order</a>
                 }
 
             </div>

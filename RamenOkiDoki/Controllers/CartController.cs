@@ -38,7 +38,7 @@ namespace RamenOkiDoki.Controllers
 
             //foreach (var item in Globals.FullFoodMenuList)
             //{
-            //    tempOrderList.Add(new OrderItem(item.id, item.dishName, item.koreanName, item.description, item.price, item.foodCategory, 1));
+            //    tempOrderList.Add(new OrderItem(item.id, item.dishName,  item.description, item.price, item.foodCategory, 1));
             //}
 
             //foodItemsViewModel.OrderedItems = tempOrderList;
@@ -67,7 +67,7 @@ namespace RamenOkiDoki.Controllers
 
             //foreach (var item in Globals.FoodItemsList)
             //{
-            //    tempOrderList.Add(new OrderItem(item.id,  item.dishName,  item.koreanName, item.description, item.price, item.foodCategory,  1 ));
+            //    tempOrderList.Add(new OrderItem(item.id,  item.dishName,   item.description, item.price, item.foodCategory,  1 ));
             //}
 
             if (Globals.CartItemsList != null)
@@ -104,7 +104,6 @@ namespace RamenOkiDoki.Controllers
                             requestedItem = new OrderItem(
                                 foodItem.id,
                                 foodItem.dishName,
-                                foodItem.koreanName,
                                 foodItem.description,
                                 foodItem.price,
                                 foodItem.foodCategory,
@@ -128,7 +127,7 @@ namespace RamenOkiDoki.Controllers
 
                 Globals.CartItemsList.Add(requestedItem);
 
-                //Globals.CartItemsList.Add(new OrderItem(requestedItem.id, requestedItem.dishName, requestedItem.koreanName, requestedItem.description, requestedItem.price, requestedItem.categoryName, 1));
+                //Globals.CartItemsList.Add(new OrderItem(requestedItem.id, requestedItem.dishName, requestedItem.description, requestedItem.price, requestedItem.categoryName, 1));
 
                 double tempPrice = 0;
 

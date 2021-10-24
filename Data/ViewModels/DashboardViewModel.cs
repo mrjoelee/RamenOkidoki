@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Data.Models;
 using Data.Models.DashboardData;
 
 namespace Data.ViewModels
@@ -12,6 +12,7 @@ namespace Data.ViewModels
     {
         public BusinessAddress BusinessLocation { get; set; }
         public HoursOfOperation HoursOfOperation { get; set; }
+        public string SalesTax { get; set; }
 
         public DashboardViewModel()
         {
@@ -43,6 +44,8 @@ namespace Data.ViewModels
                 SaturdayOpen = "10",
                 SaturdayClose = "10"
             };
+
+            SalesTax = Globals.SalesTax.ToString();
         }
     }
 

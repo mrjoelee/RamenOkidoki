@@ -32,6 +32,7 @@ namespace RamenOkiDoki.Controllers
         public IActionResult Index()
         {
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            dashboardViewModel.SalesTax = new string(Globals.SalesTaxString);
             return View(dashboardViewModel);
         }
 
@@ -64,7 +65,7 @@ namespace RamenOkiDoki.Controllers
                         {
                             if (fooditems != null)
                             {
-                              //  fooditems.foodCategory = categories.Category;
+                                //  fooditems.foodCategory = categories.Category;
                                 foodItemsViewModel.FoodItems.Add(fooditems);
 
                             }
@@ -220,11 +221,27 @@ namespace RamenOkiDoki.Controllers
 
             // TODO: Save data
 
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            return RedirectToAction("Index", dashboardViewModel);
+        }
 
+        public IActionResult OpenAddOnsForm()
+        {
+            Globals.DisplayAddOnsForm = true;
+
+            return Redirect("Index");
+        }
+
+        public IActionResult CloseAddOnsForm()
+        {
+            Globals.DisplayAddOnsForm = false;
+
+            // TODO: Save data
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
             return RedirectToAction("Index", dashboardViewModel);
         }
+
     }
 }
 
