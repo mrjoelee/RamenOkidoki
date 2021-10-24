@@ -392,3 +392,25 @@ a.admin-nav-link {
     column-count: 1;
 }
 
+
+
+.restaurant-reviews {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 150px;
+    margin-bottom: 50px;
+}
+
+    .restaurant-reviews h2 {
+        font-size: 2.2em;
+    }
+
+.restaurant-reviews h3 {
+    color: darkred;
+}
+
+.restaurant-reviews p {
+    font-style: italic;
+    font-size: 1.2em;
+    line-height: 2em;
+}
