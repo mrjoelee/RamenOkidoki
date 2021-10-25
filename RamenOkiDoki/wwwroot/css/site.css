@@ -290,11 +290,13 @@ a.admin-nav-link {
 
 .form-addon-group {
     margin-bottom: 15px;
+
 }
 
-.form-addon-group {
-    width: 80px;
+.form-addon-group input {
+    width: 60px;
     height: 25px;
+
 }
 
 .menu-edit-table {
