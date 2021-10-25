@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Data.Models;
 
 namespace RamenOkiDoki
 {
@@ -15,7 +16,9 @@ namespace RamenOkiDoki
         //main function - starts as a main console application but calling the method IHostbuilder
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run(); 
+            
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Constants.SyncfusionKey);
         }
 
         //create web application
