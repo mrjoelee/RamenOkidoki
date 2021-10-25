@@ -1,14 +1,31 @@
-﻿@model Data.ViewModels.DashboardViewModel
-<h1>Leave Reviews</h1>
-<form class="leave-review" method="post">
+﻿@using System.ComponentModel.DataAnnotations.Schema
+@model Data.ViewModels.DashboardViewModel
 
-    <div class="form-group">
-        <span>
-            <label for="Reviewer Name">Name</label>
-            <input type="text" /> <br />
-        </span>
-        <label asp-for="Reviews"></label>
-    </div>
-    <textarea placeholder="Please leave any comments!" name="text" style="width:92%;padding:2%;height:150px"></textarea><br/>
-    <button value="Home" type="submit" onclick="location.href='@Url.Action("Review")'" id="addfooditem"><i class="fas fa-share-square"></i>Submit</button>
-</form>
+<div style="margin: 50px;">
+    <h1>Please leave a review</h1>
+
+    @using (Html.BeginForm("Review", "Home", FormMethod.Post))
+    {
+<table>
+    <tr> <label for="Rating">Overall Rating</label></tr>
+    <tr> <label for="Rating">Stars Go Here!</label></tr>
+
+    <tr><label for="ReviewerName">Your Name</label></tr>
+    <tr> <input type="text" /></tr>
+
+
+
+    <label for="ReviewerName">Your Name</label>
+    <input type="text" />
+    <br />
+
+    <label asp-for="Reviews">Add a written review</label>
+
+    <textarea placeholder="Please leave any comments!" name="text" style="width: 92%; padding: 2%; height: 150px"></textarea>
+    <br />
+    <button value="Home" type="submit" onclick="location.href = '@Url.Action("Review")'" id="addfooditem"><i class="fas fa-share-square"></i>Submit</button>
+
+</table>
+    }
+
+</div>
