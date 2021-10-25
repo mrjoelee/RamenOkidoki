@@ -1,0 +1,11 @@
+﻿@model Data.ViewModels.DashboardViewModel
+
+<form method="post" style="margin:50px 50px 0 0">
+    <div class="form-addon-group">
+        <label asp-for="SalesTax"></label>
+        <input type="text"
+               name="@Model.SalesTax"
+               value="@Model.SalesTax"/>
+    <button value="DashBoard" type="submit" onclick="location.href='@Url.Action("CloseAddOnsForm")'" id="addfooditem"><i class="far fa-save"></i>Save</button>
+    </div>
+</form>

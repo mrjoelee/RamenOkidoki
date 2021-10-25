@@ -288,6 +288,14 @@ a.admin-nav-link {
     height: 25px;
 }
 
+.form-addon-group {
+    margin-bottom: 15px;
+}
+
+.form-addon-group {
+    width: 80px;
+    height: 25px;
+}
 
 .menu-edit-table {
     padding: 5px;

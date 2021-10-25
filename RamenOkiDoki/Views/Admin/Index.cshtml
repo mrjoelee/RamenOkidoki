@@ -71,7 +71,7 @@
                 <div style="margin-top: 30px;">
                     @if (@Globals.DisplayAddOnsForm)
                     {
-                        <p>test</p>
+                        @await Html.PartialAsync("_AddOnsFormPartial")
                     }
                     else
                     {
