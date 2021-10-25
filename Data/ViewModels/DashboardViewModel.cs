@@ -17,6 +17,7 @@ namespace Data.ViewModels
 
         public List<Review> Reviews { get; set; }
 
+
         public DashboardViewModel()
         {
             BusinessLocation = new BusinessAddress()

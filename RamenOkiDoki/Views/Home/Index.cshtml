@@ -29,11 +29,16 @@
         {
             <h3>@review.ReviewerName</h3>
             <p>@review.ReviewString</p>
+
         }
     </div>
 
-  
 </div>
+
+<div>
+    @await Html.PartialAsync("_ReviewPartial") 
+</div>
+
 <div class="google-map-div">
 
     @await Component.InvokeAsync("GoogleMap")

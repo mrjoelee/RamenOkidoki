@@ -16,7 +16,6 @@ namespace RamenOkiDoki.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -27,6 +26,12 @@ namespace RamenOkiDoki.Controllers
         {
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
             return View(dashboardViewModel);
+        }
+
+        public IActionResult Review()
+        {
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            return RedirectToAction("Index", dashboardViewModel);
         }
 
         [Route("about")]
