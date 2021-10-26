@@ -53,6 +53,14 @@ namespace Data.ViewModels
 
             Reviews = new List<Review>()
             {
+                new Review( "Mario P.", "Food was too good to take pictures of. That’s all I have to say. Apologies, I know people like pics of the food. But it was that good. Ramen was on point! Go here. You will be more than pleased.", 5),
+
+                new Review( "Madai G.", "I honestly don’t understand where these bad reviews are coming from!!! The good is unforgettable! Tonkatsu ramen, garlic soy wings and kimchi fries are definite no brainers. Excellent customer service. Have been here twice before reviewing. This place deserves the credit it deserves. Almost didn’t come because of the negative reviews. Glad my husband convinced me to give it a shot!!! Our new family outing fav.", 5),
+
+                new Review( "Meisha E.", "The food and service was good excellent!!!! We got the onagiri is really, very flavorful and the pickled radish added a lot of twang. We also got a bin which was good too. We got the spicy tonkatsu ramen.... Best I've had in Houston. I don't even like ramen like that but this broth was very creamy, and flavorful", 5),
+
+                new Review( "Paul L.", "Great ramens and authentic awesome KFC (Korean Fried Chicken). Appetizers are great too. Friendly staff. To-go orders are well prepared. I highly recommend.", 5),
+
                 new Review( "Erica P.", "The ramen and garlic soy wings were delish. The customer service was also great!", 5),
 
                 new Review( "Nhan V.", "I LOVE THIS PLACE!! I go here at least once a week ahaha! The owner is super nice and it's quite impressive how he manage this whole place by himself sometimes.", 5),
@@ -67,8 +75,9 @@ namespace Data.ViewModels
 
                 new Review( "Lan N.", "This is definitely my go-to ramen place. On Thursdays from 5PM until close, they have a $6.99 special on ANY ramen. This is definitely a steal! The ramen itself tastes good - broth is flavorful and noodles have a good texture. Only downside is that the wait is a little long for your ramen to come out, but other than that, I definitely recommend!", 4),
 
-                new Review( "Stephanie D.", "Good ramen. Been coming here for about 2 years. I have notice that before the pork meat use to be thick now it is very thin. But it is still very good flavor.", 4)
+                new Review( "Stephanie D.", "Good ramen. Been coming here for about 2 years. I have notice that before the pork meat use to be thick now it is very thin. But it is still very good flavor.", 4),
 
+                new Review( "Peter S.", "Service was fine on a Thursday evening . Not too pack. Food was ok at best Pork bun wasn't good at all. Bun was flat and pork was overcook and sitting Ramen was 'ok' didn't finish it. Everything tasted dated Wings was good best thing we had . It was really good .", 4)
             };
         }
     }
