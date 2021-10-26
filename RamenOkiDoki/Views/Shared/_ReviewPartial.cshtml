@@ -25,7 +25,16 @@
     @using (Html.BeginForm("Review", "Home", FormMethod.Post))
     {
         <table>
-            <tr><td> <label for="Rating">Overall Rating</label></td><td> Stars Go Here!</td></tr>
+        <tr><td> <label for="Rating">Overall Rating</label></td></tr>
+        <tr><td onmoouseout="CRateSelected()">
+  
+        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+   
+</td></tr>
 
             <tr><td><label for="ReviewerName">Your Name</label></td></tr>
             <tr><td> <input type="text" /></td></tr>
