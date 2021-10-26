@@ -132,15 +132,16 @@ body {
 
 .page-titles {
     font-family:'Merienda', cursive;
-    font-size: 3em;
+    font-size: 3.5em;
     text-align: center;
     margin: 25px;
 }
 
 .categoryName {
     color: darkred;
-    font-size: 24px;
-    margin-top: 50px;
+    font-family: 'Merienda', cursive;
+    font-size: 2em;
+    margin: 50px 0 20px 0;
     text-align: center;
 }
 
