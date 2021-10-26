@@ -1,42 +1,53 @@
 ﻿@using System.ComponentModel.DataAnnotations.Schema
 @model Data.ViewModels.DashboardViewModel
 
-<div style="margin: 50px;">
+<h2 class="page-titles">Some of Our reviews</h2>
+@foreach (var review in @Model.Reviews)
+{
+    <div>
+
+        <h3 style="display: inline-block; margin-right:20px">@review.ReviewerName </h3>
+
+        @for (int i = 0; i < review.Rating; i++)
+        {
+            <i class="fas fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+        }
+
+    </div>
+    <p>@review.ReviewString</p>
+
+}
+
+
+<div style="margin-top: 50px;">
     <h1>Please leave a review</h1>
 
     @using (Html.BeginForm("Review", "Home", FormMethod.Post))
     {
-<table>
-    <tr><td> <label for="Rating">Overall Rating</label></td></tr>
-    <tr><td> <label for="Rating">Stars Go Here!</label></td></tr>
+        <table>
+            <tr><td> <label for="Rating">Overall Rating</label></td><td> Stars Go Here!</td></tr>
 
-    <tr><td><label for="ReviewerName">Your Name</label></td></tr>
-    <tr><td> <input type="text" /></td></tr>
-
-
-
-    <label for="ReviewerName">Your Name</label>
-
-    @*<div>@Html.EJ().Rating("univRating").Value(4)</div>*@
-
-    @*<script type="text/javascript">
-            $(function () {
-                $("#fullRating").ejRating({ value: 4 ,maxValue:5,height:30, width:80,shapeHeight:60, shapeWidth:30,cssClass:"custom"});
-
-            });
-        </script>*@
+            <tr><td><label for="ReviewerName">Your Name</label></td></tr>
+            <tr><td> <input type="text" /></td></tr>
+            <tr><td><label asp-for="Reviews">Add a written review</label></td></tr>
+            <tr><td colspan="3">  <textarea placeholder="Please leave any comments!" name="text" style="width: 600px; padding: 2%; height: 150px"></textarea></td></tr>
 
 
-    <input type="text" />
-    <br />
 
-    <label asp-for="Reviews">Add a written review</label>
 
-    <textarea placeholder="Please leave any comments!" name="text" style="width: 92%; padding: 2%; height: 150px"></textarea>
-    <br />
-    <button value="Home" type="submit" onclick="location.href = '@Url.Action("Review")'" id="addfooditem"><i class="fas fa-share-square"></i>Submit</button>
+            @*<div>@Html.EJ().Rating("univRating").Value(4)</div>*@
 
-</table>
+            @*<script type="text/javascript">
+                    $(function () {
+                        $("#fullRating").ejRating({ value: 4 ,maxValue:5,height:30, width:80,shapeHeight:60, shapeWidth:30,cssClass:"custom"});
+
+                    });
+                </script>*@
+
+
+        </table>
+        <button value="Home" type="submit" onclick="location.href = '@Url.Action("Review")'" id="addfooditem"><i class="fas fa-share-square"></i>Submit</button>
+
     }
-  
+
 </div>

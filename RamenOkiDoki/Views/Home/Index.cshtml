@@ -24,23 +24,14 @@
         @await Html.PartialAsync("_HoursOfOperationPartial")
     </div>
     <div class="restaurant-reviews">
-        <h2 class="page-titles">Some of Our reviews</h2>
-        @foreach (var review in @Model.Reviews)
-        {
-            <h3>@review.ReviewerName</h3>
-            <p>@review.ReviewString</p>
 
-        }
+
+        @await Html.PartialAsync("_ReviewPartial")
     </div>
 
-</div>
+    <div class="google-map-div">
 
-<div>
-    @await Html.PartialAsync("_ReviewPartial") 
-</div>
+        @await Component.InvokeAsync("GoogleMap")
 
-<div class="google-map-div">
+    </div>
 
-    @await Component.InvokeAsync("GoogleMap")
-
-</div>
