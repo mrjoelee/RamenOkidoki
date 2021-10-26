@@ -1,5 +1,9 @@
 ﻿@model Data.Models.FoodMenus.FoodMenu.FoodItem
 @{
+      Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
     ViewData["Title"] = "ModalPopup";
 
     string id = "", dishName = "", description = "", price = "", foodCategory = "", foodCategoryId = "", AddSaveButton = "Add Item";
@@ -16,7 +20,7 @@
     }
 }
 
-<div style="margin:100px">
+<div style="margin: 100px; display: inline-block;">
     @using (Html.BeginForm("PutMenuItem", "Admin", FormMethod.Post))
     {
 
