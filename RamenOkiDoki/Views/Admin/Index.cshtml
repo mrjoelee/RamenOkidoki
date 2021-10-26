@@ -1,4 +1,8 @@
 ﻿@model Data.ViewModels.DashboardViewModel
+@{
+  //  Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
 
 @{
     ViewData["Title"] = "Admin";
@@ -9,6 +13,8 @@
 
     @if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin)//!User.IsInRole("Admin"))
     {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
         <div class="non-sidebar-page">
             <div class="admin-div">
                 <h1 class="page-titles">Admin Only</h1>
@@ -33,10 +39,12 @@
     }
     else
     {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
         <div class="combo-page">
-            <div style="display:inline-block">
+            @*<div style="display:inline-block">
                 @await Html.PartialAsync("_AdminMenuPartial")
-            </div>
+            </div>*@
             <div class="right-side-content" style="display:inline-block">
                 <h2 style="text-align: center; margin-top: 20px">Admin Dashboard</h2>
 

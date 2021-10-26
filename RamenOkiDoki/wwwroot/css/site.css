@@ -219,6 +219,8 @@ body {
 }
 
 .menu-table-div {
+    display: inline-block;
+    float: left;
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
