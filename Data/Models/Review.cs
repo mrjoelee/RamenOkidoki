@@ -10,6 +10,8 @@ namespace Data.Models
     {
         public string ReviewerName { get; set; }
         public string ReviewString { get; set; }
+
+        public string ReviewDate { get; set; }
         public int Rating { get; set; }
 
         public Review()
@@ -17,11 +19,12 @@ namespace Data.Models
                 
         }
 
-        public Review(string reviewerName, string reviewString, int rating)
+        public Review(string reviewerName, string reviewString, int rating, string reviewDate)
         {
             ReviewerName = reviewerName;
             ReviewString = reviewString;
             Rating = rating;
+            ReviewDate = reviewDate;
         }
     }
 }

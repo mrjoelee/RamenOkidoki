@@ -33,6 +33,7 @@ namespace RamenOkiDoki.Controllers
         [HttpPost, ActionName("Index")]
         public IActionResult SubmitReview(Review newReview)
         {
+            newReview.ReviewDate = DateTime.Today.ToShortDateString();
 
             homePageViewModel.Reviews.Add(newReview);
 
