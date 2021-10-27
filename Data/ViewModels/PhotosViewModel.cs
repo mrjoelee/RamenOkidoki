@@ -22,7 +22,7 @@ namespace Data.ViewModels
 
           CarouselImages = new List<CarouselImage>()
           {
-              new CarouselImage(){ ImageName = "Ru Okidoki Ramen", ImagePath = "/images/GalleryImages/Ru_okidoki.jpg"},
+              new CarouselImage(){ImageName = "Ru Okidoki Ramen", ImagePath = "/images/GalleryImages/Ru_okidoki.jpg"},
               new CarouselImage(){ImageName = "Mentaiko Udon", ImagePath = "/images/GalleryImages/MentaikoUdon.jpg"},
               new CarouselImage(){ImageName = "Okidoki X Lim's Chicken", ImagePath = "/images/GalleryImages/okidoki_x_lims chicken.jpg"},
               new CarouselImage(){ImageName = "Onigiri", ImagePath = "/images/GalleryImages/Onigiri.jpg"},
