@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Data.Models;
 using Data.Models.DashboardData;
 
@@ -12,11 +13,10 @@ namespace Data.ViewModels
     {
         public BusinessAddress BusinessLocation { get; set; }
         public HoursOfOperation HoursOfOperation { get; set; }
-        public string SalesTax { get; set; }
-
         public List<Review> Reviews { get; set; }
+        public Review NewReview { get; set; }
 
-        public int NewRating { get; set; }
+        // public int NewRating { get; set; }
 
         public HomePageViewModel()
         {
@@ -34,6 +34,8 @@ namespace Data.ViewModels
             HoursOfOperation = DummyData.GetHoursOfOperation();
 
             Reviews = DummyData.GetReviews();
+
+            NewReview = new Review();
         }
     }
 

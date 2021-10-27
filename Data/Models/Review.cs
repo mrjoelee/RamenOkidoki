@@ -12,6 +12,11 @@ namespace Data.Models
         public string ReviewString { get; set; }
         public int Rating { get; set; }
 
+        public Review()
+        {
+                
+        }
+
         public Review(string reviewerName, string reviewString, int rating)
         {
             ReviewerName = reviewerName;

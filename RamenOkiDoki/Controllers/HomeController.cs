@@ -14,25 +14,32 @@ namespace RamenOkiDoki.Controllers
 {
     public class HomeController : Controller
     {
+        private HomePageViewModel homePageViewModel;
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-          
+            homePageViewModel = new HomePageViewModel();
         }
 
         public IActionResult Index()
         {
-            HomePageViewModel homePageViewModel = new HomePageViewModel();
+
             return View(homePageViewModel);
         }
 
-        public IActionResult Review()
+        [HttpPost, ActionName("Index")]
+        public IActionResult SubmitReview(Review newReview)
         {
-            HomePageViewModel homePageViewModel = new HomePageViewModel();
-            return RedirectToAction("Index", homePageViewModel);
+
+            homePageViewModel.Reviews.Add(newReview);
+
+            return View(homePageViewModel);
         }
+
+
 
         [Route("about")]
         public IActionResult About()

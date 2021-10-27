@@ -5,55 +5,69 @@
     }*@
 
 <h2 class="page-titles">Some of Our reviews</h2>
-@foreach (var review in @Model.Reviews)
+
+@if (Model != null && Model.Reviews != null && Model.Reviews.Count > 0)
 {
-    <div>
+    @foreach (var review in @Model.Reviews)
+    {
+        <div>
 
-        <h3 style="display: inline-block; margin-right:20px">@review.ReviewerName </h3>
+            <h3 style="display: inline-block; margin-right: 20px">@review.ReviewerName </h3>
 
-        @for (int i = 0; i < review.Rating; i++)
+            @for (int i = 0; i < review.Rating; i++)
+            {
+                <i class="fas fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+            }
+
+
+        </div>
+        <p>@review.ReviewString</p>
+
+    }
+}
+
+    <div style="margin-top: 50px;">
+        <h1>Please leave a review</h1>
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
-            <i class="fas fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+            <table>
+                <tr><td> <label for="Rating">Overall Rating</label></td></tr>
+                <tr>
+                    <td onmouseout="CRateSelected()">
+                        <i id="span1" class="far fa-star" onmouseout="CRateOut(1)" onmouseover="CRateOver(1)" onclick="CRateClick(1)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+                        <i id="span2" class="far fa-star" onmouseout="CRateOut(2)" onmouseover="CRateOver(2)" onclick="CRateClick(2)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+                        <i id="span3" class="far fa-star" onmouseout="CRateOut(3)" onmouseover="CRateOver(3)" onclick="CRateClick(3)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+                        <i id="span4" class="far fa-star" onmouseout="CRateOut(4)" onmouseover="CRateOver(4)" onclick="CRateClick(4)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+                        <i id="span5" class="far fa-star" onmouseout="CRateOut(5)" onmouseover="CRateOver(5)" onclick="CRateClick(5)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+                    </td>
+                </tr>
+
+
+
+                <tr><td>Your Name</td></tr>
+                <td>@Html.TextBoxFor(m => m.NewReview.ReviewerName)</td>
+
+                <tr><td>Add a written review</td></tr>
+                <td>@Html.TextAreaFor(m => m.NewReview.ReviewString)</td>
+
+
+                @*<tr><td colspan="3">  <textarea placeholder="Please leave any comments!" name="text" style="width: 600px; padding: 2%; height: 150px"></textarea></td></tr>*@
+
+            </table>
+
+            @Html.HiddenFor(m => m.NewReview.Rating)
+
+            @*< input type="hidden" id="lblRating" =>m.NewReview.ReviewString) />*@
+
+
+            <td colspan="2"><input type="submit" value="Submit Form" /><i class="fas fa-share-square"></i></td>
+            @*<button value="Home" type="submit" onclick="location.href = '@Url.Action("Review")'" id="addfooditem"><i class="fas fa-share-square"></i>Submit</button>*@
+
+
+
         }
 
     </div>
-    <p>@review.ReviewString</p>
 
-}
-
-<div style="margin-top: 50px;">
-    <h1>Please leave a review</h1>
-
-    @using (Html.BeginForm("Review", "Home", FormMethod.Post))
-    {
-        <table>
-            <tr><td> <label for="Rating">Overall Rating</label></td></tr>
-            <tr>
-                <td onmouseout="CRateSelected()">
-                    <i id="span1" class="far fa-star" onmouseout="CRateOut(1)" onmouseover="CRateOver(1)" onclick="CRateClick(1)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                    <i id="span2" class="far fa-star" onmouseout="CRateOut(2)" onmouseover="CRateOver(2)" onclick="CRateClick(2)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                    <i id="span3" class="far fa-star" onmouseout="CRateOut(3)" onmouseover="CRateOver(3)" onclick="CRateClick(3)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                    <i id="span4" class="far fa-star" onmouseout="CRateOut(4)" onmouseover="CRateOver(4)" onclick="CRateClick(4)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                    <i id="span5" class="far fa-star" onmouseout="CRateOut(5)" onmouseover="CRateOver(5)" onclick="CRateClick(5)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                </td>
-            </tr>
-
-
-
-            <tr><td><label for="ReviewerName">Your Name</label></td></tr>
-            <tr><td> <input type="text" /></td></tr>
-            <tr><td><label asp-for="Reviews">Add a written review</label></td></tr>
-            <tr><td colspan="3">  <textarea placeholder="Please leave any comments!" name="text" style="width: 600px; padding: 2%; height: 150px"></textarea></td></tr>
-            
-        </table>
-
-        <input type="hidden" id="lblRating" />
-        <button value="Home" type="submit" onclick="location.href = '@Url.Action("Review")'" id="addfooditem"><i class="fas fa-share-square"></i>Submit</button>
-
-
-
-    }
-
-</div>
-
-<script src="~/js/rating-star.js" type="text/javascript"></script>
+    <script src="~/js/rating-star.js" type="text/javascript"></script>
