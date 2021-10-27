@@ -42,12 +42,12 @@
                     <i id="span5" class="far fa-star" onmouseout="CRateOut(5)" onmouseover="CRateOver(5)" onclick="CRateClick(5)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
                 </td>
             </tr>
-            
+
             <tr><td>Your Name</td></tr>
             <td>@Html.TextBoxFor(m => m.NewReview.ReviewerName)</td>
 
             <tr><td>Add a written review</td></tr>
-            <tr><td colspan="3">@Html.TextAreaFor(m => m.NewReview.ReviewString, new{style="width:700px;height:200px"})</td></tr>
+            <tr><td colspan="3">@Html.TextAreaFor(m => m.NewReview.ReviewString, new { style = "width:700px;height:200px" })</td></tr>
 
         </table>
 
@@ -62,4 +62,6 @@
 
 </div>
 
-<script src="~/js/rating-star.js" type="text/javascript"></script>
+@*@section Scripts {*@
+    <script src="~/js/rating-star.js" type="text/javascript"></script>
+@*}*@
