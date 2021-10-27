@@ -26,7 +26,9 @@ namespace RamenOkiDoki.Controllers
 
         public IActionResult Index()
         {
-            homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate));
+         //   homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate));
+            homePageViewModel.Reviews = homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate)).ToList();
+
             return View(homePageViewModel);
         }
 
@@ -36,6 +38,8 @@ namespace RamenOkiDoki.Controllers
             newReview.ReviewDate = DateTime.Today.ToString("MMMM yyyy");
 
             homePageViewModel.Reviews.Add(newReview);
+            
+            homePageViewModel.Reviews = homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate)).ToList();
 
             return View(homePageViewModel);
         }
