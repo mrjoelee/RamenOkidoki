@@ -1,8 +1,8 @@
 ﻿@using System.ComponentModel.DataAnnotations.Schema
 @model Data.ViewModels.HomePageViewModel
 @*@{
-    int chosenRating = 0;
-}*@
+        int chosenRating = 0;
+    }*@
 
 <h2 class="page-titles">Some of Our reviews</h2>
 @foreach (var review in @Model.Reviews)
@@ -21,67 +21,8 @@
 
 }
 
-
-
 <div style="margin-top: 50px;">
     <h1>Please leave a review</h1>
-    <script type="text/javascript">
-        //function CRateOut(rating) {
-        //    for (var i = 1; i <= rating; i++) {
-        //        $("#span" + i).attr('class', 'far fa-star');
-        //    }
-        //}
-
-        //function CRateOver(rating) {
-        //    for (var i = 1; i <= rating; i++) {
-        //        $("#span" + i).attr('class', 'fas fa-star');
-        //    }
-        //}
-
-
-        //function CRateOver(rating) {
-        //    $("#lblRating").val(rating);
-        //    for (var i = 1; i <= rating; i++) {
-        //        $("#span" + i).attr('class', 'fas fa-star');
-        //    }
-
-        //    for (var i = rating + 1; i <= 5; i++) {
-        //        $("#span" + i).attr('class', 'far fa-star');
-        //    }
-        //}
-
-        //function CRateOut(rating) {
-        //    $("#lblRating").val(rating);
-        //    //for (var i = 1; i <= rating; i++) {
-        //    //    $("#span" + i).attr('class', 'fas fa-star');
-        //    //}
-
-        //    for (var i = 1; i <= 5; i++) {
-        //        $("#span" + i).attr('class', 'far fa-star');
-        //    }
-        //}
-
-        function CRateClick(rating) {
-            $("#lblRating").val(rating);
-            for (var i = 1; i <= rating; i++) {
-                $("#span" + i).attr('class', 'fas fa-star');
-            }
-
-            for (var i = rating + 1; i <= 5; i++) {
-                $("#span" + i).attr('class', 'far fa-star');
-            }
-
-            //  @Model.NewRating = rating;
-        }
-
-        //function CRateSelected() {
-        //    var rating = $("#lblRating").val();
-        //    for (var i = 1; i <= rating; i++) {
-        //        $("#span" + i).attr('class', 'far fa-star');
-        //    }
-        // }
-    </script>
-    
 
     @using (Html.BeginForm("Review", "Home", FormMethod.Post))
     {
@@ -103,29 +44,16 @@
             <tr><td> <input type="text" /></td></tr>
             <tr><td><label asp-for="Reviews">Add a written review</label></td></tr>
             <tr><td colspan="3">  <textarea placeholder="Please leave any comments!" name="text" style="width: 600px; padding: 2%; height: 150px"></textarea></td></tr>
-
-
-
-
-            @*<div>@Html.EJ().Rating("univRating").Value(4)</div>*@
-
-            @*<script type="text/javascript">
-                    $(function () {
-                        $("#fullRating").ejRating({ value: 4 ,maxValue:5,height:30, width:80,shapeHeight:60, shapeWidth:30,cssClass:"custom"});
-
-                    });
-                </script>*@
-
-
+            
         </table>
-        
+
         <input type="hidden" id="lblRating" />
         <button value="Home" type="submit" onclick="location.href = '@Url.Action("Review")'" id="addfooditem"><i class="fas fa-share-square"></i>Submit</button>
+
+
 
     }
 
 </div>
 
-@*@section Scripts {
-        <script src="~/js/rating-star.js"></script>
-    }*@
+<script src="~/js/rating-star.js" type="text/javascript"></script>
