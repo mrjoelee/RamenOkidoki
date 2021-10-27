@@ -26,7 +26,7 @@ namespace RamenOkiDoki.Controllers
 
         public IActionResult Index()
         {
-
+            homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate));
             return View(homePageViewModel);
         }
 
