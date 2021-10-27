@@ -14,15 +14,13 @@
 
             <h3 style="display: inline-block; margin-right: 20px">@review.ReviewerName </h3>
             
-            <p style="margin-left: 200px;display: inline-block"><b>@review.ReviewDate</b></p>
-
-
+            <p style="margin-left: 200px; float: right;display: inline-block"><b>@review.ReviewDate</b></p>
 
         </div>
 
         @for (int i = 0; i < review.Rating; i++)
         {
-            <i class="fas fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+            <i class="fas fa-star" style="color: goldenrod; font-size: 16px; margin-top:-20px"></i>
         }
 
         <p>@review.ReviewString</p>
@@ -39,11 +37,11 @@
             <tr><td> <label for="Rating">Overall Rating</label></td></tr>
             <tr>
                 <td onmouseout="CRateSelected()">
-                    <i id="span1" class="far fa-star" onmouseout="CRateOut(1)" onmouseover="CRateOver(1)" onclick="CRateClick(1)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                    <i id="span2" class="far fa-star" onmouseout="CRateOut(2)" onmouseover="CRateOver(2)" onclick="CRateClick(2)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                    <i id="span3" class="far fa-star" onmouseout="CRateOut(3)" onmouseover="CRateOver(3)" onclick="CRateClick(3)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                    <i id="span4" class="far fa-star" onmouseout="CRateOut(4)" onmouseover="CRateOver(4)" onclick="CRateClick(4)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-                    <i id="span5" class="far fa-star" onmouseout="CRateOut(5)" onmouseover="CRateOver(5)" onclick="CRateClick(5)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+                    <i id="span1" class="far fa-star" onmouseout="CRateOut(1)" onmouseover="CRateOver(1)" onclick="CRateClick(1)" style="color: goldenrod; font-size: 20px; display: inline-block"></i>
+                    <i id="span2" class="far fa-star" onmouseout="CRateOut(2)" onmouseover="CRateOver(2)" onclick="CRateClick(2)" style="color: goldenrod; font-size: 20px; display: inline-block"></i>
+                    <i id="span3" class="far fa-star" onmouseout="CRateOut(3)" onmouseover="CRateOver(3)" onclick="CRateClick(3)" style="color: goldenrod; font-size: 20px; display: inline-block"></i>
+                    <i id="span4" class="far fa-star" onmouseout="CRateOut(4)" onmouseover="CRateOver(4)" onclick="CRateClick(4)" style="color: goldenrod; font-size: 20px; display: inline-block"></i>
+                    <i id="span5" class="far fa-star" onmouseout="CRateOut(5)" onmouseover="CRateOver(5)" onclick="CRateClick(5)" style="color: goldenrod; font-size: 20px; display: inline-block"></i>
                 </td>
             </tr>
 
