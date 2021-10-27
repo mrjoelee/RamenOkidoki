@@ -24,14 +24,14 @@ namespace RamenOkiDoki.Controllers
 
         public IActionResult Index()
         {
-            DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            return View(dashboardViewModel);
+            HomePageViewModel homePageViewModel = new HomePageViewModel();
+            return View(homePageViewModel);
         }
 
         public IActionResult Review()
         {
-            DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            return RedirectToAction("Index", dashboardViewModel);
+            HomePageViewModel homePageViewModel = new HomePageViewModel();
+            return RedirectToAction("Index", homePageViewModel);
         }
 
         [Route("about")]

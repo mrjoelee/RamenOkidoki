@@ -8,7 +8,7 @@ using Data.Models.DashboardData;
 
 namespace Data.ViewModels
 {
-    public class DashboardViewModel
+    public class HomePageViewModel
     {
         public BusinessAddress BusinessLocation { get; set; }
         public HoursOfOperation HoursOfOperation { get; set; }
@@ -18,17 +18,22 @@ namespace Data.ViewModels
 
         public int NewRating { get; set; }
 
-        public DashboardViewModel()
+        public HomePageViewModel()
         {
-            BusinessLocation = DummyData.GetBusinessLocation(); 
-          
+            BusinessLocation = new BusinessAddress()
+            {
+                BusinessName = "Ramen OkiDoki",
+                StreetAddress = "10603 Bellaire Blvd",
+                City = "Houston",
+                State = "TX",
+                Zipcode = "77072",
+                PhoneNumber = "2815758077",
+                Email = ""
+            };
 
             HoursOfOperation = DummyData.GetHoursOfOperation();
 
-            SalesTax = Globals.SalesTax.ToString();
-
-
-          
+            Reviews = DummyData.GetReviews();
         }
     }
 
