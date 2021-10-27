@@ -21,21 +21,51 @@
 
 <div style="margin-top: 50px;">
     <h1>Please leave a review</h1>
+    <script type="text/javascript">
+        //function CRateOut(rating) {
+        //    for (var i = 1; i <= rating; i++) {
+        //        $("#span" + i).attr('class', 'far fa-star');
+        //    }
+        //}
 
+        //function CRateOver(rating) {
+        //    for (var i = 1; i <= rating; i++) {
+        //        $("#span" + i).attr('class', 'fas fa-star');
+        //    }
+        //}
+
+        function CRateClick(rating) {
+            $("#lblRating").val(rating);
+            for (var i = 1; i <= rating; i++) {
+                $("#span" + i).attr('class', 'fas fa-star');
+            }
+
+            for (var i = rating + 1; i <= 5; i++) {
+                $("#span" + i).attr('class', 'far fa-star');
+            }
+        }
+
+        function CRateSelected() {
+            var rating = $("#lblRating").val(); 
+            for (var i = 1; i <= rating; i++) {
+                $("#span" + i).attr('class', 'far fa-star');
+            }
+        }
+    </script>
     @using (Html.BeginForm("Review", "Home", FormMethod.Post))
     {
         <table>
         <tr><td> <label for="Rating">Overall Rating</label></td></tr>
         <tr><td onmoouseout="CRateSelected()">
-  
-        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-        <i class="far fa-star" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
-   
-</td></tr>
-
+        <i id="span1" class="far fa-star" onmouseout="CRateOut(1)" onmouseover="CRateOver(1)" onclick="CRateClick(1)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>
+        <i id="span2" class="far fa-star" onmouseout="CRateOut(2)" onmouseover="CRateOver(2)" onclick="CRateClick(2)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>                                                                                       
+        <i id="span3" class="far fa-star" onmouseout="CRateOut(3)" onmouseover="CRateOver(3)" onclick="CRateClick(3)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>                                                                                       
+        <i id="span4" class="far fa-star" onmouseout="CRateOut(4)" onmouseover="CRateOver(4)" onclick="CRateClick(4)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>                                                                                       
+        <i id="span5" class="far fa-star" onmouseout="CRateOut(5)" onmouseover="CRateOver(5)" onclick="CRateClick(5)" style="color: goldenrod; font-size: 22px; display: inline-block"></i>                                                                                       
+        </td></tr>
+            <div>
+                <input type="hidden" id="lblRating"/>
+            </div>
             <tr><td><label for="ReviewerName">Your Name</label></td></tr>
             <tr><td> <input type="text" /></td></tr>
             <tr><td><label asp-for="Reviews">Add a written review</label></td></tr>
