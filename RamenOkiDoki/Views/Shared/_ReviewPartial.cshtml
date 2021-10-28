@@ -8,24 +8,54 @@
 
 @if (Model != null && Model.Reviews != null && Model.Reviews.Count > 0)
 {
-    @foreach (var review in @Model.Reviews)
+    @for (int i = 0; i < 5; i++)
+   
     {
         <div>
 
-            <h3 style="display: inline-block; margin-right: 20px">@review.ReviewerName </h3>
-            
-            <p style="margin-left: 200px; float: right;display: inline-block"><b>@review.ReviewDate</b></p>
+            <h3 style="display: inline-block; margin-right: 20px">@Model.Reviews[i].ReviewerName </h3>
+
+            <p style="margin-left: 200px; float: right;display: inline-block"><b>@Model.Reviews[i].ReviewDate</b></p>
 
         </div>
 
-        @for (int i = 0; i < review.Rating; i++)
+        @for (int j = 0; j < @Model.Reviews[j].Rating; j++)
         {
             <i class="fas fa-star" style="color: goldenrod; font-size: 16px; margin-top:-20px"></i>
         }
 
-        <p>@review.ReviewString</p>
+        <p>@Model.Reviews[i].ReviewString</p>
 
     }
+
+    <button class="more-review">See More Review</button>
+
+    @if (false)
+    {
+        <div type="hidden" class="remaining-reviews">
+
+            @for (int i = 5; i < Model.Reviews.Count; i++)
+            {
+                <div>
+
+                    <h3 style="display: inline-block; margin-right: 20px">@Model.Reviews[i].ReviewerName </h3>
+
+                    <p style="margin-left: 200px; float: right;display: inline-block"><b>@Model.Reviews[i].ReviewDate</b></p>
+
+                </div>
+
+                @for (int j = 0; j < @Model.Reviews[j].Rating; j++)
+                {
+                    <i class="fas fa-star" style="color: goldenrod; font-size: 16px; margin-top:-20px"></i>
+                }
+
+                <p>@Model.Reviews[i].ReviewString</p>
+
+            }
+        </div>
+    }
+
+
 }
 
 <div style="margin-top: 50px;">
