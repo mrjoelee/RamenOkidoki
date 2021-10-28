@@ -24,10 +24,12 @@ namespace RamenOkiDoki.Controllers
             homePageViewModel = new HomePageViewModel();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string showAllReviews = "")
         {
          //   homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate));
             homePageViewModel.Reviews = homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate)).ToList();
+
+            homePageViewModel.ShowAllReviews = showAllReviews;
 
             return View(homePageViewModel);
         }
@@ -44,7 +46,10 @@ namespace RamenOkiDoki.Controllers
             return View(homePageViewModel);
         }
 
-
+        //public IActionResult ShowAdditionalReviews()
+        //{
+        //    return redirectto("Index", true);
+        //}
 
         [Route("about")]
         public IActionResult About()

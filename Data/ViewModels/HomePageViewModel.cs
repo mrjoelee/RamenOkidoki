@@ -15,6 +15,7 @@ namespace Data.ViewModels
         public HoursOfOperation HoursOfOperation { get; set; }
         public List<Review> Reviews { get; set; }
         public Review NewReview { get; set; }
+        public bool ShowAllReviews { get; set; }
 
         // public int NewRating { get; set; }
 
