@@ -29,8 +29,15 @@ namespace RamenOkiDoki.Controllers
          //   homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate));
             homePageViewModel.Reviews = homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate)).ToList();
 
-            homePageViewModel.ShowAllReviews = showAllReviews;
-
+            if (showAllReviews == "true")
+            {
+                 homePageViewModel.ShowAllReviews = true;
+            }
+            else
+            {
+                   homePageViewModel.ShowAllReviews = false;
+            }
+           
             return View(homePageViewModel);
         }
 
