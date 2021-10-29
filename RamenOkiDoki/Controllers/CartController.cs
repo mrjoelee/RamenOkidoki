@@ -183,7 +183,14 @@ namespace RamenOkiDoki.Controllers
 
         }
 
-        public IActionResult ChangeQuantity()
+        public IActionResult DecreaseQuantity(string itemId)
+        {
+
+            return RedirectToAction("TakeOutMenu", "Menu");
+
+        }
+
+        public IActionResult IncreaseQuantity(string itemId)
         {
 
             return RedirectToAction("TakeOutMenu", "Menu");
