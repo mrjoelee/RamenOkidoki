@@ -11,9 +11,13 @@
             <Image src="@Url.Content(@Model.CarouselImages[i].ImagePath)" height="200" width="300"/>
         }*@
 
-    <img name="slide" width="500" height="400" />
-    <input type="hidden" id="jasonPicData" value="Model.PhotoJson" />
+    @if (@Model.CarouselImages != null && @Model.CarouselImages.Count > 0)
+    {
+        <img id="slider" width="500" height="400" style="background-color: black;" />
 
+        @*<img name="slide" width="500" height="400" />*@
+        <input type="hidden" id="jasonPicData" value="Model.PhotoJson" />
+    }
 </div>
 
 @*<script src="~/js/photo-carousel.js" type="text/javascript"></script>*@
@@ -43,24 +47,37 @@
     images[10] ='@Url.Content(Model.CarouselImages[10].ImagePath)';
 
 
+    function slideShow() {
+        document.getElementById('slider').className += "fadeOut";
+        setTimeout(function() {
+            document.getElementById('slider').src = images[i];
+            document.getElementById('slider').className = "";
+        },1000);
+        i++;
+        if (i >= images.length) { i = 0; }
+        setTimeout(slideShow, time);
+    }
+    slideShow();
+
+
 
 // Change Image
-    function changeImg() {
-        document.slide.src = images[i];
+//    function changeImg() {
+//        document.slide.src = images[i];
 
-        // Check If Index Is Under Max
-        if (i < images.length - 1) {
-            // Add 1 to Index
-            i++;
-        } else {
-            // Reset Back To O
-            i = 0;
-        }
+//        // Check If Index Is Under Max
+//        if (i < images.length - 1) {
+//            // Add 1 to Index
+//            i++;
+//        } else {
+//            // Reset Back To O
+//            i = 0;
+//        }
 
-        // Run function every x seconds
-        setTimeout("changeImg()", time);
-    }
+//        // Run function every x seconds
+//        setTimeout("changeImg()", time);
+//    }
 
-// Run function when page loads
-    window.onload = changeImg;
+//// Run function when page loads
+//    window.onload = changeImg;
 </script>

@@ -188,6 +188,16 @@ body {
  /*   border-radius: 10px;*/
 }
 
+#slider {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#slider.fadeOut {
+    opacity: 0;
+}
+
+
 .menuItem {
     font-size: 16px;
     font-weight: bold;
