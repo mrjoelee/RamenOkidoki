@@ -131,7 +131,7 @@ body {
 }
 
 .page-titles {
-    font-family:'Merienda', cursive;
+    font-family: 'Merienda', cursive;
     font-size: 3.5em;
     text-align: center;
     margin: 25px;
@@ -148,7 +148,7 @@ body {
 
 .google-map-div {
     margin-top: 120px;
-   padding:100px;
+    padding: 100px;
     width: 100vw;
 }
 
@@ -157,11 +157,9 @@ body {
     width: 100vw;
     margin: 0px auto;
     display: inline-block
-
 }
 
 .googlemap {
-
 }
 
 
@@ -182,20 +180,23 @@ body {
     -moz-columns: 60px 2;
     /* Firefox */
     columns: 60px 2;
- /*   background-color: linen;*/
+    /*   background-color: linen;*/
     padding: 5px;
     margin: 10px;
- /*   border-radius: 10px;*/
+    /*   border-radius: 10px;*/
 }
 
 #slider {
+    width: 490px;
+    height: 390px;
+    margin: 10px;
     opacity: 1;
-    transition: opacity 1s;
+    transition: opacity 500ms;
 }
 
-#slider.fadeOut {
-    opacity: 0.1;
-}
+    #slider.fadeOut {
+        opacity: 0.1;
+    }
 
 
 .menuItem {
@@ -297,21 +298,19 @@ a.admin-nav-link {
     margin-bottom: 15px;
 }
 
-.form-hours-group input {
-    width: 80px;
-    height: 25px;
-}
+    .form-hours-group input {
+        width: 80px;
+        height: 25px;
+    }
 
 .form-addon-group {
     margin-bottom: 15px;
-
 }
 
-.form-addon-group input {
-    width: 60px;
-    height: 25px;
-
-}
+    .form-addon-group input {
+        width: 60px;
+        height: 25px;
+    }
 
 .menu-edit-table {
     padding: 5px;
@@ -364,7 +363,7 @@ a.admin-nav-link {
 
 .food-order-cart {
     display: inline-block;
-    margin:0 20px 0 100px;
+    margin: 0 20px 0 100px;
     padding: 20px;
 }
 
@@ -387,18 +386,18 @@ a.admin-nav-link {
     color: white;
 }
 
-.submit-order-button:hover {
-    background-color: green;
-}
+    .submit-order-button:hover {
+        background-color: green;
+    }
 
 /*google map api*/
-#map{
+#map {
     height: 400px;
     width: 400px;
     position: fixed;
 }
 
-.row{
+.row {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -409,7 +408,7 @@ a.admin-nav-link {
 .grid-gallery {
     line-height: 0;
     column-gap: 0px;
-/*    width: 100%;
+    /*    width: 100%;
     height: auto;*/
     -moz-column-count: 1;
     -webkit-column-count: 1;
@@ -429,15 +428,15 @@ a.admin-nav-link {
         font-size: 2.2em;
     }
 
-.restaurant-reviews h3 {
-    color: darkred;
-}
+    .restaurant-reviews h3 {
+        color: darkred;
+    }
 
-.restaurant-reviews p {
-    font-style: italic;
-    font-size: 1.2em;
-    line-height: 2em;
-}
+    .restaurant-reviews p {
+        font-style: italic;
+        font-size: 1.2em;
+        line-height: 2em;
+    }
 
 .leave-review {
     width: 75%;
