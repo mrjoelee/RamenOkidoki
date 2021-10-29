@@ -13,8 +13,9 @@
 
     @if (@Model.CarouselImages != null && @Model.CarouselImages.Count > 0)
     {
-        <img id="slider" width="500" height="400" style="background-color: black;" />
-
+    <div style="background-color: black; width: 500px; height: 400px;">
+        <img id="slider" width="500" height="400" />
+    </div>
         @*<img name="slide" width="500" height="400" />*@
         <input type="hidden" id="jasonPicData" value="Model.PhotoJson" />
     }
