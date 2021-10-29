@@ -12,9 +12,11 @@
         }*@
 
     <img name="slide" width="500" height="400" />
+    <input type="hidden" id="jasonPicData" value="Model.PhotoJson" />
 
 </div>
 
+@*<script src="~/js/photo-carousel.js" type="text/javascript"></script>*@
 
 <script>
 
@@ -22,22 +24,20 @@
     var images = [];	// Images Array
 
     var time = 3000;	// Time Between Switch
-
-
-    @*for (var index = 0; index < (@Model.CarouselImages.Count - 1); index++) {
+    for (var index = 0; index < (@Model.CarouselImages.Count - 1); index++) {
         var k = index;
         images[i] ='@Url.Content(Model.CarouselImages[2].ImagePath)';
-    }*@
+    }
 
 
-images[0] ='@Url.Content(Model.CarouselImages[0].ImagePath)';
-images[1] ='@Url.Content(Model.CarouselImages[1].ImagePath)';
-images[2] ='@Url.Content(Model.CarouselImages[2].ImagePath)';
-images[3] = '@Url.Content(Model.CarouselImages[3].ImagePath)';
-images[4] = '@Url.Content(Model.CarouselImages[4].ImagePath)';
-images[5] ='@Url.Content(Model.CarouselImages[5].ImagePath)';
-images[6] ='@Url.Content(Model.CarouselImages[6].ImagePath)';
-images[7] ='@Url.Content(Model.CarouselImages[7].ImagePath)';
+    images[0] ='@Url.Content(Model.CarouselImages[0].ImagePath)';
+    images[1] ='@Url.Content(Model.CarouselImages[1].ImagePath)';
+    images[2] ='@Url.Content(Model.CarouselImages[2].ImagePath)';
+    images[3] = '@Url.Content(Model.CarouselImages[3].ImagePath)';
+    images[4] = '@Url.Content(Model.CarouselImages[4].ImagePath)';
+    images[5] ='@Url.Content(Model.CarouselImages[5].ImagePath)';
+    images[6] ='@Url.Content(Model.CarouselImages[6].ImagePath)';
+    images[7] ='@Url.Content(Model.CarouselImages[7].ImagePath)';
 
 
 

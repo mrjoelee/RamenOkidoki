@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Data.Models;
+using Data.Models.FoodMenus;
 
 namespace Data.ViewModels
 {
@@ -13,6 +16,8 @@ namespace Data.ViewModels
         public List<CarouselImage> CarouselImages { get; set; }
 
         public CarouselImage CurrentCarouselImage;
+
+        public string PhotoJson { get; set; }
 
         public PhotosViewModel()
         {
@@ -34,6 +39,14 @@ namespace Data.ViewModels
               new CarouselImage(){ImageName = "Takoyaki", ImagePath = "/images/GalleryImages/Takoyaki.jpg"},
               new CarouselImage(){ImageName = "Tonkotsu Ramen", ImagePath = "/images/GalleryImages/Tonkotsu_Ramen.jpg"}
           };
+
+          List<string> tempPaths = new List<string>();
+          foreach (var pic in CarouselImages)
+          {
+              tempPaths.Add("@Url.Content" + pic.ImagePath);
+          }
+
+          PhotoJson = JsonSerializer.Serialize(tempPaths);
         }
     }
 }

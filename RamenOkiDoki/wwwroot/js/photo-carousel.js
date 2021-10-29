@@ -1,32 +1,38 @@
-﻿var i = 0; 			// Start Point
-var images = [];	// Images Array
-var time = 3000;	// Time Between Switch
+﻿
+    var jasonPicData = document.getElementById("jasonPicData").value;
 
-// Image List
-images[0] = "@Url.Content(~/images/GalleryImages/Ru_okidoki.jpg)";
+    var photoList = JSON.parse(jasonPicData);
 
-//images[1] = "http://lorempixel.com/400/200/sports";
-//images[2] = "http://lorempixel.com/400/200/food";
-//images[3] = "http://lorempixel.com/400/200/people";
+
+    var i = 0; // Start Point
+    var images = []; // Images Array
+    var time = 3000; // Time Between Switch
+
+    console.log(photolist);
+
+    for (var j = 0; j < photoList.length; j++) {
+        images[j] = photoList[j].ImagePath;
+
+    }
 
 
 // Change Image
-function changeImg() {
-    document.slide.src = images[i];
+    function changeImg() {
+        document.slide.src = images[i];
 
-    // Check If Index Is Under Max
-    if (i < images.length - 1) {
-        // Add 1 to Index
-        i++;
-    } else {
-        // Reset Back To O
-        i = 0;
+        // Check If Index Is Under Max
+        if (i < images.length - 1) {
+            // Add 1 to Index
+            i++;
+        } else {
+            // Reset Back To O
+            i = 0;
+        }
+
+        // Run function every x seconds
+        setTimeout("changeImg()", time);
     }
 
-    // Run function every x seconds
-    setTimeout("changeImg()", time);
-}
-
 // Run function when page loads
-window.onload = changeImg;
+    window.onload = changeImg;
 
