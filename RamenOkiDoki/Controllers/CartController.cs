@@ -88,7 +88,7 @@ namespace RamenOkiDoki.Controllers
             if (!string.IsNullOrWhiteSpace(itemIdToAdd))
             {
                 int foodItemId, requestedItemId;
-                
+
                 int.TryParse(itemIdToAdd, out requestedItemId);
 
                 foreach (var foodCategory in Globals.FoodCategoriesList)
@@ -99,7 +99,7 @@ namespace RamenOkiDoki.Controllers
 
                         if (foodItemId == requestedItemId)
                         {
-                          
+
 
                             requestedItem = new OrderItem(
                                 foodItem.id,
@@ -107,7 +107,7 @@ namespace RamenOkiDoki.Controllers
                                 foodItem.description,
                                 foodItem.price,
                                 foodItem.foodCategory,
-                                foodItem.foodCategoryId, 
+                                foodItem.foodCategoryId,
                                     1
                                 );
 
@@ -140,8 +140,8 @@ namespace RamenOkiDoki.Controllers
 
             //  return ViewComponent("TakeOutMenu", "Menu");
 
-           // return RedirectToAction("TakeOutMenu", "Menu", new { category = itemCategoryId });
-         
+            // return RedirectToAction("TakeOutMenu", "Menu", new { category = itemCategoryId });
+
             return RedirectToAction("TakeOutMenu", new RouteValueDictionary(
                 new { controller = "Menu", action = "TakeOutMenu", category = requestedItem.foodCategory }));
 
@@ -183,11 +183,18 @@ namespace RamenOkiDoki.Controllers
 
         }
 
+        public IActionResult ChangeQuantity()
+        {
+
+            return RedirectToAction("TakeOutMenu", "Menu");
+
+        }
+
         public IActionResult CheckOut()
         {
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-   
+
             foodItemsViewModel.OrderedItems = Globals.CartItemsList;
 
             foodItemsViewModel.OrderSubTotalCost = string.Format("{0:C}", Globals.OrderSubTotalCost);
