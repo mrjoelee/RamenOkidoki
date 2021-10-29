@@ -3,7 +3,61 @@
 @model Data.ViewModels.PhotosViewModel
 @*@model Data.Models.CarouselImage*@
 
+<div style="margin-right:100px">
+    @*<Image src="@Url.Content(@Model.CarouselImages[0].ImagePath)" height="400" width="500" />*@
 
-<Image src="@Url.Content(@Model.CurrentCarouselImage.ImagePath)" height="400" width="500" />
-<p>@Model.CurrentCarouselImage.ImageName</p>
+    @*@for (int i = 0; i < @Model.CarouselImages.Count; i++)
+        {
+            <Image src="@Url.Content(@Model.CarouselImages[i].ImagePath)" height="200" width="300"/>
+        }*@
 
+    <img name="slide" width="500" height="400" />
+
+</div>
+
+
+<script>
+
+    var i = 0; 			// Start Point
+    var images = [];	// Images Array
+
+    var time = 3000;	// Time Between Switch
+
+
+    @*for (var index = 0; index < (@Model.CarouselImages.Count - 1); index++) {
+        var k = index;
+        images[i] ='@Url.Content(Model.CarouselImages[2].ImagePath)';
+    }*@
+
+
+images[0] ='@Url.Content(Model.CarouselImages[0].ImagePath)';
+images[1] ='@Url.Content(Model.CarouselImages[1].ImagePath)';
+images[2] ='@Url.Content(Model.CarouselImages[2].ImagePath)';
+images[3] = '@Url.Content(Model.CarouselImages[3].ImagePath)';
+images[4] = '@Url.Content(Model.CarouselImages[4].ImagePath)';
+images[5] ='@Url.Content(Model.CarouselImages[5].ImagePath)';
+images[6] ='@Url.Content(Model.CarouselImages[6].ImagePath)';
+images[7] ='@Url.Content(Model.CarouselImages[7].ImagePath)';
+
+
+
+// Change Image
+    function changeImg() {
+        document.slide.src = images[i];
+
+        // Check If Index Is Under Max
+        if (i < images.length - 1) {
+            // Add 1 to Index
+            i++;
+        } else {
+            // Reset Back To O
+            i = 0;
+        }
+
+        // Run function every x seconds
+        setTimeout("changeImg()", time);
+    }
+
+// Run function when page loads
+    window.onload = changeImg;
+</script>

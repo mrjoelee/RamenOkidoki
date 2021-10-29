@@ -5,15 +5,13 @@
 
 <div class="non-sidebar-page">
 
-    <div class="text-center">
+    <div class="text-center" style="margin-bottom:150px">
         <h1 class="page-titles">Welcome to Our Table</h1>
     </div>
-    <br />
-    <br />
-    <br />
+
 
     <div style="display:inline">
-        <Image src="/Images/background.JPG" height="400" width="500" />
+        <Image src="/Images/background.JPG" height="400" width="25%" />
 
         <a href="https://www.facebook.com/okidokiramen/"><i class="fab fa-facebook-square" style="margin:0 10px 0 100px;color: blue;"></i></a>
         <a href="https://www.instagram.com/ramenokidoki/"><i class="fab fa-instagram" style="margin:0 10px 0 10px;"></i></a>
@@ -21,7 +19,7 @@
     </div>
     <div style="display: inline; float: right; margin-right: 100px">
         <h3>Our Hours</h3>
-        @*@await Html.PartialAsync("_HoursOfOperationPartial")*@
+        @await Html.PartialAsync("_HoursOfOperationHomePartial")
     </div>
     <div class="restaurant-reviews">
 
@@ -35,3 +33,4 @@
 
     </div>
 
+    </div>

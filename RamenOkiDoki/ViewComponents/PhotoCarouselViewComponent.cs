@@ -41,13 +41,15 @@ namespace RamenOkiDoki.ViewComponents
             //photosViewModel.CurrentCarouselImage.ImagePath = path;
             //photosViewModel.CurrentCarouselImage.ImageName = name;
 
-            ObservableCollection<CarouselImage> carouselImages = new ObservableCollection<CarouselImage>();
-            carouselImages = GetCarouselImages();
+           // ObservableCollection<CarouselImage> carouselImages = new ObservableCollection<CarouselImage>();
+          //  carouselImages = GetCarouselImages();
 
-            Random rand = new Random();
-            int imageNumber = rand.Next(0, carouselImages.Count - 1);
+            photosViewModel.CarouselImages = new List<CarouselImage>(GetCarouselImages());
 
-            photosViewModel.CurrentCarouselImage = carouselImages[imageNumber];
+         //   Random rand = new Random();
+          //  int imageNumber = rand.Next(0, carouselImages.Count - 1);
+
+         //   photosViewModel.CurrentCarouselImage = carouselImages[imageNumber];
 
 
             return View("PhotoCarousel", photosViewModel);
