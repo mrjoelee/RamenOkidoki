@@ -97,13 +97,16 @@ button.accept-policy {
 -------------------------------------------------- */
 html {
     position: relative;
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
-    width: 100% !important;
+    margin-bottom: 0px;
+    width: 100vw !important;
+    height: 100% !important;
     background-image: linear-gradient(165deg, white, #fff2e6);
 }
 
@@ -111,12 +114,13 @@ body {
   /*  padding: 25px;*/
 }
 
-.container {
-    width: 100% !important;
+/*.container {
+    
+    width: 100vw !important;
     max-width: 100% !important;
     margin: 0;
     padding: 0;
-}
+}*/
 
 .combo-page {
     display: inline !important;
@@ -126,11 +130,12 @@ body {
 }
 
 .footer {
-    padding:3px;
+    flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+    padding: 3px;
     background-color: black;
     color: white !important;
-    position: absolute;
     bottom: 0;
+    margin-top: -50px;
     width: 100vw;
     border-top: 1px solid red !important; /* Vertically center the text there */
 }
