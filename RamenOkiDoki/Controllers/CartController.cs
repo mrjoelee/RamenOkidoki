@@ -44,6 +44,8 @@ namespace RamenOkiDoki.Controllers
             return View(foodItemsViewModel);
         }
 
+   
+        //method to add item to the cart
         public IActionResult AddToCart(string itemIdToAdd)
         {
             double tempPrice = 0.00;
@@ -135,9 +137,10 @@ namespace RamenOkiDoki.Controllers
         }
 
 
+
+        //Method to delete item from the cart
         public IActionResult DeleteFromCart(string itemIdToDelete)
         {
-            // Add itemToAdd to the cart
 
             FoodMenu.FoodItem requestedItem = null;
 
@@ -170,7 +173,8 @@ namespace RamenOkiDoki.Controllers
             return RedirectToAction("TakeOutMenu", "Menu");
 
         }
-
+ 
+        //Method to decrease item on the  cart
         public IActionResult DecreaseQuantity(string itemId)
         {
             double tempPrice = 0.00;
@@ -224,6 +228,7 @@ namespace RamenOkiDoki.Controllers
 
         }
 
+        //Method to increase item on the cart 
         public IActionResult IncreaseQuantity(string itemId)
         {
             FoodMenu.FoodItem requestedItem = null;
