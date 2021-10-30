@@ -114,13 +114,13 @@ body {
   /*  padding: 25px;*/
 }
 
-/*.container {
+.container {
     
     width: 100vw !important;
     max-width: 100% !important;
     margin: 0;
     padding: 0;
-}*/
+}
 
 .combo-page {
     display: inline !important;

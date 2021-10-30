@@ -46,16 +46,20 @@ namespace RamenOkiDoki.Controllers
 
         public IActionResult AddToCart(string itemIdToAdd)
         {
-
+            double tempPrice = 0.00;
             // Add itemToAdd to the cart
+
+            bool itemExists = false;
 
             OrderItem requestedItem = null;
 
+            int foodItemId, requestedItemId;
+
+            int.TryParse(itemIdToAdd, out requestedItemId);
+
             if (!string.IsNullOrWhiteSpace(itemIdToAdd))
             {
-                int foodItemId, requestedItemId;
 
-                int.TryParse(itemIdToAdd, out requestedItemId);
 
                 foreach (var item in Globals.CartItemsList)
                 {
@@ -63,20 +67,24 @@ namespace RamenOkiDoki.Controllers
 
                     if (foodItemId == requestedItemId)
                     {
+                        itemExists = true;
+
                         item.quantity++;
 
-                        double tempPrice = 0.00;
+                        tempPrice = 0.00;
 
                         double.TryParse(item.price, out tempPrice);
 
                         Globals.OrderSubTotalCost += tempPrice;
 
+
                         break;
                     }
                 }
 
-                else
+                if (!itemExists)
                 {
+
                     foreach (var foodCategory in Globals.FoodCategoriesList)
                     {
                         foreach (var foodItem in foodCategory.FoodItems)
@@ -101,31 +109,29 @@ namespace RamenOkiDoki.Controllers
 
                         }
                     }
-                }
+
+                    Globals.CartItemsList.Add(requestedItem);
+                    tempPrice = 0;
+                    double.TryParse(requestedItem.price, out tempPrice);
 
 
-                FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+                    Globals.OrderSubTotalCost += tempPrice;
 
-                Globals.CartItemsList.Add(requestedItem);
+                    FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-                //Globals.CartItemsList.Add(new OrderItem(requestedItem.id, requestedItem.dishName, requestedItem.description, requestedItem.price, requestedItem.categoryName, 1));
-
-                double tempPrice = 0;
-
-                double.TryParse(requestedItem.price, out tempPrice);
-
-                Globals.OrderSubTotalCost += tempPrice;
-
-            }
-
-            return RedirectToAction("TakeOutMenu", new RouteValueDictionary(
+                    return RedirectToAction("TakeOutMenu", new RouteValueDictionary(
                 new
                 {
                     controller = "Menu",
                     action = "TakeOutMenu",
                     category = requestedItem.foodCategory
                 }));
+                }
 
+                
+            }
+
+            return RedirectToAction("TakeOutMenu", "Menu");
         }
 
 
