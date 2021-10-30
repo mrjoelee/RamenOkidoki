@@ -173,6 +173,8 @@ namespace RamenOkiDoki.Controllers
 
         public IActionResult DecreaseQuantity(string itemId)
         {
+            double tempPrice = 0.00;
+
             FoodMenu.FoodItem requestedItem = null;
 
             if (!string.IsNullOrWhiteSpace(itemId))
@@ -187,9 +189,9 @@ namespace RamenOkiDoki.Controllers
 
                     if (foodItemId == decreasedItemId)
                     {
-                        Globals.CartItemsList.Remove(item);
+                        item.quantity--;
 
-                        double tempPrice = 0;
+                        tempPrice = 0;
 
                         double.TryParse(item.price, out tempPrice);
 
@@ -197,8 +199,25 @@ namespace RamenOkiDoki.Controllers
 
                         break;
                     }
+                }
+                foreach (var item in Globals.CartItemsList)
+                {
+                   if (item.quantity < 1)
+                   {
+                       Globals.CartItemsList.Remove(item);
+                   
+                       tempPrice = 0;
+                   
+                       double.TryParse(item.price, out tempPrice);
+                   
+                       Globals.OrderSubTotalCost -= tempPrice;
+
+                        break;
+                   }
+
                     continue;
                 }
+              
 
             }
             return RedirectToAction("TakeOutMenu", "Menu");
