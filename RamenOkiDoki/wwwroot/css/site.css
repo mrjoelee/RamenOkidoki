@@ -39,6 +39,14 @@ a.nav-link {
 .navbar-nav {
 }
 
+.dropdown-menu {
+    background-color: black;
+    padding: 20px;
+}
+
+.dropdown-item {
+    background-color: black !important;
+}
 
 /* Provide sufficient contrast against white background */
 a {
