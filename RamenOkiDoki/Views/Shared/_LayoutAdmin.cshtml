@@ -29,7 +29,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex">
-                    <ul class="navbar-nav ">
+                    <ul class="navbar-nav   mx-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -68,11 +68,14 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container" style="text-align: center">
-            &copy; 2021 - Ramen OkiDoki  10603 Bellaire Blvd, Houston, TX 77072 <a style="margin-left:100px" href="tel: 2815758077"><i class="fas fa-phone"></i> Call (281)575-8077</a>  <a style="margin-left: 100px;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
-        </div>
-    </footer>
+<footer class="footer">
+    <div class="text-center  col-lg-6 col-md-6">
+        <p>&copy; 2021 - Ramen OkiDoki  10603 Bellaire Blvd, Houston, TX 77072</p>
+    </div>  
+    <div class="text-center col-lg-6 col-md-6">
+        <a href="tel: 2815758077" style="margin-right:50px"><i class="fas fa-phone"></i> Call (281)575-8077</a> <a  asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+    </div>
+</footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

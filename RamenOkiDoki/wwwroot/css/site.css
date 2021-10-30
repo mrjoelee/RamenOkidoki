@@ -108,7 +108,7 @@ body {
 }
 
 .non-sidebar-page {
-    padding: 25px;
+  /*  padding: 25px;*/
 }
 
 .container {
@@ -126,15 +126,13 @@ body {
 }
 
 .footer {
+    padding:3px;
     background-color: black;
     color: white !important;
     position: absolute;
     bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    border: none !important;
-    border-top: 1px solid red !important;
-    line-height: 60px; /* Vertically center the text there */
+    width: 100vw;
+    border-top: 1px solid red !important; /* Vertically center the text there */
 }
 
 .page-titles {
