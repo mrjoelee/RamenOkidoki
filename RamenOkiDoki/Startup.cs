@@ -8,11 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Data.DbContext;
 using Data.Models;
 using Data.Models.FoodMenus;
 using DataServices.Services;
-//using Microsoft.EntityFrameworkCore;
 
 namespace RamenOkiDoki
 {
@@ -39,9 +37,6 @@ namespace RamenOkiDoki
         //this is the usage of Dependency Injection
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<RestaurantDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddTransient<MenuEndpointService>();
 
 
@@ -71,7 +66,7 @@ namespace RamenOkiDoki
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            //process through which the application matches the requested URL path and executes the related Controller and Action.
+            //process through which the applicaiton matches the requested URL path and executes the related Controller and Aciton.
             app.UseRouting();
 
             app.UseAuthorization();

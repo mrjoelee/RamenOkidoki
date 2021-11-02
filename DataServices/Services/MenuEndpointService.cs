@@ -69,7 +69,7 @@ namespace DataServices.Services
                  {
                      foreach (var foodItem in category.FoodItems)
                      {
-                         if (foodItem.foodCategoryId == category.Id)
+                         if (foodItem.foodCategoryId == category.id)
                          {
                              foodItem.foodCategory = category.Category;
                          }

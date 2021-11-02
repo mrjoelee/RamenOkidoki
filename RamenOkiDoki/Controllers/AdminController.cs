@@ -106,12 +106,12 @@ namespace RamenOkiDoki.Controllers
                         {
                             if (item != null)
                             {
-                             //   int.TryParse(item.id, out itemId);
+                                int.TryParse(item.id, out itemId);
 
-                                if (item.Id == index)
+                                if (itemId == index)
                                 {
                                     item.foodCategory = category.Category;
-                                    item.foodCategoryId = category.Id;
+                                    item.foodCategoryId = category.id;
                                     return View(item);
                                 }
                             }
@@ -130,7 +130,7 @@ namespace RamenOkiDoki.Controllers
             {
                 if (category.Category == item.foodCategory)
                 {
-                    item.foodCategoryId = category.Id;
+                    item.foodCategoryId = category.id;
                 }
             }
 
@@ -150,9 +150,9 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var item in Globals.FoodItemsList)
                 {
-                  //  int.TryParse(item.Id, out itemId);
+                    int.TryParse(item.id, out itemId);
 
-                    if (item.Id == index)
+                    if (itemId == index)
                     {
                         await _menuEndpointService.DeleteMenuItemFromCloud(index);
                     }

@@ -3,10 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Data.Models.DashboardData
 {
-    public class BusinessLocation
+    public class BusinessAddress
     {
-        [Key]
-        public int Id { get; set; }
 
         [Display(Name = "Business Name")]
         public string BusinessName { get; set; }
@@ -24,11 +22,5 @@ namespace Data.Models.DashboardData
 
     public class SocialPlatforms
     {
-        [Key]
-        public int Id { get; set; }
-        public string FacebookUrl { get; set; }
-        public string InstagramUrl { get; set; }
-        public string TwitterUrl { get; set; }
-        public string YelpUrl { get; set; }
     }
 }
