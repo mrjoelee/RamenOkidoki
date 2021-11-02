@@ -228,6 +228,7 @@ namespace RamenOkiDoki.Controllers
 
             HoursOfOperation hours = new HoursOfOperation();
             hours = dvm.HoursOfOperation;
+            hours.Id = 1;
 
             if (hours != null)
             {
