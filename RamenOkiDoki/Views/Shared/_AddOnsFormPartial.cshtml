@@ -1,11 +1,16 @@
 ﻿@model Data.ViewModels.DashboardViewModel
+@using (Html.BeginForm("SaveAddOnsForm", "Admin", FormMethod.Post))
+{
 
-<form method="post" style="margin:50px 70px 0 0">
-    <div class="form-addon-group">
-        <label asp-for="SalesTax"></label>
-        <input type="text"
-               name="@Model.SalesTax"
-               value="@Model.SalesTax"/> </br>
-    <button value="DashBoard" type="submit" class="btn btn-primary submit-order-button" onclick="location.href='@Url.Action("CloseAddOnsForm")'" id="addfooditem"><i class="far fa-save"></i>Save</button>
-    </div>
-</form>
+<table>
+    <tr class="form-group">
+        <td>Sales Tax</td>
+        <td>@Html.TextBoxFor(m => m.AddOns.SalesTax)</td>
+    </tr>
+    <tr class="form-group">
+        <td>Delivery Charge</td>
+        <td>@Html.TextBoxFor(m => m.AddOns.DeliveryCharge)</td>
+    </tr>
+    <tr> <td colspan="2"><input type="submit" value="Submit Form" class="btn btn-primary submit-order-button" />@*<i class="fas fa-share-square"></i>*@</td></tr>
+</table>
+    }

@@ -1,47 +1,37 @@
 ﻿@model Data.ViewModels.DashboardViewModel
 
-<form method="post">
-    <div class="form-group">
-        <label asp-for="BusinessLocation.BusinessName"></label>
-        <input type="text" 
-               name="@Model.BusinessLocation.BusinessName" 
-               value="@Model.BusinessLocation.BusinessName" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessLocation.PhoneNumber"></label>
-        <input type="text"
-               name="@Model.BusinessLocation.PhoneNumber"
-               value="@Model.BusinessLocation.PhoneNumber" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessLocation.Email"></label>
-        <input type="text" 
-               name="@Model.BusinessLocation.Email" 
-               value="@Model.BusinessLocation.Email" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessLocation.StreetAddress"></label>
-        <input type="text" 
-               name="@Model.BusinessLocation.StreetAddress" 
-               value="@Model.BusinessLocation.StreetAddress" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessLocation.City"></label>
-        <input type="text"
-               name="@Model.BusinessLocation.City"
-               value="@Model.BusinessLocation.City" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessLocation.State"></label>
-        <input type="text"
-               name="@Model.BusinessLocation.State"
-               value="@Model.BusinessLocation.State" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BusinessLocation.Zipcode"></label>
-        <input type="text"
-               name="@Model.BusinessLocation.Zipcode"
-               value="@Model.BusinessLocation.Zipcode" />
-    </div>
-    <button value="DashBoard" type="submit" class="btn btn-primary submit-order-button" onclick="location.href='@Url.Action("CloseAddressForm")'" id="addfooditem"><i class="far fa-save"></i>Save</button>
-</form>
+@using (Html.BeginForm("SaveBusinessLocation", "Admin", FormMethod.Post))
+{
+<table>
+    <tr class="form-group">
+        <td>Business Name</td>
+        <td>@Html.TextBoxFor(m => m.BusinessLocation.BusinessName)</td>
+    </tr>
+    <tr class="form-group">
+        <td>Phone Number</td>
+        <td>@Html.TextBoxFor(m => m.BusinessLocation.PhoneNumber)</td>
+    </tr>
+    <tr class="form-group">
+        <td>Email</td>
+        <td>@Html.TextBoxFor(m => m.BusinessLocation.Email)</td>
+    </tr>
+    <tr class="form-group">
+        <td>Street Address</td>
+        <td>@Html.TextBoxFor(m => m.BusinessLocation.StreetAddress)</td>
+    </tr>
+    <tr class="form-group">
+        <td>City</td>
+        <td>@Html.TextBoxFor(m => m.BusinessLocation.City)</td>
+    </tr>
+    <tr class="form-group">
+        <td>State</td>
+        <td>@Html.TextBoxFor(m => m.BusinessLocation.State)</td>
+    </tr>
+    <tr class="form-group">
+        <td>Zipcode</td>
+        <td>@Html.TextBoxFor(m => m.BusinessLocation.Zipcode)</td>
+    </tr>
+
+    <tr> <td colspan="2"><input type="submit" value="Submit Form" class="btn btn-primary submit-order-button" />@*<i class="fas fa-share-square"></i>*@</td></tr>
+</table>
+}

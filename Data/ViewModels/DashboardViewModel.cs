@@ -12,7 +12,7 @@ namespace Data.ViewModels
     {
         public BusinessLocation BusinessLocation { get; set; }
         public HoursOfOperation HoursOfOperation { get; set; }
-        public string SalesTax { get; set; }
+        public AddOnCharges AddOns { get; set; }
 
         public List<Review> Reviews { get; set; }
 
@@ -24,7 +24,10 @@ namespace Data.ViewModels
 
             HoursOfOperation = DummyData.GetHoursOfOperation();
 
-            SalesTax = Globals.SalesTax.ToString();
+            
+            AddOns.SalesTax = Globals.SalesTax.ToString();
+
+            AddOns.DeliveryCharge = "$5.00";
 
         }
     }
