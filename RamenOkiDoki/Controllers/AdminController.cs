@@ -220,20 +220,23 @@ namespace RamenOkiDoki.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveHoursOfOperation(HoursOfOperation hours)
+        public IActionResult SaveHoursOfOperation(DashboardViewModel dvm)
         {
             Globals.DisplayHoursForm = false;
 
             // TODO: Save data
 
+            HoursOfOperation hours = new HoursOfOperation();
+            hours = dvm.HoursOfOperation;
+
             if (hours != null)
             {
                 var context = new RestaurantDbContext();
-
-             //   context.BusinessHours = new RestaurantDbContext()<HoursOfOperation>(hours);
+                
                 context.Update(hours);
-            }
 
+                context.SaveChanges();
+            }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
             return RedirectToAction("Index", dashboardViewModel);
