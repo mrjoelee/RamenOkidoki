@@ -65,9 +65,9 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var item in Globals.CartItemsList)
                 {
-                    int.TryParse(item.id, out foodItemId);
+                   // int.TryParse(item.Id, out foodItemId);
 
-                    if (foodItemId == requestedItemId)
+                    if (item.Id == requestedItemId)
                     {
                         itemExists = true;
 
@@ -91,13 +91,13 @@ namespace RamenOkiDoki.Controllers
                     {
                         foreach (var foodItem in foodCategory.FoodItems)
                         {
-                            int.TryParse(foodItem.id, out foodItemId);
+                           // int.TryParse(foodItem.id, out foodItemId);
 
-                            if (foodItemId == requestedItemId)
+                            if (foodItem.Id == requestedItemId)
                             {
 
                                 requestedItem = new OrderItem(
-                                    foodItem.id,
+                                    foodItem.Id,
                                     foodItem.dishName,
                                     foodItem.description,
                                     foodItem.price,
@@ -152,9 +152,9 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var item in Globals.CartItemsList)
                 {
-                    int.TryParse(item.id, out foodItemId);
+                   // int.TryParse(item.id, out foodItemId);
 
-                    if (foodItemId == deletedItemId)
+                    if (item.Id == deletedItemId)
                     {
                         Globals.CartItemsList.Remove(item);
 
@@ -189,9 +189,9 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var item in Globals.CartItemsList)
                 {
-                    int.TryParse(item.id, out foodItemId);
+                  //  int.TryParse(item.id, out foodItemId);
 
-                    if (foodItemId == decreasedItemId)
+                    if (item.Id == decreasedItemId)
                     {
                         item.quantity--;
 
@@ -241,9 +241,9 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var item in Globals.CartItemsList)
                 {
-                    int.TryParse(item.id, out foodItemId);
+                   // int.TryParse(item.id, out foodItemId);
 
-                    if (foodItemId == increasedItemId)
+                    if (item.Id == increasedItemId)
                     {
                         //Globals.CartItemsList.Add(item);
                         item.quantity++;

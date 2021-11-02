@@ -10,9 +10,9 @@ namespace Data.Models
 {
     public class DummyData
     {
-        public static BusinessAddress GetBusinessLocation()
+        public static BusinessLocation GetBusinessLocation()
         {
-            return new BusinessAddress()
+            return new BusinessLocation()
             {
                 BusinessName = "Ramen OkiDoki",
                 StreetAddress = "10603 Bellaire Blvd",
