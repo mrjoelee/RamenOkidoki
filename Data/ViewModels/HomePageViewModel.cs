@@ -11,7 +11,7 @@ namespace Data.ViewModels
 {
     public class HomePageViewModel
     {
-        public BusinessAddress BusinessLocation { get; set; }
+        public BusinessLocation BusinessLocation { get; set; }
         public HoursOfOperation HoursOfOperation { get; set; }
         public List<Review> Reviews { get; set; }
         public Review NewReview { get; set; }
@@ -21,7 +21,7 @@ namespace Data.ViewModels
 
         public HomePageViewModel()
         {
-            BusinessLocation = new BusinessAddress()
+            BusinessLocation = new BusinessLocation()
             {
                 BusinessName = "Ramen OkiDoki",
                 StreetAddress = "10603 Bellaire Blvd",

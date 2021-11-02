@@ -10,7 +10,7 @@ namespace Data.ViewModels
 {
     public class DashboardViewModel
     {
-        public BusinessAddress BusinessLocation { get; set; }
+        public BusinessLocation BusinessLocation { get; set; }
         public HoursOfOperation HoursOfOperation { get; set; }
         public string SalesTax { get; set; }
 

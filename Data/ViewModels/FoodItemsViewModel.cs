@@ -7,7 +7,7 @@ namespace Data.ViewModels
 {
     public class FoodItemsViewModel
     {
-        public List<Food> Foods { get; set; }
+        //public List<Food> Foods { get; set; }
         public List<FoodMenu.FoodItem> FoodItems { get; set; }
         public List<OrderItem> OrderedItems { get; set; }
         public List<string> FoodCategories { get; set; }
@@ -20,7 +20,7 @@ namespace Data.ViewModels
 
         public FoodItemsViewModel()
         {
-            Foods = new List<Food>();
+           // Foods = new List<Food>();
             FoodItems = new List<FoodMenu.FoodItem>();
             OrderedItems = new List<OrderItem>();
             FoodCategories = new List<string>();
