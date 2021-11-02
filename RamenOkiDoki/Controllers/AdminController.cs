@@ -3,13 +3,16 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Data.DbContext;
 using Data.Models;
+using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
 using Data.ViewModels;
 
 using DataServices.Services;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace RamenOkiDoki.Controllers
@@ -106,7 +109,7 @@ namespace RamenOkiDoki.Controllers
                         {
                             if (item != null)
                             {
-                             //   int.TryParse(item.id, out itemId);
+                                //   int.TryParse(item.id, out itemId);
 
                                 if (item.Id == index)
                                 {
@@ -150,7 +153,7 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var item in Globals.FoodItemsList)
                 {
-                  //  int.TryParse(item.Id, out itemId);
+                    //  int.TryParse(item.Id, out itemId);
 
                     if (item.Id == index)
                     {
@@ -216,11 +219,21 @@ namespace RamenOkiDoki.Controllers
             return RedirectToAction("Index", dashboardViewModel);
         }
 
-        public IActionResult CloseHourOfOperationForm()
+        [HttpPost]
+        public IActionResult SaveHoursOfOperation(HoursOfOperation hours)
         {
             Globals.DisplayHoursForm = false;
 
             // TODO: Save data
+
+            if (hours != null)
+            {
+                var context = new RestaurantDbContext();
+
+             //   context.BusinessHours = new RestaurantDbContext()<HoursOfOperation>(hours);
+                context.Update(hours);
+            }
+
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
             return RedirectToAction("Index", dashboardViewModel);

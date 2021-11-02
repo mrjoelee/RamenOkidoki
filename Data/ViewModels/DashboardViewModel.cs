@@ -20,15 +20,12 @@ namespace Data.ViewModels
 
         public DashboardViewModel()
         {
-            BusinessLocation = DummyData.GetBusinessLocation(); 
-          
+            BusinessLocation = DummyData.GetBusinessLocation();
 
             HoursOfOperation = DummyData.GetHoursOfOperation();
 
             SalesTax = Globals.SalesTax.ToString();
 
-
-          
         }
     }
 

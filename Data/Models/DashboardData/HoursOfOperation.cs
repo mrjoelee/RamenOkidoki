@@ -13,7 +13,6 @@ namespace Data.Models.DashboardData
     {
         [Key]
         public int Id { get; set; }
-
         public string SundayOpen { get; set; }
         public string SundayClose { get; set; }
         public string MondayOpen { get; set; }
@@ -28,6 +27,5 @@ namespace Data.Models.DashboardData
         public string FridayClose { get; set; }
         public string SaturdayOpen { get; set; }
         public string SaturdayClose { get; set; }
-
     }
 }

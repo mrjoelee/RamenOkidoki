@@ -1,76 +1,53 @@
 ﻿@model Data.ViewModels.DashboardViewModel
 
+@using (Html.BeginForm("SaveHoursOfOperation", "Admin", FormMethod.Post))
+{
 
-<form method="post" style="margin:100px 50px 0 0">
-    <div class="form-hours-group">
-        <span>
-        <b>Sunday  </b><input type="text" 
-                              name="@Model.HoursOfOperation.SundayOpen" 
-                              value="@Model.HoursOfOperation.SundayOpen" /><b> To </b>
-        </span>
-        <span><input type="text"
-                     name="@Model.HoursOfOperation.SundayClose" 
-                    value="@Model.HoursOfOperation.SundayClose" />
-        </span>
-    </div>
+<table style="margin:100px 50px 0 0">
+    <tr class="form-hours-group">
+        <td><b>Sunday</b></td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.SundayOpen)</td>
+        <td>To</td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.SundayClose)</td>
+    </tr>
+    <tr class="form-hours-group">
+        <td><b>Sunday</b></td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.MondayOpen)</td>
+        <td>To</td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.MondayClose)</td>
+    </tr>
+    <tr class="form-hours-group">
+        <td><b>Sunday</b></td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.TuesdayOpen)</td>
+        <td>To</td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.TuesdayClose)</td>
+    </tr>
+    <tr class="form-hours-group">
+        <td><b>Sunday</b></td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.WednesdayOpen)</td>
+        <td>To</td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.WednesdayClose)</td>
+    </tr>
+    <tr class="form-hours-group">
+        <td><b>Sunday</b></td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.ThursdayOpen)</td>
+        <td>To</td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.ThursdayClose)</td>
+    </tr>
+    <tr class="form-hours-group">
+        <td><b>Sunday</b></td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.FridayOpen)</td>
+        <td>To</td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.FridayClose)</td>
+    </tr>
+    <tr class="form-hours-group">
+        <td><b>Sunday</b></td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.SaturdayOpen)</td>
+        <td>To</td>
+        <td>@Html.TextBoxFor(m => m.HoursOfOperation.SaturdayClose)</td>
+    </tr>
+    <tr> <td colspan="2"><input type="submit" value="Submit Form" class="btn btn-primary submit-order-button" />@*<i class="fas fa-share-square"></i>*@</td></tr>
+   
+    </table>
 
-    <div class="form-hours-group">
-        <span><b>Monday  </b><input type="text" 
-                                    name="@Model.HoursOfOperation.MondayOpen" 
-                                    value="@Model.HoursOfOperation.MondayOpen" /><b> To </b>
-            </span>
-        <span><input type="text" name="@Model.HoursOfOperation.MondayOpen" 
-                     value="@Model.HoursOfOperation.MondayClose" />
-        </span>
-    </div>
-
-    <div class="form-hours-group">
-        <span><b>Tuesday  </b><input type="text" 
-                                    name="@Model.HoursOfOperation.TuesdayOpen" 
-                                    value="@Model.HoursOfOperation.TuesdayOpen" /><b> To </b>
-            </span>
-        <span><input type="text" name="@Model.HoursOfOperation.TuesdayClose" 
-                     value="@Model.HoursOfOperation.TuesdayClose" />
-        </span>
-    </div>
-    <div class="form-hours-group">
-        <span><b>Wednesday  </b><input type="text"
-                                    name="@Model.HoursOfOperation.WednesdayOpen" 
-                                    value="@Model.HoursOfOperation.WednesdayOpen" /><b> To </b>
-        </span>
-        <span><input type="text" name="@Model.HoursOfOperation.WednesdayClose" 
-                     value="@Model.HoursOfOperation.WednesdayClose" />
-        </span>
-    </div>
-
-    <div class="form-hours-group">
-        <span><b>Thursday  </b><input type="text" name="@Model.HoursOfOperation.ThursdayOpen" 
-                                    value="@Model.HoursOfOperation.ThursdayOpen" /><b> To </b>
-            </span>
-        <span><input type="text" name="@Model.HoursOfOperation.ThursdayClose" 
-                     value="@Model.HoursOfOperation.ThursdayClose" />
-        </span>
-    </div>
-
-    <div class="form-hours-group">
-        <span><b>Friday  </b><input type="text" 
-                                    name="@Model.HoursOfOperation.FridayOpen" 
-                                    value="@Model.HoursOfOperation.FridayOpen" /><b> To </b>
-            </span>
-        <span><input type="text" name="@Model.HoursOfOperation.FridayClose" 
-                     value="@Model.HoursOfOperation.FridayClose" />
-        </span>
-    </div>
-
-    <div class="form-hours-group">
-        <span><b>Saturday  </b><input type="text" name="@Model.HoursOfOperation.SaturdayOpen" 
-                                      value="@Model.HoursOfOperation.SaturdayOpen" /><b> To </b>
-            </span>
-        <span><input type="text" name="@Model.HoursOfOperation.SaturdayClose" 
-                     value="@Model.HoursOfOperation.SaturdayClose" />
-        </span>
-    </div>
-
-
-    <button value="DashBoard" type="submit" class="btn btn-primary submit-order-button" onclick="location.href='@Url.Action("CloseHourOfOperationForm")'" id="addfooditem"><i class="far fa-save"></i>Save</button>
-</form>
+}
