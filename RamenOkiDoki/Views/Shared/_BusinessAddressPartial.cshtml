@@ -1,7 +1,7 @@
-﻿@model Data.Models.DashboardData.BusinessLocation
+﻿@model Data.ViewModels.DashboardViewModel
 
 
-<h5>@Model.BusinessName</h5>
+<h5>@Model.MyBusinessLocation.BusinessName</h5>
 @*@Html.DisplayNameFor(model => model.BusinessLocation)*@
 
 <h5>@( $"{double.Parse(@Model.PhoneNumber): (000) 000-0000}" )</h5>

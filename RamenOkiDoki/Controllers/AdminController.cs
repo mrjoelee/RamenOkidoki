@@ -22,13 +22,15 @@ namespace RamenOkiDoki.Controllers
         private readonly ILogger<HomeController> _logger;
         private MenuEndpointService _menuEndpointService;
 
+        private RestaurantDbContext _context;
 
         //  public List<FoodItem> FoodItemsList;
 
-        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
+        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService, RestaurantDbContext context)
         {
             _logger = logger;
             _menuEndpointService = menuEndpointService;
+            _context = context;
 
         }
 
@@ -36,13 +38,18 @@ namespace RamenOkiDoki.Controllers
         //returns the users to the index(home of the index view page)
         public IActionResult Index()
         {
-            var context = new RestaurantDbContext();
+         // BusinessLocation = DummyData.GetBusinessLocation();
 
-            // BusinessLocation = DummyData.GetBusinessLocation();
+            var businessLocation = _context.BusinessLocations;
+            var businessHours = _context.BusinessLocations;
 
-            var BusinessLocation = context.BusinessLocations;
+            DashboardViewModel dashboardViewModel = new DashboardViewModel
+            {
+                MyBusinessLocation = (BusinessLocation)businessLocation,
+                MyHoursOfOperation = businessHours
+            };
 
-            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+        //    dashboardViewModel.BusinessLocation = businessLocation;
             //   dashboardViewModel.AddOns.SalesTaxRate = new string(Globals.SalesTaxString);
             //  dashboardViewModel.AddOns.DeliveryCharge = new string("$5.00");
             return View(dashboardViewModel);

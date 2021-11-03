@@ -14,13 +14,13 @@ namespace Data.ViewModels
 {
     public class DashboardViewModel
     {
-        public DbSet<BusinessLocation> BusinessLocation { get; set; }
-        public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
+      //  public DbSet<BusinessLocation> BusinessLocation { get; set; }
+      //  public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
 
-        public DbSet<AddOnCharges> AddOns { get; set; }
+     //   public DbSet<AddOnCharges> AddOns { get; set; }
 
-      //  public BusinessLocation BusinessLocation { get; set; }
-      //  public HoursOfOperation HoursOfOperation { get; set; }
+        public BusinessLocation MyBusinessLocation { get; set; }
+        public HoursOfOperation MyHoursOfOperation { get; set; }
 
         //   public AddOnCharges AddOns { get; set; }
 
@@ -28,21 +28,21 @@ namespace Data.ViewModels
 
         public int NewRating { get; set; }
 
-        public DashboardViewModel(RestaurantDbContext context)
-        {
-            var context1 = context;
+        //public DashboardViewModel(RestaurantDbContext context)
+        //{
+        //    var context1 = context;
 
-            // BusinessLocation = DummyData.GetBusinessLocation();
+        //    // BusinessLocation = DummyData.GetBusinessLocation();
 
-            BusinessLocation = context1.BusinessLocations;
+        //    BusinessLocation = context1.BusinessLocations;
 
-            //HoursOfOperation = DummyData.GetHoursOfOperation();
+        //    //HoursOfOperation = DummyData.GetHoursOfOperation();
 
-            HoursOfOperation = context1.BusinessHours;
+        //    HoursOfOperation = context1.BusinessHours;
 
-            AddOns = context1.AddOns;
+        //    AddOns = context1.AddOns;
 
-        }
+        //}
     }
 
 }
