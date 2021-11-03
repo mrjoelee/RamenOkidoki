@@ -40,12 +40,12 @@ namespace RamenOkiDoki.Controllers
         {
          // BusinessLocation = DummyData.GetBusinessLocation();
 
-            var businessLocation = _context.BusinessLocations;
-            var businessHours = _context.BusinessLocations;
+            var businessLocation = _context.BusinessLocations.Local;
+            var businessHours = _context.BusinessLocations.Local;
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel
             {
-                MyBusinessLocation = (BusinessLocation)businessLocation,
+                MyBusinessLocation = (businessLocation,
                 MyHoursOfOperation = businessHours
             };
 

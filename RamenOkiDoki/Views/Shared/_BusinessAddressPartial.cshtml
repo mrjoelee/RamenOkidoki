@@ -4,15 +4,15 @@
 <h5>@Model.MyBusinessLocation.BusinessName</h5>
 @*@Html.DisplayNameFor(model => model.BusinessLocation)*@
 
-<h5>@( $"{double.Parse(@Model.PhoneNumber): (000) 000-0000}" )</h5>
+<h5>@( $"{double.Parse(@Model.MyBusinessLocation.PhoneNumber): (000) 000-0000}" )</h5>
 @*BusinessLocation.*@
 
-<h5>@Model.StreetAddress</h5>
+<h5>@Model.MyBusinessLocation.StreetAddress</h5>
 @*BusinessLocation.*@
 
-<h5>@Model.City, @Model.State @Model.Zipcode</h5>
+<h5>@Model.MyBusinessLocation.City, @Model.MyBusinessLocation.State @Model.MyBusinessLocation.Zipcode</h5>
 @*BusinessLocation.
     BusinessLocation.
     BusinessLocation.*@
-<h5>@Model.Email</h5>
+<h5>@Model.MyBusinessLocation.Email</h5>
 @*BusinessLocation*@
