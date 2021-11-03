@@ -5,8 +5,9 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 using Data.Models;
+using Data.Models.Constants;
 using Data.Models.FoodMenus;
-
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 namespace DataServices.Services
 {
@@ -19,7 +20,7 @@ namespace DataServices.Services
         {
             try
             {
-                var json = await httpClient.GetStringAsync((string?)Constants.MenuJsonUrl);
+                var json = await httpClient.GetStringAsync((string?)Urls.MenuJsonUrl);
 
                 if (string.IsNullOrWhiteSpace(json))
                 {
@@ -46,7 +47,7 @@ namespace DataServices.Services
             try
             {
 
-                var json = await httpClient.GetStringAsync((string?)Constants.MenuGetUrl);
+                var json = await httpClient.GetStringAsync((string?)Urls.MenuGetUrl);
 
                 if (string.IsNullOrWhiteSpace(json))
                 {
@@ -97,7 +98,7 @@ namespace DataServices.Services
             try
             {
 
-                string url = Constants.MenuPostUrl; //Get url from the contants file 
+                string url = Urls.MenuPostUrl; //Get url from the contants file 
 
                 var json = JsonConvert.SerializeObject(foodItemToAdd); //Convert the FoodItem instance to json
 
@@ -118,7 +119,7 @@ namespace DataServices.Services
         {
             try
             {
-                string url = Constants.MenuDeleteUrl; //Get url from the contants file 
+                string url = Urls.MenuDeleteUrl; //Get url from the contants file 
 
                 string idAsJson = "{ \"id\":" + foodItemIdToDelete + "}";
 

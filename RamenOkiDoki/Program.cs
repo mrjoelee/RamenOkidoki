@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
+using Data.Models.Constants;
 
 namespace RamenOkiDoki
 {
@@ -18,7 +19,7 @@ namespace RamenOkiDoki
         {
             CreateHostBuilder(args).Build().Run(); 
             
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Constants.SyncfusionKey);
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Keys.SyncfusionKey);
         }
 
         //create web application
