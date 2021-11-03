@@ -2,7 +2,9 @@
 
     
 
-    <h5>@Model.BusinessLocation.BusinessName</h5>
+<h5>@Model.BusinessLocation.
+    @Html.DisplayNameFor(model => model.BusinessLocation)
+</h5>
 
 
     <h5>@( $"{double.Parse(@Model.BusinessLocation.PhoneNumber): (000) 000-0000}" )</h5>

@@ -1,11 +1,13 @@
 ﻿@model Data.ViewModels.DashboardViewModel
 
+
 @using (Html.BeginForm("SaveBusinessLocation", "Admin", FormMethod.Post))
 {
 <table>
     <tr class="form-group">
         <td>Business Name</td>
         <td>@Html.TextBoxFor(m => m.BusinessLocation.BusinessName)</td>
+
     </tr>
     <tr class="form-group">
         <td>Phone Number</td>

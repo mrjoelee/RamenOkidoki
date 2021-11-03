@@ -22,6 +22,7 @@ namespace RamenOkiDoki.Controllers
         private readonly ILogger<HomeController> _logger;
         private MenuEndpointService _menuEndpointService;
 
+
         //  public List<FoodItem> FoodItemsList;
 
         public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
@@ -31,12 +32,19 @@ namespace RamenOkiDoki.Controllers
 
         }
 
+
         //returns the users to the index(home of the index view page)
         public IActionResult Index()
         {
+            var context = new RestaurantDbContext();
+
+            // BusinessLocation = DummyData.GetBusinessLocation();
+
+            var BusinessLocation = context.BusinessLocations;
+
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
-      //   dashboardViewModel.AddOns.SalesTaxRate = new string(Globals.SalesTaxString);
-          //  dashboardViewModel.AddOns.DeliveryCharge = new string("$5.00");
+            //   dashboardViewModel.AddOns.SalesTaxRate = new string(Globals.SalesTaxString);
+            //  dashboardViewModel.AddOns.DeliveryCharge = new string("$5.00");
             return View(dashboardViewModel);
 
         }
@@ -208,9 +216,10 @@ namespace RamenOkiDoki.Controllers
             Globals.DisplayAddressForm = false;
 
             // TODO: Save data
-            BusinessLocation location = new BusinessLocation();
-            location = dvm.BusinessLocation;
-       
+            //   BusinessLocation location = new BusinessLocation();
+
+            var location = dvm.BusinessLocation;
+
 
             if (location != null)
             {
@@ -238,14 +247,15 @@ namespace RamenOkiDoki.Controllers
 
             // TODO: Save data
 
-            HoursOfOperation hours = new HoursOfOperation();
-            hours = dvm.HoursOfOperation;
-       
+        //    HoursOfOperation hours = new HoursOfOperation();
+
+         var   hours = dvm.HoursOfOperation;
+
 
             if (hours != null)
             {
                 var context = new RestaurantDbContext();
-                
+
                 context.Update(hours);
 
                 context.SaveChanges();
@@ -267,18 +277,18 @@ namespace RamenOkiDoki.Controllers
             Globals.DisplayAddOnsForm = false;
 
             // TODO: Save data
-            AddOnCharges addOnCharges = new AddOnCharges();
+            //AddOnCharges addOnCharges = new AddOnCharges();
 
 
-            addOnCharges = dvm.AddOns;
-         
+           var addOnCharges = dvm.AddOns;
+
 
             if (addOnCharges != null)
             {
                 var context = new RestaurantDbContext();
 
-                context.Update(addOnCharges.DeliveryCharge);
-                context.Update(addOnCharges.SalesTaxRate);
+                context.Update(addOnCharges);
+             //   context.Update(addOnCharges.SalesTaxRate);
 
                 context.SaveChanges();
             }
@@ -290,7 +300,7 @@ namespace RamenOkiDoki.Controllers
             return RedirectToAction("Index", dashboardViewModel);
         }
 
-        
+
     }
 }
 

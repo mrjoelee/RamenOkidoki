@@ -3,32 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Data.DbContext;
 using Data.Models;
 using Data.Models.DashboardData;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace Data.ViewModels
 {
     public class DashboardViewModel
     {
-        public BusinessLocation BusinessLocation { get; set; }
-        public HoursOfOperation HoursOfOperation { get; set; }
-        public AddOnCharges AddOns { get; set; }
+        public DbSet<BusinessLocation> BusinessLocation { get; set; }
+        public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
+
+        public DbSet<AddOnCharges> AddOns { get; set; }
+
+      //  public BusinessLocation BusinessLocation { get; set; }
+      //  public HoursOfOperation HoursOfOperation { get; set; }
+
+        //   public AddOnCharges AddOns { get; set; }
 
         public List<Review> Reviews { get; set; }
 
         public int NewRating { get; set; }
 
-        public DashboardViewModel()
+        private readonly RestaurantDbContext _context;
+        public DashboardViewModel(RestaurantDbContext context)
         {
-            BusinessLocation = DummyData.GetBusinessLocation();
+            _context = context;
 
-            HoursOfOperation = DummyData.GetHoursOfOperation();
+            // BusinessLocation = DummyData.GetBusinessLocation();
 
-            AddOns = new AddOnCharges();
+            BusinessLocation = _context.BusinessLocations;
 
-            //   AddOns.SalesTaxRate  = Globals.SalesTax.ToString();
+            //HoursOfOperation = DummyData.GetHoursOfOperation();
 
-            //   AddOns.DeliveryCharge = "$5.00";
+            HoursOfOperation = _context.BusinessHours;
+
+            AddOns = _context.AddOns;
 
         }
     }
