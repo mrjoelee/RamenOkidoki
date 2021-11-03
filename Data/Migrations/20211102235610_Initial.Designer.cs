@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    [Migration("20211102002102_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211102235610_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Data.Models.DashboardData.AddOnCharges", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("DeliveryCharge")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AddOns");
+                });
 
             modelBuilder.Entity("Data.Models.DashboardData.BusinessLocation", b =>
                 {
@@ -137,15 +152,17 @@ namespace Data.Migrations
                     b.ToTable("SocialPlatforms");
                 });
 
-            modelBuilder.Entity("Data.Models.FoodMenus.FoodCategory", b =>
+            modelBuilder.Entity("Data.Models.FoodMenus.FoodMenu+FoodCategory", b =>
                 {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CategoryName")
+                    b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("FoodCategories");
                 });
@@ -157,8 +174,9 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FoodCategoryid")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
@@ -177,9 +195,76 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FoodCategoryid");
+                    b.HasIndex("foodCategoryId");
 
                     b.ToTable("FoodItems");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("FoodItem");
+                });
+
+            modelBuilder.Entity("Data.Models.TakeOuts.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("Data.Models.TakeOuts.FoodOrder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("OrderSubTotalCost")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("TakeOutCustomerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TakeOutCustomerId");
+
+                    b.ToTable("FoodOrders");
+                });
+
+            modelBuilder.Entity("Data.Models.FoodMenus.OrderItem", b =>
+                {
+                    b.HasBaseType("Data.Models.FoodMenus.FoodMenu+FoodItem");
+
+                    b.Property<int?>("FoodOrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("int");
+
+                    b.HasIndex("FoodOrderId");
+
+                    b.HasDiscriminator().HasValue("OrderItem");
                 });
 
             modelBuilder.Entity("Data.Models.DashboardData.BusinessLocation", b =>
@@ -193,14 +278,37 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.FoodMenus.FoodMenu+FoodItem", b =>
                 {
-                    b.HasOne("Data.Models.FoodMenus.FoodCategory", null)
+                    b.HasOne("Data.Models.FoodMenus.FoodMenu+FoodCategory", null)
                         .WithMany("FoodItems")
-                        .HasForeignKey("FoodCategoryid");
+                        .HasForeignKey("foodCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("Data.Models.FoodMenus.FoodCategory", b =>
+            modelBuilder.Entity("Data.Models.TakeOuts.FoodOrder", b =>
+                {
+                    b.HasOne("Data.Models.TakeOuts.Customer", "TakeOutCustomer")
+                        .WithMany()
+                        .HasForeignKey("TakeOutCustomerId");
+
+                    b.Navigation("TakeOutCustomer");
+                });
+
+            modelBuilder.Entity("Data.Models.FoodMenus.OrderItem", b =>
+                {
+                    b.HasOne("Data.Models.TakeOuts.FoodOrder", null)
+                        .WithMany("FoodOrderItems")
+                        .HasForeignKey("FoodOrderId");
+                });
+
+            modelBuilder.Entity("Data.Models.FoodMenus.FoodMenu+FoodCategory", b =>
                 {
                     b.Navigation("FoodItems");
+                });
+
+            modelBuilder.Entity("Data.Models.TakeOuts.FoodOrder", b =>
+                {
+                    b.Navigation("FoodOrderItems");
                 });
 #pragma warning restore 612, 618
         }

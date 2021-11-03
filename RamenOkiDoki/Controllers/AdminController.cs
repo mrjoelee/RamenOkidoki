@@ -35,8 +35,8 @@ namespace RamenOkiDoki.Controllers
         public IActionResult Index()
         {
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            dashboardViewModel.AddOns.SalesTax = new string(Globals.SalesTaxString);
-            dashboardViewModel.AddOns.DeliveryCharge = new string("$5.00");
+      //   dashboardViewModel.AddOns.SalesTaxRate = new string(Globals.SalesTaxString);
+          //  dashboardViewModel.AddOns.DeliveryCharge = new string("$5.00");
             return View(dashboardViewModel);
 
         }
@@ -210,7 +210,7 @@ namespace RamenOkiDoki.Controllers
             // TODO: Save data
             BusinessLocation location = new BusinessLocation();
             location = dvm.BusinessLocation;
-            location.Id = 1;
+       
 
             if (location != null)
             {
@@ -240,7 +240,7 @@ namespace RamenOkiDoki.Controllers
 
             HoursOfOperation hours = new HoursOfOperation();
             hours = dvm.HoursOfOperation;
-            hours.Id = 1;
+       
 
             if (hours != null)
             {
@@ -268,6 +268,22 @@ namespace RamenOkiDoki.Controllers
 
             // TODO: Save data
             AddOnCharges addOnCharges = new AddOnCharges();
+
+
+            addOnCharges = dvm.AddOns;
+         
+
+            if (addOnCharges != null)
+            {
+                var context = new RestaurantDbContext();
+
+                context.Update(addOnCharges.DeliveryCharge);
+                context.Update(addOnCharges.SalesTaxRate);
+
+                context.SaveChanges();
+            }
+
+
 
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();

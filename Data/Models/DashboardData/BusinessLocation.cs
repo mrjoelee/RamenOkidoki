@@ -5,8 +5,7 @@ namespace Data.Models.DashboardData
 {
     public class BusinessLocation
     {
-        [Key]
-        public int Id { get; set; }
+        [Key] public int Id { get; set; } = 1;
 
         [Display(Name = "Business Name")]
         public string BusinessName { get; set; }

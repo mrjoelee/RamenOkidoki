@@ -11,8 +11,7 @@ namespace Data.Models.DashboardData
 
     public class HoursOfOperation
     {
-        [Key]
-        public int Id { get; set; }
+        [Key] public int Id { get; set; } = 1;
         public string SundayOpen { get; set; }
         public string SundayClose { get; set; }
         public string MondayOpen { get; set; }

@@ -2,10 +2,24 @@
 
 namespace Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AddOns",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DeliveryCharge = table.Column<double>(type: "float", nullable: false),
+                    SalesTaxRate = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AddOns", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "BusinessHours",
                 columns: table => new
@@ -33,11 +47,30 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Customers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FoodCategories",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "int", nullable: false),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -61,24 +94,22 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FoodItems",
+                name: "FoodOrders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    dishName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    price = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    foodCategoryId = table.Column<int>(type: "int", nullable: false)
+                    TakeOutCustomerId = table.Column<int>(type: "int", nullable: true),
+                    OrderSubTotalCost = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FoodItems", x => x.Id);
+                    table.PrimaryKey("PK_FoodOrders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FoodItems_FoodCategories_FoodCategoryid",
-                        column: x => x.foodCategoryId,
-                        principalTable: "FoodCategories",
-                        principalColumn: "id",
+                        name: "FK_FoodOrders_Customers_TakeOutCustomerId",
+                        column: x => x.TakeOutCustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -108,19 +139,64 @@ namespace Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "FoodItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    dishName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    price = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    foodCategoryId = table.Column<int>(type: "int", nullable: false),
+                    foodCategory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    quantity = table.Column<int>(type: "int", nullable: true),
+                    FoodOrderId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FoodItems_FoodCategories_foodCategoryId",
+                        column: x => x.foodCategoryId,
+                        principalTable: "FoodCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FoodItems_FoodOrders_FoodOrderId",
+                        column: x => x.FoodOrderId,
+                        principalTable: "FoodOrders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_BusinessLocations_SocialId",
                 table: "BusinessLocations",
                 column: "SocialId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FoodItems_FoodCategoryid",
+                name: "IX_FoodItems_foodCategoryId",
                 table: "FoodItems",
-                column: "FoodCategoryid");
+                column: "foodCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FoodItems_FoodOrderId",
+                table: "FoodItems",
+                column: "FoodOrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FoodOrders_TakeOutCustomerId",
+                table: "FoodOrders",
+                column: "TakeOutCustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AddOns");
+
             migrationBuilder.DropTable(
                 name: "BusinessHours");
 
@@ -135,6 +211,12 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "FoodCategories");
+
+            migrationBuilder.DropTable(
+                name: "FoodOrders");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
         }
     }
 }

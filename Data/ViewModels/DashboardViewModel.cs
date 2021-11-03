@@ -24,10 +24,11 @@ namespace Data.ViewModels
 
             HoursOfOperation = DummyData.GetHoursOfOperation();
 
-            
-            AddOns.SalesTax = Globals.SalesTax.ToString();
+            AddOns = new AddOnCharges();
 
-            AddOns.DeliveryCharge = "$5.00";
+            //   AddOns.SalesTaxRate  = Globals.SalesTax.ToString();
+
+            //   AddOns.DeliveryCharge = "$5.00";
 
         }
     }
