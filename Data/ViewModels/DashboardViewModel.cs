@@ -28,20 +28,19 @@ namespace Data.ViewModels
 
         public int NewRating { get; set; }
 
-        private readonly RestaurantDbContext _context;
         public DashboardViewModel(RestaurantDbContext context)
         {
-            _context = context;
+            var context1 = context;
 
             // BusinessLocation = DummyData.GetBusinessLocation();
 
-            BusinessLocation = _context.BusinessLocations;
+            BusinessLocation = context1.BusinessLocations;
 
             //HoursOfOperation = DummyData.GetHoursOfOperation();
 
-            HoursOfOperation = _context.BusinessHours;
+            HoursOfOperation = context1.BusinessHours;
 
-            AddOns = _context.AddOns;
+            AddOns = context1.AddOns;
 
         }
     }
