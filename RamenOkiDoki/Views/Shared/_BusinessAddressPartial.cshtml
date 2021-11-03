@@ -1,18 +1,18 @@
-﻿@model Data.ViewModels.DashboardViewModel
-
-    
-
-<h5>@Model.BusinessLocation.
-    @Html.DisplayNameFor(model => model.BusinessLocation)
-</h5>
+﻿@model Data.Models.DashboardData.BusinessLocation
 
 
-    <h5>@( $"{double.Parse(@Model.BusinessLocation.PhoneNumber): (000) 000-0000}" )</h5>
+<h5>@Model.BusinessName</h5>
+@*@Html.DisplayNameFor(model => model.BusinessLocation)*@
 
-    <h5>@Model.BusinessLocation.StreetAddress</h5>
+<h5>@( $"{double.Parse(@Model.PhoneNumber): (000) 000-0000}" )</h5>
+@*BusinessLocation.*@
 
-    <h5>@Model.BusinessLocation.City, @Model.BusinessLocation.State @Model.BusinessLocation.Zipcode</h5>
+<h5>@Model.StreetAddress</h5>
+@*BusinessLocation.*@
 
-
-    <h5>@Model.BusinessLocation.Email</h5>
-
+<h5>@Model.City, @Model.State @Model.Zipcode</h5>
+@*BusinessLocation.
+    BusinessLocation.
+    BusinessLocation.*@
+<h5>@Model.Email</h5>
+@*BusinessLocation*@
