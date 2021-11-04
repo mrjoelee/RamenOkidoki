@@ -43,7 +43,7 @@ namespace RamenOkiDoki
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<MenuEndpointService>();
-
+            services.AddTransient<RestaurantDbContext>();
 
             if (Env.IsDevelopment())
             {

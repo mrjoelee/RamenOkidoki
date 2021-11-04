@@ -26,11 +26,11 @@ namespace RamenOkiDoki.Controllers
 
         //  public List<FoodItem> FoodItemsList;
 
-        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
+        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService, RestaurantDbContext context)
         {
             _logger = logger;
             _menuEndpointService = menuEndpointService;
-            _context = new RestaurantDbContext();
+            _context = context;
 
         }
 
@@ -42,11 +42,13 @@ namespace RamenOkiDoki.Controllers
 
             var businessLocation = _context.BusinessLocations;
             var businessHours = _context.BusinessHours;
+            var addOns = _context.AddOns;
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel
             {
                 BusinessLocation = businessLocation,
                 HoursOfOperation = businessHours,
+                AddOns = addOns
             };
 
         //    dashboardViewModel.BusinessLocation = businessLocation;
