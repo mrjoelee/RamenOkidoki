@@ -14,10 +14,10 @@ namespace Data.ViewModels
 {
     public class DashboardViewModel
     {
-      //  public DbSet<BusinessLocation> BusinessLocation { get; set; }
-      //  public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
+        public DbSet<BusinessLocation> BusinessLocation { get; set; }
+        public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
 
-     //   public DbSet<AddOnCharges> AddOns { get; set; }
+        public DbSet<AddOnCharges> AddOns { get; set; }
 
         public BusinessLocation MyBusinessLocation { get; set; }
         public HoursOfOperation MyHoursOfOperation { get; set; }
