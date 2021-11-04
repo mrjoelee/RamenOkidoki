@@ -7,6 +7,7 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
+using Data.Repositories;
 using Data.ViewModels;
 
 using DataServices.Services;
@@ -21,15 +22,17 @@ namespace RamenOkiDoki.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private MenuEndpointService _menuEndpointService;
+        private AdminRepository _adminRepository;
 
         private RestaurantDbContext _context;
 
         //  public List<FoodItem> FoodItemsList;
 
-        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
+        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService, AdminRepository adminRepository)
         {
             _logger = logger;
             _menuEndpointService = menuEndpointService;
+            _adminRepository = adminRepository;
         }
 
 
@@ -194,8 +197,7 @@ namespace RamenOkiDoki.Controllers
             return Redirect("Index");
         }
 
-
-
+        
         public IActionResult AdminSignOut()
         {
             Globals.UserSignedIn = false;
@@ -222,19 +224,12 @@ namespace RamenOkiDoki.Controllers
         public IActionResult SaveBusinessLocation(DashboardViewModel dvm)
         {
             Globals.DisplayAddressForm = false;
-
-            // TODO: Save data
-            //   BusinessLocation location = new BusinessLocation();
-
+            
             var location = dvm.MyBusinessLocation;
-
 
             if (location != null)
             {
-                var context = new RestaurantDbContext();
-
-                context.Update(location);
-                context.SaveChanges();
+                _adminRepository.SaveRestaurantData<BusinessLocation>(location);
             }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
@@ -253,20 +248,11 @@ namespace RamenOkiDoki.Controllers
         {
             Globals.DisplayHoursForm = false;
 
-            // TODO: Save data
-
-            //    HoursOfOperation hours = new HoursOfOperation();
-
             var hours = dvm.MyHoursOfOperation;
-
 
             if (hours != null)
             {
-                var context = new RestaurantDbContext();
-
-                context.Update(hours);
-
-                context.SaveChanges();
+                _adminRepository.SaveRestaurantData<HoursOfOperation>(hours);
             }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
@@ -284,31 +270,16 @@ namespace RamenOkiDoki.Controllers
         {
             Globals.DisplayAddOnsForm = false;
 
-            // TODO: Save data
-            //AddOnCharges addOnCharges = new AddOnCharges();
-
-
-            var addOnCharges = dvm.AddOns;
-
+            AddOnCharges addOnCharges = dvm.AddOns;
 
             if (addOnCharges != null)
             {
-                var context = new RestaurantDbContext();
-
-                context.Update(addOnCharges);
-                //   context.Update(addOnCharges.SalesTaxRate);
-
-                context.SaveChanges();
+                _adminRepository.SaveRestaurantData<AddOnCharges>(addOnCharges);
             }
-
-
-
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
             return RedirectToAction("Index", dashboardViewModel);
         }
-
-
     }
 }
 

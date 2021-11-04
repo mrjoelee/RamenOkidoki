@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Data.DbContext;
 using Data.Models;
 using Data.Models.FoodMenus;
+using Data.Repositories;
 using DataServices.Services;
 //using Microsoft.EntityFrameworkCore;
 
@@ -43,7 +44,7 @@ namespace RamenOkiDoki
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<MenuEndpointService>();
-            services.AddTransient<RestaurantDbContext>();
+            services.AddTransient<AdminRepository>();
 
             if (Env.IsDevelopment())
             {

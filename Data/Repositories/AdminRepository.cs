@@ -8,6 +8,7 @@ using Data.DbContext;
 using Data.Models.DashboardData;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Data.Repositories
 {
@@ -38,6 +39,13 @@ namespace Data.Repositories
             AddOnCharges addOnCharges = _context.AddOns.FirstOrDefault();
 
             return addOnCharges;
+        }
+
+        public void SaveRestaurantData<T>(T data)
+        {
+            _context.Update(data);
+
+            _context.SaveChanges();
         }
     }
 }
