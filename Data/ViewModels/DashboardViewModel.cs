@@ -19,8 +19,8 @@ namespace Data.ViewModels
 
         public DbSet<AddOnCharges> AddOns { get; set; }
 
-        public BusinessLocation MyBusinessLocation { get; set; }
-        public HoursOfOperation MyHoursOfOperation { get; set; }
+        //public BusinessLocation MyBusinessLocation { get; set; }
+        //public HoursOfOperation MyHoursOfOperation { get; set; }
 
         //   public AddOnCharges AddOns { get; set; }
 
