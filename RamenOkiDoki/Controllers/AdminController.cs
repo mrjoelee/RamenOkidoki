@@ -26,11 +26,11 @@ namespace RamenOkiDoki.Controllers
 
         //  public List<FoodItem> FoodItemsList;
 
-        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService, RestaurantDbContext context)
+        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
         {
             _logger = logger;
             _menuEndpointService = menuEndpointService;
-            _context = context;
+            _context = new RestaurantDbContext();
 
         }
 
