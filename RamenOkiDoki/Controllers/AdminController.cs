@@ -26,34 +26,33 @@ namespace RamenOkiDoki.Controllers
 
         //  public List<FoodItem> FoodItemsList;
 
-        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService, RestaurantDbContext context)
+        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService)
         {
             _logger = logger;
             _menuEndpointService = menuEndpointService;
-            _context = context;
-
         }
 
 
         //returns the users to the index(home of the index view page)
         public IActionResult Index()
         {
-         // BusinessLocation = DummyData.GetBusinessLocation();
+            // BusinessLocation = DummyData.GetBusinessLocation();
 
-            var businessLocation = _context.BusinessLocations;
-            var businessHours = _context.BusinessHours;
-            var addOns = _context.AddOns;
+            //var businessLocation = _context.BusinessLocations;
+            //var businessHours = _context.BusinessHours;
+            //var addOns = _context.AddOns;
 
-            DashboardViewModel dashboardViewModel = new DashboardViewModel
-            {
-                BusinessLocation = businessLocation,
-                HoursOfOperation = businessHours,
-                AddOns = addOns
-            };
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            //{
+            //    BusinessLocation = businessLocation,
+            //    HoursOfOperation = businessHours,
+            //    AddOns = addOns
+            //};
 
-        //    dashboardViewModel.BusinessLocation = businessLocation;
+            //    dashboardViewModel.BusinessLocation = businessLocation;
             //   dashboardViewModel.AddOns.SalesTaxRate = new string(Globals.SalesTaxString);
             //  dashboardViewModel.AddOns.DeliveryCharge = new string("$5.00");
+
             return View(dashboardViewModel);
 
         }
@@ -227,7 +226,7 @@ namespace RamenOkiDoki.Controllers
             // TODO: Save data
             //   BusinessLocation location = new BusinessLocation();
 
-            var location = dvm.BusinessLocation;
+            var location = dvm.MyBusinessLocation;
 
 
             if (location != null)
@@ -256,9 +255,9 @@ namespace RamenOkiDoki.Controllers
 
             // TODO: Save data
 
-        //    HoursOfOperation hours = new HoursOfOperation();
+            //    HoursOfOperation hours = new HoursOfOperation();
 
-         var   hours = dvm.HoursOfOperation;
+            var hours = dvm.MyHoursOfOperation;
 
 
             if (hours != null)
@@ -289,7 +288,7 @@ namespace RamenOkiDoki.Controllers
             //AddOnCharges addOnCharges = new AddOnCharges();
 
 
-           var addOnCharges = dvm.AddOns;
+            var addOnCharges = dvm.AddOns;
 
 
             if (addOnCharges != null)
@@ -297,7 +296,7 @@ namespace RamenOkiDoki.Controllers
                 var context = new RestaurantDbContext();
 
                 context.Update(addOnCharges);
-             //   context.Update(addOnCharges.SalesTaxRate);
+                //   context.Update(addOnCharges.SalesTaxRate);
 
                 context.SaveChanges();
             }

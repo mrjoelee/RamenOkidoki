@@ -7,42 +7,52 @@ using System.Threading.Tasks;
 using Data.DbContext;
 using Data.Models;
 using Data.Models.DashboardData;
-
+using Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.ViewModels
 {
     public class DashboardViewModel
     {
-        public DbSet<BusinessLocation> BusinessLocation { get; set; }
-        public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
+        //public DbSet<BusinessLocation> BusinessLocation { get; set; }
+        //public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
 
-        public DbSet<AddOnCharges> AddOns { get; set; }
+        //public DbSet<AddOnCharges> AddOns
 
-        //public BusinessLocation MyBusinessLocation { get; set; }
-        //public HoursOfOperation MyHoursOfOperation { get; set; }
+        private AdminRepository adminRepository { get; set; }
 
-        //   public AddOnCharges AddOns { get; set; }
+        public BusinessLocation MyBusinessLocation { get; set; }
+        public HoursOfOperation MyHoursOfOperation { get; set; }
+
+        public AddOnCharges AddOns { get; set; }
 
         public List<Review> Reviews { get; set; }
 
         public int NewRating { get; set; }
 
-        //public DashboardViewModel(RestaurantDbContext context)
-        //{
-        //    var context1 = context;
+        public DashboardViewModel()
+        {
+            adminRepository = new AdminRepository();
 
-        //    // BusinessLocation = DummyData.GetBusinessLocation();
+            MyBusinessLocation = adminRepository.GetBusinessLocation();
 
-        //    BusinessLocation = context1.BusinessLocations;
+            MyHoursOfOperation = adminRepository.GetHoursOfOperation();
+            
+            AddOns = adminRepository.GetAddOnCharges();
 
-        //    //HoursOfOperation = DummyData.GetHoursOfOperation();
+            //    var context1 = context;
 
-        //    HoursOfOperation = context1.BusinessHours;
+            //    // BusinessLocation = DummyData.GetBusinessLocation();
 
-        //    AddOns = context1.AddOns;
+            //    BusinessLocation = context1.BusinessLocations;
 
-        //}
+            //    //HoursOfOperation = DummyData.GetHoursOfOperation();
+
+            //    HoursOfOperation = context1.BusinessHours;
+
+            //    AddOns = context1.AddOns;
+
+        }
     }
 
 }
