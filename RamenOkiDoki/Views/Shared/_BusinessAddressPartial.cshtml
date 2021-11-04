@@ -1,18 +1,20 @@
-﻿@model Data.ViewModels.DashboardViewModel
+﻿@using System.CodeDom
+@model Data.DbContext.RestaurantDbContext
 
 
-<h5>@Model.BusinessLocation.BusinessName</h5>
+
+<h5>@Model.BusinessLocations.FirstOrDefault().BusinessName</h5>
 @*@Html.DisplayNameFor(model => model.BusinessLocation)*@
 
-<h5>@( $"{double.Parse(@Model.BusinessLocation.PhoneNumber): (000) 000-0000}" )</h5>
+<h5>@( $"{double.Parse(@Model.BusinessLocations.FirstOrDefault().PhoneNumber): (000) 000-0000}" )</h5>
 @*BusinessLocation.*@
 
-<h5>@Model.BusinessLocation.StreetAddress</h5>
+<h5>@Model.BusinessLocations.FirstOrDefault().StreetAddress</h5>
 @*BusinessLocation.*@
 
-<h5>@Model.BusinessLocation.City, @Model.BusinessLocation.State @Model.BusinessLocation.Zipcode</h5>
+<h5>@Model.BusinessLocations.FirstOrDefault().City, @Model.BusinessLocations.FirstOrDefault().State @Model.BusinessLocations.FirstOrDefault().Zipcode</h5>
 @*BusinessLocation.
     BusinessLocation.
     BusinessLocation.*@
-<h5>@Model.BusinessLocation.Email</h5>
+<h5>@Model.BusinessLocations.FirstOrDefault().Email</h5>
 @*BusinessLocation*@
