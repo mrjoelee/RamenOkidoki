@@ -23,11 +23,12 @@ namespace RamenOkiDoki
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Globals.GetFoodItemsAndCategories();
 
             Globals.CartItemList = new List<OrderItem>();
-            Globals.FoodCategoryList = new List<FoodCategory>();
-            Globals.FoodItemList = new List<FoodItem>();
-            Globals.FoodCategory = new FoodCategory();
+            //Globals.FoodCategoryList = new List<FoodCategory>();
+            //Globals.FoodItemList = new List<FoodItem>();
+            //Globals.FoodCategory = new FoodCategory();
             Globals.OrderSubTotalCost = 0.00m;
             Env = env;
         }

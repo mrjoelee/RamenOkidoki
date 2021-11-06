@@ -5,7 +5,7 @@
 }
 <div class="non-sidebar-page">
 
-    <div >
+    <div>
         <h1 class="page-titles">Our Menu</h1>
     </div>
     <div>
@@ -21,39 +21,29 @@
 
                 foreach (var foodCategory in Model.FoodCategoryList)
                 {
-                    string tempFoodCategory = "";
+                 
+                    <h2 class="categoryName">@foodCategory.Category</h2>
 
-                    if (foodCategory.FoodItems != null && foodCategory.FoodItems.Count > 0)
+
+                    @foreach (var menuItem in Model.FoodItemList)
                     {
 
-                        if (foodCategory.FoodItems != null)
+                        if (menuItem.foodCategoryId == foodCategory.Id)
                         {
-                            <h2 class="categoryName">@foodCategory.Category</h2>
-                            <div class="dine-in-menuitems-list">
-
-                                @foreach (var menuItem in foodCategory.FoodItems)
-                                {
-
-                                    @*if (menuItem.foodCategory != tempFoodCategory)
-                                        {
-                                            <h2 class="categoryName">@menuItem.foodCategory</h2>
-
-                                            tempFoodCategory = menuItem.foodCategory;
-                                        }*@
-                                    <div style="display:block">
-                                        <p>
-                                            <span class="menuItem">@menuItem.dishName </span>
-                                            <span class="menuPrice">$ @menuItem.price</span>
-                                        </p>
-                                        <p class="menuDescription">@menuItem.description</p>
-                                    </div>
-                                }
-
+                            
+                            <div style="display: block">
+                                <p>
+                                    <span class="menuItem">@menuItem.dishName </span>
+                                    <span class="menuPrice">$ @menuItem.price</span>
+                                </p>
+                                <p class="menuDescription">@menuItem.description</p>
                             </div>
                         }
                     }
-                }
 
+
+                }
+                
             }
 
         </div>

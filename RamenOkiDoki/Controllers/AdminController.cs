@@ -51,7 +51,7 @@ namespace RamenOkiDoki.Controllers
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-           // foodItemsViewModel.FoodItemList = new List<FoodItem>();
+            // foodItemsViewModel.FoodItemList = new List<FoodItem>();
 
 
             if (Globals.FoodItemList != null)
@@ -109,46 +109,31 @@ namespace RamenOkiDoki.Controllers
         {
             if (id != null)
             {
-                int index = (int)id;
-                int itemId;
-
-                if (Globals.FoodCategoryList == null || Globals.FoodCategoryList.Count < 1)
+                if (Globals.FoodItemList != null && Globals.FoodItemList.Count > 0)
                 {
-                    //  Globals.FoodCategoryList = await _menuEndpointService.GetFoodItemsFromCloud();
-
-                    Globals.FoodCategoryList = _databaseRepository.GetFoodCategories();
-                }
-
-                foreach (var category in Globals.FoodCategoryList)
-                {
-
-
-                    if (category.FoodItems != null && category.FoodItems.Count > 0)
+                    foreach (var item in Globals.FoodItemList)
                     {
-                        foreach (var item in category.FoodItems)
+
+                        if (item != null)
                         {
-                            if (item != null)
+                            //   int.TryParse(item.id, out itemId);
+
+                            if (item.Id == id)
                             {
-                                //   int.TryParse(item.id, out itemId);
 
-                                if (item.Id == index)
-                                {
-
-                                    item.foodCategory = category.Category;
-                                    item.foodCategoryId = category.Id;
-
-                                    return View(item);
-                                }
+                                return View(item);
                             }
-
                         }
+
                     }
                 }
             }
 
-
             return View();
+
         }
+
+
         #region saving new item
 
         [HttpPost]
@@ -173,16 +158,14 @@ namespace RamenOkiDoki.Controllers
         {
             if (id != null)
             {
-                int index = (int)id;
-                int itemId;
-
                 foreach (var item in Globals.FoodItemList)
                 {
                     //  int.TryParse(item.Id, out itemId);
 
-                    if (item.Id == index)
+                    if (item.Id == id)
                     {
-                        await _menuEndpointService.DeleteMenuItemFromCloud(index);
+                        //We need to delete a Food Item from the database
+                        _databaseRepository.DeleteItem(item);
                     }
                 }
             }

@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 
 using Data.Models.FoodMenus;
+using Data.Repositories;
 
 namespace Data.Models
 {
     public class Globals
     {
+      //  private DatabaseRepository databaseRepository { get; set; }
         public static bool DisplayAddressForm { get; set; }
         public static bool DisplayHoursForm { get; set; }
         public static bool DisplayAddOnsForm { get; set; }
@@ -43,21 +45,29 @@ namespace Data.Models
                 return $"{ SalesTax * 100}%";
             }
         }
-            
+
         public static List<FoodCategory> FoodCategoryList { get; set; }
 
         public static List<FoodItem> FoodItemList { get; set; }
 
-        public static FoodCategory FoodCategory { get; set; }
+    //    public static FoodCategory FoodCategory { get; set; }
         public static List<OrderItem> CartItemList { get; set; }
 
-
+        public static void GetFoodItemsAndCategories()
+        {
+            DatabaseRepository databaseRepository = new DatabaseRepository();
+            FoodCategoryList = databaseRepository.GetFoodCategories();
+            FoodItemList = databaseRepository.GetFoodItems();
+        }
 
         public Globals()
         {
+
+         
+
             FoodCategoryList = new List<FoodCategory>();
             FoodItemList = new List<FoodItem>();
-            FoodCategory = new FoodCategory();
+          //  FoodCategory = new FoodCategory();
             CartItemList = new List<OrderItem>();
         }
 

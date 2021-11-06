@@ -44,6 +44,8 @@ namespace Data.Repositories
             return addOnCharges;
         }
 
+
+
         public List<FoodCategory> GetFoodCategories()
         {
             List<FoodCategory> foodCategories = _context.FoodCategories.ToList();
@@ -67,6 +69,13 @@ namespace Data.Repositories
         public void AddRestaurantData<T>(T data)
         {
             _context.Add(data);
+
+            _context.SaveChanges();
+        }
+
+        public void DeleteItem<T>(T item)
+        {
+            _context.Remove(item);
 
             _context.SaveChanges();
         }

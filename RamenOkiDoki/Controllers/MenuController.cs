@@ -28,8 +28,7 @@ namespace RamenOkiDoki.Controllers
 
         private async Task<FoodItemsViewModel> MakeMenu()
         {
-            Globals.FoodCategoryList = _databaseRepository.GetFoodCategories();
-
+        
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
             if (Globals.FoodCategoryList != null)
@@ -60,20 +59,16 @@ namespace RamenOkiDoki.Controllers
         {
             List<FoodItem> tempListOfMenuItemsToReturn = new List<FoodItem>();
 
-            // Get from MySql Database
-            //   Globals.FoodCategoryList = await _menuEndpointService.GetFoodItemsFromCloud();
-
             var foodItemsViewModel = await MakeMenu();
 
-            Globals.FoodCategoryList.OrderBy(Category => Category);
+       //     Globals.FoodCategoryList.OrderBy(Category => Category);
 
             if (Globals.FoodCategoryList == null)
             {
                 return null;
             }
 
-            // Get Categories that have food items
-
+            // Show Categories that have food items
 
             List<string> tempListOfCategoryItems = new List<string>();
 
