@@ -53,29 +53,33 @@ namespace RamenOkiDoki.Controllers
         {
             Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
 
+            
+
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
             foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
 
             if (Globals.FoodCategoriesList != null)
             {
-                foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;
+                foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;   
+            
             }
 
             if (Globals.FoodCategoriesList != null && Globals.FoodCategoriesList.Count > 0)
             {
 
-                foreach (var categories in Globals.FoodCategoriesList)
+                foreach (var category in Globals.FoodCategoriesList)
                 {
-                    if (categories != null && categories.FoodItems.Count > 0)
+
+                    if (category != null)// && category.FoodItems.Count > 0)
                     {
 
-                        foreach (var fooditems in categories.FoodItems)
+                        foreach (var fooditem in category.FoodItems)
                         {
-                            if (fooditems != null)
+                            
+                            if (fooditem != null)
                             {
-                                //  fooditems.foodCategory = categories.Category;
-                                foodItemsViewModel.FoodItems.Add(fooditems);
+                                foodItemsViewModel.FoodItems.Add(fooditem);
 
                             }
                         }
@@ -109,7 +113,7 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var category in Globals.FoodCategoriesList)
                 {
-                  //  _databaseRepository.AddRestaurantData(category);
+              
 
                     if (category.FoodItems != null && category.FoodItems.Count > 0)
                     {
@@ -121,8 +125,10 @@ namespace RamenOkiDoki.Controllers
 
                                 if (item.Id == index)
                                 {
+                                  
                                     item.foodCategory = category.Category;
                                     item.foodCategoryId = category.Id;
+     
                                     return View(item);
                                 }
                             }
@@ -131,6 +137,7 @@ namespace RamenOkiDoki.Controllers
                     }
                 }
             }
+
 
             return View();
         }

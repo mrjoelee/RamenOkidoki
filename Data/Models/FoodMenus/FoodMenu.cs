@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace Data.Models.FoodMenus
 {
@@ -22,7 +23,9 @@ namespace Data.Models.FoodMenus
 
         public class FoodCategory
         {
-            [Key] public int Id { get; set; }
+           
+            [Key] 
+            public int Id { get; set; }
             public string Category { get; set; }
             public List<FoodItem> FoodItems { get; set; }
         }
