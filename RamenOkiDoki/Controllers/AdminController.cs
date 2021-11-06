@@ -109,7 +109,7 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var category in Globals.FoodCategoriesList)
                 {
-                    _databaseRepository.AddRestaurantData(category);
+                  //  _databaseRepository.AddRestaurantData(category);
 
                     if (category.FoodItems != null && category.FoodItems.Count > 0)
                     {
@@ -135,6 +135,8 @@ namespace RamenOkiDoki.Controllers
             return View();
         }
         #region saving new item
+
+        [HttpPost]
         public async Task<IActionResult> PutMenuItem(FoodMenu.FoodItem item)
         {
             foreach (var category in Globals.FoodCategoriesList)
@@ -145,7 +147,7 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-            await _menuEndpointService.AddMenuItemToCloud(item);
+         //   await _menuEndpointService.AddMenuItemToCloud(item);
 
             return Redirect("FoodMenuEdit");
         }

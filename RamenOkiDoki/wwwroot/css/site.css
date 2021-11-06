@@ -350,14 +350,14 @@ a.admin-nav-link {
     font-size: x-large !important;
 }
 
-.fa-edit {
+.edit-td {
     color: green;
     font-size: x-large !important;
 }
 
-.fa-edit:hover {
-    color: blue;
-}
+.edit-td:hover {
+        color: blue;
+    }
 
 .fab {
     font-size: 60px;
@@ -366,6 +366,7 @@ a.admin-nav-link {
 .menuAddForm {
     width: 600px;
     align-self: center;
+    font-size: 1.3em;
 }
 
     .menuAddForm label {
@@ -410,13 +411,15 @@ a.admin-nav-link {
     }
 
 .submit-order-button {
-    background-color: darkred;
-    padding: 8px 10px;
-    color: white;
+    background-color: darkred !important;
+    padding: 4px 6px;
+    color: white !important;
+    font-size: 1.3em;
+    margin: 10px 20px 0 0;
 }
 
     .submit-order-button:hover {
-        background-color: green;
+        background-color: green !important;
     }
 
 /*google map api*/

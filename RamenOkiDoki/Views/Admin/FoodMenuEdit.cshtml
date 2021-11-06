@@ -59,7 +59,7 @@ else
                                     <td style="white-space: nowrap;">$ @menuItem.price</td>
                                     <td>@menuItem.description</td>
                                     <td>@menuItem.foodCategory</td>
-                                    <td style="text-align: right; width:100px;"><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-edit" ></i></a></td>
+                                    <td style="text-align: right; width:100px;"><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-edit edit-td " ></i></a></td>
                                     <td style="text-align: right;"><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-trash"></i></a></td>
                                 </tr>
                             }

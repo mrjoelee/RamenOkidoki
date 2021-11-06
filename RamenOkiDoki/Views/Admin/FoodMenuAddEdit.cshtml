@@ -1,6 +1,6 @@
 ﻿@model Data.Models.FoodMenus.FoodMenu.FoodItem
 @{
-      Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 @{
@@ -21,37 +21,45 @@
 }
 
 <div style="margin: 100px; display: inline-block;">
+
     @using (Html.BeginForm("PutMenuItem", "Admin", FormMethod.Post))
     {
 
-        @*<form method="Post" class="menuAddForm" asp-action="PutMenuItem" asp-controller="Admin">*@
+        <table class="menuAddForm">
+            <tr class="form-group">
+                <td>Food Category</td>
+                <td>@Html.TextBoxFor(m => m.foodCategory)</td>
 
-    <div class="menuAddForm">
-        <div class="form-group">
-            <label>Food Category</label>
-            <input type="text" id="FoodCategory" name="FoodCategory" value="@(foodCategory)">
-        </div>
-        <div class="form-group">
-            <label>Dish Name</label>
-            <input type="text" id="DishName" name="DishName" value="@(dishName)">
-        </div>
-        <div class="form-group">
-            <label>Price</label>
-            <input type="text" id="Price" name="Price" value="@(price)">
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <input type="text" id="Description" name="Description" maxlength="100" value="@(description)">
-        </div>
-        <input type="hidden" id="id" name="id" value="@(id)" />
-        <input type="hidden" id="foodCategoryId" name="foodCategoryId" value="@(foodCategoryId)" />
-        <div>
-            <a value="AddFoodItem" type="submit" id="addfooditem" class="btn btn-primary submit-order-button">@AddSaveButton</a>
-            <a asp-controller="Admin" asp-action="FoodMenuEdit" type="submit" class="btn btn-primary submit-order-button">Cancel</a>
+            </tr>
 
-            
-        </div>
-        @*</form>*@
-    </div>
+            <tr class="form-group">
+                <td>Dish Name</td>
+                <td>@Html.TextBoxFor(m => m.dishName)</td>
+            </tr>
+
+            <tr class="form-group">
+                <td>Price</td>
+                <td>@Html.TextBoxFor(m => m.price)</td>
+            </tr>
+
+
+            <tr class="form-group">
+                <td>Description</td>
+                <td>@Html.TextBoxFor(m => m.description)</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="@AddSaveButton" class="btn submit-order-button" />
+                </td>
+                <td>
+                    <a asp-controller="Admin" asp-action="FoodMenuEdit" type="submit" class="btn submit-order-button">Cancel</a>
+                </td>
+            </tr>
+
+            <input type="hidden" id="id" name="id" value="@(id)" />
+            <input type="hidden" id="foodCategoryId" name="foodCategoryId" value="@(foodCategoryId)" />
+
+        </table>
     }
 </div>
