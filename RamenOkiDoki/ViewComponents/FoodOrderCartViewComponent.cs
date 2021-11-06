@@ -10,8 +10,6 @@ namespace RamenOkiDoki.ViewComponents
 {
     public class FoodOrderCartViewComponent : ViewComponent
     {
-        
-
         public async Task<IViewComponentResult> InvokeAsync()
         {
             

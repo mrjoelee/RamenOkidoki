@@ -44,7 +44,7 @@ namespace RamenOkiDoki.Controllers
         [Route("menu")]
         public async Task<IActionResult> DineInMenu()
         {
-            var foodItemsViewModel = await MakeMenu();
+            FoodMenuViewModel foodItemsViewModel = new FoodMenuViewModel();
 
             return View(foodItemsViewModel);
         }
