@@ -44,11 +44,11 @@ namespace Data.Models
             }
         }
             
-        public static List<FoodMenu.FoodCategory> FoodCategoriesList { get; set; }
+        public static List<FoodCategory> FoodCategoriesList { get; set; }
 
-        public static List<FoodMenu.FoodItem> FoodItemsList { get; set; }
+        public static List<FoodItem> FoodItemsList { get; set; }
 
-        public static FoodMenu.FoodCategory FoodCategory { get; set; }
+        public static FoodCategory FoodCategory { get; set; }
         public static List<OrderItem> CartItemsList { get; set; }
 
 
