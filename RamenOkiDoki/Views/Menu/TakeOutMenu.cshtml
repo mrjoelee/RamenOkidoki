@@ -20,7 +20,7 @@
             foreach (var category in Model.FoodCategoryList)
             {
 
-                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category.Category">@category.Category</a>
+                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-id="@category.Id.ToString()">@category.Category</a>
 
 
             }
@@ -53,7 +53,7 @@
                             <span class="menuItem">@menuItem.dishName </span>
                             <span class="menuPrice">$ @menuItem.price</span>
 
-                            <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-itemIdToAdd="@menuItem.Id" style="font-weight: bold; margin-left: 10px">
+                            <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-itemIdToAdd ="@menuItem.Id" style="font-weight: bold; margin-left: 10px">
                                 <i class="fas fa-plus-square"></i> ADD
                             </a>
                         </p>

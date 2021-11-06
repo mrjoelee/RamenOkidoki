@@ -41,34 +41,26 @@ else
                 </thead>
                 <tbody>
 
-                    @if (Model.FoodCategoryList == null)
+                    @if (Model.FoodItemList != null && Model.FoodItemList.Count > 0)
                     {
-                        return;
-                    }
-
-
-                    @foreach (var category in Model.FoodCategoryList)
-                    {
-                        if (category.FoodItemList != null && category.FoodItems.Count > 0)
+                        
+                        foreach (var menuItem in Model.FoodItemList)
                         {
-
-                            foreach (var menuItem in category.FoodItems)
-                            {
-                                <tr>
-                                    <td>@menuItem.dishName</td>
-                                    <td style="white-space: nowrap;">$ @menuItem.price</td>
-                                    <td>@menuItem.description</td>
-                                    <td>@menuItem.foodCategory</td>
-                                    <td style="text-align: right; width:100px;"><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-edit edit-td " ></i></a></td>
-                                    <td style="text-align: right;"><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-trash"></i></a></td>
-                                </tr>
-                            }
+                            <tr>
+                                <td>@menuItem.dishName</td>
+                                <td style="white-space: nowrap;">$ @menuItem.price</td>
+                                <td>@menuItem.description</td>
+                                <td>@menuItem.foodCategory</td>
+                                <td style="text-align: right; width:100px;"><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-edit edit-td "></i></a></td>
+                                <td style="text-align: right;"><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-trash"></i></a></td>
+                            </tr>
                         }
+
                     }
                 </tbody>
             </table>
         </div>
     </div>
 
-        }
+}
 

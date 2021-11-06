@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,6 +47,12 @@ namespace RamenOkiDoki.Controllers
         {
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
+            var validCategories = GetCategoriesToDisplay();
+
+            if (validCategories == null) return null;
+
+            foodMenuViewModel.FoodCategoryList = validCategories;
+
             return View(foodMenuViewModel);
         }
 
@@ -55,19 +62,62 @@ namespace RamenOkiDoki.Controllers
 
 
         [Route("take-out")]
-        public async Task<IActionResult> TakeOutMenu(string categoryName)
+        public async Task<IActionResult> TakeOutMenu(string id)
         {
+            int categoryId = 0;
+
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+               categoryId =  Int32.Parse(id);
+            }
+
+
+            if (categoryId < 1)
+            {
+                categoryId = 1;
+            }
+
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
-            List<FoodCategory> tempListOfMenuCategoriesToReturn = new List<FoodCategory>();
             List<FoodItem> tempListOfMenuItemsToReturn = new List<FoodItem>();
 
 
             //     Globals.FoodCategoryList.OrderBy(Category => Category);
 
+            var validCategories = GetCategoriesToDisplay();
+
+            if (validCategories == null) return null;
+
+            foodMenuViewModel.FoodCategoryList = validCategories;
+
+            // Show Categories that have food items
+
+
+
+            if (Globals.FoodItemList != null & Globals.FoodItemList.Count > 0)
+            {
+                foreach (var item in Globals.FoodItemList)
+                {
+                    if (item != null && item.foodCategoryId == categoryId)
+                    {
+                        tempListOfMenuItemsToReturn.Add(item);
+                    }
+                }
+            }
+
+
+            foodMenuViewModel.FoodItemList = tempListOfMenuItemsToReturn;
+
+            return View(foodMenuViewModel);
+        }
+
+        private List<FoodCategory> GetCategoriesToDisplay()
+        {
             if (Globals.FoodCategoryList == null)
             {
                 return null;
             }
+
+            List<FoodCategory> tempListOfMenuCategoriesToReturn = new List<FoodCategory>();
 
             //Loop through all categories
 
@@ -82,38 +132,11 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-            foodMenuViewModel.FoodCategoryList = tempListOfMenuCategoriesToReturn.OrderBy(Category => Category).Distinct().ToList();
+            //   var tempList = tempListOfMenuCategoriesToReturn.OrderBy(Category => Category).Distinct().ToList(); 
 
-            // Show Categories that have food items
+            var tempList = tempListOfMenuCategoriesToReturn.Distinct().ToList();
 
-            if (string.IsNullOrWhiteSpace(categoryName))
-            {
-                if (Globals.CurrentCategory == null)
-                {
-                    Globals.CurrentCategory = foodMenuViewModel.FoodCategoryList[0];
-                }
-                else
-                {
-                    categoryName = Globals.CurrentCategory.Category;
-                }
-            }
-
-
-            if (Globals.FoodItemList != null & Globals.FoodItemList.Count > 0)
-            {
-                foreach (var item in Globals.FoodItemList)
-                {
-                    if (item != null)
-                    {
-                        tempListOfMenuItemsToReturn.Add(item);
-                    }
-                }
-            }
-
-
-            foodMenuViewModel.FoodItemList = tempListOfMenuItemsToReturn;
-
-            return View(foodMenuViewModel);
+            return tempList;
         }
 
 
