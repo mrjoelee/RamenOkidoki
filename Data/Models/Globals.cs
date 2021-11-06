@@ -44,21 +44,21 @@ namespace Data.Models
             }
         }
             
-        public static List<FoodCategory> FoodCategoriesList { get; set; }
+        public static List<FoodCategory> FoodCategoryList { get; set; }
 
-        public static List<FoodItem> FoodItemsList { get; set; }
+        public static List<FoodItem> FoodItemList { get; set; }
 
         public static FoodCategory FoodCategory { get; set; }
-        public static List<OrderItem> CartItemsList { get; set; }
+        public static List<OrderItem> CartItemList { get; set; }
 
 
 
         public Globals()
         {
-            FoodCategoriesList = new List<FoodCategory>();
-            FoodItemsList = new List<FoodItem>();
+            FoodCategoryList = new List<FoodCategory>();
+            FoodItemList = new List<FoodItem>();
             FoodCategory = new FoodCategory();
-            CartItemsList = new List<OrderItem>();
+            CartItemList = new List<OrderItem>();
         }
 
     }

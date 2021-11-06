@@ -34,9 +34,9 @@ namespace RamenOkiDoki.Controllers
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            if (Globals.CartItemsList != null)
+            if (Globals.CartItemList != null)
             {
-                foodItemsViewModel.OrderedItems = Globals.CartItemsList;
+                foodItemsViewModel.OrderedItemList = Globals.CartItemList;
             }
 
 
@@ -62,7 +62,7 @@ namespace RamenOkiDoki.Controllers
             {
 
 
-                foreach (var item in Globals.CartItemsList)
+                foreach (var item in Globals.CartItemList)
                 {
                    // int.TryParse(item.Id, out foodItemId);
 

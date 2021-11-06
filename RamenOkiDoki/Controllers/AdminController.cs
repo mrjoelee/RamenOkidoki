@@ -20,14 +20,14 @@ namespace RamenOkiDoki.Controllers
     public class AdminController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ILogger<HomeController> _logger;
-   
+
         private DatabaseRepository _databaseRepository;
 
         private RestaurantDbContext _context;
 
         //  public List<FoodItem> FoodItemsList;
 
-        public AdminController(ILogger<HomeController> logger,  DatabaseRepository databaseRepository)
+        public AdminController(ILogger<HomeController> logger, DatabaseRepository databaseRepository)
         {
             _logger = logger;
             _databaseRepository = databaseRepository;
@@ -37,52 +37,62 @@ namespace RamenOkiDoki.Controllers
         //returns the users to the index(home of the index view page)
         public IActionResult Index()
         {
-           DashboardViewModel dashboardViewModel = new DashboardViewModel();
-           
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+
             return View(dashboardViewModel);
 
         }
 
-
-
-
         //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
         public async Task<IActionResult> FoodMenuEdit()
         {
-            Globals.FoodCategoriesList = _databaseRepository.GetFoodCategories();
-            
+            Globals.FoodCategoryList = _databaseRepository.GetFoodCategories();
+            Globals.FoodItemList = _databaseRepository.GetFoodItems();
+
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            foodItemsViewModel.FoodItems = new List<FoodItem>();
+           // foodItemsViewModel.FoodItemList = new List<FoodItem>();
 
-            if (Globals.FoodCategoriesList != null)
+
+            if (Globals.FoodItemList != null)
             {
-                foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;   
-            
-            }
+                foodItemsViewModel.FoodItemList = Globals.FoodItemList;
 
-            if (Globals.FoodCategoriesList != null && Globals.FoodCategoriesList.Count > 0)
-            {
-
-                foreach (var category in Globals.FoodCategoriesList)
+                if (Globals.FoodCategoryList != null)
                 {
+                    //foreach (var FoodItem in null)
+                    //{
 
-                    if (category != null)// && category.FoodItems.Count > 0)
-                    {
+                    //}
+                    foodItemsViewModel.FoodCategoryList = Globals.FoodCategoryList;
 
-                        foreach (var fooditem in category.FoodItems)
-                        {
-                            
-                            if (fooditem != null)
-                            {
-                                foodItemsViewModel.FoodItems.Add(fooditem);
-
-                            }
-                        }
-                    }
                 }
-
             }
+
+
+
+            //if (Globals.FoodCategoriesList != null && Globals.FoodCategoriesList.Count > 0)
+            //{
+
+            //    foreach (var category in Globals.FoodCategoriesList)
+            //    {
+
+            //        if (category != null)// && category.FoodItems.Count > 0)
+            //        {
+
+            //            foreach (var fooditem in category.FoodItems)
+            //            {
+
+            //                if (fooditem != null)
+            //                {
+            //                    foodItemsViewModel.FoodItems.Add(fooditem);
+
+            //                }
+            //            }
+            //        }
+            //    }
+
+            //}
 
             if (foodItemsViewModel != null)
             {
@@ -102,18 +112,18 @@ namespace RamenOkiDoki.Controllers
                 int index = (int)id;
                 int itemId;
 
-                if (Globals.FoodCategoriesList == null || Globals.FoodCategoriesList.Count < 1)
+                if (Globals.FoodCategoryList == null || Globals.FoodCategoryList.Count < 1)
                 {
-                  //  Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+                    //  Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
 
-                  Globals.FoodCategoriesList = _databaseRepository.GetFoodCategories();
+                    Globals.FoodCategoryList = _databaseRepository.GetFoodCategories();
                 }
 
-                foreach (var category in Globals.FoodCategoriesList)
+                foreach (var category in Globals.FoodCategoryList)
                 {
-              
 
-                    if (category.FoodItems != null && category.FoodItems.Count > 0)
+
+                    if (category.FoodItemList != null && category.FoodItems.Count > 0)
                     {
                         foreach (var item in category.FoodItems)
                         {
@@ -123,10 +133,10 @@ namespace RamenOkiDoki.Controllers
 
                                 if (item.Id == index)
                                 {
-                                  
+
                                     item.foodCategory = category.Category;
                                     item.foodCategoryId = category.Id;
-     
+
                                     return View(item);
                                 }
                             }
@@ -152,7 +162,7 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-         //   await _menuEndpointService.AddMenuItemToCloud(item);
+            //   await _menuEndpointService.AddMenuItemToCloud(item);
 
             return Redirect("FoodMenuEdit");
         }
@@ -166,7 +176,7 @@ namespace RamenOkiDoki.Controllers
                 int index = (int)id;
                 int itemId;
 
-                foreach (var item in Globals.FoodItemsList)
+                foreach (var item in Globals.FoodItemList)
                 {
                     //  int.TryParse(item.Id, out itemId);
 
@@ -191,7 +201,7 @@ namespace RamenOkiDoki.Controllers
             return Redirect("Index");
         }
 
-        
+
         public IActionResult AdminSignOut()
         {
             Globals.UserSignedIn = false;
@@ -218,7 +228,7 @@ namespace RamenOkiDoki.Controllers
         public IActionResult SaveBusinessLocation(DashboardViewModel dvm)
         {
             Globals.DisplayAddressForm = false;
-            
+
             var location = dvm.MyBusinessLocation;
 
             if (location != null)

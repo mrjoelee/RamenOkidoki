@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using Data.Models;
 using Data.Models.FoodMenus;
+using Data.Repositories;
 using Data.ViewModels;
 
 
@@ -13,11 +14,11 @@ namespace RamenOkiDoki.Controllers
 {
     public class MenuController : Microsoft.AspNetCore.Mvc.Controller
     {
-        
+        private DatabaseRepository _databaseRepository;
 
-        public MenuController()
+        public MenuController(DatabaseRepository databaseRepository)
         {
-          
+            _databaseRepository = databaseRepository;
         }
 
         public IActionResult Index()
@@ -27,13 +28,13 @@ namespace RamenOkiDoki.Controllers
 
         private async Task<FoodItemsViewModel> MakeMenu()
         {
-            Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+            Globals.FoodCategoryList = _databaseRepository.GetFoodCategories();
 
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            if (Globals.FoodCategoriesList != null)
+            if (Globals.FoodCategoryList != null)
             {
-                foodItemsViewModel.FoodCategoriesList = Globals.FoodCategoriesList;
+                foodItemsViewModel.FoodCategoryList = Globals.FoodCategoryList;
             }
 
             return foodItemsViewModel;
@@ -64,9 +65,9 @@ namespace RamenOkiDoki.Controllers
 
             var foodItemsViewModel = await MakeMenu();
 
-            Globals.FoodCategoriesList.OrderBy(Category => Category);
+            Globals.FoodCategoryList.OrderBy(Category => Category);
 
-            if (Globals.FoodCategoriesList == null)
+            if (Globals.FoodCategoryList == null)
             {
                 return null;
             }
@@ -76,7 +77,7 @@ namespace RamenOkiDoki.Controllers
 
             List<string> tempListOfCategoryItems = new List<string>();
 
-            foreach (var items in Globals.FoodCategoriesList)
+            foreach (var items in Globals.FoodCategoryList)
             {
                 if (items.FoodItems != null && items.FoodItems.Count > 0)
                 {
@@ -85,7 +86,7 @@ namespace RamenOkiDoki.Controllers
             }
             
 
-            foodItemsViewModel.FoodCategories = tempListOfCategoryItems.Distinct().ToList();
+            foodItemsViewModel.FoodCategoryList = tempListOfCategoryItems.Distinct().ToList();
 
 
             if (string.IsNullOrWhiteSpace(category))
@@ -101,7 +102,7 @@ namespace RamenOkiDoki.Controllers
             }
 
 
-            foreach (var item in Globals.FoodCategoriesList)
+            foreach (var item in Globals.FoodCategoryList)
             {
                 if (item.Category == (category))
                 {
@@ -109,7 +110,7 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-            foodItemsViewModel.FoodItems = tempListOfMenuItemsToReturn;
+            foodItemsViewModel.FoodItemList = tempListOfMenuItemsToReturn;
 
             return View(foodItemsViewModel);
         }
