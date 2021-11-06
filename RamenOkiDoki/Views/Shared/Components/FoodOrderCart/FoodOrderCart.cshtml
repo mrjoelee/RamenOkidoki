@@ -5,7 +5,7 @@
 <div>
 
     @{
-        if (Model.OrderedItems == null || Model.OrderedItems.Count < 1)
+        if (Model.OrderedItemList == null || Model.OrderedItemList.Count < 1)
         {
             <h3 style="text-align: center; color:darkred">No items in your order</h3>
             return;
@@ -16,7 +16,7 @@
                 <h3 style="text-align: center;color:darkred;">Your Order</h3>
                 <table class="order-item-table">
                     <tr><th>Quantity</th><th></th><th>Item</th><th>Price</th></tr>
-                    @foreach (var menuItem in Model.OrderedItems)
+                    @foreach (var menuItem in Model.OrderedItemList)
                     {
                         <tr style="border-bottom: 1px solid lightgray; padding: 2px;">
                             <td style="font-size:20px" >
@@ -35,7 +35,7 @@
                 </table>
             </div>
             <div style="display: inline-block; float: right; margin: 50px;">
-                @if (Model.OrderedItems != null && Model.OrderedItems.Count > 0)
+                @if (Model.OrderedItemList != null && Model.OrderedItemList.Count > 0)
                 {
                     <a asp-controller="Cart" asp-action="CheckOut" class="btn btn-primary submit-order-button">Submit Order</a>
                 }

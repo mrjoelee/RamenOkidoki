@@ -61,7 +61,7 @@ namespace RamenOkiDoki.Controllers
             List<FoodItem> tempListOfMenuItemsToReturn = new List<FoodItem>();
 
             // Get from MySql Database
-            //   Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+            //   Globals.FoodCategoryList = await _menuEndpointService.GetFoodItemsFromCloud();
 
             var foodItemsViewModel = await MakeMenu();
 
@@ -123,7 +123,7 @@ namespace RamenOkiDoki.Controllers
         //{
         //    var foodItemsViewModel = await MakeMenu();
 
-        //           foreach (var cat in Globals.FoodCategoriesList)
+        //           foreach (var cat in Globals.FoodCategoryList)
         //           {
         //               if (cat.FoodItems.Count >3)
         //               {
@@ -134,7 +134,7 @@ namespace RamenOkiDoki.Controllers
 
         //    foodItemsViewModel.FoodCategories = new List<string>();
 
-        //    foreach (var category in foodItemsViewModel.FoodCategoriesList)
+        //    foreach (var category in foodItemsViewModel.FoodCategoryList)
         //    {
         //        if (category.FoodItems != null && category.FoodItems.Count > 0)
         //        {
@@ -173,7 +173,7 @@ namespace RamenOkiDoki.Controllers
 
         //    foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
 
-        //    foreach (var categoryItem in foodItemsViewModel.FoodCategoriesList)
+        //    foreach (var categoryItem in foodItemsViewModel.FoodCategoryList)
         //    {
         //        if (true)//categoryItem.Category == (categoryString))
         //        {

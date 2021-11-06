@@ -24,9 +24,9 @@ namespace RamenOkiDoki
         {
             Configuration = configuration;
 
-            Globals.CartItemsList = new List<OrderItem>();
-            Globals.FoodCategoriesList = new List<FoodCategory>();
-            Globals.FoodItemsList = new List<FoodItem>();
+            Globals.CartItemList = new List<OrderItem>();
+            Globals.FoodCategoryList = new List<FoodCategory>();
+            Globals.FoodItemList = new List<FoodItem>();
             Globals.FoodCategory = new FoodCategory();
             Globals.OrderSubTotalCost = 0.00m;
             Env = env;

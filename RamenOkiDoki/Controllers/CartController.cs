@@ -17,7 +17,7 @@ namespace RamenOkiDoki.Controllers
         public CartController()
         {
             
-            // Globals.CartItemsList = new List<OrderItem>();
+            // Globals.CartItemList = new List<OrderItem>();
         }
 
         public async Task<IActionResult> Index()
@@ -86,7 +86,7 @@ namespace RamenOkiDoki.Controllers
                 if (!itemExists)
                 {
 
-                    foreach (var foodCategory in Globals.FoodCategoriesList)
+                    foreach (var foodCategory in Globals.FoodCategoryList)
                     {
                         foreach (var foodItem in foodCategory.FoodItems)
                         {
@@ -111,7 +111,7 @@ namespace RamenOkiDoki.Controllers
                         }
                     }
 
-                    Globals.CartItemsList.Add(requestedItem);
+                    Globals.CartItemList.Add(requestedItem);
                     tempPrice = 0;
                     decimal.TryParse(requestedItem.price, out tempPrice);
 
@@ -149,13 +149,13 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemIdToDelete, out deletedItemId);
 
-                foreach (var item in Globals.CartItemsList)
+                foreach (var item in Globals.CartItemList)
                 {
                    // int.TryParse(item.id, out foodItemId);
 
                     if (item.Id == deletedItemId)
                     {
-                        Globals.CartItemsList.Remove(item);
+                        Globals.CartItemList.Remove(item);
 
                         decimal tempPrice = 0.00m;
 
@@ -186,7 +186,7 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemId, out decreasedItemId);
 
-                foreach (var item in Globals.CartItemsList)
+                foreach (var item in Globals.CartItemList)
                 {
                   //  int.TryParse(item.id, out foodItemId);
 
@@ -203,11 +203,11 @@ namespace RamenOkiDoki.Controllers
                         break;
                     }
                 }
-                foreach (var item in Globals.CartItemsList)
+                foreach (var item in Globals.CartItemList)
                 {
                    if (item.quantity < 1)
                    {
-                       Globals.CartItemsList.Remove(item);
+                       Globals.CartItemList.Remove(item);
                    
                        tempPrice = 0;
                    
@@ -238,13 +238,13 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemId, out increasedItemId);
 
-                foreach (var item in Globals.CartItemsList)
+                foreach (var item in Globals.CartItemList)
                 {
                    // int.TryParse(item.id, out foodItemId);
 
                     if (item.Id == increasedItemId)
                     {
-                        //Globals.CartItemsList.Add(item);
+                        //Globals.CartItemList.Add(item);
                         item.quantity++;
 
                         decimal tempPrice = 0;
@@ -267,7 +267,7 @@ namespace RamenOkiDoki.Controllers
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
 
-            foodItemsViewModel.OrderedItems = Globals.CartItemsList;
+            foodItemsViewModel.OrderedItemList = Globals.CartItemList;
 
             foodItemsViewModel.OrderSubTotalCost = string.Format("{0:C}", Globals.OrderSubTotalCost);
 

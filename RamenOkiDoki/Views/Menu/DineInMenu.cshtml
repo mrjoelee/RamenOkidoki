@@ -12,14 +12,14 @@
         <div style="display: inline-block; float: left; margin-bottom: 100px;">
 
             @{
-                if (Model.FoodCategoriesList == null)
+                if (Model.FoodCategoryList == null)
                 {
                     return;
                 }
 
                 FoodCategory categoryName = new FoodCategory();
 
-                foreach (var foodCategory in Model.FoodCategoriesList)
+                foreach (var foodCategory in Model.FoodCategoryList)
                 {
                     string tempFoodCategory = "";
 

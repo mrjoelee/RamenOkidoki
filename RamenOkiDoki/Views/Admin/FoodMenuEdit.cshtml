@@ -41,15 +41,15 @@ else
                 </thead>
                 <tbody>
 
-                    @if (Model.FoodCategoriesList == null)
+                    @if (Model.FoodCategoryList == null)
                     {
                         return;
                     }
 
 
-                    @foreach (var category in Model.FoodCategoriesList)
+                    @foreach (var category in Model.FoodCategoryList)
                     {
-                        if (category.FoodItems != null && category.FoodItems.Count > 0)
+                        if (category.FoodItemList != null && category.FoodItems.Count > 0)
                         {
 
                             foreach (var menuItem in category.FoodItems)

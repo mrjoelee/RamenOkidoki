@@ -25,7 +25,7 @@ namespace RamenOkiDoki.Controllers
 
         private RestaurantDbContext _context;
 
-        //  public List<FoodItem> FoodItemsList;
+        //  public List<FoodItem> FoodItemList;
 
         public AdminController(ILogger<HomeController> logger, DatabaseRepository databaseRepository)
         {
@@ -71,10 +71,10 @@ namespace RamenOkiDoki.Controllers
 
 
 
-            //if (Globals.FoodCategoriesList != null && Globals.FoodCategoriesList.Count > 0)
+            //if (Globals.FoodCategoryList != null && Globals.FoodCategoryList.Count > 0)
             //{
 
-            //    foreach (var category in Globals.FoodCategoriesList)
+            //    foreach (var category in Globals.FoodCategoryList)
             //    {
 
             //        if (category != null)// && category.FoodItems.Count > 0)
@@ -114,7 +114,7 @@ namespace RamenOkiDoki.Controllers
 
                 if (Globals.FoodCategoryList == null || Globals.FoodCategoryList.Count < 1)
                 {
-                    //  Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+                    //  Globals.FoodCategoryList = await _menuEndpointService.GetFoodItemsFromCloud();
 
                     Globals.FoodCategoryList = _databaseRepository.GetFoodCategories();
                 }
@@ -123,7 +123,7 @@ namespace RamenOkiDoki.Controllers
                 {
 
 
-                    if (category.FoodItemList != null && category.FoodItems.Count > 0)
+                    if (category.FoodItems != null && category.FoodItems.Count > 0)
                     {
                         foreach (var item in category.FoodItems)
                         {
@@ -154,7 +154,7 @@ namespace RamenOkiDoki.Controllers
         [HttpPost]
         public async Task<IActionResult> PutMenuItem(FoodItem item)
         {
-            foreach (var category in Globals.FoodCategoriesList)
+            foreach (var category in Globals.FoodCategoryList)
             {
                 if (category.Category == item.foodCategory)
                 {
