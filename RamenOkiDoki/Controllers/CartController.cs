@@ -48,7 +48,7 @@ namespace RamenOkiDoki.Controllers
         //method to add item to the cart
         public IActionResult AddToCart(string itemIdToAdd)
         {
-            double tempPrice = 0.00;
+            decimal tempPrice = 0.00m;
             // Add itemToAdd to the cart
 
             bool itemExists = false;
@@ -73,9 +73,9 @@ namespace RamenOkiDoki.Controllers
 
                         item.quantity++;
 
-                        tempPrice = 0.00;
+                        tempPrice = 0.00m;
 
-                        double.TryParse(item.price, out tempPrice);
+                        decimal.TryParse(item.price, out tempPrice);
 
                         Globals.OrderSubTotalCost += tempPrice;
 
@@ -114,7 +114,7 @@ namespace RamenOkiDoki.Controllers
 
                     Globals.CartItemsList.Add(requestedItem);
                     tempPrice = 0;
-                    double.TryParse(requestedItem.price, out tempPrice);
+                    decimal.TryParse(requestedItem.price, out tempPrice);
 
 
                     Globals.OrderSubTotalCost += tempPrice;
@@ -158,9 +158,9 @@ namespace RamenOkiDoki.Controllers
                     {
                         Globals.CartItemsList.Remove(item);
 
-                        double tempPrice = 0;
+                        decimal tempPrice = 0.00m;
 
-                        double.TryParse(item.price, out tempPrice);
+                        decimal.TryParse(item.price, out tempPrice);
 
                         Globals.OrderSubTotalCost -= tempPrice;
 
@@ -177,7 +177,7 @@ namespace RamenOkiDoki.Controllers
         //Method to decrease item on the  cart
         public IActionResult DecreaseQuantity(string itemId)
         {
-            double tempPrice = 0.00;
+            decimal tempPrice = 0.00m;
 
             FoodMenu.FoodItem requestedItem = null;
 
@@ -197,7 +197,7 @@ namespace RamenOkiDoki.Controllers
 
                         tempPrice = 0;
 
-                        double.TryParse(item.price, out tempPrice);
+                        decimal.TryParse(item.price, out tempPrice);
 
                         Globals.OrderSubTotalCost -= tempPrice;
 
@@ -212,7 +212,7 @@ namespace RamenOkiDoki.Controllers
                    
                        tempPrice = 0;
                    
-                       double.TryParse(item.price, out tempPrice);
+                       decimal.TryParse(item.price, out tempPrice);
                    
                        Globals.OrderSubTotalCost -= tempPrice;
 
@@ -248,9 +248,9 @@ namespace RamenOkiDoki.Controllers
                         //Globals.CartItemsList.Add(item);
                         item.quantity++;
 
-                        double tempPrice = 0;
+                        decimal tempPrice = 0;
 
-                        double.TryParse(item.price, out tempPrice);
+                        decimal.TryParse(item.price, out tempPrice);
 
                         Globals.OrderSubTotalCost += tempPrice;
 

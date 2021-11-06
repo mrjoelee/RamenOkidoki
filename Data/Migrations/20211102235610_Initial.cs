@@ -12,8 +12,8 @@ namespace Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DeliveryCharge = table.Column<double>(type: "float", nullable: false),
-                    SalesTaxRate = table.Column<double>(type: "float", nullable: false)
+                    DeliveryCharge = table.Column<decimal>(type: "decimal", nullable: false),
+                    SalesTaxRate = table.Column<decimal>(type: "decimal", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,7 +100,7 @@ namespace Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TakeOutCustomerId = table.Column<int>(type: "int", nullable: true),
-                    OrderSubTotalCost = table.Column<double>(type: "float", nullable: false)
+                    OrderSubTotalCost = table.Column<decimal>(type: "decimal", nullable: false)
                 },
                 constraints: table =>
                 {

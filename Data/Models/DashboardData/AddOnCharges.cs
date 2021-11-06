@@ -11,8 +11,8 @@ namespace Data.Models.DashboardData
    {
        [Key] public int Id { get; set; } = 1;
 
-        public  double SalesTaxRate = 0.0625;
+       public decimal SalesTaxRate { get; set; } 
         //public string SalesTax { get; set; }
-        public double DeliveryCharge { get; set; } = 0.00;
+        public decimal DeliveryCharge { get; set; }
    }
 }

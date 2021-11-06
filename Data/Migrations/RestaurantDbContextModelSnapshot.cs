@@ -26,8 +26,8 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("DeliveryCharge")
-                        .HasColumnType("float");
+                    b.Property<decimal>("DeliveryCharge")
+                        .HasColumnType("decimal");
 
                     b.HasKey("Id");
 
@@ -237,8 +237,8 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("OrderSubTotalCost")
-                        .HasColumnType("float");
+                    b.Property<decimal>("OrderSubTotalCost")
+                        .HasColumnType("decimal");
 
                     b.Property<int?>("TakeOutCustomerId")
                         .HasColumnType("int");

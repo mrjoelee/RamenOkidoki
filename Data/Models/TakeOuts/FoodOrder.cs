@@ -19,9 +19,9 @@ namespace Data.Models.TakeOuts
 
         public Customer TakeOutCustomer { get; set; }
 
-        public  double OrderSubTotalCost { get; set; }
+        public  decimal OrderSubTotalCost { get; set; }
 
-        public  double OrderTotalCost
+        public  decimal OrderTotalCost
         {
             get
             {
@@ -29,7 +29,7 @@ namespace Data.Models.TakeOuts
             }
         }
 
-        public  double TotalSalesTax
+        public  decimal TotalSalesTax
         {
             get
             {

@@ -17,8 +17,8 @@ namespace Data.Models
 
         public static string CurrentCategory { get; set; }
 
-        public static double OrderSubTotalCost { get; set; }
-        public static double OrderTotalCost
+        public static decimal OrderSubTotalCost { get; set; }
+        public static decimal OrderTotalCost
         {
             get
             {
@@ -26,7 +26,7 @@ namespace Data.Models
             }
         }
 
-        public static double TotalSalesTax
+        public static decimal TotalSalesTax
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Data.Models
             }
         }
 
-        public static double SalesTax = 0.0625;
+        public static decimal SalesTax = 0.0625m;
 
         public static string SalesTaxString
         {
