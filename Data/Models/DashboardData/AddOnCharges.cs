@@ -13,6 +13,6 @@ namespace Data.Models.DashboardData
 
         public  double SalesTaxRate = 0.0625;
         //public string SalesTax { get; set; }
-        public double DeliveryCharge { get; set; }
-    }
+        public double DeliveryCharge { get; set; } = 0.00;
+   }
 }

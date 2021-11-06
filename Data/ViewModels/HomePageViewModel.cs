@@ -13,9 +13,6 @@ namespace Data.ViewModels
 {
     public class HomePageViewModel
     {
-        //public DbSet<BusinessLocation> BusinessLocation { get; set; }
-        //public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
-
         private DatabaseRepository databaseRepository { get; set; }
         public BusinessLocation MyBusinessLocation { get; set; }
         public HoursOfOperation MyHoursOfOperation { get; set; }
