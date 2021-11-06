@@ -8,6 +8,7 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.DashboardData;
 using Data.Repositories;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.ViewModels
@@ -17,10 +18,9 @@ namespace Data.ViewModels
         //public DbSet<BusinessLocation> BusinessLocation { get; set; }
         //public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
 
-        //public DbSet<AddOnCharges> AddOns
+     //   public DbSet<AddOnCharges> AddOns { get; set; }
 
-        private AdminRepository adminRepository { get; set; }
-
+        private DatabaseRepository databaseRepository { get; set; }
         public BusinessLocation MyBusinessLocation { get; set; }
         public HoursOfOperation MyHoursOfOperation { get; set; }
 
@@ -32,25 +32,25 @@ namespace Data.ViewModels
 
         public DashboardViewModel()
         {
-            adminRepository = new AdminRepository();
+            databaseRepository = new DatabaseRepository();
 
-            MyBusinessLocation = adminRepository.GetBusinessLocation();
+            MyBusinessLocation = databaseRepository.GetBusinessLocation();
 
-            MyHoursOfOperation = adminRepository.GetHoursOfOperation();
-            
-            AddOns = adminRepository.GetAddOnCharges();
+            MyHoursOfOperation = databaseRepository.GetHoursOfOperation();
+
+            AddOns = databaseRepository.GetAddOnCharges();
 
             //    var context1 = context;
 
-            //    // BusinessLocation = DummyData.GetBusinessLocation();
+            //  MyBusinessLocation = DummyData.GetBusinessLocation();
 
             //    BusinessLocation = context1.BusinessLocations;
 
-            //    //HoursOfOperation = DummyData.GetHoursOfOperation();
+            //    MyHoursOfOperation = DummyData.GetHoursOfOperation();
 
             //    HoursOfOperation = context1.BusinessHours;
 
-            //    AddOns = context1.AddOns;
+            // AddOns = context1.AddOns;
 
         }
     }

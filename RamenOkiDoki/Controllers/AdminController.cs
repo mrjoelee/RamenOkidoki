@@ -22,17 +22,17 @@ namespace RamenOkiDoki.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private MenuEndpointService _menuEndpointService;
-        private AdminRepository _adminRepository;
+        private DatabaseRepository _databaseRepository;
 
         private RestaurantDbContext _context;
 
         //  public List<FoodItem> FoodItemsList;
 
-        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService, AdminRepository adminRepository)
+        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService, DatabaseRepository databaseRepository)
         {
             _logger = logger;
             _menuEndpointService = menuEndpointService;
-            _adminRepository = adminRepository;
+            _databaseRepository = databaseRepository;
         }
 
 
@@ -229,7 +229,7 @@ namespace RamenOkiDoki.Controllers
 
             if (location != null)
             {
-                _adminRepository.SaveRestaurantData<BusinessLocation>(location);
+                _databaseRepository.SaveRestaurantData<BusinessLocation>(location);
             }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
@@ -252,7 +252,7 @@ namespace RamenOkiDoki.Controllers
 
             if (hours != null)
             {
-                _adminRepository.SaveRestaurantData<HoursOfOperation>(hours);
+                _databaseRepository.SaveRestaurantData<HoursOfOperation>(hours);
             }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
@@ -274,7 +274,7 @@ namespace RamenOkiDoki.Controllers
 
             if (addOnCharges != null)
             {
-                _adminRepository.SaveRestaurantData<AddOnCharges>(addOnCharges);
+                _databaseRepository.SaveRestaurantData<AddOnCharges>(addOnCharges);
             }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();

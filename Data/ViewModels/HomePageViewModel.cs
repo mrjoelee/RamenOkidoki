@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 using Data.Models;
 using Data.Models.DashboardData;
+using Data.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data.ViewModels
 {
     public class HomePageViewModel
     {
-        public BusinessLocation BusinessLocation { get; set; }
-        public HoursOfOperation HoursOfOperation { get; set; }
+        //public DbSet<BusinessLocation> BusinessLocation { get; set; }
+        //public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
+
+        private DatabaseRepository databaseRepository { get; set; }
+        public BusinessLocation MyBusinessLocation { get; set; }
+        public HoursOfOperation MyHoursOfOperation { get; set; }
         public List<Review> Reviews { get; set; }
         public Review NewReview { get; set; }
         public bool ShowAllReviews { get; set; }
@@ -21,18 +27,24 @@ namespace Data.ViewModels
 
         public HomePageViewModel()
         {
-            BusinessLocation = new BusinessLocation()
-            {
-                BusinessName = "Ramen OkiDoki",
-                StreetAddress = "10603 Bellaire Blvd",
-                City = "Houston",
-                State = "TX",
-                Zipcode = "77072",
-                PhoneNumber = "2815758077",
-                Email = ""
-            };
+            databaseRepository = new DatabaseRepository();
 
-            HoursOfOperation = DummyData.GetHoursOfOperation();
+            MyBusinessLocation = databaseRepository.GetBusinessLocation();
+
+            MyHoursOfOperation = databaseRepository.GetHoursOfOperation();
+
+            //BusinessLocation = new BusinessLocation()
+            //{
+            //    BusinessName = "Ramen OkiDoki",
+            //    StreetAddress = "10603 Bellaire Blvd",
+            //    City = "Houston",
+            //    State = "TX",
+            //    Zipcode = "77072",
+            //    PhoneNumber = "2815758077",
+            //    Email = ""
+            //};
+
+           // HoursOfOperation = DummyData.GetHoursOfOperation();
 
             Reviews = DummyData.GetReviews();
 

@@ -44,7 +44,7 @@ namespace RamenOkiDoki
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<MenuEndpointService>();
-            services.AddTransient<AdminRepository>();
+            services.AddTransient<DatabaseRepository>();
 
             if (Env.IsDevelopment())
             {

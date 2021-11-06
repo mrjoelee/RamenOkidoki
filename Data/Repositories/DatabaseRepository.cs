@@ -12,17 +12,19 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Data.Repositories
 {
-    public class AdminRepository
+    public class DatabaseRepository
     {
         private RestaurantDbContext _context;
-        public AdminRepository()
+        public DatabaseRepository()
         {
             _context = new RestaurantDbContext();
         }
 
         public BusinessLocation GetBusinessLocation()
         {
-            BusinessLocation businessLocation = _context.BusinessLocations.FirstOrDefault();
+            BusinessLocation businessLocation = _context.BusinessLocations.First() as BusinessLocation;
+                
+                
 
             return businessLocation;
         }
@@ -47,5 +49,18 @@ namespace Data.Repositories
 
             _context.SaveChanges();
         }
+       public void AddRestaurantData<T>(T data)
+        {
+            _context.Add(data);
+
+            _context.SaveChanges();
+        }    
+
+        //public void AddRestaurantDataList <T> (List<T> dataList)
+        //{
+        //    _context.Add(dataList);
+
+        //    _context.SaveChanges();
+        //}
     }
 }
