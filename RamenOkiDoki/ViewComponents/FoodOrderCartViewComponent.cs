@@ -13,13 +13,13 @@ namespace RamenOkiDoki.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            foodItemsViewModel.OrderedItemList = Globals.CartItemList;
+            foodMenuViewModel.OrderedItemList = Globals.CartItemList;
 
-            foodItemsViewModel.OrderSubTotalCost = string.Format("{0:C}",Globals.OrderSubTotalCost);
+            foodMenuViewModel.OrderSubTotalCost = string.Format("{0:C}",Globals.OrderSubTotalCost);
             
-            return View("FoodOrderCart", foodItemsViewModel);
+            return View("FoodOrderCart", foodMenuViewModel);
         }
     }
 }

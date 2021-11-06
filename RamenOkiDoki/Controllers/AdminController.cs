@@ -43,20 +43,20 @@ namespace RamenOkiDoki.Controllers
 
         }
 
-        //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
+        //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodMenuViewModel
         public async Task<IActionResult> FoodMenuEdit()
         {
             Globals.FoodCategoryList = _databaseRepository.GetFoodCategories();
             Globals.FoodItemList = _databaseRepository.GetFoodItems();
 
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            // foodItemsViewModel.FoodItemList = new List<FoodItem>();
+            // FoodMenuViewModel.FoodItemList = new List<FoodItem>();
 
 
             if (Globals.FoodItemList != null)
             {
-                foodItemsViewModel.FoodItemList = Globals.FoodItemList;
+                foodMenuViewModel.FoodItemList = Globals.FoodItemList;
 
                 if (Globals.FoodCategoryList != null)
                 {
@@ -64,7 +64,7 @@ namespace RamenOkiDoki.Controllers
                     //{
 
                     //}
-                    foodItemsViewModel.FoodCategoryList = Globals.FoodCategoryList;
+                    foodMenuViewModel.FoodCategoryList = Globals.FoodCategoryList;
 
                 }
             }
@@ -85,7 +85,7 @@ namespace RamenOkiDoki.Controllers
 
             //                if (fooditem != null)
             //                {
-            //                    foodItemsViewModel.FoodItems.Add(fooditem);
+            //                    FoodMenuViewModel.FoodItems.Add(fooditem);
 
             //                }
             //            }
@@ -94,9 +94,9 @@ namespace RamenOkiDoki.Controllers
 
             //}
 
-            if (foodItemsViewModel != null)
+            if (foodMenuViewModel != null)
             {
-                return View(foodItemsViewModel);
+                return View(foodMenuViewModel);
             }
 
 

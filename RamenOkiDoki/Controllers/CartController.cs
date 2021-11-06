@@ -23,24 +23,24 @@ namespace RamenOkiDoki.Controllers
         public async Task<IActionResult> Index()
         {
 
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            return View(foodItemsViewModel);
+            return View(foodMenuViewModel);
         }
 
 
         public async Task<IActionResult> _FoodOrderPartial()
         {
 
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
             if (Globals.CartItemList != null)
             {
-                foodItemsViewModel.OrderedItemList = Globals.CartItemList;
+                foodMenuViewModel.OrderedItemList = Globals.CartItemList;
             }
 
 
-            return View(foodItemsViewModel);
+            return View(foodMenuViewModel);
         }
 
    
@@ -88,7 +88,7 @@ namespace RamenOkiDoki.Controllers
 
                     foreach (var foodCategory in Globals.FoodCategoryList)
                     {
-                        foreach (var foodItem in foodCategory.FoodItems)
+                        foreach (var foodItem in foodCategory.FoodItemList)
                         {
                            // int.TryParse(foodItem.id, out foodItemId);
 
@@ -118,7 +118,7 @@ namespace RamenOkiDoki.Controllers
 
                     Globals.OrderSubTotalCost += tempPrice;
 
-                    FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+                    FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
                     return RedirectToAction("TakeOutMenu", new RouteValueDictionary(
                 new
@@ -264,20 +264,20 @@ namespace RamenOkiDoki.Controllers
 
         public IActionResult CheckOut()
         {
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
 
-            foodItemsViewModel.OrderedItemList = Globals.CartItemList;
+            foodMenuViewModel.OrderedItemList = Globals.CartItemList;
 
-            foodItemsViewModel.OrderSubTotalCost = string.Format("{0:C}", Globals.OrderSubTotalCost);
+            foodMenuViewModel.OrderSubTotalCost = string.Format("{0:C}", Globals.OrderSubTotalCost);
 
-            foodItemsViewModel.OrderTotalSalesTax = string.Format("{0:C}", Globals.TotalSalesTax);
+            foodMenuViewModel.OrderTotalSalesTax = string.Format("{0:C}", Globals.TotalSalesTax);
 
-            foodItemsViewModel.OrderTotalCost = string.Format("{0:C}", Globals.OrderTotalCost);
+            foodMenuViewModel.OrderTotalCost = string.Format("{0:C}", Globals.OrderTotalCost);
 
 
 
-            return View(foodItemsViewModel);
+            return View(foodMenuViewModel);
         }
 
     }

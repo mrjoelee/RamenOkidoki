@@ -26,17 +26,17 @@ namespace RamenOkiDoki.Controllers
             return View();
         }
 
-        //private async Task<FoodItemsViewModel> MakeMenu()
+        //private async Task<FoodMenuViewModel> MakeMenu()
         //{
 
-        //    FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+        //    FoodMenuViewModel FoodMenuViewModel = new FoodMenuViewModel();
 
         //    if (Globals.FoodCategoryList != null)
         //    {
-        //        foodItemsViewModel.FoodCategoryList = Globals.FoodCategoryList;
+        //        FoodMenuViewModel.FoodCategoryList = Globals.FoodCategoryList;
         //    }
 
-        //    return foodItemsViewModel;
+        //    return FoodMenuViewModel;
         //}
 
         #region =  Dine In Menu
@@ -44,9 +44,9 @@ namespace RamenOkiDoki.Controllers
         [Route("menu")]
         public async Task<IActionResult> DineInMenu()
         {
-            FoodMenuViewModel foodItemsViewModel = new FoodMenuViewModel();
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            return View(foodItemsViewModel);
+            return View(foodMenuViewModel);
         }
 
 
@@ -122,7 +122,7 @@ namespace RamenOkiDoki.Controllers
         //[Route("take-out")]
         //public async Task<IActionResult> TakeOutMenu(string categoryString)
         //{
-        //    var foodItemsViewModel = await MakeMenu();
+        //    var FoodMenuViewModel = await MakeMenu();
 
         //           foreach (var cat in Globals.FoodCategoryList)
         //           {
@@ -152,14 +152,14 @@ namespace RamenOkiDoki.Controllers
 
         //    if (string.IsNullOrWhiteSpace(categoryString))
         //    {
-        //        if (foodItemsViewModel.FoodCategories.Count > 0)
+        //        if (FoodMenuViewModel.FoodCategories.Count > 0)
         //        {
-        //            categoryString = foodItemsViewModel.FoodCategories[0];
+        //            categoryString = FoodMenuViewModel.FoodCategories[0];
         //        }
 
         //        if (Globals.CurrentCategory != null)
         //        {
-        //            foreach (var category in foodItemsViewModel.FoodCategories)
+        //            foreach (var category in FoodMenuViewModel.FoodCategories)
         //            {
         //                if (category == Globals.CurrentCategory)
         //                {
@@ -172,22 +172,22 @@ namespace RamenOkiDoki.Controllers
 
         //    }
 
-        //    foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
+        //    FoodMenuViewModel.FoodItems = new List<FoodMenu.FoodItem>();
 
-        //    foreach (var categoryItem in foodItemsViewModel.FoodCategoryList)
+        //    foreach (var categoryItem in FoodMenuViewModel.FoodCategoryList)
         //    {
         //        if (true)//categoryItem.Category == (categoryString))
         //        {
         //            //if (categoryItem.FoodItems != null)
         //            //{
-        //            foodItemsViewModel.FoodItems = categoryItem.FoodItems;
+        //            FoodMenuViewModel.FoodItems = categoryItem.FoodItems;
         //            //  }
 
         //        }
         //    }
 
 
-        //    return View(foodItemsViewModel);
+        //    return View(FoodMenuViewModel);
         //}
 
         //#endregion
