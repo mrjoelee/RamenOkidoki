@@ -6,7 +6,6 @@ using Data.Models;
 using Data.Models.FoodMenus;
 using Data.ViewModels;
 
-using DataServices.Services;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,11 +13,11 @@ namespace RamenOkiDoki.Controllers
 {
     public class MenuController : Microsoft.AspNetCore.Mvc.Controller
     {
-        private MenuEndpointService _menuEndpointService { get; set; }
+        
 
-        public MenuController(MenuEndpointService menuEndpointService)
+        public MenuController()
         {
-            _menuEndpointService = menuEndpointService;
+          
         }
 
         public IActionResult Index()
@@ -58,7 +57,7 @@ namespace RamenOkiDoki.Controllers
         [Route("take-out")]
         public async Task<IActionResult> TakeOutMenu(string category)
         {
-            List<FoodMenu.FoodItem> tempListOfMenuItemsToReturn = new List<FoodMenu.FoodItem>();
+            List<FoodItem> tempListOfMenuItemsToReturn = new List<FoodItem>();
 
             // Get from MySql Database
             //   Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();

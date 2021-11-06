@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 using Data.Models;
 using Data.Models.FoodMenus;
 using Data.ViewModels;
-using DataServices.Services;
 using Microsoft.AspNetCore.Routing;
 
 namespace RamenOkiDoki.Controllers
 {
     public class CartController : Controller
     {
-        private MenuEndpointService _menuEndpointService { get; set; }
+        
 
-        public CartController(MenuEndpointService menuEndpointService)
+        public CartController()
         {
-            _menuEndpointService = menuEndpointService;
+            
             // Globals.CartItemsList = new List<OrderItem>();
         }
 
@@ -142,7 +141,7 @@ namespace RamenOkiDoki.Controllers
         public IActionResult DeleteFromCart(string itemIdToDelete)
         {
 
-            FoodMenu.FoodItem requestedItem = null;
+            FoodItem requestedItem = null;
 
             if (!string.IsNullOrWhiteSpace(itemIdToDelete))
             {
@@ -179,7 +178,7 @@ namespace RamenOkiDoki.Controllers
         {
             decimal tempPrice = 0.00m;
 
-            FoodMenu.FoodItem requestedItem = null;
+            FoodItem requestedItem = null;
 
             if (!string.IsNullOrWhiteSpace(itemId))
             {
@@ -231,7 +230,7 @@ namespace RamenOkiDoki.Controllers
         //Method to increase item on the cart 
         public IActionResult IncreaseQuantity(string itemId)
         {
-            FoodMenu.FoodItem requestedItem = null;
+            FoodItem requestedItem = null;
 
             if (!string.IsNullOrWhiteSpace(itemId))
             {

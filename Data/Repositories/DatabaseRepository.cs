@@ -44,16 +44,16 @@ namespace Data.Repositories
             return addOnCharges;
         }
 
-        public List<FoodMenu.FoodCategory> GetFoodCategories()
+        public List<FoodCategory> GetFoodCategories()
         {
-            List<FoodMenu.FoodCategory> foodCategories = _context.FoodCategories.ToList();
+            List<FoodCategory> foodCategories = _context.FoodCategories.ToList();
 
             return foodCategories;
         }
 
-        public List<FoodMenu.FoodItem> GetFoodItems()
+        public List<FoodItem> GetFoodItems()
         {
-            List<FoodMenu.FoodItem> foodItems = _context.FoodItems.ToList();
+            List<FoodItem> foodItems = _context.FoodItems.ToList();
 
             return foodItems;
         }

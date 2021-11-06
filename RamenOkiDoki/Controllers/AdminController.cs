@@ -10,7 +10,6 @@ using Data.Models.FoodMenus;
 using Data.Repositories;
 using Data.ViewModels;
 
-using DataServices.Services;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -21,17 +20,16 @@ namespace RamenOkiDoki.Controllers
     public class AdminController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private MenuEndpointService _menuEndpointService;
+   
         private DatabaseRepository _databaseRepository;
 
         private RestaurantDbContext _context;
 
         //  public List<FoodItem> FoodItemsList;
 
-        public AdminController(ILogger<HomeController> logger, MenuEndpointService menuEndpointService, DatabaseRepository databaseRepository)
+        public AdminController(ILogger<HomeController> logger,  DatabaseRepository databaseRepository)
         {
             _logger = logger;
-            _menuEndpointService = menuEndpointService;
             _databaseRepository = databaseRepository;
         }
 
@@ -55,7 +53,7 @@ namespace RamenOkiDoki.Controllers
             
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
+            foodItemsViewModel.FoodItems = new List<FoodItem>();
 
             if (Globals.FoodCategoriesList != null)
             {
@@ -144,7 +142,7 @@ namespace RamenOkiDoki.Controllers
         #region saving new item
 
         [HttpPost]
-        public async Task<IActionResult> PutMenuItem(FoodMenu.FoodItem item)
+        public async Task<IActionResult> PutMenuItem(FoodItem item)
         {
             foreach (var category in Globals.FoodCategoriesList)
             {

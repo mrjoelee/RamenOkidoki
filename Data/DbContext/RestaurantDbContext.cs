@@ -28,8 +28,8 @@ namespace Data.DbContext
         public DbSet<HoursOfOperation> BusinessHours { get; set; }
         public DbSet<AddOnCharges> AddOns { get; set; }
 
-        public DbSet <FoodMenu.FoodCategory> FoodCategories { get; set; }
-        public DbSet <FoodMenu.FoodItem> FoodItems { get; set; }
+        public DbSet <FoodCategory> FoodCategories { get; set; }
+        public DbSet <FoodItem> FoodItems { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<FoodOrder> FoodOrders { get; set; }

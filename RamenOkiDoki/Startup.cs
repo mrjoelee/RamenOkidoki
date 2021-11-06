@@ -12,7 +12,6 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.FoodMenus;
 using Data.Repositories;
-using DataServices.Services;
 //using Microsoft.EntityFrameworkCore;
 
 namespace RamenOkiDoki
@@ -24,11 +23,11 @@ namespace RamenOkiDoki
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
-            
+
             Globals.CartItemsList = new List<OrderItem>();
-            Globals.FoodCategoriesList = new List<FoodMenu.FoodCategory>();
-            Globals.FoodItemsList = new List<FoodMenu.FoodItem>();
-            Globals.FoodCategory = new FoodMenu.FoodCategory();
+            Globals.FoodCategoriesList = new List<FoodCategory>();
+            Globals.FoodItemsList = new List<FoodItem>();
+            Globals.FoodCategory = new FoodCategory();
             Globals.OrderSubTotalCost = 0.00m;
             Env = env;
         }
@@ -43,7 +42,6 @@ namespace RamenOkiDoki
             //services.AddDbContext<RestaurantDbContext>(options =>
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<MenuEndpointService>();
             services.AddTransient<DatabaseRepository>();
 
             if (Env.IsDevelopment())
@@ -60,7 +58,7 @@ namespace RamenOkiDoki
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-               // app.UseBrowserLink();
+                // app.UseBrowserLink();
             }
             else
             {

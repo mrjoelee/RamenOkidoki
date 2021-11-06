@@ -4,18 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
 using Data.ViewModels;
-using DataServices.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RamenOkiDoki.ViewComponents
 {
     public class FoodOrderCartViewComponent : ViewComponent
     {
-        private MenuEndpointService _menuEndpointService { get; set; }
-        public FoodOrderCartViewComponent(MenuEndpointService menuEndpointService)
-        {
-            _menuEndpointService = menuEndpointService;
-        }
+        
 
         public async Task<IViewComponentResult> InvokeAsync()
         {

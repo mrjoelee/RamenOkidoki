@@ -2,7 +2,7 @@
 
 namespace Data.Models.FoodMenus
 {
-    public class OrderItem : FoodMenu.FoodItem
+    public class OrderItem : FoodItem
     {
         [Key]
         public int Id { get; set; }

@@ -8,7 +8,7 @@ namespace Data.ViewModels
     public class FoodItemsViewModel
     {
         //public List<Food> Foods { get; set; }
-        public List<FoodMenu.FoodItem> FoodItems { get; set; }
+        public List<FoodItem> FoodItems { get; set; }
         public List<OrderItem> OrderedItems { get; set; }
         public List<string> FoodCategories { get; set; }
         public string OrderSubTotalCost { get; set; }
@@ -16,15 +16,15 @@ namespace Data.ViewModels
         public string OrderTotalSalesTax { get; set; }
 
 
-        public List<FoodMenu.FoodCategory> FoodCategoriesList { get; set; }
+        public List<FoodCategory> FoodCategoriesList { get; set; }
 
         public FoodItemsViewModel()
         {
            // Foods = new List<Food>();
-            FoodItems = new List<FoodMenu.FoodItem>();
+            FoodItems = new List<FoodItem>();
             OrderedItems = new List<OrderItem>();
             FoodCategories = new List<string>();
-            FoodCategoriesList = new List<FoodMenu.FoodCategory>();
+            FoodCategoriesList = new List<FoodCategory>();
 
 
         }
