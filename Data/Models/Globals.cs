@@ -55,9 +55,9 @@ namespace Data.Models
 
         public Globals()
         {
-            FoodCategoriesList = new List<FoodMenu.FoodCategory>();
-            FoodItemsList = new List<FoodMenu.FoodItem>();
-            FoodCategory = new FoodMenu.FoodCategory();
+            FoodCategoriesList = new List<FoodCategory>();
+            FoodItemsList = new List<FoodItem>();
+            FoodCategory = new FoodCategory();
             CartItemsList = new List<OrderItem>();
         }
 

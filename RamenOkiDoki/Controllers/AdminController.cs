@@ -51,10 +51,8 @@ namespace RamenOkiDoki.Controllers
         //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodItemsviewModel
         public async Task<IActionResult> FoodMenuEdit()
         {
-            Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
-
+            Globals.FoodCategoriesList = _databaseRepository.GetFoodCategories();
             
-
             FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
             foodItemsViewModel.FoodItems = new List<FoodMenu.FoodItem>();
@@ -99,7 +97,7 @@ namespace RamenOkiDoki.Controllers
 
 
         //Creates new item and returns to the menu.
-        public async Task<IActionResult> FoodMenuAddEdit(int? id)
+        public IActionResult FoodMenuAddEdit(int? id)
         {
             if (id != null)
             {
@@ -108,7 +106,9 @@ namespace RamenOkiDoki.Controllers
 
                 if (Globals.FoodCategoriesList == null || Globals.FoodCategoriesList.Count < 1)
                 {
-                    Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+                  //  Globals.FoodCategoriesList = await _menuEndpointService.GetFoodItemsFromCloud();
+
+                  Globals.FoodCategoriesList = _databaseRepository.GetFoodCategories();
                 }
 
                 foreach (var category in Globals.FoodCategoriesList)

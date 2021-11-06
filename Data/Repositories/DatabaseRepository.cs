@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Data.DbContext;
 using Data.Models.DashboardData;
+using Data.Models.FoodMenus;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -23,8 +24,8 @@ namespace Data.Repositories
         public BusinessLocation GetBusinessLocation()
         {
             BusinessLocation businessLocation = _context.BusinessLocations.First() as BusinessLocation;
-                
-                
+
+
 
             return businessLocation;
         }
@@ -43,18 +44,32 @@ namespace Data.Repositories
             return addOnCharges;
         }
 
+        public List<FoodMenu.FoodCategory> GetFoodCategories()
+        {
+            List<FoodMenu.FoodCategory> foodCategories = _context.FoodCategories.ToList();
+
+            return foodCategories;
+        }
+
+        public List<FoodMenu.FoodItem> GetFoodItems()
+        {
+            List<FoodMenu.FoodItem> foodItems = _context.FoodItems.ToList();
+
+            return foodItems;
+        }
+
         public void SaveRestaurantData<T>(T data)
         {
             _context.Update(data);
 
             _context.SaveChanges();
         }
-       public void AddRestaurantData<T>(T data)
+        public void AddRestaurantData<T>(T data)
         {
             _context.Add(data);
 
             _context.SaveChanges();
-        }    
+        }
 
         //public void AddRestaurantDataList <T> (List<T> dataList)
         //{
