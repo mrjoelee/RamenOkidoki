@@ -17,7 +17,7 @@ namespace Data.Models
 
         public enum UserRoles { Admin, Employee, Patron }
 
-        public static string CurrentCategory { get; set; }
+        public static FoodCategory CurrentCategory { get; set; }
 
         public static decimal OrderSubTotalCost { get; set; }
         public static decimal OrderTotalCost
@@ -62,9 +62,7 @@ namespace Data.Models
 
         public Globals()
         {
-
-         
-
+            
             FoodCategoryList = new List<FoodCategory>();
             FoodItemList = new List<FoodItem>();
           //  FoodCategory = new FoodCategory();

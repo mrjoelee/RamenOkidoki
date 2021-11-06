@@ -1,4 +1,4 @@
-﻿@model Data.ViewModels.FoodItemsViewModel
+﻿@model Data.ViewModels.FoodMenuViewModel
 @{
     ViewData["Title"] = "Take Out";
 }
@@ -11,16 +11,16 @@
 
         @{
 
-            if (Model.FoodCategories == null)
+            if (Model.FoodCategoryList == null)
             {
                 return;
             }
 
 
-            foreach (var category in Model.FoodCategories)
+            foreach (var category in Model.FoodCategoryList)
             {
 
-                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category">@category</a>
+                <a class="admin-nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu" asp-route-category="@category.Category">@category.Category</a>
 
 
             }
@@ -34,14 +34,14 @@
 
             <div>
                 @{
-                    if (Model.FoodItems == null)
+                    if (Model.FoodItemList == null || Model.FoodItemList.Count < 1)
                     {
                         return;
                     }
 
-                    string categoryName = "";
+                    //string categoryName = "";
 
-                    foreach (var menuItem in Model.FoodItems)
+                    foreach (var menuItem in Model.FoodItemList)
                     {
                         @*if (categoryName != menuItem.categoryName)
                             {

@@ -26,18 +26,18 @@ namespace RamenOkiDoki.Controllers
             return View();
         }
 
-        private async Task<FoodItemsViewModel> MakeMenu()
-        {
-        
-            FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
+        //private async Task<FoodItemsViewModel> MakeMenu()
+        //{
 
-            if (Globals.FoodCategoryList != null)
-            {
-                foodItemsViewModel.FoodCategoryList = Globals.FoodCategoryList;
-            }
+        //    FoodItemsViewModel foodItemsViewModel = new FoodItemsViewModel();
 
-            return foodItemsViewModel;
-        }
+        //    if (Globals.FoodCategoryList != null)
+        //    {
+        //        foodItemsViewModel.FoodCategoryList = Globals.FoodCategoryList;
+        //    }
+
+        //    return foodItemsViewModel;
+        //}
 
         #region =  Dine In Menu
 
@@ -55,59 +55,65 @@ namespace RamenOkiDoki.Controllers
 
 
         [Route("take-out")]
-        public async Task<IActionResult> TakeOutMenu(string category)
+        public async Task<IActionResult> TakeOutMenu(string categoryName)
         {
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
+            List<FoodCategory> tempListOfMenuCategoriesToReturn = new List<FoodCategory>();
             List<FoodItem> tempListOfMenuItemsToReturn = new List<FoodItem>();
 
-            var foodItemsViewModel = await MakeMenu();
 
-       //     Globals.FoodCategoryList.OrderBy(Category => Category);
+            //     Globals.FoodCategoryList.OrderBy(Category => Category);
 
             if (Globals.FoodCategoryList == null)
             {
                 return null;
             }
 
-            // Show Categories that have food items
+            //Loop through all categories
 
-            List<string> tempListOfCategoryItems = new List<string>();
-
-            foreach (var items in Globals.FoodCategoryList)
+            foreach (var category in Globals.FoodCategoryList)
             {
-                if (items.FoodItems != null && items.FoodItems.Count > 0)
+                foreach (var item in Globals.FoodItemList)
                 {
-                    tempListOfCategoryItems.Add(items.Category);
+                    if (item.foodCategoryId == category.Id)
+                    {
+                        tempListOfMenuCategoriesToReturn.Add(category);
+                    }
                 }
             }
-            
 
-            foodItemsViewModel.FoodCategoryList = tempListOfCategoryItems.Distinct().ToList();
+            foodMenuViewModel.FoodCategoryList = tempListOfMenuCategoriesToReturn.OrderBy(Category => Category).Distinct().ToList();
 
+            // Show Categories that have food items
 
-            if (string.IsNullOrWhiteSpace(category))
+            if (string.IsNullOrWhiteSpace(categoryName))
             {
-                if (string.IsNullOrWhiteSpace(Globals.CurrentCategory))
+                if (Globals.CurrentCategory == null)
                 {
-                    category = tempListOfCategoryItems[0];
+                    Globals.CurrentCategory = foodMenuViewModel.FoodCategoryList[0];
                 }
                 else
                 {
-                    category = Globals.CurrentCategory;
+                    categoryName = Globals.CurrentCategory.Category;
                 }
             }
 
 
-            foreach (var item in Globals.FoodCategoryList)
+            if (Globals.FoodItemList != null & Globals.FoodItemList.Count > 0)
             {
-                if (item.Category == (category))
+                foreach (var item in Globals.FoodItemList)
                 {
-                    tempListOfMenuItemsToReturn = item.FoodItems;
+                    if (item != null)
+                    {
+                        tempListOfMenuItemsToReturn.Add(item);
+                    }
                 }
             }
 
-            foodItemsViewModel.FoodItemList = tempListOfMenuItemsToReturn;
 
-            return View(foodItemsViewModel);
+            foodMenuViewModel.FoodItemList = tempListOfMenuItemsToReturn;
+
+            return View(foodMenuViewModel);
         }
 
 

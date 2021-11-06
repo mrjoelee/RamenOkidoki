@@ -6,7 +6,7 @@ using Data.Repositories;
 
 namespace Data.ViewModels
 {
-    public class FoodItemsViewModel
+    public class FoodMenuViewModel
     {
         //public List<Food> Foods { get; set; }
 
@@ -25,7 +25,7 @@ namespace Data.ViewModels
             FoodItemList = databaseRepository.GetFoodItems();
         }
 
-        public FoodItemsViewModel()
+        public FoodMenuViewModel()
         {
             databaseRepository = new DatabaseRepository();
 
