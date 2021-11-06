@@ -39,23 +39,8 @@ namespace RamenOkiDoki.Controllers
         //returns the users to the index(home of the index view page)
         public IActionResult Index()
         {
-            // BusinessLocation = DummyData.GetBusinessLocation();
-
-            //var businessLocation = _context.BusinessLocations;
-            //var businessHours = _context.BusinessHours;
-            //var addOns = _context.AddOns;
-
-            DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            //{
-            //    BusinessLocation = businessLocation,
-            //    HoursOfOperation = businessHours,
-            //    AddOns = addOns
-            //};
-
-            //    dashboardViewModel.BusinessLocation = businessLocation;
-            //   dashboardViewModel.AddOns.SalesTaxRate = new string(Globals.SalesTaxString);
-            //  dashboardViewModel.AddOns.DeliveryCharge = new string("$5.00");
-
+           DashboardViewModel dashboardViewModel = new DashboardViewModel();
+           
             return View(dashboardViewModel);
 
         }
@@ -124,6 +109,8 @@ namespace RamenOkiDoki.Controllers
 
                 foreach (var category in Globals.FoodCategoriesList)
                 {
+                    _databaseRepository.AddRestaurantData(category);
+
                     if (category.FoodItems != null && category.FoodItems.Count > 0)
                     {
                         foreach (var item in category.FoodItems)

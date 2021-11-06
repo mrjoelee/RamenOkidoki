@@ -10,12 +10,12 @@
 
     if (Model != null)
     {
-        id = Model.id;
+        id = Model.Id.ToString();
         dishName = Model.dishName;
         description = Model.description;
         price = Model.price;
         foodCategory = Model.foodCategory;
-        foodCategoryId = Model.foodCategoryId;
+        foodCategoryId = Model.foodCategoryId.ToString();
         AddSaveButton = "Save Item";
     }
 }

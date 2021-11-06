@@ -34,7 +34,6 @@ else
                 <thead>
                     <tr>
                         <th>Dish</th>
-                        <th>Korean</th>
                         <th>Price</th>
                         <th>Description</th>
                         <th>Category</th>
@@ -60,8 +59,8 @@ else
                                     <td style="white-space: nowrap;">$ @menuItem.price</td>
                                     <td>@menuItem.description</td>
                                     <td>@menuItem.foodCategory</td>
-                                    <td><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.id"><i class="fas fa-edit"></i></a></td>
-                                    <td><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="@menuItem.id"><i class="fas fa-trash"></i></a></td>
+                                    <td style="text-align: right; width:100px;"><a asp-action="FoodMenuAddEdit" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-edit" ></i></a></td>
+                                    <td style="text-align: right;"><a asp-action="DeleteMenuItem" asp-controller="Admin" asp-route-id="@menuItem.Id"><i class="fas fa-trash"></i></a></td>
                                 </tr>
                             }
                         }

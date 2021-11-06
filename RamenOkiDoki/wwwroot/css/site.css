@@ -111,11 +111,10 @@ body {
 }
 
 .non-sidebar-page {
-  /*  padding: 25px;*/
+    /*  padding: 25px;*/
 }
 
 .container {
-    
     width: 100vw !important;
     max-width: 100% !important;
     margin: 0;
@@ -328,10 +327,15 @@ a.admin-nav-link {
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
+    font-size: 1.2em;
 }
 
     .menu-edit-table th {
         text-align: center;
+        font-size: 1.4em;
+        text-decoration: underline;
+        color: red;
+        padding-bottom: 20px;
     }
 
     .menu-edit-table td {
@@ -340,6 +344,20 @@ a.admin-nav-link {
         padding: 5px 10px;
         border-bottom: 1px solid lightgray;
     }
+
+.fa-trash {
+    color: red;
+    font-size: x-large !important;
+}
+
+.fa-edit {
+    color: green;
+    font-size: x-large !important;
+}
+
+.fa-edit:hover {
+    color: blue;
+}
 
 .fab {
     font-size: 60px;
