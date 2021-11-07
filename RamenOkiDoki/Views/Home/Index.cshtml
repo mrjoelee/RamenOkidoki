@@ -2,45 +2,42 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
+<h1 class="page-titles">Welcome to Our Table</h1>
 <div class="non-sidebar-page">
 
-    <div class="text-center" style="margin-bottom:150px">
-        <h1 class="page-titles">Welcome to Our Table</h1>
-    </div>
+   
 
-
-    <div class="container-fluid">
         <div class="row">
-            <div class="col-xl">
-                <Image src="/Images/background.JPG" height="400" width="25%" />
+            <div class="col-md">
+                <Image src="/Images/background.JPG" />
             </div>
 
-            <div class="col-xl">
+            <div class="col-md">
                 <a href="https://www.facebook.com/okidokiramen/" target="_blank"><i class="fab fa-facebook-square" style="margin: 0 10px 0 100px; color: blue;"></i></a>
                 <a href="https://www.instagram.com/ramenokidoki/" target="_blank"><i class="fab fa-instagram" style="margin: 0 10px 0 10px;"></i></a>
                 <a href="https://www.yelp.com/biz/ramen-okidoki-houston/" target="_blank"><i class="fab fa-yelp" style="margin: 0 10px 0 10px;"></i></a>
             </div>
 
-            <div class="col-xl">
+            <div class="col-md">
                 @*<div style="display: inline; float: right; margin-right: 100px">*@
-                    <h3>Our Hours</h3>
-                    @await Html.PartialAsync("_HoursOfOperationHomePartial")
+                <h3>Our Hours</h3>
+                @await Html.PartialAsync("_HoursOfOperationHomePartial")
                 @*</div>*@
             </div>
         </div>
+   
+
+
+    <div class="restaurant-reviews row ">
+
+
+        @await Html.PartialAsync("_ReviewPartial")
     </div>
 
-    @*<div class="restaurant-reviews">
+    <div class="google-map-div row">
 
+        @await Component.InvokeAsync("GoogleMap")
 
-            @await Html.PartialAsync("_ReviewPartial")
-        </div>
-
-        <div class="google-map-div">
-
-            @await Component.InvokeAsync("GoogleMap")
-
-        </div>*@
+    </div>
 
 </div>

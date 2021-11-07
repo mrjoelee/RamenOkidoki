@@ -49,21 +49,25 @@ a.nav-link:hover {
     background-color: black !important;
 }
 
-.container {
+/*.container {
     width: 100vw !important;
     max-width: 100% !important;
     margin: 0;
     padding: 0;
 }
+*/
 
-
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
 .footer {
-    flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+    flex-shrink: 0;  Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. 
     padding: 3px;
     background-color: black;
     color: white !important;
     bottom: 0;
     margin-top: -50px;
-    width: 100vw;
-    border-top: 1px solid red !important; /* Vertically center the text there */
+/*    width: 100vw;*/
+    border-top: 1px solid red !important;  Vertically center the text there 
 }

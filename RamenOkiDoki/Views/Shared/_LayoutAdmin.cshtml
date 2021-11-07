@@ -7,6 +7,7 @@
     <title>@ViewData["Title"] - RamenOkiDoki</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/layoutpage.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
@@ -59,7 +60,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
 
             @await Html.PartialAsync("_AdminMenuPartial")
@@ -68,7 +69,7 @@
         </main>
     </div>
 
-<footer class="footer">
+<footer class="footer container-fluid">
     <div class="text-center  col-lg-6 col-md-6">
         <p>&copy; 2021 - Ramen OkiDoki  10603 Bellaire Blvd, Houston, TX 77072</p>
     </div>  
