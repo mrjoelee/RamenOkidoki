@@ -1,52 +1,6 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-
-.header {
-    background-color: black !important;
-    margin-bottom: 0;
-}
-
-a.nav-link {
-    color: white !important;
-    font-size: 1.3em !important;
-    margin: 0 10px 0 10px;
-}
-
-    a.nav-link:hover {
-        color: red !important;
-        font-size: 1.2em !important;
-    }
-
-.navbar {
-    margin-bottom: 0 !important;
-    border: none !important;
-    border-bottom: 1px solid red !important;
-}
-
-.navbar-brand {
-    text-align: left;
-    word-break: keep-all;
-    padding: 0px;
-    font-family: 'Merienda', cursive;
-    font-size: 2.5em;
-    margin: 0px;
-    color: red !important;
-    vertical-align: middle;
-}
-
-.navbar-nav {
-}
-
-.dropdown-menu {
-    background-color: black;
-    padding: 20px;
-}
-
-.dropdown-item {
-    background-color: black !important;
-}
-
 /* Provide sufficient contrast against white background */
 a {
     color: red;
@@ -58,11 +12,6 @@ a {
     border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -114,12 +63,7 @@ body {
     /*  padding: 25px;*/
 }
 
-.container {
-    width: 100vw !important;
-    max-width: 100% !important;
-    margin: 0;
-    padding: 0;
-}
+
 
 .combo-page {
     display: inline !important;
@@ -128,16 +72,6 @@ body {
     margin: 0;
 }
 
-.footer {
-    flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
-    padding: 3px;
-    background-color: black;
-    color: white !important;
-    bottom: 0;
-    margin-top: -50px;
-    width: 100vw;
-    border-top: 1px solid red !important; /* Vertically center the text there */
-}
 
 .page-titles {
     font-family: 'Merienda', cursive;
