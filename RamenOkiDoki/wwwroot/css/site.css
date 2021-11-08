@@ -364,12 +364,12 @@ a.admin-nav-link {
     position: fixed;
 }
 
-.row {
+/*.row {
     height: 100%;
     margin: 0;
     padding: 0;
     float: right;
-}
+}*/
 
 /*gallery*/
 .grid-gallery {
