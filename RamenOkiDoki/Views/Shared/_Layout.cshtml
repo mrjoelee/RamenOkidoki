@@ -20,36 +20,37 @@
 <body>
     <header class="header">
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-fixed-top  border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <image src="/Images/RamenOkidokiNoText.png" Height="50" style="margin: 2px 20px" />
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Ramen Okidoki</a>>
             <div class="container">
 
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex">
-                    <ul class="navbar-nav  mx-auto">
+                    <ul class="navbar-nav   mx-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
 
-                        <li class="dropdown show">
-                            <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="dropdown nav-item">
+                            <a class="dropdown-toggle nav-link" href="#" role="button" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 Menus
                             </a>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="DineInMenu">Dine-In Menu</a>
-                                <a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu">Take Out Menu</a>
-                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="DineInMenu">Dine-In Menu</a></li>
+                                <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu">Take Out Menu</a></li>
+                            </ul>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
+
 
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
@@ -80,10 +81,18 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+    **<!-- JavaScript Bundle with Popper -->**
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+
+
     @await RenderSectionAsync("Scripts", required: false)
-
-
 </body>
 </html>
