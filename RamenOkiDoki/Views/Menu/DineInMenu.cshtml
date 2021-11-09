@@ -7,7 +7,7 @@
 <div class="non-sidebar-page container-fluid">
 
     <div>
-        <div class="row no-gutters">
+        <div class="row justify-content-evenly">
             <div class="col-md dine-in-menu">
                 @{
                     if (Model.FoodCategoryList == null)
@@ -45,7 +45,7 @@
                 }
                 </div>
 
-            <div class="col-md">
+            <div class="col-md align-items-center">
                 <div class="position-fixed">
                     @await Component.InvokeAsync("PhotoCarousel")
                 </div>
