@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
+    <header class="header sticky-top">
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <image src="/Images/RamenOkidokiNoText.png" Height="50" style="margin: 2px 20px" />
@@ -61,6 +61,7 @@
             <a class="nav-link" href="tel: 2815758077" style="font-size: 9px; white-space: nowrap; text-align: center"><i class="fas fa-phone"></i> Call (281) 575-8077</a>
             <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center"><i style="text-align:center" class="fas fa-utensils" title="Cart"></i> View Order</a>
         </nav>
+        @*<div class="page-titles">@ViewData["Title"]</div>*@
     </header>
     <div class="container-fluid">
         <main role="main" class="pb-3">

@@ -3,52 +3,53 @@
 @{
     ViewData["Title"] = "Menu";
 }
-<h1 class="page-titles">Our Menu</h1>
+
 <div class="non-sidebar-page container-fluid">
+<div class="row justify-content-evenly">
+    <h1 class="page-titles">Our Menu</h1>
+    </div>
 
-    <div>
-        <div class="row justify-content-evenly">
-            <div class="col-md dine-in-menu">
-                @{
-                    if (Model.FoodCategoryList == null)
+    <div class="row justify-content-evenly">
+        <div class="col-md dine-in-menu">
+            @{
+                if (Model.FoodCategoryList == null)
+                {
+                    return;
+                }
+
+                FoodCategory categoryName = new FoodCategory();
+
+                foreach (var foodCategory in Model.FoodCategoryList)
+                {
+
+                    <h2 class="categoryName">@foodCategory.Category</h2>
+
+
+                    @foreach (var menuItem in Model.FoodItemList)
                     {
-                        return;
-                    }
 
-                    FoodCategory categoryName = new FoodCategory();
-
-                    foreach (var foodCategory in Model.FoodCategoryList)
-                    {
-
-                        <h2 class="categoryName">@foodCategory.Category</h2>
-
-
-                        @foreach (var menuItem in Model.FoodItemList)
+                        if (menuItem.foodCategoryId == foodCategory.Id)
                         {
 
-                            if (menuItem.foodCategoryId == foodCategory.Id)
-                            {
-
-                                <div style="display: block">
-                                    <p>
-                                        <span class="menuItem">@menuItem.dishName </span>
-                                        <span class="menuPrice">$ @menuItem.price</span>
-                                    </p>
-                                    <p class="menuDescription">@menuItem.description</p>
-                                </div>
-                            }
+                            <div style="display: block">
+                                <p>
+                                    <span class="menuItem">@menuItem.dishName </span>
+                                    <span class="menuPrice">$ @menuItem.price</span>
+                                </p>
+                                <p class="menuDescription">@menuItem.description</p>
+                            </div>
                         }
-
-
                     }
 
-                }
-                </div>
 
-            <div class="col-md align-items-center">
-                <div class="position-fixed">
-                    @await Component.InvokeAsync("PhotoCarousel")
-                </div>
+                }
+
+            }
+        </div>
+
+        <div class="col-md align-items-center">
+            <div class="position-fixed">
+                @await Component.InvokeAsync("PhotoCarousel")
             </div>
         </div>
     </div>
