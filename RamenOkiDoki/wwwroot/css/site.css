@@ -130,13 +130,33 @@ body {
     /*   border-radius: 10px;*/
 }
 
+.dine-in-menu{
+    margin-left: 20px;
+}
+
 #slider {
-    width: 490px;
-    height: 390px;
-    margin: 10px;
+    width: 500px;
+    height: 400px;
+    /*margin: 15px 15px 0px 15px;*/
     opacity: 1;
     transition: opacity 500ms;
+    border-radius: 30px;
+    border: 5px solid black;
 }
+
+.slider-div {
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border-radius: 30px;
+    padding: 0;
+}
+
+/*#slider.border{
+    border-radius: 10px;
+}*/
 
     #slider.fadeOut {
         opacity: 0.1;
@@ -189,7 +209,7 @@ body {
 
 .right-side-content {
     display: inline-block;
-    margin: 0 0 0 200px;
+    margin: 0 0 0 100px;
 }
 
 .left-menu-sidebar {

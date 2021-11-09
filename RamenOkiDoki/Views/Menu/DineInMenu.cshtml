@@ -3,55 +3,53 @@
 @{
     ViewData["Title"] = "Menu";
 }
-<div class="non-sidebar-page">
+<h1 class="page-titles">Our Menu</h1>
+<div class="non-sidebar-page container-fluid">
 
     <div>
-        <h1 class="page-titles">Our Menu</h1>
-    </div>
-    <div>
-        <div style="display: inline-block; float: left; margin-bottom: 100px;">
-
-            @{
-                if (Model.FoodCategoryList == null)
-                {
-                    return;
-                }
-
-                FoodCategory categoryName = new FoodCategory();
-
-                foreach (var foodCategory in Model.FoodCategoryList)
-                {
-                 
-                    <h2 class="categoryName">@foodCategory.Category</h2>
-
-
-                    @foreach (var menuItem in Model.FoodItemList)
+        <div class="row no-gutters">
+            <div class="col-md dine-in-menu">
+                @{
+                    if (Model.FoodCategoryList == null)
                     {
-
-                        if (menuItem.foodCategoryId == foodCategory.Id)
-                        {
-                            
-                            <div style="display: block">
-                                <p>
-                                    <span class="menuItem">@menuItem.dishName </span>
-                                    <span class="menuPrice">$ @menuItem.price</span>
-                                </p>
-                                <p class="menuDescription">@menuItem.description</p>
-                            </div>
-                        }
+                        return;
                     }
 
+                    FoodCategory categoryName = new FoodCategory();
+
+                    foreach (var foodCategory in Model.FoodCategoryList)
+                    {
+
+                        <h2 class="categoryName">@foodCategory.Category</h2>
+
+
+                        @foreach (var menuItem in Model.FoodItemList)
+                        {
+
+                            if (menuItem.foodCategoryId == foodCategory.Id)
+                            {
+
+                                <div style="display: block">
+                                    <p>
+                                        <span class="menuItem">@menuItem.dishName </span>
+                                        <span class="menuPrice">$ @menuItem.price</span>
+                                    </p>
+                                    <p class="menuDescription">@menuItem.description</p>
+                                </div>
+                            }
+                        }
+
+
+                    }
 
                 }
-                
-            }
+                </div>
 
-        </div>
-
-        <div class="position-sticky" style="float: right; display: inline-block;margin-top: 100px">
-
-            @await Component.InvokeAsync("PhotoCarousel")
-
+            <div class="col-md">
+                <div class="position-fixed">
+                    @await Component.InvokeAsync("PhotoCarousel")
+                </div>
+            </div>
         </div>
     </div>
 </div>
