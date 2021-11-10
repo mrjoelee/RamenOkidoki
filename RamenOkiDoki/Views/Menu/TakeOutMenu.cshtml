@@ -24,15 +24,16 @@
 
 
             }
-        }
 
+        }
+        
     </div>
 
-    <div style="display: inline-block;">
-        <h2 class="page-titles">Take Out Menu</h2>
-        <div class="right-side-content">
-
-            <div>
+    <div class="container">
+        
+        <div class="row">
+            <h2 class="page-titles">Take Out Menu</h2>
+            <div class="col-md">
                 @{
                     if (Model.FoodItemList == null || Model.FoodItemList.Count < 1)
                     {
@@ -45,15 +46,15 @@
                     {
                         @*if (categoryName != menuItem.categoryName)
                             {
-                                <h2 class="categoryName">@menuItem.categoryName</h2>
+                            <h2 class="categoryName">@menuItem.categoryName</h2>
 
-                                categoryName = menuItem.categoryName;
+                            categoryName = menuItem.categoryName;
                             }*@
                         <p>
                             <span class="menuItem">@menuItem.dishName </span>
                             <span class="menuPrice">$ @menuItem.price</span>
 
-                            <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-itemIdToAdd ="@menuItem.Id" style="font-weight: bold; margin-left: 10px">
+                            <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-itemIdToAdd="@menuItem.Id" style="font-weight: bold; margin-left: 10px">
                                 <i class="fas fa-plus-square"></i> ADD
                             </a>
                         </p>
@@ -64,13 +65,14 @@
                 }
 
             </div>
-            
-            <img src="~/images/Takeoutpicture.jpg" style="margin-top:60px" />
-        </div>
-        <div class="food-order-cart" style="float:right">
+            <div class="col-md order-1">
+                <img src="~/images/Takeoutpicture.jpg" style="margin-top:60px" />
+            </div>
+            <div class="col-md order-5">
 
-            @await Component.InvokeAsync("FoodOrderCart")
+                @await Component.InvokeAsync("FoodOrderCart")
 
+            </div>
         </div>
     </div>
 </div>
