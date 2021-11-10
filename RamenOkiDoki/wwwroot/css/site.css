@@ -124,8 +124,8 @@ body {
     /*   border-radius: 10px;*/
 }
 
-.dine-in-menu{
-    margin-left:50px;
+.dine-in-menu {
+    margin-left: 50px;
 }
 
 #slider {
@@ -154,9 +154,9 @@ body {
     border-radius: 10px;
 }*/
 
-    #slider.fadeOut {
-        opacity: 0.1;
-    }
+#slider.fadeOut {
+    opacity: 0.1;
+}
 
 
 .menuItem {
@@ -218,10 +218,13 @@ body {
     margin-right: 0;
 }
 
-    .left-menu-sidebar a {
-        font-size: 20px;
-        font-weight: bold;
-    }
+.left-menu-sidebar a {
+    
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
 
 
 .admin-div {
@@ -306,7 +309,7 @@ a.admin-nav-link {
     font-size: x-large !important;
 }
 
-.edit-td:hover {
+    .edit-td:hover {
         color: blue;
     }
 
