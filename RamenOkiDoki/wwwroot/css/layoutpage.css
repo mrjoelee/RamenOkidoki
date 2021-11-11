@@ -78,3 +78,11 @@ a.nav-link:hover {
     text-align: center;
     margin: 20px 0 50px 0;
 }
+
+@font-face {
+    font-family: "icomoon";
+    src: url("fonts/icomoon.eot");
+    src: url("fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("fonts/icomoon.woff") format("woff"), url("fonts/icomoon.ttf") format("truetype"), url("fonts/icomoon.svg#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
