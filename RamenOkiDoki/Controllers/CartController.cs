@@ -145,6 +145,13 @@ namespace RamenOkiDoki.Controllers
 
                     if (item.Id == deletedItemId)
                     {
+                        Globals.OrderTotalItems -= item.quantity;
+
+                        if ( Globals.OrderTotalItems < 0)
+                        {
+                            Globals.OrderTotalItems = 0;
+                        }
+
                         Globals.CartItemList.Remove(item);
 
                         decimal tempPrice = 0.00m;
