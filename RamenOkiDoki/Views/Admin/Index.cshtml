@@ -9,89 +9,88 @@
 }
 <div class="combo-page">
 
+ 
+        @if (!Globals.UserSignedIn)// || Globals.UserRole != Globals.UserRoles.ADMIN)//!User.IsInRole("Admin"))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+
+            <div class="non-sidebar-page">
+                <div class="admin-div">
+                    <h1 class="page-titles">Admin Only</h1>
+                    <br />
+                    <p style="margin: 50px 0px 50px; font-weight: bold">User is not Signed In as Admin</p>
+                    <form method="Post">
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" id="UserName" />
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="Password" />
+                        </div>
+
+                        <a asp-controller="Admin" asp-action="AdminSignin" type="submit" class="btn btn-primary submit-order-button">Sign In</a>
 
 
-    @if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin)//!User.IsInRole("Admin"))
-    {
-        Layout = "~/Views/Shared/_Layout.cshtml";
-
-        <div class="non-sidebar-page">
-            <div class="admin-div">
-                <h1 class="page-titles">Admin Only</h1>
-                <br />
-                <p style="margin: 50px 0px 50px; font-weight: bold">User is not Signed In as Admin</p>
-                <form method="Post">
-                    <div class="form-group">
-                        <label>User Name</label>
-                        <input type="text" id="UserName" />
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="Password" />
-                    </div>
-
-                    <a asp-controller="Admin" asp-action="AdminSignin" type="submit" class="btn btn-primary submit-order-button">Sign In</a>
-
-
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
-    }
-    else
-    {
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
-        <div class="combo-page">
-            @*<div style="display:inline-block">
-                @await Html.PartialAsync("_AdminMenuPartial")
-            </div>*@
-            <div class="right-side-content" style="display:inline-block">
-                <h2 style="text-align: center; margin-top: 20px">Admin Dashboard</h2>
+            <div class="combo-page">
+                @*<div style="display:inline-block">
+                        @await Html.PartialAsync("_AdminMenuPartial")
+                    </div>*@
+                <div class="right-side-content" style="display:inline-block">
+                    <h2 style="text-align: center; margin-top: 20px">Admin Dashboard</h2>
 
-            </div>
-            <div style="float:right;display:inline-block;margin:100px 50px 0 0">
-                @if (@Globals.DisplayAddressForm)
-                {
-                    @await Html.PartialAsync("_BusinessAddressFormPartial")
-                }
-                else
-                {
-                    <h4><u>Location Info:</u></h4>
-                    @await Html.PartialAsync("_BusinessAddressPartial")
-                    <a asp-controller="Admin" asp-action="OpenAddressForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
-                }
-
-                <div style="margin-top:50px">
-
-                    @if (@Globals.DisplayHoursForm)
+                </div>
+                <div style="float:right;display:inline-block;margin:100px 50px 0 0">
+                    @if (@Globals.DisplayAddressForm)
                     {
-                        @await Html.PartialAsync("_HoursOfOperationFormPartial")
+                        @await Html.PartialAsync("_BusinessAddressFormPartial")
                     }
                     else
                     {
-                        <h4><u>Hours:</u></h4>
-                        @await Html.PartialAsync("_HoursOfOperationPartial")
-                        <a asp-controller="Admin" asp-action="OpenHourOfOperationForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
-
+                        <h4><u>Location Info:</u></h4>
+                        @await Html.PartialAsync("_BusinessAddressPartial")
+                        <a asp-controller="Admin" asp-action="OpenAddressForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
                     }
 
+                    <div style="margin-top:50px">
+
+                        @if (@Globals.DisplayHoursForm)
+                        {
+                            @await Html.PartialAsync("_HoursOfOperationFormPartial")
+                        }
+                        else
+                        {
+                            <h4><u>Hours:</u></h4>
+                            @await Html.PartialAsync("_HoursOfOperationPartial")
+                            <a asp-controller="Admin" asp-action="OpenHourOfOperationForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
+
+                        }
+
+                    </div>
+                    <div style="margin-top: 30px; margin-bottom: 10px">
+                        @if (@Globals.DisplayAddOnsForm)
+                        {
+                            @await Html.PartialAsync("_AddOnsFormPartial")
+                        }
+                        else
+                        {
+                            <h4><u>Add Ons:</u></h4>
+                            @await Html.PartialAsync("_AddOnsPartial")
+                            <a asp-controller="Admin" asp-action="OpenAddOnsForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
+
+                        }
+                    </div>
                 </div>
-                <div style="margin-top: 30px; margin-bottom: 10px">
-                    @if (@Globals.DisplayAddOnsForm)
-                    {
-                        @await Html.PartialAsync("_AddOnsFormPartial")
-                    }
-                    else
-                    {
-                        <h4><u>Add Ons:</u></h4>
-                        @await Html.PartialAsync("_AddOnsPartial")
-                        <a asp-controller="Admin" asp-action="OpenAddOnsForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
 
-                    }
-                </div>
             </div>
+        }
 
-        </div>
-    }
-
-</div>
+    </div>

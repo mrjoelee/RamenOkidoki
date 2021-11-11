@@ -15,7 +15,7 @@ namespace Data.Models
 
         public static UserRoles UserRole { get; set; }
 
-        public enum UserRoles { Admin, Employee, Patron }
+        public enum UserRoles { ADMIN, EMPLOYEE }
 
         public static FoodCategory CurrentCategory { get; set; }
 

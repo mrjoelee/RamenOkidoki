@@ -179,7 +179,9 @@ namespace RamenOkiDoki.Controllers
         {
             Globals.UserSignedIn = true;
 
-            Globals.UserRole = Globals.UserRoles.Admin;
+
+           // Globals.UserRole = Globals.UserRoles.ADMIN;
+            Globals.UserRole = Globals.UserRoles.EMPLOYEE;
 
             return Redirect("Index");
         }
@@ -189,7 +191,7 @@ namespace RamenOkiDoki.Controllers
         {
             Globals.UserSignedIn = false;
 
-            Globals.UserRole = Globals.UserRoles.Patron;//Globals.UserRoles.Admin;
+           // Globals.UserRole = Globals.UserRoles.Patron;//Globals.UserRoles.Admin;
 
             return Redirect("Index");
 

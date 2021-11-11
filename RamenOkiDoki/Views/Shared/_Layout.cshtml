@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Authorization.Infrastructure
-<!DOCTYPE html>
+@using Data.Models
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -57,10 +57,17 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+                @if (Globals.UserSignedIn)
+                {
+                    <h2 style="color: red; text-align: left; margin-right: 20px; font-weight: bold">@Globals.UserRole LOGGED IN</h2>
+                }
+            </div> 
+        @if (!Globals.UserSignedIn)
+        {
             <a class="nav-link" href="tel: 2815758077" style="font-size: 9px; white-space: nowrap; text-align: center"><i class="fas fa-phone"></i> Call (281) 575-8077</a>
-            <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center"><i style="text-align:center" class="fas fa-utensils" title="Cart"></i> View Order</a>
-        </nav>
+            <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center"><i style="text-align: center" class="fas fa-utensils" title="Cart"></i> View Order</a>
+        }
+                </nav>
         @*<div class="page-titles">@ViewData["Title"]</div>*@
     </header>
     <div class="container-fluid">
@@ -88,7 +95,7 @@
 
 
 
-    **<!-- JavaScript Bundle with Popper -->**
+    <!-- JavaScript Bundle with Popper -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 
