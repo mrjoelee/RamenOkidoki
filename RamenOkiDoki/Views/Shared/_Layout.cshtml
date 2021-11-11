@@ -61,13 +61,13 @@
                 {
                     <h2 style="color: red; text-align: left; margin-right: 20px; font-weight: bold">@Globals.UserRole LOGGED IN</h2>
                 }
-            </div> 
-        @if (!Globals.UserSignedIn)
-        {
-            <a class="nav-link" href="tel: 2815758077" style="font-size: 9px; white-space: nowrap; text-align: center"><i class="fas fa-phone"></i> Call (281) 575-8077</a>
-            <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center"><i style="text-align: center" class="fas fa-utensils" title="Cart"></i> View Order</a>
-        }
-                </nav>
+            </div>
+            @if (!Globals.UserSignedIn)
+            {
+                <a class="nav-link" href="tel: 2815758077" style="font-size: 9px; white-space: nowrap; text-align: center"><i class="fas fa-phone"></i> Call (281) 575-8077</a>
+                <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center"><i style="text-align: center" class="fas fa-utensils" title="Cart"></i> View Order</a>
+            }
+        </nav>
         @*<div class="page-titles">@ViewData["Title"]</div>*@
     </header>
     <div class="container-fluid">
@@ -92,7 +92,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <script src="_framework/blazor.server.js"></script>
 
 
     <!-- JavaScript Bundle with Popper -->

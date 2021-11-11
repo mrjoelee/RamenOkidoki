@@ -37,6 +37,7 @@ namespace RamenOkiDoki
 
         // This method gets called by the runtime. Use this method to add services to the container.
 
+
         //this is the usage of Dependency Injection
         public void ConfigureServices(IServiceCollection services)
         {
@@ -44,6 +45,8 @@ namespace RamenOkiDoki
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<DatabaseRepository>();
+
+            services.AddServerSideBlazor();
 
             if (Env.IsDevelopment())
             {
@@ -82,6 +85,8 @@ namespace RamenOkiDoki
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapBlazorHub();
             });
         }
     }
