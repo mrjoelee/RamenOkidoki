@@ -26,10 +26,8 @@
                     { 
                         <tr style="border-bottom: 1px solid lightgray; padding: 2px;"> 
                             <td style="font-size:20px" >
-                                <a asp-controller="Cart" asp-action="DecreaseQuantity" asp-route-itemId="@menuItem.Id">
-                                    <i class="fas fa-minus" style="font-size: 11px; margin-right: 5px;">
-                                    </i>
-                                </a> @menuItem.quantity  <a asp-controller="Cart" asp-action="IncreaseQuantity" asp-route-itemId="@menuItem.Id"><i class="fas fa-plus" style="font-size: 11px; margin-left:5px;"></i></a>
+                                <a asp-controller="Cart" asp-action="DecreaseQuantity" asp-route-itemId="@menuItem.Id"><i class="fas fa-minus" style="font-size: 11px; margin-right: 5px;"></i></a>
+                                @menuItem.quantity  <a asp-controller="Cart" asp-action="IncreaseQuantity" asp-route-itemId="@menuItem.Id"><i class="fas fa-plus" style="font-size: 11px; margin-left:5px;"></i></a>
                             </td>
                             <td class="order-item">@menuItem.dishName </td>
                             <td class="order-item" style="text-align: right">$ @menuItem.price</td>

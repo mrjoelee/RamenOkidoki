@@ -5,7 +5,6 @@
 
 
 
-<div class="combo-page row">
 
     <div class="left-menu-sidebar">
 
@@ -29,11 +28,11 @@
         
     </div>
 
-    <div class="container">
+    <div class="container" style="margin-left: 200px;">
         
         <div class="row">
             <h2 class="page-titles">Take Out Menu</h2>
-            <div class="col-md">
+            <div class="col-md-5 take-out-menu">
                 @{
                     if (Model.FoodItemList == null || Model.FoodItemList.Count < 1)
                     {
@@ -65,14 +64,13 @@
                 }
 
             </div>
-            <div class="col-md order-1">
-                <img src="~/images/Takeoutpicture.jpg" style="margin-top:60px" />
+            <div class="col-md-2 order-1">
+                <img src="~/images/Takeoutpicture.jpg" style="margin-top: 60px;width:80%" />
             </div>
-            <div class="col-md order-5">
+            <div class="col-md-5 order-5">
 
                 @await Component.InvokeAsync("FoodOrderCart")
 
             </div>
         </div>
     </div>
-</div>

@@ -160,13 +160,13 @@ body {
 
 
 .menuItem {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     margin: 0px;
 }
 
 .menuPrice {
-    font-size: 16px;
+    font-size: 12px;
     margin-left: 30px;
 }
 
@@ -205,7 +205,7 @@ body {
 
 .right-side-content {
     display: inline-block;
-    margin: 0 0 0 100px;
+    margin: 0 50px 0 100px;
 }
 
 .left-menu-sidebar {
@@ -214,8 +214,9 @@ body {
     float: left;
     width: auto;
     height: 100vh !important;
-    padding: 20px;
-    margin-right: 0;
+    padding: 5px;
+    margin: 0 0px 0 0;
+    position: fixed;
 }
 
 .left-menu-sidebar a {
@@ -352,7 +353,7 @@ a.admin-nav-link {
 
 .order-item-table {
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 12px;
 }
 
     .order-item-table th {
