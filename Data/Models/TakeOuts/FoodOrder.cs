@@ -44,6 +44,7 @@ namespace Data.Models.TakeOuts
         public FoodOrder()
         {
             addOns = new AddOnCharges();
+      
             FoodOrderItemList = new List<OrderItem>();
             TakeOutCustomer = new Customer();
         }

@@ -68,7 +68,7 @@ namespace RamenOkiDoki.Controllers
 
             if (!string.IsNullOrWhiteSpace(id))
             {
-               categoryId =  Int32.Parse(id);
+                categoryId = Int32.Parse(id);
             }
 
 
@@ -104,7 +104,9 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-
+            foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.OrderTotalItems;
+            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
+            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
             foodMenuViewModel.FoodItemList = tempListOfMenuItemsToReturn;
 
             return View(foodMenuViewModel);

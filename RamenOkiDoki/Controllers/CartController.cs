@@ -108,16 +108,10 @@ namespace RamenOkiDoki.Controllers
 
                     Globals.OrderSubTotalCost += tempPrice;
 
-                    FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
+               //     FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-                    //    return RedirectToAction("TakeOutMenu", new RouteValueDictionary(
-                    //new
-                    //{
-                    //    controller = "Menu",
-                    //    action = "TakeOutMenu",
-                    //    category = currentCategoryId
-                    //}));
                 }
+
                 Globals.OrderTotalItems++;
 
             }

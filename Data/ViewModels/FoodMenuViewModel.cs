@@ -16,7 +16,7 @@ namespace Data.ViewModels
         public List<FoodItem> FoodItemList { get; set; }
         //public List<OrderItem> OrderedItemList { get; set; }
 
-        //public string OrderSubTotalCost { get; set; }
+      //  public string OrderSubTotalCost { get; set; }
         //public string OrderTotalCost { get; set; }
         //public string OrderTotalSalesTax { get; set; }
         public FoodOrder CurrentTakeoutOrder { get; set; }
