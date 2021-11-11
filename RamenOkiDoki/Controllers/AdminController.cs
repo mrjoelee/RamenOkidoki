@@ -175,6 +175,15 @@ namespace RamenOkiDoki.Controllers
         #endregion
 
 
+
+        public IActionResult WebsiteInfoEdit()
+        {
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+
+            return View(dashboardViewModel);
+
+        }
+
         public IActionResult AdminSignin()
         {
             Globals.UserSignedIn = true;
