@@ -28,13 +28,12 @@
 
 .icon-wrapper {
     position: relative;
-    float: left;
 }
 .badge {
     color: red;
     position: relative;
-    margin-left: 60%;
-    margin-top: -60%;
+    margin-left: 31px;
+    margin-top: -40px;
     font-size: large;
 }
 
