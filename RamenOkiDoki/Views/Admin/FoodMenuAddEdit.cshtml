@@ -1,4 +1,4 @@
-﻿@model Data.Models.FoodMenus.FoodItem
+﻿@model Data.ViewModels.FoodMenuViewModel
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -8,14 +8,14 @@
 
     string id = "", dishName = "", description = "", price = "", foodCategory = "", foodCategoryId = "", AddSaveButton = "Add Item";
 
-    if (Model != null)
+    if (Model != null && Model.FoodItemToAddEdit != null)
     {
-        id = Model.Id.ToString();
-        dishName = Model.dishName;
-        description = Model.description;
-        price = Model.price;
-        foodCategory = Model.foodCategory;
-        foodCategoryId = Model.foodCategoryId.ToString();
+        id = Model.FoodItemToAddEdit.Id.ToString();
+        dishName = Model.FoodItemToAddEdit.dishName;
+        description = Model.FoodItemToAddEdit.description;
+        price = Model.FoodItemToAddEdit.price;
+        foodCategory = Model.FoodItemToAddEdit.foodCategory;
+        foodCategoryId = Model.FoodItemToAddEdit.foodCategoryId.ToString();
         AddSaveButton = "Save Item";
     }
 }
@@ -24,28 +24,35 @@
 
     @using (Html.BeginForm("PutMenuItem", "Admin", FormMethod.Post))
     {
-
         <table class="menuAddForm">
             <tr class="form-group">
                 <td>Food Category</td>
-                <td>@Html.TextBoxFor(m => m.foodCategory)</td>
+                <td>
+                    @Html.DropDownListFor(
+                   m => m.FoodItemToAddEdit.foodCategory,
+                   new SelectList(Model.FoodCategoryList, "Category", "Category"),
+                   new { @class = "form-control menu-add-dropdown" }
+                   )
+                </td>
+
+                    @*<td>@Html.TextBoxFor(m => m.foodCategory)</td>*@
 
             </tr>
 
             <tr class="form-group">
                 <td>Dish Name</td>
-                <td>@Html.TextBoxFor(m => m.dishName)</td>
+                <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.dishName)</td>
             </tr>
 
             <tr class="form-group">
                 <td>Price</td>
-                <td>@Html.TextBoxFor(m => m.price)</td>
+                <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.price)</td>
             </tr>
 
 
             <tr class="form-group">
                 <td>Description</td>
-                <td>@Html.TextBoxFor(m => m.description)</td>
+                <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.description)</td>
             </tr>
 
             <tr>

@@ -219,11 +219,10 @@ body {
     position: fixed;
 }
 
-.left-menu-sidebar a {
-    
-    font-size: 20px;
-    font-weight: bold;
-}
+    .left-menu-sidebar a {
+        font-size: 20px;
+        font-weight: bold;
+    }
 
 
 
@@ -324,26 +323,40 @@ a.admin-nav-link {
     font-size: 1.3em;
 }
 
-    .menuAddForm label {
-        font-weight: bold;
+.menu-add-dropdown {
+    width: 600px;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 1px;
+    border: 2px solid #ccc;
+    border-radius: 0;
+    background: transparent !important;
+}
+
+    .menu-add-dropdown option:after {
+        background-color: black !important;
     }
 
-    .menuAddForm input {
-        width: 100%;
-        background-color: #f8f8f8;
-        border: 2px solid #ccc;
-    }
+.menuAddForm label {
+    font-weight: bold;
+}
 
-    .menuAddForm textarea {
-        width: 100%;
-        height: 150px;
-        padding: 12px 20px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        background-color: #f8f8f8;
-        font-size: 16px;
-        resize: none;
-    }
+.menuAddForm input {
+    width: 100%;
+    background-color: #f8f8f8;
+    border: 2px solid #ccc;
+}
+
+.menuAddForm textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
 
 .food-order-cart {
     display: inline-block;

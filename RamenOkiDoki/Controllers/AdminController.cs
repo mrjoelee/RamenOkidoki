@@ -69,31 +69,6 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-
-
-            //if (Globals.FoodCategoryList != null && Globals.FoodCategoryList.Count > 0)
-            //{
-
-            //    foreach (var category in Globals.FoodCategoryList)
-            //    {
-
-            //        if (category != null)// && category.FoodItems.Count > 0)
-            //        {
-
-            //            foreach (var fooditem in category.FoodItems)
-            //            {
-
-            //                if (fooditem != null)
-            //                {
-            //                    FoodMenuViewModel.FoodItems.Add(fooditem);
-
-            //                }
-            //            }
-            //        }
-            //    }
-
-            //}
-
             if (foodMenuViewModel != null)
             {
                 return View(foodMenuViewModel);
@@ -107,6 +82,8 @@ namespace RamenOkiDoki.Controllers
         //Creates new item and returns to the menu.
         public IActionResult FoodMenuAddEdit(int? id)
         {
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
+
             if (id != null)
             {
                 if (Globals.FoodItemList != null && Globals.FoodItemList.Count > 0)
@@ -120,8 +97,8 @@ namespace RamenOkiDoki.Controllers
 
                             if (item.Id == id)
                             {
-
-                                return View(item);
+                                foodMenuViewModel.FoodItemToAddEdit = item;
+                                //return View(item);
                             }
                         }
 
@@ -129,7 +106,7 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-            return View();
+            return View(foodMenuViewModel);
 
         }
 

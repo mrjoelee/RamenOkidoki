@@ -12,7 +12,7 @@
 
 
 
-@if (!Globals.UserSignedIn || Globals.UserRole != Globals.UserRoles.Admin) //!User.IsInRole("Admin"))
+@if (!Globals.UserSignedIn)// || Globals.UserRole != Globals.UserRoles.Admin) //!User.IsInRole("Admin"))
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
     <h1>Admin Only</h1>

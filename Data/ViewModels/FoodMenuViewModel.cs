@@ -19,6 +19,8 @@ namespace Data.ViewModels
         public string OrderTotalCost { get; set; }
         public string OrderTotalSalesTax { get; set; }
 
+        public FoodItem FoodItemToAddEdit { get; set; }
+
         public void GetFoodItemsAndCategories()
         {
             FoodCategoryList = databaseRepository.GetFoodCategories();
