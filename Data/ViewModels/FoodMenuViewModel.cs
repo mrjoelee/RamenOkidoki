@@ -2,6 +2,7 @@
 
 using Data.Models;
 using Data.Models.FoodMenus;
+using Data.Models.TakeOuts;
 using Data.Repositories;
 
 namespace Data.ViewModels
@@ -13,11 +14,12 @@ namespace Data.ViewModels
         private DatabaseRepository databaseRepository { get; set; }
         public List<FoodCategory> FoodCategoryList { get; set; }
         public List<FoodItem> FoodItemList { get; set; }
-        public List<OrderItem> OrderedItemList { get; set; }
+        //public List<OrderItem> OrderedItemList { get; set; }
 
-        public string OrderSubTotalCost { get; set; }
-        public string OrderTotalCost { get; set; }
-        public string OrderTotalSalesTax { get; set; }
+        //public string OrderSubTotalCost { get; set; }
+        //public string OrderTotalCost { get; set; }
+        //public string OrderTotalSalesTax { get; set; }
+        public FoodOrder CurrentTakeoutOrder { get; set; }
 
         public FoodItem FoodItemToAddEdit { get; set; }
 
@@ -33,7 +35,7 @@ namespace Data.ViewModels
 
             FoodCategoryList = new List<FoodCategory>();
             FoodItemList = new List<FoodItem>();
-            OrderedItemList = new List<OrderItem>();
+            CurrentTakeoutOrder = new FoodOrder();
 
             GetFoodItemsAndCategories();
         }

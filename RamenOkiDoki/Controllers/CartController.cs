@@ -36,7 +36,7 @@ namespace RamenOkiDoki.Controllers
 
             if (Globals.CartItemList != null)
             {
-                foodMenuViewModel.OrderedItemList = Globals.CartItemList;
+                foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
             }
 
 
@@ -118,7 +118,7 @@ namespace RamenOkiDoki.Controllers
                     //    category = currentCategoryId
                     //}));
                 }
-
+                Globals.OrderTotalItems++;
 
             }
             return RedirectToAction("TakeOutMenu", "Menu", new { id = currentCategoryId.ToString() });
@@ -193,6 +193,7 @@ namespace RamenOkiDoki.Controllers
                         break;
                     }
                 }
+
                 foreach (var item in Globals.CartItemList)
                 {
                     if (item.quantity < 1)
@@ -211,6 +212,12 @@ namespace RamenOkiDoki.Controllers
                     continue;
                 }
 
+                Globals.OrderTotalItems--;
+
+                if (Globals.OrderTotalItems < 0)
+                {
+                    Globals.OrderTotalItems = 0;
+                }
 
             }
             return RedirectToAction("TakeOutMenu", "Menu");
@@ -243,6 +250,8 @@ namespace RamenOkiDoki.Controllers
 
                         Globals.OrderSubTotalCost += tempPrice;
 
+                        Globals.OrderTotalItems++;
+
                         break;
                     }
                     continue;
@@ -257,13 +266,13 @@ namespace RamenOkiDoki.Controllers
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
 
-            foodMenuViewModel.OrderedItemList = Globals.CartItemList;
+            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
 
-            foodMenuViewModel.OrderSubTotalCost = string.Format("{0:C}", Globals.OrderSubTotalCost);
+            //foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = string.Format("{0:C}", Globals.OrderSubTotalCost);
 
-            foodMenuViewModel.OrderTotalSalesTax = string.Format("{0:C}", Globals.TotalSalesTax);
+            //foodMenuViewModel.CurrentTakeoutOrder.TotalSalesTax = string.Format("{0:C}", Globals.TotalSalesTax);
 
-            foodMenuViewModel.OrderTotalCost = string.Format("{0:C}", Globals.OrderTotalCost);
+            //foodMenuViewModel.CurrentTakeoutOrder.OrderTotalCost = string.Format("{0:C}", Globals.OrderTotalCost);
 
 
 
