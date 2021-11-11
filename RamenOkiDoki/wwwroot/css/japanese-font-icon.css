@@ -24,7 +24,18 @@
     color: white;
     font-size: 50px;
     margin: 0 20px 0 0;
+}
 
+.icon-wrapper {
+    position: relative;
+    float: left;
+}
+.badge {
+    color: red;
+    position: relative;
+    margin-left: 60%;
+    margin-top: -60%;
+    font-size: large;
 }
 
 /*[class^="icon-"], [class*=" icon-"] {*/
