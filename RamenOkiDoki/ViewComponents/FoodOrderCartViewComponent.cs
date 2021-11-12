@@ -12,14 +12,18 @@ namespace RamenOkiDoki.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
+
             
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
             foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
 
-           // foodMenuViewModel.OrderSubTotalCost = string.Format("{0:C}",Globals.OrderSubTotalCost);
+            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Convert.ToDecimal(string.Format("{0:C}", Globals.OrderSubTotalCost.ToString()));
             
+            //string.Format("{0:C}", Globals.OrderSubTotalCost);
+
             return View("FoodOrderCart", foodMenuViewModel);
         }
+        
     }
 }
