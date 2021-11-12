@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Routing
 @model Data.ViewModels.FoodMenuViewModel
 
+
 <div>
 
     @{
@@ -39,7 +40,9 @@
                     <tr>
                     <td /><td />
                     <td>Sub Total</td>
-                    <td style="font-weight: bolder">@Model.CurrentTakeoutOrder.OrderSubTotalCost.ToString("C") </td>
+
+                    <td style="font-weight: bolder"> @Model.CurrentTakeoutOrder.OrderSubTotalCost.ToString("{0:C}")</td>
+
                     </tr>
                 </table>
 
