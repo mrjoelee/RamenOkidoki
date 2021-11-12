@@ -52,10 +52,29 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
 
+                        @if (!Globals.UserSignedIn)
+                        {
+                            <li class="dropdown nav-item">
+                                <a class="dropdown-toggle nav-link" href="#" role="button" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    My Account
+                                </a>
 
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
-                        </li>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="DineInMenu">Sign In</a></li>
+                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu">Create Account</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                            <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="DineInMenu">Sign Out</a></li>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
                 @if (Globals.UserSignedIn)
@@ -63,6 +82,9 @@
                     <h2 style="color: red; text-align: left; margin-right: 20px; font-weight: bold">@Globals.UserRole LOGGED IN</h2>
                 }
             </div>
+
+
+
             @if (!Globals.UserSignedIn)
             {
                 <a class="nav-link" href="tel: 2815758077" style="font-size: 9px; white-space: nowrap; text-align: center"><i class="fas fa-phone"></i> Call (281) 575-8077</a>
@@ -71,7 +93,7 @@
                         <i aria-hidden="true" data-icon="&#xe900;" class="japanese"></i>
                     </a>
                     <span class="badge">@Globals.OrderTotalItems.ToString()</span>
-                  
+
                 </div>
 
                 @*<i style="text-align: center" class="fas fa-utensils" title="Cart"></i>*@
