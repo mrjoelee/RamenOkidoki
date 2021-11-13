@@ -102,9 +102,12 @@ namespace RamenOkiDoki
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
-                endpoints.MapBlazorHub();
 
-                endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapBlazorHub("/Blazor/_blazor");
+                endpoints.MapFallbackToPage("~/Blazor/{*clientroutes:nonfile}", "/Blazor/_Host");
+
+                //endpoints.MapBlazorHub();
+                //endpoints.MapFallbackToPage("/_Host");
             });
         }
     }
