@@ -103,7 +103,7 @@ namespace RamenOkiDoki
 
                 endpoints.MapRazorPages();
 
-                endpoints.MapBlazorHub("/Blazor/_blazor");
+                endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("~/Blazor/{*clientroutes:nonfile}", "/Blazor/_Host");
 
                 //endpoints.MapBlazorHub();
