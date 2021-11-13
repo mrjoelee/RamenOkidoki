@@ -50,8 +50,6 @@ namespace RamenOkiDoki
             //services.AddDbContext<RestaurantDbContext>(options =>
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddRazorPages();
-
             services.AddTransient<DatabaseRepository>();
 
             //Add Razor Pages, which is the typical way to use Blazer. 
@@ -106,8 +104,7 @@ namespace RamenOkiDoki
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
 
-                endpoints.MapRazorPages();
-                //endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }
