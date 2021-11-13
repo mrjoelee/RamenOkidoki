@@ -1,7 +1,10 @@
-﻿
+﻿@using RamenOkiDoki.Views.Shared.Components.Authentications
+
 @{
     ViewData["Title"] = "Create Account";
 }
 
 <h1 class="page-titles">Create Account</h1>
 
+  @*calling the blazor page*@
+    <component>@(await Html.RenderComponentAsync<Counter>(RenderMode.Server))</component>

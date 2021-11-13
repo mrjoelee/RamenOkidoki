@@ -103,10 +103,10 @@ namespace RamenOkiDoki
 
                 endpoints.MapRazorPages();
 
-                endpoints.MapBlazorHub("/Blazor/_blazor");
-                endpoints.MapFallbackToPage("~/Blazor/{*clientroutes:nonfile}", "/Blazor/_Host");
+                //endpoints.MapBlazorHub("/Blazor/_blazor");
+                //endpoints.MapFallbackToPage("~/Blazor/{*clientroutes:nonfile}", "/Blazor/_Host");
 
-                //endpoints.MapBlazorHub();
+                endpoints.MapBlazorHub();
                 //endpoints.MapFallbackToPage("/_Host");
             });
         }
