@@ -162,28 +162,7 @@ namespace RamenOkiDoki.Controllers
 
         }
 
-        public IActionResult AdminSignin()
-        {
-            Globals.UserSignedIn = true;
-
-
-           // Globals.UserRole = Globals.UserRoles.ADMIN;
-            AppUser.UserRole = AppUser.UserRoles.EMPLOYEE;
-
-            return Redirect("Index");
-        }
-
-
-        public IActionResult AdminSignOut()
-        {
-            Globals.UserSignedIn = false;
-
-           // Globals.UserRole = Globals.UserRoles.Patron;//Globals.UserRoles.Admin;
-
-            return Redirect("Index");
-
-        }
-
+      
         public IActionResult DashBoard()
         {
             return View("Index");

@@ -1,17 +1,17 @@
 ﻿
 
 @if (Globals.UserSignedIn)// && Globals.UserRole == Globals.UserRoles.Admin) //User.IsInRole("Admin"))
-    {
-<div class="admin-nav-sidebar">
+{
+    <div class="admin-nav-sidebar">
 
-    <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="index">Dashboard</a>
+        <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="index">Dashboard</a>
 
-    <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuEdit">Edit Menu</a>
+        <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuEdit">Edit Menu</a>
 
-    <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="WebsiteInfoEdit">Edit Info</a>
+        <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="WebsiteInfoEdit">Edit Info</a>
 
-    <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="AdminSignOut">Sign Out</a>
+        <a class="admin-nav-link" asp-area="" asp-controller="MyAccount" asp-action="LogUserOut">Sign Out</a>
 
-</div>
+    </div>
 
-    }
+}
