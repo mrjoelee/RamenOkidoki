@@ -18,8 +18,11 @@ namespace RamenOkiDoki.ViewComponents
 
             foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
 
-            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Convert.ToDecimal(string.Format("{0:C}", Globals.OrderSubTotalCost.ToString()));
+
             
+
+            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
+
             //string.Format("{0:C}", Globals.OrderSubTotalCost);
 
             return View("FoodOrderCart", foodMenuViewModel);

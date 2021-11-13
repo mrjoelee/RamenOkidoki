@@ -1,0 +1,14 @@
+﻿@page "/blazor"
+@using RamenOkiDoki.Views.BlazorViews
+<head>
+    <base href="~/"/>
+</head>
+@{
+    Layout = "_Layout";
+}
+
+<app>
+    @(await Html.RenderComponentAsync<App>(RenderMode.Server))
+
+ 
+</app>

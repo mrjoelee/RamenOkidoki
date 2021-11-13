@@ -12,6 +12,7 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.FoodMenus;
 using Data.Repositories;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 //using Microsoft.EntityFrameworkCore;
 
 namespace RamenOkiDoki
@@ -46,6 +47,10 @@ namespace RamenOkiDoki
 
             services.AddTransient<DatabaseRepository>();
 
+            //Add Razor Pages, which is the typical way to use Blazer. 
+            services.AddRazorPages();
+
+            //Add Blazor. Note that no etra packages are needed. 
             services.AddServerSideBlazor();
 
             if (Env.IsDevelopment())
@@ -87,6 +92,9 @@ namespace RamenOkiDoki
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapBlazorHub();
+
+                endpoints.MapRazorPages();
+                //endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

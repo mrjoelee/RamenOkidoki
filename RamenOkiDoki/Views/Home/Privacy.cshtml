@@ -1,10 +1,16 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+﻿@page
+@using RamenOkiDoki.Views.BlazorViews
+@{
+    //change to viewBag viewdata was throwing an exception due the vaue was null
+    ViewBag.Title= "Privacy Policy";
 }
 
 <div class="non-sidebar-page">
-    <h1>@ViewData["Title"]</h1>
+    <h1>@ViewBag.Title</h1>
 
     <p>Use this page to detail your site's privacy policy.</p>
+
+    @*calling the blazor page*@
+    <component>@(await Html.RenderComponentAsync<Counter>(RenderMode.Server))</component>
     
 </div>
