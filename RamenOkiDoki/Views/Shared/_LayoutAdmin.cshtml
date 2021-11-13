@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Authorization.Infrastructure
+@using Data.Models.User
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +59,7 @@
 
                     </ul>
                 </div>
-                <h2 style="color: red; text-align: left; margin-right: 20px; font-weight:bold">@Globals.UserRole LOGGED IN</h2>
+                <h2 style="color: red; text-align: left; margin-right: 20px; font-weight:bold">@AppUser.UserRole LOGGED IN</h2>
             </div>
         </nav>
         @*<div>@ViewData["Title"]</div>*@

@@ -1,14 +1,14 @@
-﻿<h3>SignIn</h3>
-
-@code {
-
+﻿
+@{
+    ViewData["Title"] = "Sign In";
 }
+
+<h1 class="page-titles">Sign In</h1>
 
 <div class="non-sidebar-page">
     <div class="admin-div">
-        <h1 class="page-titles">Admin Only</h1>
         <br />
-        <p style="margin: 50px 0px 50px; font-weight: bold">User is not Signed In as Admin</p>
+        <p style="margin: 50px 0px 50px; font-weight: bold">User is not Signed In</p>
         <form method="Post">
             <div class="form-group">
                 <label>User Name</label>
@@ -19,7 +19,7 @@
                 <input type="password" id="Password" />
             </div>
 
-            <a asp-controller="Admin" asp-action="AdminSignin" type="submit" class="btn btn-primary submit-order-button">Sign In</a>
+            <a asp-controller="MyAccount" asp-action="SignUserIn" type="submit" class="btn btn-primary submit-order-button">Sign In</a>
 
 
         </form>

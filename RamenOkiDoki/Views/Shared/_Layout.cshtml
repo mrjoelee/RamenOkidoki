@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Authorization.Infrastructure
 @using Data.Models
+@using Data.Models.User
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,7 +18,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+<<<<<<< HEAD
     <base href="~/"/>
+=======
+    <base href="~/" />
+>>>>>>> 8cb9ce14e24b5f3c7ef7f67639fd459a63517fa8
 </head>
 <body>
     <header class="header sticky-top">
@@ -65,15 +70,15 @@
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="DineInMenu">Sign In</a></li>
-                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu">Create Account</a></li>
+                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="MyAccount" asp-action="SignIn">Sign In</a></li>
+                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="MyAccount" asp-action="Register">Create Account</a></li>
                                 </ul>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                            <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="DineInMenu">Sign Out</a></li>
+                            <li><a class="dropdown-item nav-link" asp-area="" asp-controller="MyAccount" asp-action="LogOut">Sign Out</a></li>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
@@ -84,7 +89,7 @@
                 </div>
                 @if (Globals.UserSignedIn)
                 {
-                    <h2 style="color: red; text-align: left; margin-right: 20px; font-weight: bold">@Globals.UserRole LOGGED IN</h2>
+                    <h2 style="color: red; text-align: left; margin-right: 20px; font-weight: bold">@AppUser.UserRole LOGGED IN</h2>
                 }
             </div>
 

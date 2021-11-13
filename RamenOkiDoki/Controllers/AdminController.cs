@@ -7,6 +7,7 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
+using Data.Models.User;
 using Data.Repositories;
 using Data.ViewModels;
 
@@ -161,28 +162,7 @@ namespace RamenOkiDoki.Controllers
 
         }
 
-        public IActionResult AdminSignin()
-        {
-            Globals.UserSignedIn = true;
-
-
-           // Globals.UserRole = Globals.UserRoles.ADMIN;
-            Globals.UserRole = Globals.UserRoles.EMPLOYEE;
-
-            return Redirect("Index");
-        }
-
-
-        public IActionResult AdminSignOut()
-        {
-            Globals.UserSignedIn = false;
-
-           // Globals.UserRole = Globals.UserRoles.Patron;//Globals.UserRoles.Admin;
-
-            return Redirect("Index");
-
-        }
-
+      
         public IActionResult DashBoard()
         {
             return View("Index");

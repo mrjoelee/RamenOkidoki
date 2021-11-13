@@ -12,7 +12,12 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.FoodMenus;
 using Data.Repositories;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Mvc.RazorPages;
+=======
+using Microsoft.AspNetCore.StaticFiles;
+
+>>>>>>> 8cb9ce14e24b5f3c7ef7f67639fd459a63517fa8
 //using Microsoft.EntityFrameworkCore;
 
 namespace RamenOkiDoki
@@ -44,6 +49,8 @@ namespace RamenOkiDoki
         {
             //services.AddDbContext<RestaurantDbContext>(options =>
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddRazorPages();
 
             services.AddTransient<DatabaseRepository>();
 
@@ -77,6 +84,11 @@ namespace RamenOkiDoki
             }
             //MiddleWare - influence how the whole response for the request from browser will be.
             app.UseHttpsRedirection();
+
+            var provider = new FileExtensionContentTypeProvider();
+            provider.Mappings["{EXTENSION}"] = "{CONTENT TYPE}";
+
+            app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = provider });
             app.UseStaticFiles();
 
             //process through which the application matches the requested URL path and executes the related Controller and Action.
@@ -91,6 +103,7 @@ namespace RamenOkiDoki
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+                endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
 
                 endpoints.MapRazorPages();
