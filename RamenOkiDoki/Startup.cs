@@ -83,10 +83,10 @@ namespace RamenOkiDoki
             //MiddleWare - influence how the whole response for the request from browser will be.
             app.UseHttpsRedirection();
 
-            var provider = new FileExtensionContentTypeProvider();
-            provider.Mappings["{EXTENSION}"] = "{CONTENT TYPE}";
+            //var provider = new FileExtensionContentTypeProvider();
+            //provider.Mappings["{EXTENSION}"] = "{CONTENT TYPE}";
 
-            app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = provider });
+            //app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = provider });
             app.UseStaticFiles();
 
             //process through which the application matches the requested URL path and executes the related Controller and Action.
