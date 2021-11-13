@@ -12,12 +12,12 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.FoodMenus;
 using Data.Repositories;
-<<<<<<< HEAD
+
 using Microsoft.AspNetCore.Mvc.RazorPages;
-=======
+
 using Microsoft.AspNetCore.StaticFiles;
 
->>>>>>> 8cb9ce14e24b5f3c7ef7f67639fd459a63517fa8
+
 //using Microsoft.EntityFrameworkCore;
 
 namespace RamenOkiDoki
