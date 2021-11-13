@@ -1,7 +1,10 @@
-﻿
+﻿@using RamenOkiDoki.Views
+
 @{
     ViewData["Title"] = "Create Account";
 }
 
 <h1 class="page-titles">Create Account</h1>
+
+<component>@(await Html.RenderComponentAsync<Counter>(RenderMode.Server))</component>
 
