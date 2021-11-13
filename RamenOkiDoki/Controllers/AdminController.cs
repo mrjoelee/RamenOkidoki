@@ -7,6 +7,7 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
+using Data.Models.User;
 using Data.Repositories;
 using Data.ViewModels;
 
@@ -167,7 +168,7 @@ namespace RamenOkiDoki.Controllers
 
 
            // Globals.UserRole = Globals.UserRoles.ADMIN;
-            Globals.UserRole = Globals.UserRoles.EMPLOYEE;
+            AppUser.UserRole = AppUser.UserRoles.EMPLOYEE;
 
             return Redirect("Index");
         }

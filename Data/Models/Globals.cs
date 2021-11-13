@@ -13,9 +13,7 @@ namespace Data.Models
         public static bool DisplayAddOnsForm { get; set; }
         public static bool UserSignedIn { get; set; }
 
-        public static UserRoles UserRole { get; set; }
-
-        public enum UserRoles { ADMIN, EMPLOYEE }
+      
         public static FoodCategory CurrentCategory { get; set; }
 
         public static int OrderTotalItems { get; set; }
@@ -68,6 +66,5 @@ namespace Data.Models
             //  FoodCategory = new FoodCategory();
             CartItemList = new List<OrderItem>();
         }
-
     }
 }

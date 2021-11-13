@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-
 using Data.Models;
 using Data.Models.Constants;
 using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
 using Data.Models.TakeOuts;
-
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.DbContext
