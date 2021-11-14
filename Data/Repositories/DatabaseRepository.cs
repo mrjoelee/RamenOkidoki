@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Data.DbContext;
+using Data.Models;
 using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
 
@@ -35,6 +36,13 @@ namespace Data.Repositories
             HoursOfOperation hoursOfOperation = _context.BusinessHours.FirstOrDefault();
 
             return hoursOfOperation;
+        }
+
+        public List<CustomerReview> GetCustomerReviews()
+        {
+            List<CustomerReview> customerReviews = _context.CustomerReviews.ToList();
+
+            return customerReviews;
         }
 
         public AddOnCharges GetAddOnCharges()

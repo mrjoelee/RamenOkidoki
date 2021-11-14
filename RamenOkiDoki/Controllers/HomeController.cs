@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
+using Data.Repositories;
 using Data.ViewModels;
 using Microsoft.CodeAnalysis.CSharp;
 using RamenOkiDoki.Helpers;
@@ -14,20 +15,25 @@ namespace RamenOkiDoki.Controllers
 {
     public class HomeController : Controller
     {
+        private DatabaseRepository _databaseRepository;
+
         private HomePageViewModel homePageViewModel;
 
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DatabaseRepository databaseRepository)
         {
             _logger = logger;
+            _databaseRepository = databaseRepository;
             homePageViewModel = new HomePageViewModel();
         }
 
         public IActionResult Index(string showAllReviews = "")
         {
-         //   homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate));
+        
             homePageViewModel.Reviews = homePageViewModel.Reviews.OrderByDescending(review => DateTime.Parse(review.ReviewDate)).ToList();
+
+          
 
             if (showAllReviews == "true")
             {

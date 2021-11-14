@@ -43,7 +43,9 @@ namespace Data.ViewModels
 
            // HoursOfOperation = DummyData.GetHoursOfOperation();
 
-            Reviews = DummyData.GetReviews();
+           Reviews = databaseRepository.GetCustomerReviews();
+
+            //Reviews = DummyData.GetReviews();
 
             NewReview = new CustomerReview();
         }
