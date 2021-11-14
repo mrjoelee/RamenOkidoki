@@ -45,6 +45,11 @@ a.nav-link {
     padding: 20px;
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0px;
+}
+
 .dropdown-item {
     background-color: black !important;
 }

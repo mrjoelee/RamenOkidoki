@@ -15,8 +15,7 @@ namespace Data.ViewModels
 {
     public class DashboardViewModel
     {
- 
-        private DatabaseRepository databaseRepository { get; set; }
+ private DatabaseRepository databaseRepository { get; set; }
         public BusinessLocation MyBusinessLocation { get; set; }
         public HoursOfOperation MyHoursOfOperation { get; set; }
 
@@ -35,18 +34,6 @@ namespace Data.ViewModels
             MyHoursOfOperation = databaseRepository.GetHoursOfOperation();
 
             AddOns = databaseRepository.GetAddOnCharges();
-
-            //    var context1 = context;
-
-            //  MyBusinessLocation = DummyData.GetBusinessLocation();
-
-            //    BusinessLocation = context1.BusinessLocations;
-
-            //    MyHoursOfOperation = DummyData.GetHoursOfOperation();
-
-            //    HoursOfOperation = context1.BusinessHours;
-
-            // AddOns = context1.AddOns;
 
         }
     }

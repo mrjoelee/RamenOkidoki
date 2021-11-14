@@ -176,7 +176,7 @@ namespace RamenOkiDoki.Controllers
             Globals.DisplayAddressForm = true;
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            return RedirectToAction("Index", dashboardViewModel);
+            return RedirectToAction("WebsiteInfoEdit", dashboardViewModel);
         }
 
         public IActionResult SaveBusinessLocation(DashboardViewModel dvm)
@@ -191,14 +191,14 @@ namespace RamenOkiDoki.Controllers
             }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            return RedirectToAction("Index", dashboardViewModel);
+            return RedirectToAction("WebsiteInfoEdit", dashboardViewModel);
         }
 
         public IActionResult OpenHourOfOperationForm()
         {
             Globals.DisplayHoursForm = true;
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            return RedirectToAction("Index", dashboardViewModel);
+            return RedirectToAction("WebsiteInfoEdit", dashboardViewModel);
         }
 
         [HttpPost]
@@ -214,14 +214,14 @@ namespace RamenOkiDoki.Controllers
             }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            return RedirectToAction("Index", dashboardViewModel);
+            return RedirectToAction("WebsiteInfoEdit", dashboardViewModel);
         }
 
         public IActionResult OpenAddOnsForm()
         {
             Globals.DisplayAddOnsForm = true;
 
-            return Redirect("Index");
+            return Redirect("WebsiteInfoEdit");
         }
 
         public IActionResult SaveAddOnsForm(DashboardViewModel dvm)
@@ -236,7 +236,7 @@ namespace RamenOkiDoki.Controllers
             }
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            return RedirectToAction("Index", dashboardViewModel);
+            return RedirectToAction("WebsiteInfoEdit", dashboardViewModel);
         }
 
         public IActionResult CustomerSearch()
