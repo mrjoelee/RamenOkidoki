@@ -43,6 +43,7 @@ a.nav-link {
 .dropdown-menu {
     background-color: black;
     padding: 20px;
+    border-radius: 0 0 20px 20px;
 }
 
 .dropdown:hover .dropdown-menu {
