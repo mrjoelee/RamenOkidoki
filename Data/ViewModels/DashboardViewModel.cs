@@ -22,7 +22,7 @@ namespace Data.ViewModels
 
         public AddOnCharges AddOns { get; set; }
 
-        public List<Review> Reviews { get; set; }
+        public List<CustomerReview> Reviews { get; set; }
 
         public int NewRating { get; set; }
 

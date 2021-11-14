@@ -16,8 +16,8 @@ namespace Data.ViewModels
         private DatabaseRepository databaseRepository { get; set; }
         public BusinessLocation MyBusinessLocation { get; set; }
         public HoursOfOperation MyHoursOfOperation { get; set; }
-        public List<Review> Reviews { get; set; }
-        public Review NewReview { get; set; }
+        public List<CustomerReview> Reviews { get; set; }
+        public CustomerReview NewReview { get; set; }
         public bool ShowAllReviews { get; set; }
 
         // public int NewRating { get; set; }
@@ -45,7 +45,7 @@ namespace Data.ViewModels
 
             Reviews = DummyData.GetReviews();
 
-            NewReview = new Review();
+            NewReview = new CustomerReview();
         }
     }
 

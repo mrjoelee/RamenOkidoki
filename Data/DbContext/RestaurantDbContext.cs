@@ -31,6 +31,7 @@ namespace Data.DbContext
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<FoodOrder> FoodOrders { get; set; }
+        public DbSet<CustomerReview> CustomerReviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
