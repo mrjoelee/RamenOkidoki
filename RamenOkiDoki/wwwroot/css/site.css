@@ -227,36 +227,6 @@ body {
 
 
 
-.admin-div {
-    display: inline-block;
-    margin-left: 200px;
-}
-
-.admin-nav-sidebar {
-    background-color: black;
-    float: left;
-    width: auto;
-    height: 100vh !important;
-    padding: 20px;
-    margin: 0;
-}
-
-
-a.admin-nav-link {
-    margin: 10px 0px;
-    display: block;
-    color: white !important;
-    font-size: 1.3em !important;
-    margin: 10px;
-    text-decoration-line: none;
-    font-weight: bold;
-}
-
-    a.admin-nav-link:hover {
-        color: red !important;
-        font-weight: bolder;
-    }
-
 .form-hours-group {
     margin-bottom: 15px;
 }

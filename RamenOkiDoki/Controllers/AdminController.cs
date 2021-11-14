@@ -129,9 +129,11 @@ namespace RamenOkiDoki.Controllers
 
             return Redirect("FoodMenuEdit");
         }
+
         #endregion
 
         #region deleting  item
+
         public async Task<IActionResult> DeleteMenuItem(int? id)
         {
             if (id != null)
@@ -150,6 +152,7 @@ namespace RamenOkiDoki.Controllers
 
             return RedirectToAction("FoodMenuEdit");
         }
+
         #endregion
 
 
@@ -162,7 +165,7 @@ namespace RamenOkiDoki.Controllers
 
         }
 
-      
+
         public IActionResult DashBoard()
         {
             return View("Index");
@@ -234,6 +237,16 @@ namespace RamenOkiDoki.Controllers
 
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
             return RedirectToAction("Index", dashboardViewModel);
+        }
+
+        public IActionResult CustomerSearch()
+        {
+            return View();
+        } 
+        
+        public IActionResult Statistics()
+        {
+            return View();
         }
     }
 }

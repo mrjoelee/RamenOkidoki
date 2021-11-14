@@ -2,16 +2,21 @@
 
 @if (Globals.UserSignedIn)// && Globals.UserRole == Globals.UserRoles.Admin) //User.IsInRole("Admin"))
 {
-    <div class="admin-nav-sidebar">
+    <ul class="admin-nav-sidebar">
 
-        <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="index">Dashboard</a>
+        <li class="admin-nav-item"><a class="admin-nav-link " asp-area="" asp-controller="Admin" asp-action="index">Dashboard</a></li>
+                                     
+        <li class="admin-nav-item"><a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="CustomerSearch">Customers</a></li>
+                                 
+        <li class="admin-nav-item" ><a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="Statistics" onclick="setActive(this);">Statistics</a></li>
+                               
+        <li class="admin-nav-item"><a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuEdit">Edit Menu</a></li>
+                                
+        <li class="admin-nav-item"><a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="WebsiteInfoEdit">Edit Info</a></li>
+                                    
+        <li class="admin-nav-item"><a class="admin-nav-link" asp-area="" asp-controller="MyAccount" asp-action="LogUserOut">Sign Out</a></li>
 
-        <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="FoodMenuEdit">Edit Menu</a>
-
-        <a class="admin-nav-link" asp-area="" asp-controller="Admin" asp-action="WebsiteInfoEdit">Edit Info</a>
-
-        <a class="admin-nav-link" asp-area="" asp-controller="MyAccount" asp-action="LogUserOut">Sign Out</a>
-
-    </div>
+    </ul>
 
 }
+
