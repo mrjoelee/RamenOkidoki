@@ -55,7 +55,7 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 0px;
     width: 100vw !important;
-    height: 100% !important;
+    /*height: 100% !important;*/
     background-image: linear-gradient(165deg, white, #fff2e6);
 }
 
