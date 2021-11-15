@@ -6,7 +6,9 @@
 }
 
 <h1 class="page-titles">Create Account</h1>
-<div style="margin-top:0; padding:0">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
 @(await Html.RenderComponentAsync<Registration>(RenderMode.Server))
      <span style="text-align:center">Already have an account? <a class="link" asp-area="" asp-controller="MyAccount" asp-action="SignIn" >Sign In</a></span>
      </div>
+     </div>>
