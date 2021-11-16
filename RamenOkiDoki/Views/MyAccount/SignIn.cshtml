@@ -7,8 +7,8 @@
 <h1 class="page-titles">Sign In</h1>
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      @(await Html.RenderComponentAsync<SignIn>(RenderMode.Server))
-     <span style="text-align:center" > <a asp-controller="MyAccount" asp-action="SignUserIn" type="submit" class="btn submit-order-button  btn-lg">Sign In</a></span>
+      @(await Html.RenderComponentAsync<SignIn>(RenderMode.Server))   <span style="text-align:center">Don't have an account? <a class="link" asp-area="" asp-controller="MyAccount" asp-action="Register" >Create Account</a></span>
+   
      </div>
      </div>>
 

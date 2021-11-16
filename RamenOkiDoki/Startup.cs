@@ -69,6 +69,8 @@ namespace RamenOkiDoki
         //
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+          //  app.UsePathBase("/RamenOkiDoki");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
