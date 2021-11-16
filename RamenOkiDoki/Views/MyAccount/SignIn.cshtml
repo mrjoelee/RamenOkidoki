@@ -1,11 +1,20 @@
-﻿
+﻿@using RamenOkiDoki.Views.Shared.Components.Authentications
+
 @{
     ViewData["Title"] = "Sign In";
 }
 
 <h1 class="page-titles">Sign In</h1>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      @(await Html.RenderComponentAsync<SignIn>(RenderMode.Server))
+     <span style="text-align:center" > <a asp-controller="MyAccount" asp-action="SignUserIn" type="submit" class="btn submit-order-button  btn-lg">Sign In</a></span>
+     </div>
+     </div>>
 
-<div class="non-sidebar-page">
+
+
+@*<div class="non-sidebar-page">
     <div class="admin-div">
         <br />
         <p style="margin: 50px 0px 50px; font-weight: bold">User is not Signed In</p>
@@ -23,5 +32,5 @@
 
 
         </form>
-    </div>
-</div>
+    </div>*@
+@*</div>*@
