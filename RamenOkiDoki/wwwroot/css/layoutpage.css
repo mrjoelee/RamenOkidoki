@@ -18,6 +18,7 @@ a.nav-link {
     border: none !important;
     border-bottom: 1px solid red !important;
     background-color: black !important;
+    padding: 0;
 }
 
 .navbar-brand {
