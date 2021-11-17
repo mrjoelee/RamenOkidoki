@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
-    <base href="/"/>
+    <base href="/" />
 
 </head>
 <body>
@@ -26,26 +26,27 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <image src="/Images/RamenOkidokiNoText.png" Height="50" style="margin: 2px 20px" />
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Ramen Okidoki</a>>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Ramen Okidoki</a>
             <div class="container">
 
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex">
-                    <ul class="navbar-nav   mx-auto">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
 
-                        <li class="dropdown nav-item">
+                        <li class="dropdown">
                             <a class="dropdown-toggle nav-link" href="#" role="button" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 Menus
                             </a>
 
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <ul class="dropdown-menu nav-item" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="DineInMenu">Dine-In Menu</a></li>
                                 <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu">Take Out Menu</a></li>
                             </ul>
@@ -54,7 +55,7 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
-                     
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="/Counter">Blazor Counter</a>
                         </li>
@@ -67,7 +68,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="MyAccount" asp-action="SignIn">Sign In</a></li> 
+                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="MyAccount" asp-action="SignIn">Sign In</a></li>
                                     <li><a class="dropdown-item nav-link" asp-area="" asp-controller="MyAccount" asp-action="Register">Create Account</a></li>
                                 </ul>
                             </li>
@@ -97,7 +98,8 @@
                 <a class="nav-link" href="tel: 2815758077" style="font-size: 9px; white-space: nowrap; text-align: center"><i class="fas fa-phone"></i> Call (281) 575-8077</a>
                 <div class="icon-wrapper">
                     <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center">
-                        <i aria-hidden="true" data-icon="&#xe900;" class="japanese"></i></a>
+                        <i aria-hidden="true" data-icon="&#xe900;" class="japanese"></i>
+                    </a>
 
                     <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center"> <span class="badge">@Globals.OrderTotalItems.ToString()</span></a>
 
@@ -132,12 +134,20 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script src="_framework/blazor.server.js"></script>
-@*    <script>
+    @*    <script>
         Blazor.start({
-          configureSignalR: function (builder) {
-            builder.withUrl('/_blazor');
-          }
+        configureSignalR: function (builder) {
+        builder.withUrl('/_blazor');
+        }
         });
+        </script>*@
+    @*<script>
+        const navLinks = document.querySelectorAll('.nav-item')
+        const menuToggle = document.getElementById('navbarSupportedContent')
+        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false})
+        navLinks.forEach((l) => {
+            l.addEventListener('click', () => { bsCollapse.toggle() })
+        })
     </script>*@
 
     <!-- JavaScript Bundle with Popper -->
