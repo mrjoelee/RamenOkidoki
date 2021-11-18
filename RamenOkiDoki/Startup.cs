@@ -53,7 +53,7 @@ namespace RamenOkiDoki
             services.AddTransient<DatabaseRepository>();
 
             //Add Razor Pages, which is the typical way to use Blazer. 
-            services.AddRazorPages();
+            services.AddRazorPages().WithRazorPagesRoot("/Views/RazorPages");
 
             //Add Blazor. Note that no etra packages are needed. 
             services.AddServerSideBlazor();
