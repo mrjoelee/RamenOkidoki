@@ -46,7 +46,7 @@
 					{
 
 					<tr>
-						<td width=80px> <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-itemIdToAdd="@menuItem.Id" style="font-weight: bold; margin-left: 10px"><i class="fas fa-plus-square"></i> ADD</a></td>
+						<td width=80px> <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-itemIdToAdd="@menuItem.Id" style="font-weight: bold; margin-left: 10px;text-decoration:none"><i class="fas fa-plus-square"></i> ADD</a></td>
 
 						<td class="menuItem">@menuItem.dishName </td>
 						<td class="menuPrice">$ @menuItem.price</td>
@@ -55,8 +55,7 @@
 					<tr >
 						<td></td><td colspan="2" class="menuDescription">@menuItem.description</td>
 					</tr>
-					<tr><td colspan="3" ><hr /></td></tr>
-					<tr><td></td></tr>
+					<tr><td colspan="3" ><hr /></td></tr>			
 
 					}
 				</table>
