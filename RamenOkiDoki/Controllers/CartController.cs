@@ -269,7 +269,7 @@ namespace RamenOkiDoki.Controllers
 
             foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
 
-            //foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = string.Format("{0:C}", Globals.OrderSubTotalCost);
+            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
 
             //foodMenuViewModel.CurrentTakeoutOrder.TotalSalesTax = string.Format("{0:C}", Globals.TotalSalesTax);
 

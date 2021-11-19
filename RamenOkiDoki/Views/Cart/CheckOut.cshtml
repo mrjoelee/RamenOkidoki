@@ -26,10 +26,10 @@
             </tr>
         }
 
-        <tr><td /><td style="text-align:right">Sub Total</td><td style="font-weight: bolder;text-align:right">@Model.CurrentTakeoutOrder.OrderSubTotalCost</td></tr>
-        <tr><td /><td style="text-align:right">Sales Tax</td><td style="font-weight: bolder;text-align:right">@Model.CurrentTakeoutOrder.TotalSalesTax</td></tr>
+        <tr><td /><td style="text-align:right">Sub Total</td><td style="font-weight: bolder;text-align:right">@Model.CurrentTakeoutOrder.OrderSubTotalCost.ToString("C")</td></tr>
+        <tr><td /><td style="text-align:right">Sales Tax</td><td style="font-weight: bolder;text-align:right">@Model.CurrentTakeoutOrder.TotalSalesTax.ToString("C")</td></tr>
         <tr><br /></tr>
-        <tr><td /><td style="font-weight: bolder; font-size: 2em;margin-top:20px">Order Total</td><td style="font-weight: bolder;font-size:2em">@Model.CurrentTakeoutOrder.OrderTotalCost</td></tr>
+        <tr><td /><td style="font-weight: bolder; font-size: 2em;margin-top:20px">Order Total</td><td style="font-weight: bolder;font-size:2em">@Model.CurrentTakeoutOrder.OrderTotalCost.ToString("C")</td></tr>
   
 
 
