@@ -6,6 +6,7 @@ using Data.Models.Constants;
 using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
 using Data.Models.TakeOuts;
+using Data.Models.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.DbContext

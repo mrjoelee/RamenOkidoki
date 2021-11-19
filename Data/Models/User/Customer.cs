@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Models.TakeOuts
+namespace Data.Models.User
 {
-    public class Customer
+    public class Customer : AppUser
     {
         [Key]
         public int Id { get; set; }

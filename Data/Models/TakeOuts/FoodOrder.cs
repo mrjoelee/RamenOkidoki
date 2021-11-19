@@ -1,5 +1,6 @@
 ﻿using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
+using Data.Models.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
