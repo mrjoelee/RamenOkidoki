@@ -280,9 +280,13 @@ namespace RamenOkiDoki.Controllers
             return View(foodMenuViewModel);
         }
 
-        public async Task<IActionResult> PayForOrder(FoodMenuViewModel foodMenuViewModel)
+        public async Task<IActionResult> PayForOrder(FoodMenuViewModel fvm)
         {
-            var order = foodMenuViewModel.CurrentTakeoutOrder;
+            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
+
+            foodMenuViewModel.CurrentTakeoutOrder.NonRegisteredCustomerLastName = fvm.CurrentTakeoutOrder.NonRegisteredCustomerLastName;
+
+            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
 
             return  RedirectToAction("TakeOutMenu", "Menu");
         }
