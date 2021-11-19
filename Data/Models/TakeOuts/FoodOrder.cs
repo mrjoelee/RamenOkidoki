@@ -18,7 +18,8 @@ namespace Data.Models.TakeOuts
         [Key]
         public int Id { get; set; }
 
-        public Customer TakeOutCustomer { get; set; }
+        public Customer RegisteredCustomer { get; set; }
+        public string NonRegisteredCustomerLastName { get; set; }
 
         public int OrderTotalItems { get; set; }
 
@@ -47,7 +48,7 @@ namespace Data.Models.TakeOuts
             addOns = new AddOnCharges();
       
             FoodOrderItemList = new List<OrderItem>();
-            TakeOutCustomer = new Customer();
+            RegisteredCustomer = new Customer();
         }
     }
 }

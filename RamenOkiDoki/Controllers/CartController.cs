@@ -108,7 +108,7 @@ namespace RamenOkiDoki.Controllers
 
                     Globals.OrderSubTotalCost += tempPrice;
 
-               //     FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
+                    //     FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
                 }
 
@@ -141,7 +141,7 @@ namespace RamenOkiDoki.Controllers
                     {
                         Globals.OrderTotalItems -= item.quantity;
 
-                        if ( Globals.OrderTotalItems < 0)
+                        if (Globals.OrderTotalItems < 0)
                         {
                             Globals.OrderTotalItems = 0;
                         }
@@ -278,6 +278,13 @@ namespace RamenOkiDoki.Controllers
 
 
             return View(foodMenuViewModel);
+        }
+
+        public async Task<IActionResult> PayForOrder(FoodMenuViewModel foodMenuViewModel)
+        {
+            var order = foodMenuViewModel.CurrentTakeoutOrder;
+
+            return  RedirectToAction("TakeOutMenu", "Menu");
         }
 
     }
