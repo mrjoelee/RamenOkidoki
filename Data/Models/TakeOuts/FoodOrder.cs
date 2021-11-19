@@ -7,12 +7,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.Repositories;
 
 namespace Data.Models.TakeOuts
 {
     
     public class FoodOrder
     {
+        private DatabaseRepository databaseRepository { get; set; }
+
         AddOnCharges addOns;
 
         [Key]
@@ -45,7 +48,10 @@ namespace Data.Models.TakeOuts
 
         public FoodOrder()
         {
-            addOns = new AddOnCharges();
+            databaseRepository = new DatabaseRepository();
+
+            addOns = databaseRepository.GetAddOnCharges();
+            
       
             FoodOrderItemList = new List<OrderItem>();
             RegisteredCustomer = new Customer();
