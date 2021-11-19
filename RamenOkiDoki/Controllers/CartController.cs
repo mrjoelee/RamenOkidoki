@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
 using Data.Models.FoodMenus;
+using Data.Repositories;
 using Data.ViewModels;
 using Microsoft.AspNetCore.Routing;
 
@@ -12,12 +13,14 @@ namespace RamenOkiDoki.Controllers
 {
     public class CartController : Controller
     {
+        private DatabaseRepository _databaseRepository;
 
-
-        public CartController()
+        public CartController(DatabaseRepository databaseRepository)
         {
 
             // Globals.CartItemList = new List<OrderItem>();
+
+            _databaseRepository = databaseRepository;
         }
 
         public async Task<IActionResult> Index()
@@ -287,6 +290,8 @@ namespace RamenOkiDoki.Controllers
             foodMenuViewModel.CurrentTakeoutOrder.NonRegisteredCustomerLastName = fvm.CurrentTakeoutOrder.NonRegisteredCustomerLastName;
 
             foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
+
+            _databaseRepository.AddRestaurantData(foodMenuViewModel.CurrentTakeoutOrder);
 
             return  RedirectToAction("TakeOutMenu", "Menu");
         }
