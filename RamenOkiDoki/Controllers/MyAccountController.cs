@@ -9,15 +9,21 @@ using Data.Models.User;
 
 namespace RamenOkiDoki.Controllers
 {
-    public class MyAccount : Controller
+    public class MyAccountController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
 
+        [Route("Register")]
         public IActionResult Register()
         {
+
+            if (ModelState.IsValid)
+            {
+
+            }
             return View();
         }
 
