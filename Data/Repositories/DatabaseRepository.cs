@@ -53,7 +53,6 @@ namespace Data.Repositories
         }
 
 
-
         public List<FoodCategory> GetFoodCategories()
         {
             List<FoodCategory> foodCategories = _context.FoodCategories.ToList();
@@ -68,13 +67,13 @@ namespace Data.Repositories
             return foodItems;
         }
 
-       //public List<FoodOrder> GetFoodOrders()
-       // {
-       //     List<FoodOrder> foodOrders = _context.FoodOrders.ToList();
+        public List<FoodOrder> GetFoodOrders()
+        {
+            List<FoodOrder> foodOrders = _context.FoodOrders.ToList();
 
-       //     return foodOrders;
-       // }
-       
+            return foodOrders;
+        }
+
 
         public void SaveRestaurantData<T>(T data)
         {

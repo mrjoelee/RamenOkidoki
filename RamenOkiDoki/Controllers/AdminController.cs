@@ -248,6 +248,18 @@ namespace RamenOkiDoki.Controllers
         {
             return View();
         }
+
+        //list all food orders
+        public IActionResult DisplayCurrentFoodOrders()
+        {
+            return View();
+        }
+
+        //details of one food order clicked
+        public IActionResult DisplayFoodOrderDetails()
+        {
+            return View();
+        }
     }
 }
 
