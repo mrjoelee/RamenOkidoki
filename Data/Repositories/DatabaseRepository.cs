@@ -84,10 +84,18 @@ namespace Data.Repositories
         }
         public void AddRestaurantData<T>(T data)
         {
-            _context.Add(data);
+            _context.Update(data);
 
             _context.SaveChanges();
         }
+
+        //public void AddOrUpdateRestaurantData<T>(T data)
+        //{
+
+        //    _context.Update(data);
+
+        //    _context.SaveChanges();
+        //}
 
         public void DeleteItem<T>(T item)
         {

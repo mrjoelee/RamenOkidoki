@@ -42,7 +42,13 @@ namespace RamenOkiDoki.Controllers
 
         public IActionResult SignUserIn()
         {
+            //look for signedin users in the database
             Globals.UserSignedIn = true;
+
+            Globals.SignedInCustomer = new Customer();
+
+            Globals.SignedInCustomer.Id = 2;
+            Globals.SignedInCustomer.UserName = "Joe";
 
 
             // Globals.UserRole = Globals.UserRoles.ADMIN;

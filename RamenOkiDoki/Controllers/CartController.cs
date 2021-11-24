@@ -287,13 +287,26 @@ namespace RamenOkiDoki.Controllers
 
         public async Task<IActionResult> PayForOrder(FoodMenuViewModel fvm)
         {
+
+
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
             foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.OrderTotalItems;
 
             foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
 
-            foodMenuViewModel.CurrentTakeoutOrder.NonRegisteredCustomerLastName = fvm.CurrentTakeoutOrder.NonRegisteredCustomerLastName;
+            if (Globals.UserSignedIn)
+            {
+                foodMenuViewModel.CurrentTakeoutOrder.RegisteredCustomer = Globals.SignedInCustomer;
+            }
+            else
+            {
+                foodMenuViewModel.CurrentTakeoutOrder.RegisteredCustomer.Id = 1;
+                foodMenuViewModel.CurrentTakeoutOrder.RegisteredCustomer.UserName = "Guest";
+                foodMenuViewModel.CurrentTakeoutOrder.NonRegisteredCustomerLastName = fvm.CurrentTakeoutOrder.NonRegisteredCustomerLastName;
+            }
+
+            
 
             _databaseRepository.AddRestaurantData(foodMenuViewModel.CurrentTakeoutOrder);
 

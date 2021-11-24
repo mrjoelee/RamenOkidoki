@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using Data.Models.FoodMenus;
+using Data.Models.User;
 using Data.Repositories;
 
 namespace Data.Models
@@ -15,6 +16,7 @@ namespace Data.Models
 
       
         public static FoodCategory CurrentCategory { get; set; }
+        public static Customer SignedInCustomer { get; set; }
 
         public static int OrderTotalItems { get; set; }
         public static decimal OrderSubTotalCost { get; set; }

@@ -22,6 +22,8 @@ namespace Data.Models.TakeOuts
         [Key]
         public int Id { get; set; }
 
+        
+        //[NotMapped] - ignores to push it to the DB
         public Customer RegisteredCustomer { get; set; }
         public string NonRegisteredCustomerLastName { get; set; }
 
