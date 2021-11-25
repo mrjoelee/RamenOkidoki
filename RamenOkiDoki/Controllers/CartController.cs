@@ -107,14 +107,10 @@ namespace RamenOkiDoki.Controllers
                             requestedItem = new OrderItem(
                                 foodItem.Id,
                                 foodItem.dishName,
-                                foodItem.description,
-                                foodItem.price,
-                                foodItem.foodCategory,
-                                foodItem.foodCategoryId,
-                                1
+                                foodItem.price
                             );
 
-                            currentCategoryId = requestedItem.foodCategoryId;
+                            currentCategoryId = foodItem.foodCategoryId;
 
                             break;
                         }
@@ -157,7 +153,7 @@ namespace RamenOkiDoki.Controllers
                 {
                     // int.TryParse(item.id, out foodItemId);
 
-                    if (item.Id == deletedItemId)
+                    if (item.OrderItemId == deletedItemId)
                     {
                         Globals.OrderTotalItems -= item.quantity;
 
@@ -201,7 +197,7 @@ namespace RamenOkiDoki.Controllers
                 {
                     //  int.TryParse(item.id, out foodItemId);
 
-                    if (item.Id == decreasedItemId)
+                    if (item.OrderItemId == decreasedItemId)
                     {
                         item.quantity--;
 
@@ -260,7 +256,7 @@ namespace RamenOkiDoki.Controllers
                 {
                     // int.TryParse(item.id, out foodItemId);
 
-                    if (item.Id == increasedItemId)
+                    if (item.OrderItemId == increasedItemId)
                     {
                         //Globals.CartItemList.Add(item);
                         item.quantity++;
