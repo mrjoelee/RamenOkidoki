@@ -68,7 +68,7 @@ namespace RamenOkiDoki.Controllers
                 {
                     // Is this item already already in the cart?
 
-                    if (item.OrderId == itemIdToAdd)
+                    if (item.OrderItemId == itemIdToAdd)
                     {
                         itemExists = true;
 
