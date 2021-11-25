@@ -124,6 +124,7 @@ namespace RamenOkiDoki.Controllers
                 Globals.OrderTotalItems++;
 
             }
+
             return RedirectToAction("TakeOutMenu", "Menu", new { id = currentCategoryId.ToString() });
             //return RedirectToAction("TakeOutMenu", "Menu", currentCategoryId);
         }
@@ -278,10 +279,11 @@ namespace RamenOkiDoki.Controllers
         public async Task<IActionResult> PayForOrder(FoodMenuViewModel fvm)
         {
 
-
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
             foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.OrderTotalItems;
+
+            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
 
             foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
 
@@ -295,15 +297,9 @@ namespace RamenOkiDoki.Controllers
                 foodMenuViewModel.CurrentTakeoutOrder.RegisteredCustomer.UserName = "Guest";
                 foodMenuViewModel.CurrentTakeoutOrder.NonRegisteredCustomerLastName = fvm.CurrentTakeoutOrder.NonRegisteredCustomerLastName;
             }
-
             
-
             _databaseRepository.AddRestaurantData(foodMenuViewModel.CurrentTakeoutOrder);
-
-
-
-
-
+            
             return  RedirectToAction("TakeOutMenu", "Menu");
         }
 
