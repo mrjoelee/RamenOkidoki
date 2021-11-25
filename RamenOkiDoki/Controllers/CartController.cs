@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
 using Data.Models.FoodMenus;
+using Data.Models.TakeOuts;
 using Data.Repositories;
 using Data.ViewModels;
 using Microsoft.AspNetCore.Routing;
@@ -32,7 +33,7 @@ namespace RamenOkiDoki.Controllers
         }
 
 
-        public async Task<IActionResult> _FoodOrderPartial()
+        public IActionResult _FoodOrderPartial()
         {
 
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
@@ -59,13 +60,18 @@ namespace RamenOkiDoki.Controllers
 
             int currentCategoryId = 0;
 
+            // itemToAdd is FoodItem id from takeout menu
             if (itemIdToAdd > 0)
             {
                 foreach (var item in Globals.CartItemList)
                 {
-                    if (item.Id == itemIdToAdd)
+                    // Is this item already already in the cart?
+
+                    if (item.OrderId == itemIdToAdd)
                     {
                         itemExists = true;
+
+                        // Just increase the quanity without entering duplicate quantity
 
                         item.quantity++;
 
@@ -75,7 +81,11 @@ namespace RamenOkiDoki.Controllers
 
                         Globals.OrderSubTotalCost += tempPrice;
 
-                        currentCategoryId = item.foodCategoryId;
+                        // Get CategoryId from globals foodlist with linq
+
+                        currentCategoryId = Globals.FoodItemList.Where(i => i.Id.Equals(itemIdToAdd));
+                            
+                            .foodCategoryId;
 
                         break;
                     }
