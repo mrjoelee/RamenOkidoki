@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Data.Models;
 using Data.Models.FoodMenus;
@@ -83,9 +84,15 @@ namespace RamenOkiDoki.Controllers
 
                         // Get CategoryId from globals foodlist with linq
 
-                        currentCategoryId = Globals.FoodItemList.Where(i => i.Id.Equals(itemIdToAdd));
-                            
-                            .foodCategoryId;
+                      //  currentCategoryId = Globals.FoodItemList.Where(i => i.Id(x => x == 1));//(itemIdToAdd));;
+
+                      foreach (var foodItem in Globals.FoodItemList)
+                      {
+                          if (foodItem.Id == itemIdToAdd)
+                          {
+                              currentCategoryId = foodItem.foodCategoryId;
+                          }
+                      }
 
                         break;
                     }
