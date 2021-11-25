@@ -11,7 +11,9 @@ namespace Data.Models.TakeOuts
         [ForeignKey("FoodOrder")]
         public int OrderId { get; set; }
         public int quantity { get; set; }
-        public string price { get; set; }
+
+        [Column(TypeName = "decimal(8,2)")]
+        public decimal price { get; set; }
         public string dishName { get; set; }
         
  
@@ -20,7 +22,7 @@ namespace Data.Models.TakeOuts
 
         //  public string categoryName { get; set; }
 
-        public OrderItem(int orderItemId, string dishName, string price, int quantity = 1)// : base(id, dishName, koreanName, description, price, categoryName)
+        public OrderItem(int orderItemId, string dishName, decimal price, int quantity = 1)// : base(id, dishName, koreanName, description, price, categoryName)
         {
             this.OrderItemId = orderItemId;
             this.dishName = dishName;

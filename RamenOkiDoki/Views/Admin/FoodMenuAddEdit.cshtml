@@ -13,7 +13,7 @@
         id = Model.FoodItemToAddEdit.Id.ToString();
         dishName = Model.FoodItemToAddEdit.dishName;
         description = Model.FoodItemToAddEdit.description;
-        price = Model.FoodItemToAddEdit.price;
+        price = Model.FoodItemToAddEdit.price.ToString("C");
         foodCategory = Model.FoodItemToAddEdit.foodCategory;
         foodCategoryId = Model.FoodItemToAddEdit.foodCategoryId.ToString();
         AddSaveButton = "Save Item";
@@ -46,7 +46,7 @@
 
             <tr class="form-group">
                 <td>Price</td>
-                <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.price)</td>
+                <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.price.ToString("C"))</td>
             </tr>
 
 
