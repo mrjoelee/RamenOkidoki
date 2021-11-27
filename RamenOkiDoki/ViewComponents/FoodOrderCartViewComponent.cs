@@ -16,12 +16,12 @@ namespace RamenOkiDoki.ViewComponents
             
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
+            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.GlobalFoodOrder.FoodOrderItemList;
 
 
             
 
-            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
+            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.GlobalFoodOrder.OrderSubTotalCost;
 
             //string.Format("{0:C}", Globals.OrderSubTotalCost);
 

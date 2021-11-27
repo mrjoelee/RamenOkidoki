@@ -104,9 +104,9 @@ namespace RamenOkiDoki.Controllers
                 }
             }
 
-            foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.OrderTotalItems;
-            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
-            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
+            foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.GlobalFoodOrder.OrderTotalItems;
+            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.GlobalFoodOrder.OrderSubTotalCost;
+            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.GlobalFoodOrder.FoodOrderItemList;
             foodMenuViewModel.FoodItemList = tempListOfMenuItemsToReturn;
 
             return View(foodMenuViewModel);

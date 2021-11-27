@@ -19,23 +19,23 @@ namespace Data.Models
         public static FoodCategory CurrentCategory { get; set; }
         public static Customer SignedInCustomer { get; set; }
 
-        public static int OrderTotalItems { get; set; }
-        public static decimal OrderSubTotalCost { get; set; }
-        public static decimal OrderTotalCost
-        {
-            get
-            {
-                return OrderSubTotalCost + TotalSalesTax;
-            }
-        }
+        //public static int OrderTotalItems { get; set; }
+        //public static decimal OrderSubTotalCost { get; set; }
+        //public static decimal OrderTotalCost
+        //{
+        //    get
+        //    {
+        //        return OrderSubTotalCost + TotalSalesTax;
+        //    }
+        //}
 
-        public static decimal TotalSalesTax
-        {
-            get
-            {
-                return OrderSubTotalCost * SalesTax;
-            }
-        }
+        //public static decimal TotalSalesTax
+        //{
+        //    get
+        //    {
+        //        return OrderSubTotalCost * SalesTax;
+        //    }
+        //}
 
         public static decimal SalesTax = 0.0625m;
 
@@ -47,12 +47,15 @@ namespace Data.Models
             }
         }
 
+
+        public static FoodOrder GlobalFoodOrder { get; set; }
+
         public static List<FoodCategory> FoodCategoryList { get; set; }
 
         public static List<FoodItem> FoodItemList { get; set; }
 
         //    public static FoodCategory FoodCategory { get; set; }
-        public static List<OrderItem> CartItemList { get; set; }
+    //    public static List<OrderItem> CartItemList { get; set; }
 
         public static void GetFoodItemsAndCategories()
         {
@@ -67,7 +70,7 @@ namespace Data.Models
             FoodCategoryList = new List<FoodCategory>();
             FoodItemList = new List<FoodItem>();
             //  FoodCategory = new FoodCategory();
-            CartItemList = new List<OrderItem>();
+        //    CartItemList = new List<OrderItem>();
         }
     }
 }

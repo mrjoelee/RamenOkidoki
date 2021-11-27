@@ -19,6 +19,10 @@ namespace RamenOkiDoki.Controllers
 
         public CartController(DatabaseRepository databaseRepository)
         {
+            if (Globals.GlobalFoodOrder == null)
+            {
+                Globals.GlobalFoodOrder = new FoodOrder();
+            }
 
             // Globals.CartItemList = new List<OrderItem>();
 
@@ -39,9 +43,9 @@ namespace RamenOkiDoki.Controllers
 
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            if (Globals.CartItemList != null)
+            if (Globals.GlobalFoodOrder.FoodOrderItemList != null)
             {
-                foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
+                foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.GlobalFoodOrder.FoodOrderItemList;
             }
 
 
@@ -64,7 +68,7 @@ namespace RamenOkiDoki.Controllers
             // itemToAdd is FoodItem id from takeout menu
             if (itemIdToAdd > 0)
             {
-                foreach (var item in Globals.CartItemList)
+                foreach (var item in Globals.GlobalFoodOrder.FoodOrderItemList)
                 {
                     // Is this item already already in the cart?
 
@@ -75,20 +79,20 @@ namespace RamenOkiDoki.Controllers
                         // Just increase the quanity without entering duplicate quantity
 
                         item.quantity++;
-                        
-                        Globals.OrderSubTotalCost += item.price;
+
+                        Globals.GlobalFoodOrder.OrderSubTotalCost += item.price;
 
                         // Get CategoryId from globals foodlist with linq
 
-                      //  currentCategoryId = Globals.FoodItemList.Where(i => i.Id(x => x == 1));//(itemIdToAdd));;
+                        //  currentCategoryId = Globals.FoodItemList.Where(i => i.Id(x => x == 1));//(itemIdToAdd));;
 
-                      foreach (var foodItem in Globals.FoodItemList)
-                      {
-                          if (foodItem.Id == itemIdToAdd)
-                          {
-                              currentCategoryId = foodItem.foodCategoryId;
-                          }
-                      }
+                        foreach (var foodItem in Globals.FoodItemList)
+                        {
+                            if (foodItem.Id == itemIdToAdd)
+                            {
+                                currentCategoryId = foodItem.foodCategoryId;
+                            }
+                        }
 
                         break;
                     }
@@ -113,15 +117,15 @@ namespace RamenOkiDoki.Controllers
 
                     }
 
-                    Globals.CartItemList.Add(requestedItem);
-               
-                    Globals.OrderSubTotalCost += requestedItem.price;
+                    Globals.GlobalFoodOrder.FoodOrderItemList.Add(requestedItem);
+
+                    Globals.GlobalFoodOrder.OrderSubTotalCost += requestedItem.price;
 
                     //     FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
                 }
 
-                Globals.OrderTotalItems++;
+                Globals.GlobalFoodOrder.OrderTotalItems++;
 
             }
 
@@ -143,22 +147,22 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemIdToDelete, out deletedItemId);
 
-                foreach (var item in Globals.CartItemList)
+                foreach (var item in Globals.GlobalFoodOrder.FoodOrderItemList)
                 {
                     // int.TryParse(item.id, out foodItemId);
 
                     if (item.OrderItemId == deletedItemId)
                     {
-                        Globals.OrderTotalItems -= item.quantity;
+                        Globals.GlobalFoodOrder.OrderTotalItems -= item.quantity;
 
-                        if (Globals.OrderTotalItems < 0)
+                        if (Globals.GlobalFoodOrder.OrderTotalItems < 0)
                         {
-                            Globals.OrderTotalItems = 0;
+                            Globals.GlobalFoodOrder.OrderTotalItems = 0;
                         }
 
-                        Globals.CartItemList.Remove(item);
+                        Globals.GlobalFoodOrder.FoodOrderItemList.Remove(item);
 
-                        Globals.OrderSubTotalCost -= item.price;
+                        Globals.GlobalFoodOrder.OrderSubTotalCost -= item.price;
 
                         break;
                     }
@@ -183,7 +187,7 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemId, out decreasedItemId);
 
-                foreach (var item in Globals.CartItemList)
+                foreach (var item in Globals.GlobalFoodOrder.FoodOrderItemList)
                 {
                     //  int.TryParse(item.id, out foodItemId);
 
@@ -191,19 +195,19 @@ namespace RamenOkiDoki.Controllers
                     {
                         item.quantity--;
 
-                     Globals.OrderSubTotalCost -= item.price;
+                        Globals.GlobalFoodOrder.OrderSubTotalCost -= item.price;
 
                         break;
                     }
                 }
 
-                foreach (var item in Globals.CartItemList)
+                foreach (var item in Globals.GlobalFoodOrder.FoodOrderItemList)
                 {
                     if (item.quantity < 1)
                     {
-                        Globals.CartItemList.Remove(item);
+                        Globals.GlobalFoodOrder.FoodOrderItemList.Remove(item);
 
-                      Globals.OrderSubTotalCost -= item.price;
+                        Globals.GlobalFoodOrder.OrderSubTotalCost -= item.price;
 
                         break;
                     }
@@ -211,11 +215,11 @@ namespace RamenOkiDoki.Controllers
                     continue;
                 }
 
-                Globals.OrderTotalItems--;
+                Globals.GlobalFoodOrder.OrderTotalItems--;
 
-                if (Globals.OrderTotalItems < 0)
+                if (Globals.GlobalFoodOrder.OrderTotalItems < 0)
                 {
-                    Globals.OrderTotalItems = 0;
+                    Globals.GlobalFoodOrder.OrderTotalItems = 0;
                 }
 
             }
@@ -234,7 +238,7 @@ namespace RamenOkiDoki.Controllers
 
                 int.TryParse(itemId, out increasedItemId);
 
-                foreach (var item in Globals.CartItemList)
+                foreach (var item in Globals.GlobalFoodOrder.FoodOrderItemList)
                 {
                     // int.TryParse(item.id, out foodItemId);
 
@@ -242,10 +246,10 @@ namespace RamenOkiDoki.Controllers
                     {
                         //Globals.CartItemList.Add(item);
                         item.quantity++;
-                        
-                        Globals.OrderSubTotalCost += item.price;
 
-                        Globals.OrderTotalItems++;
+                        Globals.GlobalFoodOrder.OrderSubTotalCost += item.price;
+
+                        Globals.GlobalFoodOrder.OrderTotalItems++;
 
                         break;
                     }
@@ -260,9 +264,9 @@ namespace RamenOkiDoki.Controllers
         {
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
+            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.GlobalFoodOrder.FoodOrderItemList;
 
-            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
+            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.GlobalFoodOrder.OrderSubTotalCost;
 
 
             //_databaseRepository.AddRestaurantData(foodMenuViewModel.CurrentTakeoutOrder);
@@ -281,11 +285,11 @@ namespace RamenOkiDoki.Controllers
 
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.OrderTotalItems;
+            foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.GlobalFoodOrder.OrderTotalItems;
 
-            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.CartItemList;
+            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.GlobalFoodOrder.FoodOrderItemList;
 
-            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.OrderSubTotalCost;
+            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.GlobalFoodOrder.OrderSubTotalCost;
 
             if (Globals.UserSignedIn)
             {
@@ -297,10 +301,10 @@ namespace RamenOkiDoki.Controllers
                 foodMenuViewModel.CurrentTakeoutOrder.RegisteredCustomer.UserName = "Guest";
                 foodMenuViewModel.CurrentTakeoutOrder.NonRegisteredCustomerLastName = fvm.CurrentTakeoutOrder.NonRegisteredCustomerLastName;
             }
-            
+
             _databaseRepository.AddRestaurantData(foodMenuViewModel.CurrentTakeoutOrder);
-            
-            return  RedirectToAction("TakeOutMenu", "Menu");
+
+            return RedirectToAction("TakeOutMenu", "Menu");
         }
 
     }
