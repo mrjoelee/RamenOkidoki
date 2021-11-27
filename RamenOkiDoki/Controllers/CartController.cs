@@ -285,11 +285,13 @@ namespace RamenOkiDoki.Controllers
 
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
-            foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.GlobalFoodOrder.OrderTotalItems;
+            foodMenuViewModel.CurrentTakeoutOrder = Globals.GlobalFoodOrder;
 
-            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.GlobalFoodOrder.FoodOrderItemList;
+            //foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.GlobalFoodOrder.OrderTotalItems;
 
-            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.GlobalFoodOrder.OrderSubTotalCost;
+            //foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.GlobalFoodOrder.FoodOrderItemList;
+
+            //foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.GlobalFoodOrder.OrderSubTotalCost;
 
             if (Globals.UserSignedIn)
             {

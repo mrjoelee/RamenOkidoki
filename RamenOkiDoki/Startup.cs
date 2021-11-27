@@ -34,11 +34,11 @@ namespace RamenOkiDoki
 
             Globals.GlobalFoodOrder = new FoodOrder();
             Globals.GlobalFoodOrder.FoodOrderItemList = new List<OrderItem>();
+            Globals.GlobalFoodOrder.OrderSubTotalCost = 0.00m;
 
             //Globals.FoodCategoryList = new List<FoodCategory>();
             //Globals.FoodItemList = new List<FoodItem>();
             //Globals.FoodCategory = new FoodCategory();
-            Globals.GlobalFoodOrder.OrderSubTotalCost = 0.00m;
             Env = env;
         }
 
