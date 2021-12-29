@@ -75,14 +75,6 @@
             @if (!Globals.UserSignedIn)
             {
                 <a class="nav-link" href="tel: 2815758077" style="font-size: 9px; white-space: nowrap; text-align: center"><i class="fas fa-phone"></i> Call (281) 575-8077</a>
-                <div class="icon-wrapper">
-                    <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center">
-                        <i aria-hidden="true" data-icon="&#xe900;" class="japanese"></i>
-                    </a>
-
-                    <a class="nav-link" asp-controller="Cart" asp-action="Index" style="font-size: 9px; white-space: nowrap; text-align: center"> <span class="badge">@Globals.GlobalFoodOrder.OrderTotalItems.ToString()</span></a>
-
-                </div>
 
                 @*<i style="text-align: center" class="fas fa-utensils" title="Cart"></i>*@
             }

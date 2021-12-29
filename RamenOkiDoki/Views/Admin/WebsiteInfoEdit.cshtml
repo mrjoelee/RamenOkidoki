@@ -75,19 +75,7 @@
                         }
 
                     </div>
-                    <div style="margin-top: 30px; margin-bottom: 10px">
-                        @if (@Globals.DisplayAddOnsForm)
-                        {
-                            @await Html.PartialAsync("_AddOnsFormPartial")
-                        }
-                        else
-                        {
-                            <h4><u>Add Ons:</u></h4>
-                            @await Html.PartialAsync("_AddOnsPartial")
-                            <a asp-controller="Admin" asp-action="OpenAddOnsForm" type="submit" class="btn btn-primary submit-order-button"><i class="fas fa-edit"></i> Edit</a>
 
-                        }
-                    </div>
                 </div>
 
             </div>
