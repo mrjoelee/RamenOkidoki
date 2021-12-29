@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using Data.DbContext;
 using Data.Models;
 using Data.Models.FoodMenus;
-using Data.Models.TakeOuts;
 using Data.Repositories;
 
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -31,10 +30,6 @@ namespace RamenOkiDoki
         {
             Configuration = configuration;
             Globals.GetFoodItemsAndCategories();
-
-            Globals.GlobalFoodOrder = new FoodOrder();
-            Globals.GlobalFoodOrder.FoodOrderItemList = new List<OrderItem>();
-            Globals.GlobalFoodOrder.OrderSubTotalCost = 0.00m;
 
             //Globals.FoodCategoryList = new List<FoodCategory>();
             //Globals.FoodItemList = new List<FoodItem>();

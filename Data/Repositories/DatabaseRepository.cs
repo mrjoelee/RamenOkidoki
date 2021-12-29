@@ -8,7 +8,7 @@ using Data.DbContext;
 using Data.Models;
 using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
-using Data.Models.TakeOuts;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
@@ -45,14 +45,7 @@ namespace Data.Repositories
             return customerReviews;
         }
 
-        public AddOnCharges GetAddOnCharges()
-        {
-            AddOnCharges addOnCharges = _context.AddOns.FirstOrDefault();
-
-            return addOnCharges;
-        }
-
-
+     
         public List<FoodCategory> GetFoodCategories()
         {
             List<FoodCategory> foodCategories = _context.FoodCategories.ToList();
@@ -65,13 +58,6 @@ namespace Data.Repositories
             List<FoodItem> foodItems = _context.FoodItems.ToList();
 
             return foodItems;
-        }
-
-        public List<FoodOrder> GetFoodOrders()
-        {
-            List<FoodOrder> foodOrders = _context.FoodOrders.ToList();
-
-            return foodOrders;
         }
 
 

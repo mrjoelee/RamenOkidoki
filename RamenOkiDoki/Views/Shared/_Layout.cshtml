@@ -41,7 +41,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                          <li class="nav-item">
-                             <a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a>
+                             <a class="nav-link" asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
@@ -49,17 +49,19 @@
                         @if (!Globals.UserSignedIn)
                         {
                                 
-                                    <li><a class="dropdown-item nav-link" asp-area="" asp-controller="MyAccount" asp-action="SignIn"> Admin Sign In</a></li>
+                                    <li><a class="nav-link" asp-area="" asp-controller="MyAccount" asp-action="SignIn"> Admin Only</a></li>
                                 
                         }
                         else
-                        {
+                        {  
+
                             <li class="nav-item">
-                            <li><a class="dropdown-item nav-link" asp-area="" asp-controller="MyAccount" asp-action="LogUserOut">Sign Out</a></li>
+                                <a class="nav-link" asp-area="" asp-controller="MyAccount" asp-action="LogUserOut">Sign Out</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
                             </li>
+
                         }
 
                     </ul>

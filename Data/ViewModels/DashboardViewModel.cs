@@ -19,8 +19,6 @@ namespace Data.ViewModels
         public BusinessLocation MyBusinessLocation { get; set; }
         public HoursOfOperation MyHoursOfOperation { get; set; }
 
-        public AddOnCharges AddOns { get; set; }
-
         public List<CustomerReview> Reviews { get; set; }
 
         public int NewRating { get; set; }
@@ -33,7 +31,6 @@ namespace Data.ViewModels
 
             MyHoursOfOperation = databaseRepository.GetHoursOfOperation();
 
-            AddOns = databaseRepository.GetAddOnCharges();
 
         }
     }

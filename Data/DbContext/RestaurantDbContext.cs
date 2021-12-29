@@ -5,7 +5,6 @@ using Data.Models;
 using Data.Models.Constants;
 using Data.Models.DashboardData;
 using Data.Models.FoodMenus;
-using Data.Models.TakeOuts;
 using Data.Models.User;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,15 +24,12 @@ namespace Data.DbContext
 
         public DbSet<BusinessLocation> BusinessLocations { get; set; }
         public DbSet<HoursOfOperation> BusinessHours { get; set; }
-        public DbSet<AddOnCharges> AddOns { get; set; }
 
         public DbSet <FoodCategory> FoodCategories { get; set; }
         public DbSet <FoodItem> FoodItems { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<FoodOrder> FoodOrders { get; set; }
 
-       public DbSet <OrderItem> OrderItems { get; set; }
         public DbSet<CustomerReview> CustomerReviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using Data.Models.FoodMenus;
-using Data.Models.TakeOuts;
+
 using Data.Models.User;
 using Data.Repositories;
 
@@ -48,7 +48,7 @@ namespace Data.Models
         }
 
 
-        public static FoodOrder GlobalFoodOrder { get; set; }
+      
 
         public static List<FoodCategory> FoodCategoryList { get; set; }
 

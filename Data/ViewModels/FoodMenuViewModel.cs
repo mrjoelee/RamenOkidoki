@@ -2,7 +2,6 @@
 
 using Data.Models;
 using Data.Models.FoodMenus;
-using Data.Models.TakeOuts;
 using Data.Repositories;
 
 namespace Data.ViewModels
@@ -19,7 +18,6 @@ namespace Data.ViewModels
       //  public string OrderSubTotalCost { get; set; }
         //public string OrderTotalCost { get; set; }
         //public string OrderTotalSalesTax { get; set; }
-        public FoodOrder CurrentTakeoutOrder { get; set; }
 
         public FoodItem FoodItemToAddEdit { get; set; }
 
@@ -35,7 +33,6 @@ namespace Data.ViewModels
 
             FoodCategoryList = new List<FoodCategory>();
             FoodItemList = new List<FoodItem>();
-            CurrentTakeoutOrder = new FoodOrder();
 
             GetFoodItemsAndCategories();
         }

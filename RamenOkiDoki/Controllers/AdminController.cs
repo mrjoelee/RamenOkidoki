@@ -24,7 +24,7 @@ namespace RamenOkiDoki.Controllers
 
         private DatabaseRepository _databaseRepository;
 
-        private RestaurantDbContext _context;
+        //private RestaurantDbContext _context;
 
         //  public List<FoodItem> FoodItemList;
 
@@ -217,27 +217,6 @@ namespace RamenOkiDoki.Controllers
             return RedirectToAction("WebsiteInfoEdit", dashboardViewModel);
         }
 
-        public IActionResult OpenAddOnsForm()
-        {
-            Globals.DisplayAddOnsForm = true;
-
-            return Redirect("WebsiteInfoEdit");
-        }
-
-        public IActionResult SaveAddOnsForm(DashboardViewModel dvm)
-        {
-            Globals.DisplayAddOnsForm = false;
-
-            AddOnCharges addOnCharges = dvm.AddOns;
-
-            if (addOnCharges != null)
-            {
-                _databaseRepository.SaveRestaurantData<AddOnCharges>(addOnCharges);
-            }
-
-            DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            return RedirectToAction("WebsiteInfoEdit", dashboardViewModel);
-        }
 
         public IActionResult CustomerSearch()
         {
