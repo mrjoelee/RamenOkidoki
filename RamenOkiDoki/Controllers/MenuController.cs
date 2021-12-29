@@ -42,8 +42,7 @@ namespace RamenOkiDoki.Controllers
 
         #region =  Dine In Menu
 
-        [Route("menu")]
-        public async Task<IActionResult> DineInMenu()
+        public async Task<IActionResult> Menu()
         {
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 
@@ -59,58 +58,7 @@ namespace RamenOkiDoki.Controllers
 
         #endregion
 
-
-
-        [Route("take-out")]
-        public async Task<IActionResult> TakeOutMenu(string id)
-        {
-            int categoryId = 0;
-
-            if (!string.IsNullOrWhiteSpace(id))
-            {
-                categoryId = Int32.Parse(id);
-            }
-
-
-            if (categoryId < 1)
-            {
-                categoryId = 1;
-            }
-
-            FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
-            List<FoodItem> tempListOfMenuItemsToReturn = new List<FoodItem>();
-
-
-            //     Globals.FoodCategoryList.OrderBy(Category => Category);
-
-            var validCategories = GetCategoriesToDisplay();
-
-            if (validCategories == null) return null;
-
-            foodMenuViewModel.FoodCategoryList = validCategories;
-
-            // Show Categories that have food items
-
-
-
-            if (Globals.FoodItemList != null & Globals.FoodItemList.Count > 0)
-            {
-                foreach (var item in Globals.FoodItemList)
-                {
-                    if (item != null && item.foodCategoryId == categoryId)
-                    {
-                        tempListOfMenuItemsToReturn.Add(item);
-                    }
-                }
-            }
-
-            foodMenuViewModel.CurrentTakeoutOrder.OrderTotalItems = Globals.GlobalFoodOrder.OrderTotalItems;
-            foodMenuViewModel.CurrentTakeoutOrder.OrderSubTotalCost = Globals.GlobalFoodOrder.OrderSubTotalCost;
-            foodMenuViewModel.CurrentTakeoutOrder.FoodOrderItemList = Globals.GlobalFoodOrder.FoodOrderItemList;
-            foodMenuViewModel.FoodItemList = tempListOfMenuItemsToReturn;
-
-            return View(foodMenuViewModel);
-        }
+       
 
         private List<FoodCategory> GetCategoriesToDisplay()
         {

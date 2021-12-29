@@ -40,26 +40,12 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-
-                        <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="#" role="button" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                Menus
-                            </a>
-
-                            <ul class="dropdown-menu nav-item" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="DineInMenu">Dine-In Menu</a></li>
-                                <li><a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="TakeOutMenu">Take Out Menu</a></li>
-                            </ul>
+                         <li>
+                             <a class="dropdown-item nav-link" asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
-
-                        <li class="nav-item">
-                            <a asp-page="/RazorPages/Test" class="nav-link text-dark">Blazor Counter</a>
-                        </li>
-
                         @if (!Globals.UserSignedIn)
                         {
                             <li class="dropdown nav-item">
