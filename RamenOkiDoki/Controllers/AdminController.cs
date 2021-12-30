@@ -76,7 +76,7 @@ namespace RamenOkiDoki.Controllers
             }
 
 
-            return View();
+            return View(foodMenuViewModel);
         }
 
 
@@ -99,6 +99,7 @@ namespace RamenOkiDoki.Controllers
                             if (item.Id == id)
                             {
                                 foodMenuViewModel.FoodItemToAddEdit = item;
+                                _databaseRepository.AddRestaurantData(item);
                                 //return View(item);
                             }
                         }
@@ -122,6 +123,7 @@ namespace RamenOkiDoki.Controllers
                 if (category.Category == item.foodCategory)
                 {
                     item.foodCategoryId = category.Id;
+                    
                 }
             }
 
@@ -217,28 +219,6 @@ namespace RamenOkiDoki.Controllers
             return RedirectToAction("WebsiteInfoEdit", dashboardViewModel);
         }
 
-
-        public IActionResult CustomerSearch()
-        {
-            return View();
-        } 
-        
-        public IActionResult Statistics()
-        {
-            return View();
-        }
-
-        //list all food orders
-        public IActionResult DisplayCurrentFoodOrders()
-        {
-            return View();
-        }
-
-        //details of one food order clicked
-        public IActionResult DisplayFoodOrderDetails()
-        {
-            return View();
-        }
     }
 }
 
