@@ -22,7 +22,7 @@ namespace RamenOkiDoki
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Keys.SyncfusionKey);
         }
 
-        //create web application
+        //create web application, uses the dependency injection
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

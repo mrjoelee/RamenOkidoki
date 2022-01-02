@@ -30,10 +30,6 @@ namespace RamenOkiDoki
         {
             Configuration = configuration;
             Globals.GetFoodItemsAndCategories();
-
-            //Globals.FoodCategoryList = new List<FoodCategory>();
-            //Globals.FoodItemList = new List<FoodItem>();
-            //Globals.FoodCategory = new FoodCategory();
             Env = env;
         }
 
@@ -43,10 +39,10 @@ namespace RamenOkiDoki
 
 
         //this is the usage of Dependency Injection
+        //IServiceCollection services - multiple services
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<RestaurantDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+         
 
             services.AddTransient<DatabaseRepository>();
 
@@ -67,12 +63,11 @@ namespace RamenOkiDoki
         //
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-          //  app.UsePathBase("/RamenOkiDoki");
+ 
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                // app.UseBrowserLink();
             }
             else
             {
@@ -80,13 +75,10 @@ namespace RamenOkiDoki
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            //MiddleWare - influence how the whole response for the request from browser will be.
+            //MiddleWares - influence how the whole response for the request from browser will be.
             app.UseHttpsRedirection();
 
-            //var provider = new FileExtensionContentTypeProvider();
-            //provider.Mappings["{EXTENSION}"] = "{CONTENT TYPE}";
-
-            //app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = provider });
+            //
             app.UseStaticFiles();
 
             //process through which the application matches the requested URL path and executes the related Controller and Action.
@@ -103,11 +95,8 @@ namespace RamenOkiDoki
 
                 endpoints.MapRazorPages();
 
-                //endpoints.MapBlazorHub("/Blazor/_blazor");
-                //endpoints.MapFallbackToPage("~/Blazor/{*clientroutes:nonfile}", "/Blazor/_Host");
-
                 endpoints.MapBlazorHub();
-                //endpoints.MapFallbackToPage("/_Host");
+                
             });
         }
     }
