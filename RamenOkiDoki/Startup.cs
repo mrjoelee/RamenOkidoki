@@ -78,7 +78,7 @@ namespace RamenOkiDoki
             //MiddleWares - influence how the whole response for the request from browser will be.
             app.UseHttpsRedirection();
 
-            //
+            //uses the wwwroot files
             app.UseStaticFiles();
 
             //process through which the application matches the requested URL path and executes the related Controller and Action.
