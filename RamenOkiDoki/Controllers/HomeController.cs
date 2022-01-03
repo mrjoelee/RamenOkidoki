@@ -47,6 +47,7 @@ namespace RamenOkiDoki.Controllers
             return View(homePageViewModel);
         }
 
+
         [HttpPost, ActionName("Index")]
         public IActionResult SubmitReview(CustomerReview newReview)
         {
@@ -58,11 +59,6 @@ namespace RamenOkiDoki.Controllers
 
             return View(homePageViewModel);
         }
-
-        //public IActionResult ShowAdditionalReviews()
-        //{
-        //    return redirectto("Index", true);
-        //}
 
         [Route("about")]
         public IActionResult About()
