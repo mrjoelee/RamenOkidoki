@@ -28,8 +28,7 @@ namespace Data.DbContext
         public DbSet <FoodCategory> FoodCategories { get; set; }
         public DbSet <FoodItem> FoodItems { get; set; }
 
-        public DbSet<Customer> Customers { get; set; }
-
+        
         public DbSet<CustomerReview> CustomerReviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
