@@ -6,7 +6,7 @@ for details on configuring this project to bundle and minify static web assets. 
 /*form phone view*/
 
 @media only screen and (max-width: 568px){
-    .navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 {
+    .navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 images h4 {
         width: 100%;
         position: absolute;
         top: 75px;
@@ -16,6 +16,9 @@ for details on configuring this project to bundle and minify static web assets. 
     .navbar-toggler-icon {
         color: white;
     }
+    /*.images{
+        width:100%;
+    }*/
 }
 
 /* Provide sufficient contrast against white background */
