@@ -457,3 +457,12 @@ body {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+
+.takeout-pics {
+    border-radius: 10px;
+    width: 100%;
+}
+    .takeout-pics:hover {
+        border: 4px solid black;
+    }
