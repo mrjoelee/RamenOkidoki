@@ -42,7 +42,7 @@ namespace RamenOkiDoki.Controllers
 
         #region =  Menu
 
-        public async Task<IActionResult> Menu()
+        public IActionResult Menu()
         {
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
 

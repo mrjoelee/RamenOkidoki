@@ -18,7 +18,7 @@ namespace Data.Models.FoodMenus
         [Column(TypeName = "decimal(8,2)")]
         public decimal price { get; set; }
 
-        [ForeignKey("Id")]
+        //[ForeignKey("Id")]
         public int foodCategoryId { get; set; }
         public string foodCategory { get; set; }
     }

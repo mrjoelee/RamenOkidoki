@@ -1,4 +1,5 @@
 ﻿@model Data.ViewModels.FoodMenuViewModel
+
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -14,7 +15,8 @@
         dishName = Model.FoodItemToAddEdit.dishName;
         description = Model.FoodItemToAddEdit.description;
         price = Model.FoodItemToAddEdit.price.ToString("C");
-        foodCategory = Model.FoodItemToAddEdit.foodCategory;
+        //foodCategory = Model.FoodItemToAddEdit.foodCategory;
+        foodCategory = Model.FoodCategoryList.ToString();
         foodCategoryId = Model.FoodItemToAddEdit.foodCategoryId.ToString();
         AddSaveButton = "Save Item";
     }
@@ -34,11 +36,8 @@
                    new { @class = "form-control menu-add-dropdown" }
                    )
                 </td>
-
                     @*<td>@Html.TextBoxFor(m => m.foodCategory)</td>*@
-
             </tr>
-
             <tr class="form-group">
                 <td>Dish Name</td>
                 <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.dishName)</td>
@@ -46,15 +45,14 @@
 
             <tr class="form-group">
                 <td>Price</td>
-                <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.price.ToString("C"))</td>
+                @*<td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.price.ToString("C"))</td>*@
+                @*<td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.price, "{0:c}")</td>*@
+                <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.price, "{0:c}", new {@class = "require numeric", id=price})  </td>
             </tr>
-
-
             <tr class="form-group">
                 <td>Description</td>
                 <td>@Html.TextBoxFor(m => m.FoodItemToAddEdit.description)</td>
             </tr>
-
             <tr>
                 <td>
                     <input type="submit" value="@AddSaveButton" class="btn submit-order-button" />
@@ -63,7 +61,6 @@
                     <a asp-controller="Admin" asp-action="FoodMenuEdit" type="submit" class="btn submit-order-button">Cancel</a>
                 </td>
             </tr>
-
             <input type="hidden" id="id" name="id" value="@(id)" />
             <input type="hidden" id="foodCategoryId" name="foodCategoryId" value="@(foodCategoryId)" />
 

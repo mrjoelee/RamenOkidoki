@@ -45,7 +45,7 @@ namespace RamenOkiDoki.Controllers
         }
 
         //Gets the menu from cloud via SQL DB - and returns the view as Food Items which is created in FoodMenuViewModel
-        public async Task<IActionResult> FoodMenuEdit()
+        public IActionResult FoodMenuEdit()
         {
             Globals.FoodCategoryList = _databaseRepository.GetFoodCategories();
             Globals.FoodItemList = _databaseRepository.GetFoodItems();
@@ -116,14 +116,16 @@ namespace RamenOkiDoki.Controllers
         #region saving new item
 
         [HttpPost]
-        public async Task<IActionResult> PutMenuItem(FoodItem item)
+        public IActionResult PutMenuItem(FoodItem item)
         {
+            var selectedValue = item.foodCategory;
+            ViewBag.FoodCategory = selectedValue;
             foreach (var category in Globals.FoodCategoryList)
             {
                 if (category.Category == item.foodCategory)
                 {
                     item.foodCategoryId = category.Id;
-                    
+                    _databaseRepository.SaveRestaurantData(item);
                 }
             }
 
@@ -136,7 +138,7 @@ namespace RamenOkiDoki.Controllers
 
         #region deleting  item
 
-        public async Task<IActionResult> DeleteMenuItem(int? id)
+        public IActionResult DeleteMenuItem(int? id)
         {
             if (id != null)
             {
