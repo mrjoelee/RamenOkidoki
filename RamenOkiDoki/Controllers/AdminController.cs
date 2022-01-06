@@ -122,7 +122,7 @@ namespace RamenOkiDoki.Controllers
             //[Bind(Prefix = "FoodMenuViewModel"), FromForm] 
         {
             
-
+            //reading values from the input, but not saving on the database...work on it.
             if (ModelState.IsValid)
             {
                 foreach (var category in Globals.FoodCategoryList)
