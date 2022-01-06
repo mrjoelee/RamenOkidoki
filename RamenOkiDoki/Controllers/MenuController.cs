@@ -58,7 +58,7 @@ namespace RamenOkiDoki.Controllers
 
         #endregion
 
-       
+
 
         private List<FoodCategory> GetCategoriesToDisplay()
         {

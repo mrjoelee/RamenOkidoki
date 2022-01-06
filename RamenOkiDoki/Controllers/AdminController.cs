@@ -116,18 +116,25 @@ namespace RamenOkiDoki.Controllers
         #region saving new item
 
         [HttpPost]
-        public IActionResult PutMenuItem(FoodItem item)
+        public IActionResult PutMenuItem([FromForm]FoodItem item)
+            //[Bind(Prefix = "FoodMenuViewModel")]
         {
-            var selectedValue = item.foodCategory;
-            ViewBag.FoodCategory = selectedValue;
-            foreach (var category in Globals.FoodCategoryList)
+            //var selectedValue = item.foodCategory;
+            //ViewBag.FoodCategory = selectedValue;
+            //FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
+            if (ModelState.IsValid)
             {
-                if (category.Category == item.foodCategory)
+                foreach (var category in Globals.FoodCategoryList)
+
                 {
-                    item.foodCategoryId = category.Id;
-                    _databaseRepository.SaveRestaurantData(item);
+                    if (category.Category == item.foodCategory)
+                    {
+                        item.foodCategoryId = category.Id;
+                        _databaseRepository.SaveRestaurantData(item);
+                    }
                 }
             }
+            
 
             //   await _menuEndpointService.AddMenuItemToCloud(item);
 
