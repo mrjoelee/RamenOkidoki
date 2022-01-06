@@ -25,12 +25,12 @@ namespace Data.ViewModels
         {
             FoodCategoryList = databaseRepository.GetFoodCategories();
             FoodItemList = databaseRepository.GetFoodItems();
+            
         }
 
         public FoodMenuViewModel()
         {
             databaseRepository = new DatabaseRepository();
-
             FoodCategoryList = new List<FoodCategory>();
             FoodItemList = new List<FoodItem>();
 

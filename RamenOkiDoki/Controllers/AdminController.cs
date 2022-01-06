@@ -84,6 +84,7 @@ namespace RamenOkiDoki.Controllers
         public IActionResult FoodMenuAddEdit(int? id)
         {
             FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
+            
 
             if (id != null)
             {
@@ -116,23 +117,25 @@ namespace RamenOkiDoki.Controllers
         #region saving new item
 
         [HttpPost]
-        public IActionResult PutMenuItem([FromForm]FoodItem item)
+        public IActionResult PutMenuItem(FoodMenuViewModel item)
             //[Bind(Prefix = "FoodMenuViewModel")]
+            //[Bind(Prefix = "FoodMenuViewModel"), FromForm] 
         {
-            //var selectedValue = item.foodCategory;
-            //ViewBag.FoodCategory = selectedValue;
-            //FoodMenuViewModel foodMenuViewModel = new FoodMenuViewModel();
+            
+
             if (ModelState.IsValid)
             {
                 foreach (var category in Globals.FoodCategoryList)
 
                 {
-                    if (category.Category == item.foodCategory)
+                    if (category.Category == item.FoodItemToAddEdit.foodCategory)
                     {
-                        item.foodCategoryId = category.Id;
-                        _databaseRepository.SaveRestaurantData(item);
+                        item.FoodItemToAddEdit.foodCategoryId = category.Id;
+                        
                     }
                 }
+                _databaseRepository.AddRestaurantData(item);
+
             }
             
 
