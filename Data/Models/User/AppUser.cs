@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace Data.Models.User
 {
 
-    public class AppUser //: IdentityUser
+    public class AppUser : Microsoft.AspNet.Identity.EntityFramework.IdentityUser<int, IdentityUserLogin<int>, IdentityUserRole<int>, IdentityUserClaim<int>>
     {
         //add your custom properties which have not included in IdentityUser before
 

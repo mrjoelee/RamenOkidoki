@@ -100,12 +100,13 @@ namespace RamenOkiDoki.Controllers
                             if (item.Id == id)
                             {
                                 foodMenuViewModel.FoodItemToAddEdit = item;
-                                _databaseRepository.AddRestaurantData(item);
+                               
                                 //return View(item);
                             }
                         }
-
+                        _databaseRepository.SaveRestaurantData(item);
                     }
+                    
                 }
             }
 
@@ -125,6 +126,7 @@ namespace RamenOkiDoki.Controllers
             //reading values from the input, but not saving on the database...work on it.
             if (ModelState.IsValid)
             {
+                
                 foreach (var category in Globals.FoodCategoryList)
 
                 {
@@ -134,7 +136,7 @@ namespace RamenOkiDoki.Controllers
                         
                     }
                 }
-                _databaseRepository.AddRestaurantData(item);
+                //_databaseRepository.AddRestaurantData<FoodItem>(item);
 
             }
             

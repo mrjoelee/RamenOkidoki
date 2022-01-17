@@ -35,7 +35,7 @@
                    new { @class = "form-control menu-add-dropdown" }
                    )
                 </td>
-                    @*<td>@Html.TextBoxFor(m => m.foodCategory)</td>*@
+                    
             </tr>
             <tr class="form-group">
                 <td>Dish Name</td>
@@ -60,66 +60,50 @@
                     <a asp-controller="Admin" asp-action="FoodMenuEdit" type="submit" class="btn submit-order-button">Cancel</a>
                 </td>
             </tr>
-            <input type="hidden" id="id" name="id" value="@(id)" />
-            <input type="hidden" id="foodCategoryId" name="foodCategoryId" value="@(foodCategoryId)" />
+            <input type="hidden" id="foodCategory" name="id" value="@id" />
+            <input type="hidden" id="foodCategoryId" name="foodCategoryId" value="@foodCategoryId" />
 
         </table>
     }
 </div>
 @*<form method="post" asp-action="PutMenuItem">
-    <div class="border p-3">
-
-        <div class ="form-group row">
-            <h2 class="text-black-50 pl-3">Add New Item</h2>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="form-group row">
-                    <div class="col-4">
-
-                        <label asp-for="FoodItemToAddEdit.dishName"></label>
-                    </div>
-                    <div class="col-4">
-                        <label asp-for="FoodItemToAddEdit.price"></label>
-                    </div>
-                    <div class="col-4">
-                        <label asp-for="FoodItemToAddEdit.description"></label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-4"><br/>
- 
-                        <input asp-for="FoodItemToAddEdit.dishName" class="form-control"/>
-
-
-                        <span asp-validation-for="FoodItemToAddEdit.dishName" class="text-danger"></span>
-                    </div>
-                    <div class="col-4"><br/>
-                        <input asp-for="FoodItemToAddEdit.price" class="form-control"/>
-
-                        <span asp-validation-for="FoodItemToAddEdit.price" class="text-danger"></span>
-                    </div>
-                    <div class="col-4"><br/>
-                        <input asp-for="FoodItemToAddEdit.description" class="form-control">
-
-                   </div>
-                   <div class="col-4"><br/>
-                        <select asp-for="FoodItemToAddEdit.foodCategory" class="form-control">
-                       
-                        </select>
-                   </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-8 offset-2 row">
-                        <div class="col"><br/>
-                             <input type="submit" value="@AddSaveButton" class="btn submit-order-button" />
-                        </div>
-                        <div class="col"><br/>
-                             <a asp-controller="Admin" asp-action="FoodMenuEdit" type="submit" class="btn submit-order-button">Cancel</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+    <div class="col-md-4">
+        <form asp-action="PutMenuItem">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="dishName" class="control-label"></label>
+                <input asp-for="dishName" class="form-control" />
+                <span asp-validation-for="dishName" class="text-danger"></span>
             </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="foodCategoryId" class="control-label"></label>
+                <input asp-for="foodCategoryId" class="form-control" />
+                <span asp-validation-for="foodCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="foodCategory" class="control-label"></label>
+                <input asp-for="foodCategory" class="form-control" />
+                <span asp-validation-for="foodCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 </form>*@
